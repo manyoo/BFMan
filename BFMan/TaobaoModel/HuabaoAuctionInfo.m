@@ -10,4 +10,6 @@
 
 @implementation HuabaoAuctionInfo
 
+@synthesize auctionId, posterId, auctionTitle, auctionShortTitle, auctionPrice, auctionNote, auctionUrl, picId, auctionPosition;
+
 @end

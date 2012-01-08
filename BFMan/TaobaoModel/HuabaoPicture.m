@@ -10,4 +10,6 @@
 
 @implementation HuabaoPicture
 
+@synthesize posterId, picId, createDate, modifiedDate, picUrl, picNote;
+
 @end

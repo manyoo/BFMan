@@ -10,4 +10,11 @@
 
 @interface HuabaoPicture : NSObject
 
+@property (nonatomic, strong) NSNumber *posterId;
+@property (nonatomic, strong) NSString *picId;
+@property (nonatomic, strong) NSDate *createDate;
+@property (nonatomic, strong) NSDate *modifiedDate;
+@property (nonatomic, strong) NSString *picUrl;
+@property (nonatomic, strong) NSString *picNote;
+
 @end
