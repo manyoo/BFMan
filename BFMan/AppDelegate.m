@@ -8,6 +8,9 @@
 
 #import "AppDelegate.h"
 
+#define BFMAN_DEFINED
+#import "BFManConstants.h"
+
 @implementation AppDelegate
 
 @synthesize window = _window;
