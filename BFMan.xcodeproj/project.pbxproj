@@ -112,6 +112,9 @@
 		0774A7E314B9D21300D795AE /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0774A7E214B9D21300D795AE /* CFNetwork.framework */; };
 		0774A7E514B9D24000D795AE /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0774A7E414B9D24000D795AE /* SystemConfiguration.framework */; };
 		0774A7E714B9D25C00D795AE /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0774A7E614B9D25C00D795AE /* MobileCoreServices.framework */; };
+		0774A7EA14B9D49C00D795AE /* HuaBao.m in Sources */ = {isa = PBXBuildFile; fileRef = 0774A7E914B9D49C00D795AE /* HuaBao.m */; };
+		0774A7ED14B9D7EC00D795AE /* HuabaoPicture.m in Sources */ = {isa = PBXBuildFile; fileRef = 0774A7EC14B9D7EC00D795AE /* HuabaoPicture.m */; };
+		0774A7F014B9D91000D795AE /* HuabaoAuctionInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 0774A7EF14B9D91000D795AE /* HuabaoAuctionInfo.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -313,6 +316,12 @@
 		0774A7E214B9D21300D795AE /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		0774A7E414B9D24000D795AE /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		0774A7E614B9D25C00D795AE /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		0774A7E814B9D49B00D795AE /* HuaBao.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HuaBao.h; sourceTree = "<group>"; };
+		0774A7E914B9D49C00D795AE /* HuaBao.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HuaBao.m; sourceTree = "<group>"; };
+		0774A7EB14B9D7EC00D795AE /* HuabaoPicture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HuabaoPicture.h; sourceTree = "<group>"; };
+		0774A7EC14B9D7EC00D795AE /* HuabaoPicture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HuabaoPicture.m; sourceTree = "<group>"; };
+		0774A7EE14B9D91000D795AE /* HuabaoAuctionInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HuabaoAuctionInfo.h; sourceTree = "<group>"; };
+		0774A7EF14B9D91000D795AE /* HuabaoAuctionInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HuabaoAuctionInfo.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -622,6 +631,12 @@
 				0774A7A714B9CF2F00D795AE /* User.m */,
 				0774A7A814B9CF2F00D795AE /* UserCredit.h */,
 				0774A7A914B9CF2F00D795AE /* UserCredit.m */,
+				0774A7E814B9D49B00D795AE /* HuaBao.h */,
+				0774A7E914B9D49C00D795AE /* HuaBao.m */,
+				0774A7EB14B9D7EC00D795AE /* HuabaoPicture.h */,
+				0774A7EC14B9D7EC00D795AE /* HuabaoPicture.m */,
+				0774A7EE14B9D91000D795AE /* HuabaoAuctionInfo.h */,
+				0774A7EF14B9D91000D795AE /* HuabaoAuctionInfo.m */,
 			);
 			name = TaobaoModel;
 			path = BFMan/TaobaoModel;
@@ -852,6 +867,9 @@
 				0774A7D914B9D09F00D795AE /* GTMNSString+HTML.m in Sources */,
 				0774A7DA14B9D09F00D795AE /* NSString+MD5.m in Sources */,
 				0774A7DD14B9D0F700D795AE /* NSString+HTML.m in Sources */,
+				0774A7EA14B9D49C00D795AE /* HuaBao.m in Sources */,
+				0774A7ED14B9D7EC00D795AE /* HuabaoPicture.m in Sources */,
+				0774A7F014B9D91000D795AE /* HuabaoAuctionInfo.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
