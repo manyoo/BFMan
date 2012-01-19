@@ -19,6 +19,9 @@
 #define _INITIALIZE_AS(x)
 #endif
 
+// the default poster channel for Men.
+#define DEFAULT_CHANNEL 3
+
 // app key for Sina Weibo
 // TODO: change to new Weibo APP key and secret.
 _EXTERN NSString *const SINA_WEIBO_APP_KEY_STR      _INITIALIZE_AS(@"1926133895");
@@ -51,8 +54,6 @@ _EXTERN NSString *const TOP_POSTER_AUCTIONS_GET     _INITIALIZE_AS(@"taobao.post
 // 自己的pid，用于获取佣金
 _EXTERN NSString *const TAOBAOKE_PID                _INITIALIZE_AS(@"28971285");
 _EXTERN NSString *const TAOBAOKE_PID_FOR_WEIBO      _INITIALIZE_AS(@"29603941");
-
-_EXTERN NSNumber *const DEFAULT_CHANNEL             _INITIALIZE_AS([NSNumber numberWithInt:3]);
 
 // 错误信息
 _EXTERN NSString *const ALERT_TITLE_NOTIFY          _INITIALIZE_AS(@"提示");
