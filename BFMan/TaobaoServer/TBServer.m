@@ -19,6 +19,9 @@
 #import "TaobaokeShop.h"
 #import "Shop.h"
 #import "CollectItem.h"
+#import "HuaBao.h"
+#import "HuabaoPicture.h"
+#import "HuabaoAuctionInfo.h"
 #import "NSString+Additions.h"
 
 @implementation TBServer
@@ -85,6 +88,21 @@
                 break;
             case TB_API_GETCOLLECTITEMS:
                 [_delegate requestFinished:[CollectItem collectItemsFromResponse:json]];
+                break;
+            case TB_API_POSTERSGET:
+                [_delegate requestFinished:[HuaBao huabaoListFromPosterGet:json]];
+                break;
+            case TB_API_POSTERSSEARCH:
+                [_delegate requestFinished:[HuaBao huabaoListFromPosterSearch:json]];
+                break;
+            case TB_API_APPOINTEDPOSTERSGET:
+                [_delegate requestFinished:[HuaBao huabaoListFromAppointedPosters:json]];
+                break;
+            case TB_API_POSTERDETAILGET:
+                [_delegate requestFinished:[HuabaoPicture huabaoPicturesFromPosterDetail:json]];
+                break;
+            case TB_API_POSTAUCTIONSGET:
+                [_delegate requestFinished:[HuabaoAuctionInfo hbAuctionInfosFromPostAuctions:json]];
                 break;
             default:
                 break;
@@ -284,6 +302,45 @@
     NSMutableDictionary *newParams = [[NSMutableDictionary alloc] initWithDictionary:params];
     [newParams setValue:@"ITEM" forKey:@"collect_type"];
     [self processMethod:TOP_COLLECT_ITEM_GET params:newParams];
+}
+
+- (void)getPosters:(NSMutableDictionary *)params {
+    self.api = TB_API_POSTERSGET;
+    self.needAuth = NO;
+    
+    [self processMethod:TOP_POSTERS_GET params:params];
+}
+
+- (void)searchPosters:(NSMutableDictionary *)params {
+    self.api = TB_API_POSTERSSEARCH;
+    self.needAuth = NO;
+    
+    [self processMethod:TOP_POSTERS_SEARCH params:params];
+}
+
+- (void)getAppointedPosters:(NSMutableDictionary *)params {
+    self.api = TB_API_APPOINTEDPOSTERSGET;
+    self.needAuth = NO;
+    
+    [self processMethod:TOP_APPOINTED_POSTERS_GET params:params];
+}
+
+- (void)getPosterDetail:(NSNumber *)posterId {
+    self.api = TB_API_POSTERDETAILGET;
+    self.needAuth = NO;
+    
+    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+    [params setValue:posterId forKey:@"poster_id"];
+    [self processMethod:TOP_POSTER_DETAIL_GET params:params];
+}
+
+- (void)getPosterAuctionInfos:(NSNumber *)posterId {
+    self.api = TB_API_POSTAUCTIONSGET;
+    self.needAuth = NO;
+    
+    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+    [params setValue:posterId forKey:@"poster_id"];
+    [self processMethod:TOP_POSTER_AUCTIONS_GET params:params];
 }
 
 - (void)getImage:(NSString *)picUrl {

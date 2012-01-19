@@ -17,4 +17,8 @@
 @property (nonatomic, strong) NSString *picUrl;
 @property (nonatomic, strong) NSString *picNote;
 
++ (HuabaoPicture *)huabaoPictureFromDictionary:(NSDictionary *)dict;
++ (NSArray *)huabaoPicturesFromArray:(NSArray *)arr;
++ (NSArray *)huabaoPicturesFromPosterDetail:(NSDictionary *)resp;
+
 @end

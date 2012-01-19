@@ -12,4 +12,34 @@
 
 @synthesize auctionId, posterId, auctionTitle, auctionShortTitle, auctionPrice, auctionNote, auctionUrl, picId, auctionPosition;
 
++ (HuabaoAuctionInfo *)hbAuctionInfoFromDict:(NSDictionary *)dict {
+    HuabaoAuctionInfo *hbInfo = [[HuabaoAuctionInfo alloc] init];
+    
+    hbInfo.auctionId = [dict objectForKey:@"auction_id"];
+    hbInfo.posterId = [dict objectForKey:@"poster_id"];
+    hbInfo.auctionTitle = [dict objectForKey:@"auction_title"];
+    hbInfo.auctionShortTitle = [dict objectForKey:@"auction_short_title"];
+    hbInfo.auctionPrice = [NSNumber numberWithFloat:[[dict objectForKey:@"auction_price"] floatValue]];
+    hbInfo.auctionNote = [dict objectForKey:@"auction_note"];
+    hbInfo.auctionUrl = [dict objectForKey:@"auction_url"];
+    hbInfo.picId = [dict objectForKey:@"pic_id"];
+    hbInfo.auctionPosition = [dict objectForKey:@"auction_position"];
+    
+    return hbInfo;
+}
+
++ (NSArray *)hbAuctionInfosFromArray:(NSArray *)arr {
+    NSMutableArray *auctions = [[NSMutableArray alloc] initWithCapacity:[arr count]];
+    
+    for (NSDictionary *dict in arr) {
+        [auctions addObject:[HuabaoAuctionInfo hbAuctionInfoFromDict:dict]];
+    }
+    
+    return auctions;
+}
+
++ (NSArray *)hbAuctionInfosFromPostAuctions:(NSDictionary *)resp {
+    NSArray *auctions = [[[resp objectForKey:@"poster_postauctions_get_response"] objectForKey:@"posterauctions"] objectForKey:@"huabao_auction_info"];
+    return [HuabaoAuctionInfo hbAuctionInfosFromArray:auctions];
+}
 @end

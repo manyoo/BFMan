@@ -20,4 +20,8 @@
 @property (nonatomic, strong) NSNumber *picId;
 @property (nonatomic, strong) NSString *auctionPosition;
 
++ (HuabaoAuctionInfo *)hbAuctionInfoFromDict:(NSDictionary *)dict;
++ (NSArray *)hbAuctionInfosFromArray:(NSArray *)arr;
++ (NSArray *)hbAuctionInfosFromPostAuctions:(NSDictionary *)resp;
+
 @end

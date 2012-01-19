@@ -42,10 +42,17 @@ _EXTERN NSString *const TOP_TRADERATES_SEARCH       _INITIALIZE_AS(@"taobao.trad
 _EXTERN NSString *const TOP_TBK_SHOPS_GET           _INITIALIZE_AS(@"taobao.taobaoke.shops.get");
 _EXTERN NSString *const TOP_SHOP_GET                _INITIALIZE_AS(@"taobao.shop.get");
 _EXTERN NSString *const TOP_COLLECT_ITEM_GET        _INITIALIZE_AS(@"taobao.favorite.search");
+_EXTERN NSString *const TOP_POSTERS_GET             _INITIALIZE_AS(@"taobao.poster.posters.get");
+_EXTERN NSString *const TOP_POSTERS_SEARCH          _INITIALIZE_AS(@"taobao.poster.posters.search");
+_EXTERN NSString *const TOP_APPOINTED_POSTERS_GET   _INITIALIZE_AS(@"taobao.poster.appointedposters.get");
+_EXTERN NSString *const TOP_POSTER_DETAIL_GET       _INITIALIZE_AS(@"taobao.poster.posterdetail.get");
+_EXTERN NSString *const TOP_POSTER_AUCTIONS_GET     _INITIALIZE_AS(@"taobao.poster.postauctions.get");
 
 // 自己的pid，用于获取佣金
 _EXTERN NSString *const TAOBAOKE_PID                _INITIALIZE_AS(@"28971285");
 _EXTERN NSString *const TAOBAOKE_PID_FOR_WEIBO      _INITIALIZE_AS(@"29603941");
+
+_EXTERN NSNumber *const DEFAULT_CHANNEL = [NSNumber numberWithInt:3];
 
 // 错误信息
 _EXTERN NSString *const ALERT_TITLE_NOTIFY          _INITIALIZE_AS(@"提示");

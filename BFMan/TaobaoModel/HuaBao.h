@@ -22,6 +22,9 @@
 @property (nonatomic, strong) NSNumber *channelId;
 
 + (HuaBao *)huabaoFromDictionary:(NSDictionary *)dict;
-+ (NSArray *)huabaoListFromResponse:(NSDictionary *)resp;
++ (NSArray *)huabaoListFromResponse:(NSArray *)resp;
++ (NSArray *)huabaoListFromPosterGet:(NSDictionary *)resp;
++ (NSArray *)huabaoListFromPosterSearch:(NSDictionary *)resp;
++ (NSArray *)huabaoListFromAppointedPosters:(NSDictionary *)resp;
 
 @end

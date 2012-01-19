@@ -33,8 +33,29 @@
     return huabao;
 }
 
-+ (NSArray *)huabaoListFromResponse:(NSDictionary *)resp {
++ (NSArray *)huabaoListFromResponse:(NSArray *)resp {
+    NSMutableArray *hblist = [[NSMutableArray alloc] initWithCapacity:[resp count]];
     
+    for (NSDictionary *dict in resp) {
+        [hblist addObject:[HuaBao huabaoFromDictionary:dict]];
+    }
+    
+    return hblist;
+}
+
++ (NSArray *)huabaoListFromPosterGet:(NSDictionary *)resp {
+    NSArray *posters = [[[resp objectForKey:@"poster_posters_get_response"] objectForKey:@"posters"] objectForKey:@"huabao"];
+    return [HuaBao huabaoListFromResponse:posters];
+}
+
++ (NSArray *)huabaoListFromPosterSearch:(NSDictionary *)resp {
+    NSArray *posters = [[[resp objectForKey:@"poster_searchposters_get_response"] objectForKey:@"search_posters"] objectForKey:@"huabao"];
+    return [HuaBao huabaoListFromResponse:posters];
+}
+
++ (NSArray *)huabaoListFromAppointedPosters:(NSDictionary *)resp {
+    NSArray *posters = [[[resp objectForKey:@"poster_appointedposters_get_response"] objectForKey:@"appointedposters"] objectForKey:@"huabao"];
+    return [HuaBao huabaoListFromResponse:posters];
 }
 
 @end

@@ -28,6 +28,11 @@ typedef enum {
     TB_API_GETSHOP,
     TB_API_GETCOLLECTITEMS,
     TB_API_CHECKTBCITEM,
+    TB_API_POSTERSGET,
+    TB_API_POSTERSSEARCH,
+    TB_API_APPOINTEDPOSTERSGET,
+    TB_API_POSTERDETAILGET,
+    TB_API_POSTAUCTIONSGET,
     TB_GETIMAGE
 } TBAPI;
 
@@ -54,6 +59,11 @@ typedef enum {
 - (void)getShop:(NSString *)nick;
 - (void)getCollectItems:(NSDictionary *)params;
 - (void)checkTaobaokeItem:(NSNumber *)itemId;
+- (void)getPosters:(NSMutableDictionary *)params;
+- (void)searchPosters:(NSMutableDictionary *)params;
+- (void)getAppointedPosters:(NSMutableDictionary *)params;
+- (void)getPosterDetail:(NSNumber *)posterId;
+- (void)getPosterAuctionInfos:(NSNumber *)posterId;
 - (void)getImage:(NSString *)picUrl;
 
 @end
