@@ -52,7 +52,7 @@ _EXTERN NSString *const TOP_POSTER_AUCTIONS_GET     _INITIALIZE_AS(@"taobao.post
 _EXTERN NSString *const TAOBAOKE_PID                _INITIALIZE_AS(@"28971285");
 _EXTERN NSString *const TAOBAOKE_PID_FOR_WEIBO      _INITIALIZE_AS(@"29603941");
 
-_EXTERN NSNumber *const DEFAULT_CHANNEL = [NSNumber numberWithInt:3];
+_EXTERN NSNumber *const DEFAULT_CHANNEL             _INITIALIZE_AS([NSNumber numberWithInt:3]);
 
 // 错误信息
 _EXTERN NSString *const ALERT_TITLE_NOTIFY          _INITIALIZE_AS(@"提示");
