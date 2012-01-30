@@ -8,15 +8,31 @@
 
 #import <UIKit/UIKit.h>
 #import "EGORefreshTableHeaderView.h"
+#import "TBServer.h"
 
 typedef enum {
     CELL_RELOAD,
     CELL_DATA
 } CellType;
 
-@class LoadingTableViewCell;
+typedef enum {
+    API_GETPICTURE,
+    API_GETAUCTION,
+    API_GETHOT,
+    API_GETRECOMMEND,
+    API_GETALL
+} APIType;
 
-@interface PosterViewController : UITableViewController <EGORefreshTableHeaderDelegate>
+@class LoadingTableViewCell;
+@class HuaBao;
+
+@interface PosterViewController : UITableViewController <EGORefreshTableHeaderDelegate,TBServerDelegate>
+
+@property (nonatomic, strong) TBServer *server;
+@property (nonatomic) APIType apiType;
+@property (nonatomic, strong) NSArray *huabaoPictures;
+@property (nonatomic, strong) NSArray *huabaoAuctions;
+@property (nonatomic, strong) HuaBao *selectedHuaBao;
 
 @property (nonatomic, strong) EGORefreshTableHeaderView *refreshHeaderView;
 @property (nonatomic, strong) LoadingTableViewCell *loadingCell;

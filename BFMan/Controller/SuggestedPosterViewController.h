@@ -7,10 +7,7 @@
 //
 
 #import "PosterViewController.h"
-#import "TBServer.h"
 
-@interface SuggestedPosterViewController : PosterViewController <TBServerDelegate>
-
-@property (nonatomic, strong) TBServer *server;
+@interface SuggestedPosterViewController : PosterViewController
 
 @end

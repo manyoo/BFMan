@@ -10,7 +10,6 @@
 #import "BFManConstants.h"
 
 @implementation AllPosterViewController
-@synthesize server;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -50,7 +49,8 @@
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
     [params setValue:[NSNumber numberWithInt:DEFAULT_CHANNEL] forKey:@"channel_id"];
     [params setValue:@"20" forKey:@"page_size"];
-    [server getPosters:params];
+    self.apiType = API_GETALL;
+    [self.server getPosters:params];
 }
 
 
@@ -77,12 +77,15 @@
 }
 
 - (void)requestFinished:(id)data {
-    self.posters = (NSMutableArray *)data;
-    self.cellTypes = [[NSMutableArray alloc] initWithCapacity:[self.posters count]];
-    for (id o in self.posters) {
-        [self.cellTypes addObject:[NSNumber numberWithInt:CELL_DATA]];
-    }
-    [self.tableView reloadData];
+    if (self.apiType == API_GETALL) {
+        self.posters = (NSMutableArray *)data;
+        self.cellTypes = [[NSMutableArray alloc] initWithCapacity:[self.posters count]];
+        for (id o in self.posters) {
+            [self.cellTypes addObject:[NSNumber numberWithInt:CELL_DATA]];
+        }
+        [self.tableView reloadData];
+    } else 
+        [super requestFinished:data];
 }
 
 @end

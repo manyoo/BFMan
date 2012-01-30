@@ -10,9 +10,12 @@
 #import "LoadingTableViewCell.h"
 #import "ItemBigTableViewCell.h"
 #import "HuaBao.h"
+#import "BFManConstants.h"
+#import "FullImageViewController.h"
+#import "HuabaoAuctionInfo.h"
 
 @implementation PosterViewController
-@synthesize posters, refreshEnabled, multipageEnabled, cellTypes, refreshHeaderView, lastpageLoaded, reloading, allItemsReloading, loadingCell;
+@synthesize posters, refreshEnabled, multipageEnabled, cellTypes, refreshHeaderView, lastpageLoaded, reloading, allItemsReloading, loadingCell, server, apiType, huabaoAuctions, huabaoPictures, selectedHuaBao;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -60,6 +63,7 @@
     }
     self.posters = [[NSMutableArray alloc] init];
     self.cellTypes = [[NSMutableArray alloc] init];
+    self.server = [[TBServer alloc] initWithDelegate:self];
 }
 
 - (void)viewDidUnload
@@ -196,6 +200,13 @@
      // Pass the selected object to the new view controller.
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
+    CellType cellType = [[cellTypes objectAtIndex:indexPath.row] intValue];
+    if (cellType == CELL_DATA) {
+        HuaBao *huabao = [posters objectAtIndex:indexPath.row];
+        self.apiType = API_GETPICTURE;
+        self.selectedHuaBao = huabao;
+        [self.server getPosterDetail:huabao.huabaoID];
+    }
 }
 
 - (void)reloadTableViewDataSource {
@@ -236,6 +247,38 @@
 
 - (void)loadMoreData {
     
+}
+
+#pragma mark - TBServerDelegate
+
+- (void)requestFailed:(NSString *)msg {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:ALERT_TITLE_NOTIFY
+                                                    message:msg
+                                                   delegate:nil
+                                          cancelButtonTitle:@"好"
+                                          otherButtonTitles:nil];
+    [alert show];
+}
+
+- (void)requestFinished:(id)data {
+    if (apiType == API_GETPICTURE) {
+        self.huabaoPictures = (NSArray *)data;
+        self.apiType = API_GETAUCTION;
+        [self.server getPosterAuctionInfos:selectedHuaBao.huabaoID];
+    } else if (apiType == API_GETAUCTION) {
+        self.huabaoAuctions = (NSArray *)data;
+        NSMutableDictionary *auctions = [[NSMutableDictionary alloc] initWithCapacity:huabaoAuctions.count];
+        for (HuabaoAuctionInfo *auc in huabaoAuctions) {
+            [auctions setValue:auc forKey:[NSString stringWithFormat:@"%@", auc.picId]];
+        }
+        FullImageViewController *imgViewController = [[FullImageViewController alloc] initWithNibName:@"FullImageViewController" bundle:nil];
+        imgViewController.huabao = selectedHuaBao;
+        imgViewController.huabaoPictures = huabaoPictures;
+        imgViewController.huabaoAuctions = auctions;
+        imgViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+        
+        [self presentModalViewController:imgViewController animated:YES];
+    }
 }
 
 @end

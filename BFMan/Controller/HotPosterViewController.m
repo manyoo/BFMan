@@ -10,7 +10,6 @@
 #import "BFManConstants.h"
 
 @implementation HotPosterViewController
-@synthesize server;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -43,7 +42,8 @@
     [params setValue:@"HOT" forKey:@"appointed_type"];
     [params setValue:[NSNumber numberWithInt:DEFAULT_CHANNEL] forKey:@"channel_ids"];
     [params setValue:@"20" forKey:@"re_num"];
-    [server getAppointedPosters:params];
+    self.apiType = API_GETHOT;
+    [self.server getAppointedPosters:params];
 }
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
@@ -87,15 +87,18 @@
 }
 
 - (void)requestFinished:(id)data {
-    self.posters = (NSMutableArray *)data;
-    self.cellTypes = [[NSMutableArray alloc] initWithCapacity:[self.posters count]];
-    for (id o in self.posters) {
-        [self.cellTypes addObject:[NSNumber numberWithInt:CELL_DATA]];
-    }
-    if (self.reloading) {
-        [self doneLoadingTableViewData];
-    }
-    [self.tableView reloadData];
+    if (self.apiType == API_GETHOT) {
+        self.posters = (NSMutableArray *)data;
+        self.cellTypes = [[NSMutableArray alloc] initWithCapacity:[self.posters count]];
+        for (id o in self.posters) {
+            [self.cellTypes addObject:[NSNumber numberWithInt:CELL_DATA]];
+        }
+        if (self.reloading) {
+            [self doneLoadingTableViewData];
+        }
+        [self.tableView reloadData];   
+    } else
+        [super requestFinished:data];
 }
 
 @end
