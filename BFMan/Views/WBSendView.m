@@ -237,6 +237,7 @@
                                                    cancelButtonTitle:@"确定" 
                                                    otherButtonTitles:nil];
 		[alertView show];
+        [alertView release];
 		return;
 	}
     BlogClient *blog = [WeiboManager getBlogClient];
