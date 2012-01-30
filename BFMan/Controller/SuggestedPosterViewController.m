@@ -38,15 +38,7 @@
 }
 */
 
-
-// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    
-    self.title = @"推荐";
-    
-    self.server = [[TBServer alloc] initWithDelegate:self];
+- (void)doRequest {
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
     [params setValue:@"RECOMMEND" forKey:@"appointed_type"];
     [params setValue:[NSNumber numberWithInt:DEFAULT_CHANNEL] forKey:@"channel_ids"];
@@ -54,6 +46,23 @@
     [server getAppointedPosters:params];
 }
 
+// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
+- (void)viewDidLoad
+{
+    self.refreshEnabled = YES;
+    self.multipageEnabled = NO;
+    [super viewDidLoad];
+    
+    self.title = @"推荐";
+    
+    self.server = [[TBServer alloc] initWithDelegate:self];
+    [self doRequest];
+}
+
+- (void)reloadTableViewDataSource {
+    [super reloadTableViewDataSource];
+    [self doRequest];
+}
 
 - (void)viewDidUnload
 {
@@ -82,6 +91,9 @@
     self.cellTypes = [[NSMutableArray alloc] initWithCapacity:[self.posters count]];
     for (id o in self.posters) {
         [self.cellTypes addObject:[NSNumber numberWithInt:CELL_DATA]];
+    }
+    if (self.reloading) {
+        [self doneLoadingTableViewData];
     }
     [self.tableView reloadData];
 }
