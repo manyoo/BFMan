@@ -7,9 +7,12 @@
 //
 
 #import "PosterViewController.h"
+#import "LoadingTableViewCell.h"
+#import "ItemBigTableViewCell.h"
+#import "HuaBao.h"
 
 @implementation PosterViewController
-@synthesize posters;
+@synthesize posters, refreshEnabled, multipageEnabled, cellTypes, refreshHeaderView, lastpageLoaded, reloading, allItemsReloading, loadingCell;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -39,6 +42,24 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    if (refreshEnabled) {
+        self.refreshHeaderView = [[EGORefreshTableHeaderView alloc] initWithFrame:CGRectMake(0.0f,
+                                                                                             0.0f - self.tableView.bounds.size.height, 
+                                                                                             self.view.frame.size.width, 
+                                                                                             self.tableView.bounds.size.height)
+                                                                   arrowImageName:@"blueArrow.png" 
+                                                                        textColor:[UIColor grayColor]];
+        refreshHeaderView.delegate = self;
+        [self.tableView addSubview:refreshHeaderView];
+        
+        [refreshHeaderView refreshLastUpdatedDate];
+    }
+    if (multipageEnabled) {
+        self.lastpageLoaded = 0;
+    }
+    self.posters = [[NSMutableArray alloc] init];
+    self.cellTypes = [[NSMutableArray alloc] init];
 }
 
 - (void)viewDidUnload
@@ -85,21 +106,36 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return [posters count];
+    return [cellTypes count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    static NSString *CellIdentifier = @"Cell";
+{    
+    CellType cellType = [[cellTypes objectAtIndex:indexPath.row] intValue];
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    if (cellType == CELL_DATA) {
+        static NSString *CellIdentifier = @"Cell";
+        
+        ItemBigTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        if (cell == nil) {
+            cell = [[ItemBigTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        }
+        HuaBao *huabao = [posters objectAtIndex:indexPath.row];
+        cell.item = huabao;
+        [cell setupCellContents];
+        return cell;
+    } else if (cellType == CELL_RELOAD) {
+        static NSString *CellIdentifier = @"LoadingCell";
+    
+        LoadingTableViewCell *cell = self.loadingCell;
+        if (cell == nil) {
+            self.loadingCell = [[LoadingTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+            cell = self.loadingCell;
+        }
+        [self loadMoreData];
+        return cell;
     }
-    
-    // Configure the cell...
-    
-    return cell;
+    return nil;
 }
 
 /*
@@ -141,6 +177,14 @@
 }
 */
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    CellType cellType = [[cellTypes objectAtIndex:indexPath.row] intValue];
+    if (cellType == CELL_DATA) {
+        return 350;
+    } else
+        return 44;
+}
+
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -152,6 +196,46 @@
      // Pass the selected object to the new view controller.
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
+}
+
+- (void)reloadTableViewDataSource {
+    self.reloading = YES;
+    // call the model to reload data in subclass.
+}
+
+- (void)doneLoadingTableViewData {
+    self.reloading = NO;
+    [refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:self.tableView];
+}
+
+#pragma mark - UIScrollView delegate
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    if (refreshEnabled) {
+        [refreshHeaderView egoRefreshScrollViewDidScroll:scrollView];        
+    }
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+    if (refreshEnabled) {
+        [refreshHeaderView egoRefreshScrollViewDidEndDragging:scrollView];
+    }
+}
+
+#pragma mark - Refresh delegate
+- (void)egoRefreshTableHeaderDidTriggerRefresh:(EGORefreshTableHeaderView *)view {
+    [self reloadTableViewDataSource];
+}
+
+- (BOOL)egoRefreshTableHeaderDataSourceIsLoading:(EGORefreshTableHeaderView *)view {
+    return reloading;
+}
+
+- (NSDate *)egoRefreshTableHeaderDataSourceLastUpdated:(EGORefreshTableHeaderView *)view {
+    return [NSDate date];
+}
+
+- (void)loadMoreData {
+    
 }
 
 @end

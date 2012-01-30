@@ -7,8 +7,10 @@
 //
 
 #import "AllPosterViewController.h"
+#import "BFManConstants.h"
 
 @implementation AllPosterViewController
+@synthesize server;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -36,13 +38,21 @@
 }
 */
 
-/*
+
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.title = @"全部画报";
+    
+    self.server = [[TBServer alloc] initWithDelegate:self];
+    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+    [params setValue:[NSNumber numberWithInt:DEFAULT_CHANNEL] forKey:@"channel_id"];
+    [params setValue:@"20" forKey:@"page_size"];
+    [server getPosters:params];
 }
-*/
+
 
 - (void)viewDidUnload
 {
@@ -55,6 +65,24 @@
 {
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+- (void)requestFailed:(NSString *)msg {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:ALERT_TITLE_NOTIFY
+                                                    message:msg
+                                                   delegate:nil
+                                          cancelButtonTitle:@"好"
+                                          otherButtonTitles:nil];
+    [alert show];
+}
+
+- (void)requestFinished:(id)data {
+    self.posters = (NSMutableArray *)data;
+    self.cellTypes = [[NSMutableArray alloc] initWithCapacity:[self.posters count]];
+    for (id o in self.posters) {
+        [self.cellTypes addObject:[NSNumber numberWithInt:CELL_DATA]];
+    }
+    [self.tableView reloadData];
 }
 
 @end

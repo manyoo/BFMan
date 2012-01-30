@@ -7,9 +7,30 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "EGORefreshTableHeaderView.h"
 
-@interface PosterViewController : UITableViewController
+typedef enum {
+    CELL_RELOAD,
+    CELL_DATA
+} CellType;
 
-@property (nonatomic, strong) NSArray *posters;
+@class LoadingTableViewCell;
+
+@interface PosterViewController : UITableViewController <EGORefreshTableHeaderDelegate>
+
+@property (nonatomic, strong) EGORefreshTableHeaderView *refreshHeaderView;
+@property (nonatomic, strong) LoadingTableViewCell *loadingCell;
+@property (nonatomic, strong) NSMutableArray *posters;
+@property (nonatomic, strong) NSMutableArray *cellTypes;
+@property (nonatomic) NSInteger lastpageLoaded;
+@property (nonatomic) BOOL reloading;
+@property (nonatomic) BOOL allItemsReloading;
+@property (nonatomic) BOOL refreshEnabled;
+@property (nonatomic) BOOL multipageEnabled;
+
+- (void)reloadTableViewDataSource;
+- (void)doneLoadingTableViewData;
+
+- (void)loadMoreData;
 
 @end

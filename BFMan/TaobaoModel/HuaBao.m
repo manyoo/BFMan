@@ -10,7 +10,7 @@
 
 @implementation HuaBao
 
-@synthesize huabaoID, channelId, modifiedDate, title, titleShort, tag, weight, coverPicUrl, hits, createDate;
+@synthesize huabaoID, channelId, modifiedDate, title, titleShort, tag, weight, coverPicUrl, hits, createDate, itemImg;
 
 + (HuaBao *)huabaoFromDictionary:(NSDictionary *)dict {
     HuaBao *huabao = [[HuaBao alloc] init];
@@ -29,6 +29,7 @@
     huabao.coverPicUrl = [dict objectForKey:@"cover_pic_url"];
     huabao.hits = [dict objectForKey:@"hits"];
     huabao.channelId = [dict objectForKey:@"channel_id"];
+    huabao.itemImg = nil;
     
     return huabao;
 }

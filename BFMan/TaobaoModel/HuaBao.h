@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+@class ItemImg;
+
 @interface HuaBao : NSObject
 
 @property (nonatomic, strong) NSNumber *huabaoID;
@@ -20,6 +22,7 @@
 @property (nonatomic, strong) NSString *coverPicUrl;
 @property (nonatomic, strong) NSNumber *hits;         // 画报点击数
 @property (nonatomic, strong) NSNumber *channelId;
+@property (nonatomic, strong) ItemImg *itemImg;
 
 + (HuaBao *)huabaoFromDictionary:(NSDictionary *)dict;
 + (NSArray *)huabaoListFromResponse:(NSArray *)resp;

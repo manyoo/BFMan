@@ -7,7 +7,7 @@
 //
 
 #import "ItemBigTableViewCell.h"
-#import "TaobaokeItem.h"
+#import "HuaBao.h"
 #import "ItemImg.h"
 #import "AsyncImageView.h"
 #import "GradientView.h"
@@ -39,30 +39,6 @@
         titleLabel.numberOfLines = 0;
         [self.contentView addSubview:titleLabel];
         
-        // price label
-        CGRect priceFrame = CGRectMake(10, 275, titleLabel.frame.size.width / 2, 20);
-        self.priceLabel = [[UILabel alloc] initWithFrame:priceFrame];
-        priceLabel.backgroundColor = [UIColor clearColor];
-        priceLabel.textAlignment = UITextAlignmentLeft;
-        priceLabel.textColor = [UIColor darkGrayColor];
-        priceLabel.font = [UIFont systemFontOfSize:12];
-        [self.contentView addSubview:priceLabel];
-        
-        self.realPriceLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
-        realPriceLabel.font = [UIFont systemFontOfSize:12];
-        realPriceLabel.textColor = [UIColor darkGrayColor];
-        realPriceLabel.backgroundColor = [UIColor clearColor];
-        [self.contentView addSubview:realPriceLabel];
-        realPriceLabel.hidden = YES;
-        
-        // rebate label
-        CGRect rebateFrame = CGRectMake(10 + priceFrame.size.width, 275, priceFrame.size.width, priceFrame.size.height);
-        self.rebateLabel = [[UILabel alloc] initWithFrame:rebateFrame];
-        rebateLabel.backgroundColor = [UIColor clearColor];
-        rebateLabel.textAlignment = UITextAlignmentRight;
-        rebateLabel.textColor = [UIColor darkGrayColor];
-        rebateLabel.font = [UIFont systemFontOfSize:12];
-        [self.contentView addSubview:rebateLabel];
     }
     return self;
 }
@@ -84,11 +60,11 @@
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     NSManagedObjectContext *context = [appDelegate managedObjectContext];
     
-    ItemImg *img = item.itemImage;
+    ItemImg *img = item.itemImg;
     if (img == nil) {
         img = [NSEntityDescription insertNewObjectForEntityForName:@"ItemImg" inManagedObjectContext:context];
-        img.url = item.picUrl;
-        item.itemImage = img;
+        img.url = item.coverPicUrl;
+        item.itemImg = img;
     }
     
     CGRect imgFrame = CGRectMake(30, 10, 260 , 260);
@@ -119,31 +95,6 @@
     item.title = [[item.title stringByReplacingOccurrencesOfString:@"<span class=H>" withString:@""] stringByReplacingOccurrencesOfString:@"</span>" withString:@""];
     
     titleLabel.text = item.title;
-    
-    NSString *price = [NSString stringWithFormat:@"价格: %@元", item.price];
-    CGSize s = [price sizeWithFont:[UIFont systemFontOfSize:12] constrainedToSize:CGSizeMake(MAXFLOAT, 20)];
-    CGRect f = priceLabel.frame;
-    priceLabel.frame = CGRectMake(10, 275, s.width, 20);
-    priceLabel.text = price;
-    if ([item.realPrice floatValue] > 0) {
-        
-        NSString *newPrice = [NSString stringWithFormat:@"促销: %@元", item.realPrice];
-        CGSize ns = [newPrice sizeWithFont:[UIFont systemFontOfSize:12] constrainedToSize:CGSizeMake(MAXFLOAT, 20)];
-        realPriceLabel.frame = CGRectMake(f.origin.x + s.width + 10, 275, ns.width, 20);
-        realPriceLabel.text = newPrice;
-        realPriceLabel.textAlignment = UITextAlignmentRight;
-        realPriceLabel.textColor = [UIColor redColor];
-        realPriceLabel.hidden = NO;
-        
-    } else {
-        for (UIView *v in priceLabel.subviews) {
-            [v removeFromSuperview];
-        }
-        priceLabel.frame = CGRectMake(10, 275, 100, 20);
-        realPriceLabel.hidden = YES;
-    }
-    
-    
 }
 
 @end

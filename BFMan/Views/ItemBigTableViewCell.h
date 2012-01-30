@@ -8,12 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@class TaobaokeItem;
+@class HuaBao;
 @class RedLineView;
 
 @interface ItemBigTableViewCell : UITableViewCell
 
-@property (nonatomic, strong) TaobaokeItem *item;
+@property (nonatomic, strong) HuaBao *item;
 @property (nonatomic, strong) UILabel *titleLabel;
 @property (nonatomic, strong) UILabel *priceLabel;
 @property (nonatomic, strong) UILabel *rebateLabel;
