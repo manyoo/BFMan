@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		071E9AD214C86A3300C238D9 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 071E9AD114C86A3300C238D9 /* MainViewController.xib */; };
+		0738BE5014D784CF00A64F42 /* ItemsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0738BE4E14D784CF00A64F42 /* ItemsListViewController.m */; };
+		0738BE5114D784CF00A64F42 /* ItemsListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0738BE4F14D784CF00A64F42 /* ItemsListViewController.xib */; };
 		0774A6A314B9CD8200D795AE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0774A6A214B9CD8200D795AE /* UIKit.framework */; };
 		0774A6A514B9CD8200D795AE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0774A6A414B9CD8200D795AE /* Foundation.framework */; };
 		0774A6A714B9CD8200D795AE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0774A6A614B9CD8200D795AE /* CoreGraphics.framework */; };
@@ -121,6 +123,7 @@
 		07836B1D14CBA24D005B18A7 /* HotPosterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07836B1C14CBA24D005B18A7 /* HotPosterViewController.m */; };
 		07836B2014CBA2F1005B18A7 /* SuggestedPosterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07836B1F14CBA2F1005B18A7 /* SuggestedPosterViewController.m */; };
 		07836B2314CBA320005B18A7 /* AllPosterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07836B2214CBA320005B18A7 /* AllPosterViewController.m */; };
+		078A153114D82BC600D733B6 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 078A153014D82BC600D733B6 /* MBProgressHUD.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		07A4820414D6948D002C1572 /* FullImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07A4820214D6948D002C1572 /* FullImageViewController.m */; };
 		07A4820514D6948D002C1572 /* FullImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07A4820314D6948D002C1572 /* FullImageViewController.xib */; };
 /* End PBXBuildFile section */
@@ -137,6 +140,9 @@
 
 /* Begin PBXFileReference section */
 		071E9AD114C86A3300C238D9 /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MainViewController.xib; path = BFMan/Controller/MainViewController.xib; sourceTree = "<group>"; };
+		0738BE4D14D784CF00A64F42 /* ItemsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ItemsListViewController.h; path = BFMan/Controller/ItemsListViewController.h; sourceTree = "<group>"; };
+		0738BE4E14D784CF00A64F42 /* ItemsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ItemsListViewController.m; path = BFMan/Controller/ItemsListViewController.m; sourceTree = "<group>"; };
+		0738BE4F14D784CF00A64F42 /* ItemsListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ItemsListViewController.xib; path = BFMan/Controller/ItemsListViewController.xib; sourceTree = "<group>"; };
 		0774A69E14B9CD8200D795AE /* BFMan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BFMan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0774A6A214B9CD8200D795AE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		0774A6A414B9CD8200D795AE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -340,6 +346,8 @@
 		07836B1F14CBA2F1005B18A7 /* SuggestedPosterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SuggestedPosterViewController.m; path = BFMan/Controller/SuggestedPosterViewController.m; sourceTree = "<group>"; };
 		07836B2114CBA320005B18A7 /* AllPosterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AllPosterViewController.h; path = BFMan/Controller/AllPosterViewController.h; sourceTree = "<group>"; };
 		07836B2214CBA320005B18A7 /* AllPosterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AllPosterViewController.m; path = BFMan/Controller/AllPosterViewController.m; sourceTree = "<group>"; };
+		078A152F14D82BC600D733B6 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		078A153014D82BC600D733B6 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		07A4820114D6948D002C1572 /* FullImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FullImageViewController.h; path = BFMan/Controller/FullImageViewController.h; sourceTree = "<group>"; };
 		07A4820214D6948D002C1572 /* FullImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FullImageViewController.m; path = BFMan/Controller/FullImageViewController.m; sourceTree = "<group>"; };
 		07A4820314D6948D002C1572 /* FullImageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FullImageViewController.xib; path = BFMan/Controller/FullImageViewController.xib; sourceTree = "<group>"; };
@@ -382,16 +390,19 @@
 				07A4820314D6948D002C1572 /* FullImageViewController.xib */,
 				071E9AD114C86A3300C238D9 /* MainViewController.xib */,
 				07836B1814CBA199005B18A7 /* PosterViewController.xib */,
+				0738BE4F14D784CF00A64F42 /* ItemsListViewController.xib */,
 				07836B1614CBA199005B18A7 /* PosterViewController.h */,
+				07836B1714CBA199005B18A7 /* PosterViewController.m */,
 				07836B1B14CBA24D005B18A7 /* HotPosterViewController.h */,
 				07836B1C14CBA24D005B18A7 /* HotPosterViewController.m */,
-				07836B1714CBA199005B18A7 /* PosterViewController.m */,
 				07836B1E14CBA2F1005B18A7 /* SuggestedPosterViewController.h */,
 				07836B1F14CBA2F1005B18A7 /* SuggestedPosterViewController.m */,
 				07836B2114CBA320005B18A7 /* AllPosterViewController.h */,
 				07836B2214CBA320005B18A7 /* AllPosterViewController.m */,
 				07A4820114D6948D002C1572 /* FullImageViewController.h */,
 				07A4820214D6948D002C1572 /* FullImageViewController.m */,
+				0738BE4D14D784CF00A64F42 /* ItemsListViewController.h */,
+				0738BE4E14D784CF00A64F42 /* ItemsListViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -697,6 +708,8 @@
 		0774A7BD14B9CF4600D795AE /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				078A152F14D82BC600D733B6 /* MBProgressHUD.h */,
+				078A153014D82BC600D733B6 /* MBProgressHUD.m */,
 				0774A7BE14B9CF4600D795AE /* AsyncImageView.h */,
 				0774A7BF14B9CF4600D795AE /* AsyncImageView.m */,
 				0774A7C014B9CF4600D795AE /* EGORefreshTableHeaderView.h */,
@@ -804,6 +817,7 @@
 				071E9AD214C86A3300C238D9 /* MainViewController.xib in Resources */,
 				07836B1A14CBA199005B18A7 /* PosterViewController.xib in Resources */,
 				07A4820514D6948D002C1572 /* FullImageViewController.xib in Resources */,
+				0738BE5114D784CF00A64F42 /* ItemsListViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -920,6 +934,8 @@
 				07836B2014CBA2F1005B18A7 /* SuggestedPosterViewController.m in Sources */,
 				07836B2314CBA320005B18A7 /* AllPosterViewController.m in Sources */,
 				07A4820414D6948D002C1572 /* FullImageViewController.m in Sources */,
+				0738BE5014D784CF00A64F42 /* ItemsListViewController.m in Sources */,
+				078A153114D82BC600D733B6 /* MBProgressHUD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

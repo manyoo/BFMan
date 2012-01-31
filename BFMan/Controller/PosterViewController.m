@@ -15,7 +15,7 @@
 #import "HuabaoAuctionInfo.h"
 
 @implementation PosterViewController
-@synthesize posters, refreshEnabled, multipageEnabled, cellTypes, refreshHeaderView, lastpageLoaded, reloading, allItemsReloading, loadingCell, server, apiType, huabaoAuctions, huabaoPictures, selectedHuaBao;
+@synthesize posters, refreshEnabled, multipageEnabled, cellTypes, refreshHeaderView, lastpageLoaded, reloading, allItemsReloading, loadingCell, server, apiType, huabaoPictures, selectedHuaBao, hud;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -205,6 +205,16 @@
         HuaBao *huabao = [posters objectAtIndex:indexPath.row];
         self.apiType = API_GETPICTURE;
         self.selectedHuaBao = huabao;
+        
+        MBProgressHUD *progressHUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
+        [self.navigationController.view addSubview:progressHUD];
+        
+        progressHUD.delegate = self;
+        progressHUD.labelText = @"正在加载";
+        
+        self.hud = progressHUD;
+        
+        [progressHUD show:YES];
         [self.server getPosterDetail:huabao.huabaoID];
     }
 }
@@ -266,11 +276,19 @@
         self.apiType = API_GETAUCTION;
         [self.server getPosterAuctionInfos:selectedHuaBao.huabaoID];
     } else if (apiType == API_GETAUCTION) {
-        self.huabaoAuctions = (NSArray *)data;
-        NSMutableDictionary *auctions = [[NSMutableDictionary alloc] initWithCapacity:huabaoAuctions.count];
+        NSArray *huabaoAuctions = (NSArray *)data;
+        NSMutableDictionary *auctions = [[NSMutableDictionary alloc] initWithCapacity:huabaoPictures.count];
         for (HuabaoAuctionInfo *auc in huabaoAuctions) {
-            [auctions setValue:auc forKey:[NSString stringWithFormat:@"%@", auc.picId]];
+            NSMutableArray *item = [auctions objectForKey:[NSString stringWithFormat:@"%@", auc.picId]];
+            if (item == nil) {
+                item = [[NSMutableArray alloc] init];
+            }
+            [item addObject:auc];
+            [auctions setValue:item forKey:[NSString stringWithFormat:@"%@", auc.picId]];
         }
+        
+        [self.hud hide:YES];
+        
         FullImageViewController *imgViewController = [[FullImageViewController alloc] initWithNibName:@"FullImageViewController" bundle:nil];
         imgViewController.huabao = selectedHuaBao;
         imgViewController.huabaoPictures = huabaoPictures;
@@ -279,6 +297,13 @@
         
         [self presentModalViewController:imgViewController animated:YES];
     }
+}
+
+#pragma mark - MBProgressHUDDelegate
+
+- (void)hudWasHidden:(MBProgressHUD *)hud {
+    [hud removeFromSuperview];
+    self.hud = nil;
 }
 
 @end

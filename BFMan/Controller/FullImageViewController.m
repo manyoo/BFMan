@@ -11,12 +11,12 @@
 #import "HuabaoPicture.h"
 #import "ItemImg.h"
 #import "AppDelegate.h"
+#import "ItemsListViewController.h"
 
 @implementation FullImageViewController
 @synthesize scrollView;
 @synthesize titleBar;
 @synthesize images = _images;
-@synthesize subScrollViews = _subScrollViews;
 @synthesize page;
 @synthesize titleBarOn;
 @synthesize huabao, huabaoPictures, huabaoAuctions;
@@ -62,30 +62,13 @@
 
     scrollView.bouncesZoom = NO;
     scrollView.delegate = self;
-    
-    self.subScrollViews = [[NSMutableArray alloc] initWithCapacity:[_images count]];
-    
+        
     int x = 0;
 
     for (id image in _images) {
-        CGRect subScrollFrame = CGRectMake(x, 0, scrollView.frame.size.width, scrollView.frame.size.height);
-        UIScrollView *subScrollView = [[UIScrollView alloc] initWithFrame:subScrollFrame];
-        subScrollView.bounces = YES;
-        subScrollView.bouncesZoom = YES;
-        subScrollView.showsVerticalScrollIndicator = NO;
-        subScrollView.showsHorizontalScrollIndicator = NO;
-        subScrollView.maximumZoomScale = 4;
-        subScrollView.minimumZoomScale = 1;
-        subScrollView.delegate = self;
-        
-        CGRect imgFrame = CGRectMake(0, 0, subScrollFrame.size.width, subScrollFrame.size.height);
+        CGRect imgFrame = CGRectMake(x, 0, scrollView.frame.size.width, scrollView.frame.size.height);
         AsyncImageView *imgView = [[AsyncImageView alloc] initWithItemImg:image andFrame:imgFrame];
         [imgView enableTouch];
-        
-        UITapGestureRecognizer *doubleTap = [[UITapGestureRecognizer alloc] initWithTarget:self
-                                                                                    action:@selector(imageViewDoubleTouched:)];
-        doubleTap.numberOfTapsRequired = 2;
-        [imgView addGestureRecognizer:doubleTap];
         
         if ([self respondsToSelector:@selector(presentingViewController)]) {
             // WE use this ugly method to test whether we are on iOS 5.
@@ -94,17 +77,17 @@
                                                                                      action:@selector(imageViewTouched:)];
             oneTap.numberOfTapsRequired = 1;
             [imgView addGestureRecognizer:oneTap];   
+            UISwipeGestureRecognizer *swipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self
+                                                                                        action:@selector(imageViewSwiped:)];
+            swipe.direction = UISwipeGestureRecognizerDirectionUp;
+            [imgView addGestureRecognizer:swipe];
         }
-                
+        
         [imgView getImage];
         
         x += scrollView.frame.size.width;
         
-        [subScrollView addSubview:imgView];
-        subScrollView.contentSize = subScrollFrame.size;
-        
-        [scrollView addSubview:subScrollView];
-        [self.subScrollViews addObject:subScrollView];
+        [scrollView addSubview:imgView];
     }
     scrollView.contentSize = CGSizeMake(x, scrollView.bounds.size.height);
     //[self displayPage:page];
@@ -199,21 +182,12 @@
     }
 }
 
-- (void)imageViewDoubleTouched:(id)sender {
-    UIScrollView *scroll = [self.subScrollViews objectAtIndex:page];
-    if (scroll.zoomScale == 1) {
-        [UIView animateWithDuration:0.3 animations:^{
-            scroll.zoomScale = 2;
-        }];
-    } else if (scroll.zoomScale == 2) {
-        [UIView animateWithDuration:0.3 animations:^{
-            scroll.zoomScale = 4;
-        }];
-    } else {
-        [UIView animateWithDuration:0.3 animations:^{
-            scroll.zoomScale = 1;
-        }];
-    }
+- (void)imageViewSwiped:(id)sender {
+    ItemsListViewController *listViewController = [[ItemsListViewController alloc] initWithNibName:@"ItemsListViewController" bundle:nil];
+    HuabaoPicture *picture = [huabaoPictures objectAtIndex:self.page];
+    listViewController.huabaoAuctions = [huabaoAuctions objectForKey:[NSString stringWithFormat:@"%@", picture.picId]];
+    listViewController.modalTransitionStyle = UIModalTransitionStylePartialCurl;
+    [self presentModalViewController:listViewController animated:YES];
 }
 
 @end
