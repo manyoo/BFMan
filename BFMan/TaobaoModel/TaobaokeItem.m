@@ -7,13 +7,12 @@
 //
 
 #import "TaobaokeItem.h"
-#import "AppDelegate.h"
 #import "NSString+HTML.h"
 
 NSArray *taobaoke_item_fields = nil;
 
 @implementation TaobaokeItem
-@dynamic commissionRate, itemID, title, nick, picUrl, price, clickUrl,
+@synthesize commissionRate, itemID, title, nick, picUrl, price, clickUrl,
 commission, commissionNum, commissionVolume, sellerCreditScore, itemLocation, volume, itemImage, realPrice, position;
 
 + (NSArray *)fields {
@@ -25,11 +24,8 @@ commission, commissionNum, commissionVolume, sellerCreditScore, itemLocation, vo
     return taobaoke_item_fields;
 }
 
-+ (TaobaokeItem *)taobaokeItemFromDictionary:(NSDictionary *)dict {
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    NSManagedObjectContext *context = [appDelegate managedObjectContext];
-    
-    TaobaokeItem *item = [NSEntityDescription insertNewObjectForEntityForName:@"TaobaokeItem" inManagedObjectContext:context];
++ (TaobaokeItem *)taobaokeItemFromDictionary:(NSDictionary *)dict {    
+    TaobaokeItem *item = [[TaobaokeItem alloc] init];
     
     item.commissionRate = [NSNumber numberWithFloat:([[dict objectForKey:@"commission_rate"] floatValue] / 10000)];
     item.itemID = [dict objectForKey:@"num_iid"];

@@ -13,5 +13,6 @@
 
 @property (nonatomic, strong) NSArray *huabaoAuctions;
 @property (nonatomic, strong) TBServer *server;
+@property (nonatomic, unsafe_unretained) id delegate;
 
 @end

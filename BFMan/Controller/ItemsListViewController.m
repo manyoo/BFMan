@@ -7,18 +7,13 @@
 //
 
 #import "ItemsListViewController.h"
+#import "HuabaoAuctionInfo.h"
+#import "BFManConstants.h"
+#import "ItemTableViewCell.h"
+#import "TaobaokeItem.h"
 
 @implementation ItemsListViewController
-@synthesize server, huabaoAuctions;
-
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
+@synthesize server, huabaoAuctions, delegate;
 
 - (void)didReceiveMemoryWarning
 {
@@ -39,6 +34,15 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    self.tableView.backgroundColor = [UIColor clearColor];
+    self.tableView.backgroundView = nil;
+    
+    self.server = [[TBServer alloc] initWithDelegate:self];
+    NSMutableArray *itemIds = [[NSMutableArray alloc] initWithCapacity:huabaoAuctions.count];
+    for (HuabaoAuctionInfo *auc in huabaoAuctions) {
+        [itemIds addObject:auc.auctionId];
+    }
+    [server convertListOfTBKItems:itemIds];
 }
 
 - (void)viewDidUnload
@@ -92,12 +96,16 @@
 {
     static NSString *CellIdentifier = @"Cell";
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    ItemTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell = [[ItemTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
     // Configure the cell...
+    HuabaoAuctionInfo *auc = [huabaoAuctions objectAtIndex:indexPath.row];
+    cell.item = auc.tbkItem;
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    [cell setupCellContents];
     
     return cell;
 }
@@ -141,6 +149,10 @@
 }
 */
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 80;
+}
+
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -152,6 +164,31 @@
      // Pass the selected object to the new view controller.
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
+    HuabaoAuctionInfo *auc = [huabaoAuctions objectAtIndex:indexPath.row];
+    [delegate performSelector:@selector(openBrowser:) withObject:auc.tbkItem.clickUrl];
+}
+
+#pragma mark - TBServerDelegate
+- (void)requestFailed:(NSString *)msg {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:ALERT_TITLE_NOTIFY
+                                                    message:msg
+                                                   delegate:nil
+                                          cancelButtonTitle:@"好"
+                                          otherButtonTitles:nil];
+    [alert show];
+}
+
+- (void)requestFinished:(id)data {
+    NSDictionary *res = (NSDictionary *)data;
+    NSArray *tbkItems = [res objectForKey:@"items"];
+    for (HuabaoAuctionInfo *auc in huabaoAuctions) {
+        for (TaobaokeItem *tbk in tbkItems) {
+            if ([auc.auctionId isEqualToNumber:tbk.itemID]) {
+                auc.tbkItem = tbk;
+            }
+        }
+    }
+    [self.tableView reloadData];
 }
 
 @end

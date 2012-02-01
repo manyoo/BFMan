@@ -10,7 +10,7 @@
 
 @implementation HuabaoAuctionInfo
 
-@synthesize auctionId, posterId, auctionTitle, auctionShortTitle, auctionPrice, auctionNote, auctionUrl, picId, auctionPosition;
+@synthesize auctionId, posterId, auctionTitle, auctionShortTitle, auctionPrice, auctionNote, auctionUrl, picId, auctionPosition, tbkItem;
 
 + (HuabaoAuctionInfo *)hbAuctionInfoFromDict:(NSDictionary *)dict {
     HuabaoAuctionInfo *hbInfo = [[HuabaoAuctionInfo alloc] init];
@@ -24,6 +24,7 @@
     hbInfo.auctionUrl = [dict objectForKey:@"auction_url"];
     hbInfo.picId = [dict objectForKey:@"pic_id"];
     hbInfo.auctionPosition = [dict objectForKey:@"auction_position"];
+    hbInfo.tbkItem = nil;
     
     return hbInfo;
 }

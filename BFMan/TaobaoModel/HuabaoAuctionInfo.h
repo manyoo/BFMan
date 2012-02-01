@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+@class TaobaokeItem;
+
 @interface HuabaoAuctionInfo : NSObject
 
 @property (nonatomic, strong) NSNumber *auctionId;
@@ -19,6 +21,8 @@
 @property (nonatomic, strong) NSString *auctionUrl;
 @property (nonatomic, strong) NSNumber *picId;
 @property (nonatomic, strong) NSString *auctionPosition;
+
+@property (nonatomic, strong) TaobaokeItem *tbkItem;
 
 + (HuabaoAuctionInfo *)hbAuctionInfoFromDict:(NSDictionary *)dict;
 + (NSArray *)hbAuctionInfosFromArray:(NSArray *)arr;
