@@ -49,7 +49,7 @@
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad
 {
-    self.refreshEnabled = YES;
+    self.refreshEnabled = NO;
     self.multipageEnabled = NO;
     [super viewDidLoad];
     
