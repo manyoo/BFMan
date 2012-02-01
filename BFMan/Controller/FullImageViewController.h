@@ -15,6 +15,7 @@
 
 @property (nonatomic, strong) IBOutlet UIScrollView *scrollView;
 @property (strong, nonatomic) IBOutlet UINavigationBar *titleBar;
+@property (nonatomic, strong) UILabel *noteLabel;
 @property (nonatomic, strong) NSArray *images;
 @property (nonatomic, strong) NSMutableArray *subScrollViews;
 @property (nonatomic) int page;

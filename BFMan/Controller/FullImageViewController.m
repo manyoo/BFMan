@@ -14,9 +14,14 @@
 #import "ItemsListViewController.h"
 #import "TaobaoBrowserViewController.h"
 
+@interface FullImageViewController (PrivateMethod)
+- (void)displayCurrentImageNote;
+@end
+
 @implementation FullImageViewController
 @synthesize scrollView;
 @synthesize titleBar;
+@synthesize noteLabel;
 @synthesize images = _images;
 @synthesize page;
 @synthesize titleBarOn, itemsDisplayedOnPage;
@@ -65,7 +70,7 @@
 
     scrollView.bouncesZoom = NO;
     scrollView.delegate = self;
-        
+    
     int x = 0;
 
     self.subScrollViews = [[NSMutableArray alloc] initWithCapacity:imgitems.count];
@@ -110,6 +115,17 @@
     scrollView.contentSize = CGSizeMake(x, scrollView.bounds.size.height);
     //[self displayPage:page];
     scrollView.contentOffset = CGPointMake(scrollView.frame.size.width * page, 0);
+    
+    self.noteLabel = [[UILabel alloc] init];
+    noteLabel.lineBreakMode = UILineBreakModeWordWrap;
+    noteLabel.textColor = [UIColor whiteColor];
+    noteLabel.font = [UIFont systemFontOfSize:13];
+    noteLabel.backgroundColor = [UIColor blackColor];
+    noteLabel.numberOfLines = 0;
+    
+    [self.view addSubview:noteLabel];
+    
+    [self displayCurrentImageNote];
 }
 
 - (void)viewDidUnload
@@ -136,32 +152,10 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations
-    return YES;
+    return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
-- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
-    [super willAnimateRotationToInterfaceOrientation:toInterfaceOrientation duration:duration];
-        
-    int x = 0;
 
-    for (UIScrollView *v in scrollView.subviews) {
-        if ([v isKindOfClass:[UIScrollView class]]) {
-            CGRect subScrollFrame = CGRectMake(x, 0, scrollView.frame.size.width, scrollView.frame.size.height);
-            v.frame = subScrollFrame;
-            
-            CGRect imgFrame = CGRectMake(0, 0, subScrollFrame.size.width, subScrollFrame.size.height);
-            AsyncImageView *imgView = [v.subviews objectAtIndex:0];
-            imgView.frame = imgFrame;
-            v.contentSize = imgFrame.size;
-            
-            x += scrollView.frame.size.width;   
-        }
-    }
-
-    scrollView.contentSize = CGSizeMake(x, scrollView.bounds.size.height);
-    //[self displayPage:page];
-    scrollView.contentOffset = CGPointMake(scrollView.frame.size.width * page, 0);
-}
 
 - (UIView *)viewForZoomingInScrollView:(UIScrollView *)sscrollView {
     return [sscrollView.subviews objectAtIndex:0];
@@ -176,6 +170,9 @@
     self.page = floor((scrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
     
     self.titleBar.topItem.title = [NSString stringWithFormat:@"%d of %d", page + 1, [_images count]];
+    if (titleBarOn) {
+        [self displayCurrentImageNote];
+    }
 }
 
 - (void)displayPage:(NSInteger)pagee {
@@ -190,11 +187,13 @@
     if (titleBarOn) {
         [UIView animateWithDuration:0.3 animations:^{
             self.titleBar.alpha = 0.0;
+            self.noteLabel.alpha = 0.0;
         }];
         self.titleBarOn = NO;
     } else {
         [UIView animateWithDuration:0.3 animations:^{
             self.titleBar.alpha = 1.0;
+            self.noteLabel.alpha = 0.7;
         }];
         self.titleBarOn = YES;
     }
@@ -248,6 +247,20 @@
     browser.itemUrl = url;
     browser.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
     [self presentModalViewController:browser animated:YES];
+}
+
+- (void)displayCurrentImageNote {    
+    HuabaoPicture *hbPic = [huabaoPictures objectAtIndex:page];
+    NSString *note = hbPic.picNote;
+    
+    CGSize curSize = self.view.bounds.size;
+    CGSize noteSize = [note sizeWithFont:[UIFont systemFontOfSize:13] constrainedToSize:CGSizeMake(curSize.width, MAXFLOAT) lineBreakMode:UILineBreakModeWordWrap];
+    noteLabel.text = note;
+    
+    [UIView animateWithDuration:0.2 animations:^{
+        noteLabel.frame = CGRectMake(0, curSize.height - noteSize.height, curSize.width, noteSize.height);
+        noteLabel.alpha = 0.7;
+    }];
 }
 
 @end
