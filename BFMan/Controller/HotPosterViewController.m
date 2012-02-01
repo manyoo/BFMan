@@ -53,6 +53,8 @@
     self.multipageEnabled = NO;
     [super viewDidLoad];
     
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleBlackTranslucent;
+    
     self.title = @"热门";
     
     self.server = [[TBServer alloc] initWithDelegate:self];
