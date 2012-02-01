@@ -121,7 +121,7 @@
     self.noteLabel = [[UILabel alloc] init];
     noteLabel.lineBreakMode = UILineBreakModeWordWrap;
     noteLabel.textColor = [UIColor whiteColor];
-    noteLabel.font = [UIFont systemFontOfSize:13];
+    noteLabel.font = [UIFont systemFontOfSize:14];
     noteLabel.backgroundColor = [UIColor blackColor];
     noteLabel.numberOfLines = 0;
     
@@ -258,7 +258,7 @@
     NSString *note = hbPic.picNote;
     
     CGSize curSize = self.view.bounds.size;
-    CGSize noteSize = [note sizeWithFont:[UIFont systemFontOfSize:13] constrainedToSize:CGSizeMake(curSize.width, MAXFLOAT) lineBreakMode:UILineBreakModeWordWrap];
+    CGSize noteSize = [note sizeWithFont:[UIFont systemFontOfSize:14] constrainedToSize:CGSizeMake(curSize.width, MAXFLOAT) lineBreakMode:UILineBreakModeWordWrap];
     noteLabel.text = note;
     
     [UIView animateWithDuration:0.2 animations:^{
