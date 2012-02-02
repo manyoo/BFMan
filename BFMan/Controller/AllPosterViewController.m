@@ -41,14 +41,17 @@
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad
 {
+    self.multipageEnabled = YES;
     [super viewDidLoad];
     
-    self.title = @"全部画报";
+    self.title = @"全部";
     
     self.server = [[TBServer alloc] initWithDelegate:self];
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
     [params setValue:[NSNumber numberWithInt:DEFAULT_CHANNEL] forKey:@"channel_id"];
     [params setValue:@"20" forKey:@"page_size"];
+    [params setValue:@"1" forKey:@"page_no"];
+    self.allItemsReloading = YES;
     self.apiType = API_GETALL;
     [self.server getPosters:params];
 }
@@ -78,14 +81,39 @@
 
 - (void)requestFinished:(id)data {
     if (self.apiType == API_GETALL) {
-        self.posters = (NSMutableArray *)data;
-        self.cellTypes = [[NSMutableArray alloc] initWithCapacity:[self.posters count]];
-        for (id o in self.posters) {
+        NSMutableArray *newItems = (NSMutableArray *)data;
+        if (self.allItemsReloading) {
+            self.posters = newItems;
+            self.cellTypes = [[NSMutableArray alloc] initWithCapacity:[self.posters count] + 1];
+            self.allItemsReloading = NO;
+        } else {
+            if ([self.posters count] < [self.cellTypes count]) {
+                // there's a loading cell at the end of the table.
+                [self.cellTypes removeObjectAtIndex:([self.cellTypes count] - 1)];
+            }
+            [self.posters addObjectsFromArray:newItems];
+        }
+        for (id o in newItems) {
             [self.cellTypes addObject:[NSNumber numberWithInt:CELL_DATA]];
         }
+        if (newItems.count == 20) {
+            [self.cellTypes addObject:[NSNumber numberWithInt:CELL_RELOAD]];
+        }
+        
+        self.lastpageLoaded ++;
+
         [self.tableView reloadData];
     } else 
         [super requestFinished:data];
+}
+
+- (void)loadMoreData {
+    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+    [params setValue:[NSNumber numberWithInt:DEFAULT_CHANNEL] forKey:@"channel_id"];
+    [params setValue:@"20" forKey:@"page_size"];
+    [params setValue:[NSNumber numberWithInt:(self.lastpageLoaded + 1)] forKey:@"page_no"];
+    self.apiType = API_GETALL;
+    [self.server getPosters:params];
 }
 
 @end
