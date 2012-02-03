@@ -38,13 +38,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.title = @"淘宝网";
-    
-    UIBarButtonItem *browseBar = [[UIBarButtonItem alloc] initWithTitle:@"进入Safari"
-                                                                  style:UIBarButtonItemStyleBordered
-                                                                 target:self
-                                                                 action:@selector(openSafari:)];
-    self.navigationItem.rightBarButtonItem = browseBar;
-    
+
     NSURL *url = [[NSURL alloc] initWithString:itemUrl];
     NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
     [self.webView loadRequest:request];
@@ -70,12 +64,6 @@
 {
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
-
-- (IBAction)openSafari:(id)sender {
-    NSURLRequest *req = [self.webView request];
-    NSURL *url = [req URL];
-    [[UIApplication sharedApplication] openURL:url];
 }
 
 - (IBAction)goBack:(id)sender {

@@ -15,7 +15,6 @@
 @property (unsafe_unretained, nonatomic) IBOutlet UIBarButtonItem *nextButton;
 @property (unsafe_unretained, nonatomic) IBOutlet UIBarButtonItem *refreshButton;
 @property (strong, nonatomic) IBOutlet UIWebView *webView;
-- (IBAction)openSafari:(id)sender;
 - (IBAction)goBack:(id)sender;
 - (IBAction)previousPage:(id)sender;
 - (IBAction)nextPage:(id)sender;
