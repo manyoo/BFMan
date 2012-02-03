@@ -15,7 +15,7 @@
 #import <QuartzCore/QuartzCore.h>
 
 @implementation ItemBigTableViewCell
-@synthesize item, titleLabel, priceLabel, rebateLabel, realPriceLabel;
+@synthesize item, titleLabel, clicksLabel;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -31,7 +31,7 @@
         [self.contentView addSubview:backgroundView];
         
         // title label
-        self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 300, 300, 40)];
+        self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 280, 300, 40)];
         titleLabel.font = [UIFont systemFontOfSize:17];
         titleLabel.textColor = [UIColor darkGrayColor];
         titleLabel.backgroundColor = [UIColor clearColor];
@@ -39,6 +39,12 @@
         titleLabel.numberOfLines = 0;
         [self.contentView addSubview:titleLabel];
         
+        self.clicksLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 320, 300, 20)];
+        clicksLabel.font = [UIFont systemFontOfSize:16];
+        clicksLabel.textColor = [UIColor darkGrayColor];
+        clicksLabel.backgroundColor = [UIColor clearColor];
+        clicksLabel.textAlignment = UITextAlignmentRight;
+        [self.contentView addSubview:clicksLabel];
     }
     return self;
 }
@@ -95,6 +101,8 @@
     item.title = [[item.title stringByReplacingOccurrencesOfString:@"<span class=H>" withString:@""] stringByReplacingOccurrencesOfString:@"</span>" withString:@""];
     
     titleLabel.text = item.title;
+    
+    clicksLabel.text = [NSString stringWithFormat:@"人气: %@", item.hits];
 }
 
 @end

@@ -15,9 +15,7 @@
 
 @property (nonatomic, strong) HuaBao *item;
 @property (nonatomic, strong) UILabel *titleLabel;
-@property (nonatomic, strong) UILabel *priceLabel;
-@property (nonatomic, strong) UILabel *rebateLabel;
-@property (nonatomic, strong) UILabel *realPriceLabel;
+@property (nonatomic, strong) UILabel *clicksLabel;
 
 - (void)setupCellContents;
 
