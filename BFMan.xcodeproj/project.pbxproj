@@ -126,12 +126,17 @@
 		078A153114D82BC600D733B6 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 078A153014D82BC600D733B6 /* MBProgressHUD.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		07A4820414D6948D002C1572 /* FullImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07A4820214D6948D002C1572 /* FullImageViewController.m */; };
 		07A4820514D6948D002C1572 /* FullImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07A4820314D6948D002C1572 /* FullImageViewController.xib */; };
+		07B3CF5714DBCC18005026F5 /* AdBannerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07B3CF5214DBCC18005026F5 /* AdBannerViewController.m */; };
+		07B3CF5814DBCC18005026F5 /* AdBannerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07B3CF5314DBCC18005026F5 /* AdBannerViewController.xib */; };
+		07B3CF5914DBCC18005026F5 /* TaobaoBrowserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07B3CF5514DBCC18005026F5 /* TaobaoBrowserViewController.m */; };
+		07B3CF5A14DBCC18005026F5 /* TaobaoBrowserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07B3CF5614DBCC18005026F5 /* TaobaoBrowserViewController.xib */; };
+		07B3CF6214DBCD18005026F5 /* JLTAd.m in Sources */ = {isa = PBXBuildFile; fileRef = 07B3CF5D14DBCD18005026F5 /* JLTAd.m */; };
+		07B3CF6314DBCD18005026F5 /* JLTMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 07B3CF5F14DBCD18005026F5 /* JLTMapper.m */; };
+		07B3CF6414DBCD18005026F5 /* JLTServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 07B3CF6114DBCD18005026F5 /* JLTServer.m */; };
 		07BF1E1A14DBB6DF004AC743 /* 28-star.png in Resources */ = {isa = PBXBuildFile; fileRef = 07BF1E1714DBB6DF004AC743 /* 28-star.png */; };
 		07BF1E1B14DBB6DF004AC743 /* 41-picture-frame.png in Resources */ = {isa = PBXBuildFile; fileRef = 07BF1E1814DBB6DF004AC743 /* 41-picture-frame.png */; };
 		07BF1E1C14DBB6DF004AC743 /* 42-photos.png in Resources */ = {isa = PBXBuildFile; fileRef = 07BF1E1914DBB6DF004AC743 /* 42-photos.png */; };
 		07E37E4114D90CAD009948D5 /* ItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 07E37E4014D90CAD009948D5 /* ItemTableViewCell.m */; };
-		07E37E4614D90D3D009948D5 /* TaobaoBrowserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07E37E4414D90D3D009948D5 /* TaobaoBrowserViewController.m */; };
-		07E37E4714D90D3D009948D5 /* TaobaoBrowserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07E37E4514D90D3D009948D5 /* TaobaoBrowserViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -357,14 +362,23 @@
 		07A4820114D6948D002C1572 /* FullImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FullImageViewController.h; path = BFMan/Controller/FullImageViewController.h; sourceTree = "<group>"; };
 		07A4820214D6948D002C1572 /* FullImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FullImageViewController.m; path = BFMan/Controller/FullImageViewController.m; sourceTree = "<group>"; };
 		07A4820314D6948D002C1572 /* FullImageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FullImageViewController.xib; path = BFMan/Controller/FullImageViewController.xib; sourceTree = "<group>"; };
+		07B3CF5114DBCC18005026F5 /* AdBannerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AdBannerViewController.h; path = BFMan/Controller/AdBannerViewController.h; sourceTree = "<group>"; };
+		07B3CF5214DBCC18005026F5 /* AdBannerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AdBannerViewController.m; path = BFMan/Controller/AdBannerViewController.m; sourceTree = "<group>"; };
+		07B3CF5314DBCC18005026F5 /* AdBannerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AdBannerViewController.xib; path = BFMan/Controller/AdBannerViewController.xib; sourceTree = "<group>"; };
+		07B3CF5414DBCC18005026F5 /* TaobaoBrowserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TaobaoBrowserViewController.h; path = BFMan/Controller/TaobaoBrowserViewController.h; sourceTree = "<group>"; };
+		07B3CF5514DBCC18005026F5 /* TaobaoBrowserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TaobaoBrowserViewController.m; path = BFMan/Controller/TaobaoBrowserViewController.m; sourceTree = "<group>"; };
+		07B3CF5614DBCC18005026F5 /* TaobaoBrowserViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TaobaoBrowserViewController.xib; path = BFMan/Controller/TaobaoBrowserViewController.xib; sourceTree = "<group>"; };
+		07B3CF5C14DBCD18005026F5 /* JLTAd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JLTAd.h; sourceTree = "<group>"; };
+		07B3CF5D14DBCD18005026F5 /* JLTAd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JLTAd.m; sourceTree = "<group>"; };
+		07B3CF5E14DBCD18005026F5 /* JLTMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JLTMapper.h; sourceTree = "<group>"; };
+		07B3CF5F14DBCD18005026F5 /* JLTMapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JLTMapper.m; sourceTree = "<group>"; };
+		07B3CF6014DBCD18005026F5 /* JLTServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JLTServer.h; sourceTree = "<group>"; };
+		07B3CF6114DBCD18005026F5 /* JLTServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JLTServer.m; sourceTree = "<group>"; };
 		07BF1E1714DBB6DF004AC743 /* 28-star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "28-star.png"; sourceTree = "<group>"; };
 		07BF1E1814DBB6DF004AC743 /* 41-picture-frame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "41-picture-frame.png"; sourceTree = "<group>"; };
 		07BF1E1914DBB6DF004AC743 /* 42-photos.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "42-photos.png"; sourceTree = "<group>"; };
 		07E37E3F14D90CAD009948D5 /* ItemTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemTableViewCell.h; sourceTree = "<group>"; };
 		07E37E4014D90CAD009948D5 /* ItemTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemTableViewCell.m; sourceTree = "<group>"; };
-		07E37E4314D90D3D009948D5 /* TaobaoBrowserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaobaoBrowserViewController.h; sourceTree = "<group>"; };
-		07E37E4414D90D3D009948D5 /* TaobaoBrowserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaobaoBrowserViewController.m; sourceTree = "<group>"; };
-		07E37E4514D90D3D009948D5 /* TaobaoBrowserViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TaobaoBrowserViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -405,7 +419,8 @@
 				071E9AD114C86A3300C238D9 /* MainViewController.xib */,
 				07836B1814CBA199005B18A7 /* PosterViewController.xib */,
 				0738BE4F14D784CF00A64F42 /* ItemsListViewController.xib */,
-				07E37E4514D90D3D009948D5 /* TaobaoBrowserViewController.xib */,
+				07B3CF5314DBCC18005026F5 /* AdBannerViewController.xib */,
+				07B3CF5614DBCC18005026F5 /* TaobaoBrowserViewController.xib */,
 				07836B1614CBA199005B18A7 /* PosterViewController.h */,
 				07836B1714CBA199005B18A7 /* PosterViewController.m */,
 				07836B1B14CBA24D005B18A7 /* HotPosterViewController.h */,
@@ -418,8 +433,10 @@
 				07A4820214D6948D002C1572 /* FullImageViewController.m */,
 				0738BE4D14D784CF00A64F42 /* ItemsListViewController.h */,
 				0738BE4E14D784CF00A64F42 /* ItemsListViewController.m */,
-				07E37E4314D90D3D009948D5 /* TaobaoBrowserViewController.h */,
-				07E37E4414D90D3D009948D5 /* TaobaoBrowserViewController.m */,
+				07B3CF5114DBCC18005026F5 /* AdBannerViewController.h */,
+				07B3CF5214DBCC18005026F5 /* AdBannerViewController.m */,
+				07B3CF5414DBCC18005026F5 /* TaobaoBrowserViewController.h */,
+				07B3CF5514DBCC18005026F5 /* TaobaoBrowserViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -428,6 +445,7 @@
 			isa = PBXGroup;
 			children = (
 				0774A7D014B9CFE000D795AE /* BFManConstants.h */,
+				07B3CF5B14DBCD18005026F5 /* JLTServer */,
 				071E9AC814C8684D00C238D9 /* Controllers */,
 				0774A7BD14B9CF4600D795AE /* Views */,
 				0774A7B914B9CF3700D795AE /* TaobaoServer */,
@@ -749,6 +767,20 @@
 			path = BFMan/Views;
 			sourceTree = "<group>";
 		};
+		07B3CF5B14DBCD18005026F5 /* JLTServer */ = {
+			isa = PBXGroup;
+			children = (
+				07B3CF5C14DBCD18005026F5 /* JLTAd.h */,
+				07B3CF5D14DBCD18005026F5 /* JLTAd.m */,
+				07B3CF5E14DBCD18005026F5 /* JLTMapper.h */,
+				07B3CF5F14DBCD18005026F5 /* JLTMapper.m */,
+				07B3CF6014DBCD18005026F5 /* JLTServer.h */,
+				07B3CF6114DBCD18005026F5 /* JLTServer.m */,
+			);
+			name = JLTServer;
+			path = BFMan/JLTServer;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -840,10 +872,11 @@
 				07836B1A14CBA199005B18A7 /* PosterViewController.xib in Resources */,
 				07A4820514D6948D002C1572 /* FullImageViewController.xib in Resources */,
 				0738BE5114D784CF00A64F42 /* ItemsListViewController.xib in Resources */,
-				07E37E4714D90D3D009948D5 /* TaobaoBrowserViewController.xib in Resources */,
 				07BF1E1A14DBB6DF004AC743 /* 28-star.png in Resources */,
 				07BF1E1B14DBB6DF004AC743 /* 41-picture-frame.png in Resources */,
 				07BF1E1C14DBB6DF004AC743 /* 42-photos.png in Resources */,
+				07B3CF5814DBCC18005026F5 /* AdBannerViewController.xib in Resources */,
+				07B3CF5A14DBCC18005026F5 /* TaobaoBrowserViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -963,7 +996,11 @@
 				0738BE5014D784CF00A64F42 /* ItemsListViewController.m in Sources */,
 				078A153114D82BC600D733B6 /* MBProgressHUD.m in Sources */,
 				07E37E4114D90CAD009948D5 /* ItemTableViewCell.m in Sources */,
-				07E37E4614D90D3D009948D5 /* TaobaoBrowserViewController.m in Sources */,
+				07B3CF5714DBCC18005026F5 /* AdBannerViewController.m in Sources */,
+				07B3CF5914DBCC18005026F5 /* TaobaoBrowserViewController.m in Sources */,
+				07B3CF6214DBCD18005026F5 /* JLTAd.m in Sources */,
+				07B3CF6314DBCD18005026F5 /* JLTMapper.m in Sources */,
+				07B3CF6414DBCD18005026F5 /* JLTServer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
