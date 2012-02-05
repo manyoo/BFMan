@@ -52,6 +52,13 @@
     self.refreshEnabled = NO;
     self.multipageEnabled = NO;
     [super viewDidLoad];
+    if ([self.navigationController.navigationBar respondsToSelector:@selector(setBackgroundImage:forBarMetrics:)]) {
+        [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"navBar.png"] forBarMetrics:UIBarMetricsDefault];
+    } else {
+        UIImageView *navImgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"navBar.png"]];
+        navImgView.frame = CGRectMake(0, 0, 320, 44);
+        [self.navigationController.navigationBar insertSubview:navImgView atIndex:0];
+    }
     
     self.title = @"推荐";
     

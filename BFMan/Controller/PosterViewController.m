@@ -124,9 +124,9 @@
             UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
             if (cell == nil) {
                 cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-                UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 3)];
-                label.backgroundColor = [UIColor redColor];
-                [cell.contentView addSubview:label];
+                UIImageView *imgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"sperator.png"]];
+                imgView.frame = CGRectMake(0, 0, 320, 8);
+                [cell.contentView addSubview:imgView];
             }
             return cell;
         } else {
@@ -200,7 +200,7 @@
     CellType cellType = [[cellTypes objectAtIndex:indexPath.row] intValue];
     if (cellType == CELL_DATA) {
         if (indexPath.row % 2 == 0) {
-            return 3;
+            return 8;
         } else
             return 180;
     } else
