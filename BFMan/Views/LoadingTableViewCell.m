@@ -23,6 +23,7 @@
         UILabel *loadingLabel = [[UILabel alloc] initWithFrame:CGRectMake(140, 20, 100, 30)];
         loadingLabel.textColor = [UIColor lightGrayColor];
         loadingLabel.text = @"正在加载";
+        loadingLabel.backgroundColor = [UIColor clearColor];
         [self.contentView addSubview:loadingLabel];
         
     }

@@ -140,7 +140,10 @@
 		07BF1E1C14DBB6DF004AC743 /* 42-photos.png in Resources */ = {isa = PBXBuildFile; fileRef = 07BF1E1914DBB6DF004AC743 /* 42-photos.png */; };
 		07C7F02514DE786D007E5EA9 /* sperator.png in Resources */ = {isa = PBXBuildFile; fileRef = 07C7F02414DE786D007E5EA9 /* sperator.png */; };
 		07C7F02814DE7ADE007E5EA9 /* navBar.png in Resources */ = {isa = PBXBuildFile; fileRef = 07C7F02714DE7ADE007E5EA9 /* navBar.png */; };
+		07CE6B2614DED02400F65C74 /* ShadowedTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 07CE6B2514DED02400F65C74 /* ShadowedTableView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		07E37E4114D90CAD009948D5 /* ItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 07E37E4014D90CAD009948D5 /* ItemTableViewCell.m */; };
+		07EA9A4314DEAE5A00C7F6C4 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 07EA9A4214DEAE5A00C7F6C4 /* Icon.png */; };
+		07EA9A4614DEAE5D00C7F6C4 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 07EA9A4514DEAE5D00C7F6C4 /* Icon@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -386,8 +389,12 @@
 		07BF1E1914DBB6DF004AC743 /* 42-photos.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "42-photos.png"; sourceTree = "<group>"; };
 		07C7F02414DE786D007E5EA9 /* sperator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sperator.png; sourceTree = "<group>"; };
 		07C7F02714DE7ADE007E5EA9 /* navBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = navBar.png; sourceTree = "<group>"; };
+		07CE6B2414DED02400F65C74 /* ShadowedTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShadowedTableView.h; sourceTree = "<group>"; };
+		07CE6B2514DED02400F65C74 /* ShadowedTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShadowedTableView.m; sourceTree = "<group>"; };
 		07E37E3F14D90CAD009948D5 /* ItemTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemTableViewCell.h; sourceTree = "<group>"; };
 		07E37E4014D90CAD009948D5 /* ItemTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemTableViewCell.m; sourceTree = "<group>"; };
+		07EA9A4214DEAE5A00C7F6C4 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		07EA9A4514DEAE5D00C7F6C4 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -453,6 +460,8 @@
 		0774A69314B9CD8100D795AE = {
 			isa = PBXGroup;
 			children = (
+				07EA9A4514DEAE5D00C7F6C4 /* Icon@2x.png */,
+				07EA9A4214DEAE5A00C7F6C4 /* Icon.png */,
 				0774A7D014B9CFE000D795AE /* BFManConstants.h */,
 				07B3CF5B14DBCD18005026F5 /* JLTServer */,
 				071E9AC814C8684D00C238D9 /* Controllers */,
@@ -758,6 +767,8 @@
 		0774A7BD14B9CF4600D795AE /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				07CE6B2414DED02400F65C74 /* ShadowedTableView.h */,
+				07CE6B2514DED02400F65C74 /* ShadowedTableView.m */,
 				07E37E3F14D90CAD009948D5 /* ItemTableViewCell.h */,
 				07E37E4014D90CAD009948D5 /* ItemTableViewCell.m */,
 				078A152F14D82BC600D733B6 /* MBProgressHUD.h */,
@@ -894,6 +905,8 @@
 				0706154A14DE6A88008CB073 /* tagLabel.png in Resources */,
 				07C7F02514DE786D007E5EA9 /* sperator.png in Resources */,
 				07C7F02814DE7ADE007E5EA9 /* navBar.png in Resources */,
+				07EA9A4314DEAE5A00C7F6C4 /* Icon.png in Resources */,
+				07EA9A4614DEAE5D00C7F6C4 /* Icon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1019,6 +1032,7 @@
 				07B3CF6314DBCD18005026F5 /* JLTMapper.m in Sources */,
 				07B3CF6414DBCD18005026F5 /* JLTServer.m in Sources */,
 				07ADF49C14DE47D6003054DC /* HuabaoCoverView.m in Sources */,
+				07CE6B2614DED02400F65C74 /* ShadowedTableView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
