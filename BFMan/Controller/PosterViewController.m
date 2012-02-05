@@ -119,7 +119,7 @@
     CellType cellType = [[cellTypes objectAtIndex:indexPath.row] intValue];
     
     if (cellType == CELL_DATA) {
-        if (indexPath.row % 2 == 0) {
+        if (indexPath.row % 2 == 1) {
             static NSString *CellIdentifier = @"SplitCell";
             UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
             if (cell == nil) {
@@ -136,8 +136,8 @@
             if (cell == nil) {
                 cell = [[ItemBigTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
             }
-            HuaBao *huabao = [posters objectAtIndex:indexPath.row - 1];
-            HuaBao *huabao2 = [posters objectAtIndex:indexPath.row];
+            HuaBao *huabao = [posters objectAtIndex:indexPath.row];
+            HuaBao *huabao2 = [posters objectAtIndex:indexPath.row + 1];
             cell.itemLeft = huabao;
             cell.itemRight = huabao2;
             [cell setupCellContentsWithDelegate:self];
@@ -199,7 +199,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     CellType cellType = [[cellTypes objectAtIndex:indexPath.row] intValue];
     if (cellType == CELL_DATA) {
-        if (indexPath.row % 2 == 0) {
+        if (indexPath.row % 2 == 1) {
             return 8;
         } else
             return 180;
