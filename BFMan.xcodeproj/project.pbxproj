@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0706154A14DE6A88008CB073 /* tagLabel.png in Resources */ = {isa = PBXBuildFile; fileRef = 0706154914DE6A88008CB073 /* tagLabel.png */; };
 		071E9AD214C86A3300C238D9 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 071E9AD114C86A3300C238D9 /* MainViewController.xib */; };
 		0738BE5014D784CF00A64F42 /* ItemsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0738BE4E14D784CF00A64F42 /* ItemsListViewController.m */; };
 		0738BE5114D784CF00A64F42 /* ItemsListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0738BE4F14D784CF00A64F42 /* ItemsListViewController.xib */; };
@@ -126,6 +127,7 @@
 		078A153114D82BC600D733B6 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 078A153014D82BC600D733B6 /* MBProgressHUD.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		07A4820414D6948D002C1572 /* FullImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07A4820214D6948D002C1572 /* FullImageViewController.m */; };
 		07A4820514D6948D002C1572 /* FullImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07A4820314D6948D002C1572 /* FullImageViewController.xib */; };
+		07ADF49C14DE47D6003054DC /* HuabaoCoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = 07ADF49B14DE47D6003054DC /* HuabaoCoverView.m */; };
 		07B3CF5714DBCC18005026F5 /* AdBannerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07B3CF5214DBCC18005026F5 /* AdBannerViewController.m */; };
 		07B3CF5814DBCC18005026F5 /* AdBannerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07B3CF5314DBCC18005026F5 /* AdBannerViewController.xib */; };
 		07B3CF5914DBCC18005026F5 /* TaobaoBrowserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07B3CF5514DBCC18005026F5 /* TaobaoBrowserViewController.m */; };
@@ -150,6 +152,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0706154914DE6A88008CB073 /* tagLabel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tagLabel.png; sourceTree = "<group>"; };
 		071E9AD114C86A3300C238D9 /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MainViewController.xib; path = BFMan/Controller/MainViewController.xib; sourceTree = "<group>"; };
 		0738BE4D14D784CF00A64F42 /* ItemsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ItemsListViewController.h; path = BFMan/Controller/ItemsListViewController.h; sourceTree = "<group>"; };
 		0738BE4E14D784CF00A64F42 /* ItemsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ItemsListViewController.m; path = BFMan/Controller/ItemsListViewController.m; sourceTree = "<group>"; };
@@ -362,6 +365,8 @@
 		07A4820114D6948D002C1572 /* FullImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FullImageViewController.h; path = BFMan/Controller/FullImageViewController.h; sourceTree = "<group>"; };
 		07A4820214D6948D002C1572 /* FullImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FullImageViewController.m; path = BFMan/Controller/FullImageViewController.m; sourceTree = "<group>"; };
 		07A4820314D6948D002C1572 /* FullImageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FullImageViewController.xib; path = BFMan/Controller/FullImageViewController.xib; sourceTree = "<group>"; };
+		07ADF49A14DE47D6003054DC /* HuabaoCoverView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HuabaoCoverView.h; sourceTree = "<group>"; };
+		07ADF49B14DE47D6003054DC /* HuabaoCoverView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HuabaoCoverView.m; sourceTree = "<group>"; };
 		07B3CF5114DBCC18005026F5 /* AdBannerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AdBannerViewController.h; path = BFMan/Controller/AdBannerViewController.h; sourceTree = "<group>"; };
 		07B3CF5214DBCC18005026F5 /* AdBannerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AdBannerViewController.m; path = BFMan/Controller/AdBannerViewController.m; sourceTree = "<group>"; };
 		07B3CF5314DBCC18005026F5 /* AdBannerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AdBannerViewController.xib; path = BFMan/Controller/AdBannerViewController.xib; sourceTree = "<group>"; };
@@ -666,6 +671,7 @@
 		0774A76C14B9CF1D00D795AE /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				0706154914DE6A88008CB073 /* tagLabel.png */,
 				07BF1E1714DBB6DF004AC743 /* 28-star.png */,
 				07BF1E1814DBB6DF004AC743 /* 41-picture-frame.png */,
 				07BF1E1914DBB6DF004AC743 /* 42-photos.png */,
@@ -758,6 +764,8 @@
 				0774A7C314B9CF4600D795AE /* GradientView.m */,
 				0774A7C414B9CF4600D795AE /* ItemBigTableViewCell.h */,
 				0774A7C514B9CF4600D795AE /* ItemBigTableViewCell.m */,
+				07ADF49A14DE47D6003054DC /* HuabaoCoverView.h */,
+				07ADF49B14DE47D6003054DC /* HuabaoCoverView.m */,
 				0774A7C614B9CF4600D795AE /* LoadingTableViewCell.h */,
 				0774A7C714B9CF4600D795AE /* LoadingTableViewCell.m */,
 				0774A7C814B9CF4600D795AE /* WBSendView.h */,
@@ -877,6 +885,7 @@
 				07BF1E1C14DBB6DF004AC743 /* 42-photos.png in Resources */,
 				07B3CF5814DBCC18005026F5 /* AdBannerViewController.xib in Resources */,
 				07B3CF5A14DBCC18005026F5 /* TaobaoBrowserViewController.xib in Resources */,
+				0706154A14DE6A88008CB073 /* tagLabel.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1001,6 +1010,7 @@
 				07B3CF6214DBCD18005026F5 /* JLTAd.m in Sources */,
 				07B3CF6314DBCD18005026F5 /* JLTMapper.m in Sources */,
 				07B3CF6414DBCD18005026F5 /* JLTServer.m in Sources */,
+				07ADF49C14DE47D6003054DC /* HuabaoCoverView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

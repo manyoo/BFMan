@@ -9,14 +9,15 @@
 #import <UIKit/UIKit.h>
 
 @class HuaBao;
-@class RedLineView;
+@class HuabaoCoverView;
 
 @interface ItemBigTableViewCell : UITableViewCell
 
-@property (nonatomic, strong) HuaBao *item;
-@property (nonatomic, strong) UILabel *titleLabel;
-@property (nonatomic, strong) UILabel *clicksLabel;
+@property (nonatomic, strong) HuaBao *itemLeft;
+@property (nonatomic, strong) HuaBao *itemRight;
+@property (nonatomic, strong) HuabaoCoverView *leftView;
+@property (nonatomic, strong) HuabaoCoverView *rightView;
 
-- (void)setupCellContents;
+- (void)setupCellContentsWithDelegate:(id)delegate;
 
 @end

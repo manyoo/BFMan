@@ -51,4 +51,6 @@ typedef enum {
 
 - (void)loadMoreData;
 
+- (void)openHuabao:(HuaBao *)huabao;
+
 @end

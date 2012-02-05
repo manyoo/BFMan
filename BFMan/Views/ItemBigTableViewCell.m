@@ -7,15 +7,11 @@
 //
 
 #import "ItemBigTableViewCell.h"
-#import "HuaBao.h"
-#import "ItemImg.h"
-#import "AsyncImageView.h"
 #import "GradientView.h"
-#import "AppDelegate.h"
-#import <QuartzCore/QuartzCore.h>
+#import "HuabaoCoverView.h"
 
 @implementation ItemBigTableViewCell
-@synthesize item, titleLabel, clicksLabel;
+@synthesize itemLeft, itemRight, leftView, rightView;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -24,27 +20,16 @@
         // Initialization code
         
         // background
-        GradientView *backgroundView = [[GradientView alloc] initWithFrame:CGRectMake(0, 0, 320, 350)];
+        GradientView *backgroundView = [[GradientView alloc] initWithFrame:CGRectMake(0, 0, 320, 180)];
         CGFloat c1 = 254.0/255.0, c2 = 240.0/255.0;
         backgroundView.startColor = [UIColor colorWithRed:c1 green:c1 blue:c1 alpha:1.0];
         backgroundView.endColor = [UIColor colorWithRed:c2 green:c2 blue:c2 alpha:1.0];
         [self.contentView addSubview:backgroundView];
-        
-        // title label
-        self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 280, 300, 40)];
-        titleLabel.font = [UIFont systemFontOfSize:17];
-        titleLabel.textColor = [UIColor darkGrayColor];
-        titleLabel.backgroundColor = [UIColor clearColor];
-        titleLabel.lineBreakMode = UILineBreakModeWordWrap;
-        titleLabel.numberOfLines = 0;
-        [self.contentView addSubview:titleLabel];
-        
-        self.clicksLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 320, 300, 20)];
-        clicksLabel.font = [UIFont systemFontOfSize:16];
-        clicksLabel.textColor = [UIColor darkGrayColor];
-        clicksLabel.backgroundColor = [UIColor clearColor];
-        clicksLabel.textAlignment = UITextAlignmentRight;
-        [self.contentView addSubview:clicksLabel];
+
+        self.leftView = [[HuabaoCoverView alloc] initWithFrame:CGRectMake(0, 0, 160, 180)];
+        self.rightView = [[HuabaoCoverView alloc] initWithFrame:CGRectMake(160, 0, 160, 180)];
+        [self.contentView addSubview:leftView];
+        [self.contentView addSubview:rightView];
     }
     return self;
 }
@@ -56,53 +41,14 @@
     // Configure the view for the selected state
 }
 
-- (void)setupCellContents {
-    if (item == nil)
-        return;
+- (void)setupCellContentsWithDelegate:(id)delegate {
+    leftView.huabao = itemLeft;
+    leftView.delegate = delegate;
+    [leftView setupView];
     
-    UIView *v = [self.contentView viewWithTag:99];
-    [v removeFromSuperview];
-    
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    NSManagedObjectContext *context = [appDelegate managedObjectContext];
-    
-    ItemImg *img = item.itemImg;
-    if (img == nil) {
-        img = [NSEntityDescription insertNewObjectForEntityForName:@"ItemImg" inManagedObjectContext:context];
-        img.url = item.coverPicUrl;
-        item.itemImg = img;
-    }
-    
-    CGRect imgFrame = CGRectMake(30, 10, 260 , 260);
-    AsyncImageView *asycImageView = [[AsyncImageView alloc] initWithItemImg:img andFrame:imgFrame];
-    asycImageView.tag = 99;
-    asycImageView.usedInList = YES;
-    
-    [[asycImageView layer] setShadowOffset:CGSizeMake(2, 1)];
-    [[asycImageView layer] setShadowColor:[[UIColor darkGrayColor] CGColor]];
-    [[asycImageView layer] setShadowRadius:2.5];
-    [[asycImageView layer] setShadowOpacity:0.9];
-    
-    CGSize size = asycImageView.bounds.size;
-    CGFloat curlFactor = 10.0f;
-    CGFloat shadowDepth = 5.0f;
-    UIBezierPath *path = [UIBezierPath bezierPath];
-    [path moveToPoint:CGPointMake(0.0f, 0.0f)];
-    [path addLineToPoint:CGPointMake(size.width, 0.0f)];
-    [path addLineToPoint:CGPointMake(size.width, size.height + shadowDepth)];
-    [path addCurveToPoint:CGPointMake(0.0f, size.height + shadowDepth)
-            controlPoint1:CGPointMake(size.width - curlFactor, size.height + shadowDepth - curlFactor)
-            controlPoint2:CGPointMake(curlFactor, size.height + shadowDepth - curlFactor)];
-    [asycImageView.layer setShadowPath:path.CGPath];
-    
-    [self.contentView addSubview:asycImageView];
-    [asycImageView getImage];
-    
-    item.title = [[item.title stringByReplacingOccurrencesOfString:@"<span class=H>" withString:@""] stringByReplacingOccurrencesOfString:@"</span>" withString:@""];
-    
-    titleLabel.text = item.title;
-    
-    clicksLabel.text = [NSString stringWithFormat:@"人气: %@", item.hits];
+    rightView.huabao = itemRight;
+    rightView.delegate = delegate;
+    [rightView setupView];
 }
 
 @end

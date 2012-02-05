@@ -45,6 +45,7 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    self.tableView.allowsSelection = NO;
     
     if (refreshEnabled) {
         self.refreshHeaderView = [[EGORefreshTableHeaderView alloc] initWithFrame:CGRectMake(0.0f,
@@ -118,16 +119,30 @@
     CellType cellType = [[cellTypes objectAtIndex:indexPath.row] intValue];
     
     if (cellType == CELL_DATA) {
-        static NSString *CellIdentifier = @"Cell";
-        
-        ItemBigTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-        if (cell == nil) {
-            cell = [[ItemBigTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        if (indexPath.row % 2 == 0) {
+            static NSString *CellIdentifier = @"SplitCell";
+            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+            if (cell == nil) {
+                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+                UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 3)];
+                label.backgroundColor = [UIColor redColor];
+                [cell.contentView addSubview:label];
+            }
+            return cell;
+        } else {
+            static NSString *CellIdentifier = @"Cell";
+            
+            ItemBigTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+            if (cell == nil) {
+                cell = [[ItemBigTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+            }
+            HuaBao *huabao = [posters objectAtIndex:indexPath.row - 1];
+            HuaBao *huabao2 = [posters objectAtIndex:indexPath.row];
+            cell.itemLeft = huabao;
+            cell.itemRight = huabao2;
+            [cell setupCellContentsWithDelegate:self];
+            return cell;
         }
-        HuaBao *huabao = [posters objectAtIndex:indexPath.row];
-        cell.item = huabao;
-        [cell setupCellContents];
-        return cell;
     } else if (cellType == CELL_RELOAD) {
         static NSString *CellIdentifier = @"LoadingCell";
     
@@ -184,7 +199,10 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     CellType cellType = [[cellTypes objectAtIndex:indexPath.row] intValue];
     if (cellType == CELL_DATA) {
-        return 350;
+        if (indexPath.row % 2 == 0) {
+            return 3;
+        } else
+            return 180;
     } else
         return 44;
 }
@@ -200,23 +218,6 @@
      // Pass the selected object to the new view controller.
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
-    CellType cellType = [[cellTypes objectAtIndex:indexPath.row] intValue];
-    if (cellType == CELL_DATA) {
-        HuaBao *huabao = [posters objectAtIndex:indexPath.row];
-        self.apiType = API_GETPICTURE;
-        self.selectedHuaBao = huabao;
-        
-        MBProgressHUD *progressHUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
-        [self.navigationController.view addSubview:progressHUD];
-        
-        progressHUD.delegate = self;
-        progressHUD.labelText = @"正在加载";
-        
-        self.hud = progressHUD;
-        
-        [progressHUD show:YES];
-        [self.server getPosterDetail:huabao.huabaoID];
-    }
 }
 
 - (void)reloadTableViewDataSource {
@@ -297,6 +298,23 @@
         
         [self presentModalViewController:imgViewController animated:YES];
     }
+}
+
+
+- (void)openHuabao:(HuaBao *)huabao {
+    self.apiType = API_GETPICTURE;
+    self.selectedHuaBao = huabao;
+    
+    MBProgressHUD *progressHUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
+    [self.navigationController.view addSubview:progressHUD];
+    
+    progressHUD.delegate = self;
+    progressHUD.labelText = @"正在加载";
+    
+    self.hud = progressHUD;
+    
+    [progressHUD show:YES];
+    [self.server getPosterDetail:huabao.huabaoID];
 }
 
 #pragma mark - MBProgressHUDDelegate
