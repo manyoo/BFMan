@@ -181,6 +181,10 @@
 - (void)requestFinished:(id)data {
     NSDictionary *res = (NSDictionary *)data;
     NSArray *tbkItems = [res objectForKey:@"items"];
+    if (tbkItems == nil) {
+        [self.tableView reloadData];
+        return;
+    }
     for (HuabaoAuctionInfo *auc in huabaoAuctions) {
         for (TaobaokeItem *tbk in tbkItems) {
             if ([auc.auctionId isEqualToNumber:tbk.itemID]) {
@@ -188,6 +192,21 @@
             }
         }
     }
+    
+    // delete the HuabaoAuctionInfo items which has no corresponding Taobaoke item
+    NSIndexSet *idxToRemove = [huabaoAuctions indexesOfObjectsPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
+        HuabaoAuctionInfo *auc = (HuabaoAuctionInfo *)obj;
+        if (auc.tbkItem == nil) {
+            return YES;
+        } else
+            return NO;
+    }];
+    if (idxToRemove.count > 0) {
+        [huabaoAuctions removeObjectsAtIndexes:idxToRemove];
+        CGRect oldFrame = self.tableView.frame;
+        self.tableView.frame = CGRectMake(oldFrame.origin.x, oldFrame.origin.y, oldFrame.size.width, huabaoAuctions.count * 80);
+    }
+    
     [self.tableView reloadData];
 }
 

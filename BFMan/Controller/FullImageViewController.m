@@ -205,7 +205,7 @@
 
 - (void)imageViewSwipedUp:(id)sender {
     HuabaoPicture *picture = [huabaoPictures objectAtIndex:self.page];
-    NSArray *auc = [huabaoAuctions objectForKey:[NSString stringWithFormat:@"%@", picture.picId]];
+    NSMutableArray *auc = [huabaoAuctions objectForKey:[NSString stringWithFormat:@"%@", picture.picId]];
     if (auc == nil) {
         return;
     }
