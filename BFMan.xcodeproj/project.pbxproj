@@ -119,6 +119,8 @@
 		0774A7EA14B9D49C00D795AE /* HuaBao.m in Sources */ = {isa = PBXBuildFile; fileRef = 0774A7E914B9D49C00D795AE /* HuaBao.m */; };
 		0774A7ED14B9D7EC00D795AE /* HuabaoPicture.m in Sources */ = {isa = PBXBuildFile; fileRef = 0774A7EC14B9D7EC00D795AE /* HuabaoPicture.m */; };
 		0774A7F014B9D91000D795AE /* HuabaoAuctionInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 0774A7EF14B9D91000D795AE /* HuabaoAuctionInfo.m */; };
+		077F9EB614DFBD480035462C /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 077F9EB414DFBD480035462C /* libMobClickLibrary.a */; };
+		077F9EB914DFBECF0035462C /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 077F9EB814DFBECF0035462C /* CoreTelephony.framework */; };
 		07836B1914CBA199005B18A7 /* PosterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07836B1714CBA199005B18A7 /* PosterViewController.m */; };
 		07836B1A14CBA199005B18A7 /* PosterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07836B1814CBA199005B18A7 /* PosterViewController.xib */; };
 		07836B1D14CBA24D005B18A7 /* HotPosterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07836B1C14CBA24D005B18A7 /* HotPosterViewController.m */; };
@@ -356,6 +358,9 @@
 		0774A7EC14B9D7EC00D795AE /* HuabaoPicture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HuabaoPicture.m; sourceTree = "<group>"; };
 		0774A7EE14B9D91000D795AE /* HuabaoAuctionInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HuabaoAuctionInfo.h; sourceTree = "<group>"; };
 		0774A7EF14B9D91000D795AE /* HuabaoAuctionInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HuabaoAuctionInfo.m; sourceTree = "<group>"; };
+		077F9EB414DFBD480035462C /* libMobClickLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMobClickLibrary.a; sourceTree = "<group>"; };
+		077F9EB514DFBD480035462C /* MobClick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClick.h; sourceTree = "<group>"; };
+		077F9EB814DFBECF0035462C /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		07836B1614CBA199005B18A7 /* PosterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PosterViewController.h; path = BFMan/Controller/PosterViewController.h; sourceTree = "<group>"; };
 		07836B1714CBA199005B18A7 /* PosterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PosterViewController.m; path = BFMan/Controller/PosterViewController.m; sourceTree = "<group>"; };
 		07836B1814CBA199005B18A7 /* PosterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PosterViewController.xib; path = BFMan/Controller/PosterViewController.xib; sourceTree = "<group>"; };
@@ -402,6 +407,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				077F9EB914DFBECF0035462C /* CoreTelephony.framework in Frameworks */,
 				0774A7E714B9D25C00D795AE /* MobileCoreServices.framework in Frameworks */,
 				0774A7E514B9D24000D795AE /* SystemConfiguration.framework in Frameworks */,
 				0774A7E314B9D21300D795AE /* CFNetwork.framework in Frameworks */,
@@ -411,6 +417,7 @@
 				0774A6A514B9CD8200D795AE /* Foundation.framework in Frameworks */,
 				0774A6A714B9CD8200D795AE /* CoreGraphics.framework in Frameworks */,
 				0774A6A914B9CD8200D795AE /* CoreData.framework in Frameworks */,
+				077F9EB614DFBD480035462C /* libMobClickLibrary.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -492,6 +499,7 @@
 		0774A6A114B9CD8200D795AE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				077F9EB814DFBECF0035462C /* CoreTelephony.framework */,
 				0774A7E614B9D25C00D795AE /* MobileCoreServices.framework */,
 				0774A7E414B9D24000D795AE /* SystemConfiguration.framework */,
 				0774A7E214B9D21300D795AE /* CFNetwork.framework */,
@@ -509,6 +517,8 @@
 		0774A6AA14B9CD8200D795AE /* BFMan */ = {
 			isa = PBXGroup;
 			children = (
+				077F9EB414DFBD480035462C /* libMobClickLibrary.a */,
+				077F9EB514DFBD480035462C /* MobClick.h */,
 				0774A6B314B9CD8200D795AE /* AppDelegate.h */,
 				0774A6B414B9CD8200D795AE /* AppDelegate.m */,
 				0774A7DB14B9D0F700D795AE /* NSString+HTML.h */,
@@ -1128,6 +1138,10 @@
 				GCC_PREFIX_HEADER = "BFMan/BFMan-Prefix.pch";
 				INFOPLIST_FILE = "BFMan/BFMan-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/BFMan\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "82DD15C7-E58C-4806-B003-B3FD57E94092";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "82DD15C7-E58C-4806-B003-B3FD57E94092";
@@ -1144,6 +1158,10 @@
 				GCC_PREFIX_HEADER = "BFMan/BFMan-Prefix.pch";
 				INFOPLIST_FILE = "BFMan/BFMan-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/BFMan\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "82DD15C7-E58C-4806-B003-B3FD57E94092";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "82DD15C7-E58C-4806-B003-B3FD57E94092";

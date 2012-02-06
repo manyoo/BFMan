@@ -28,6 +28,8 @@
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     
+    [MobClick setDelegate:self reportPolicy:BATCH];
+    
     return YES;
 }
 
@@ -65,6 +67,11 @@
 {
     // Saves changes in the application's managed object context before the application terminates.
     [self saveContext];
+}
+
+// TODO: app key for umeng analytics
+- (NSString *)appKey {
+    return @"";
 }
 
 - (void)saveContext

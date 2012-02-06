@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MobClick.h"
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate, MobClickDelegate>
 
 @property (strong, nonatomic) IBOutlet UIWindow *window;
 @property (unsafe_unretained, nonatomic) IBOutlet UITabBarController *tabBarController;
