@@ -30,6 +30,8 @@
     
     [MobClick setDelegate:self reportPolicy:BATCH];
     
+    [MobClick checkUpdate];
+    
     return YES;
 }
 
@@ -71,7 +73,7 @@
 
 // TODO: app key for umeng analytics
 - (NSString *)appKey {
-    return @"";
+    return @"4f327c2d5270154ef4000014";
 }
 
 - (void)saveContext
