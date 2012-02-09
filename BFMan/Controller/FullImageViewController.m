@@ -13,6 +13,7 @@
 #import "AppDelegate.h"
 #import "ItemsListViewController.h"
 #import "TaobaoBrowserViewController.h"
+#import "TaobaokeItem.h"
 
 @interface FullImageViewController (PrivateMethod)
 - (void)displayCurrentImageNote;
@@ -246,9 +247,11 @@
     itemsDisplayedOnPage = -1;
 }
 
-- (void)openBrowser:(NSString *)url {
+- (void)openBrowser:(TaobaokeItem *)item {
     TaobaoBrowserViewController *browser = [[TaobaoBrowserViewController alloc] initWithNibName:@"TaobaoBrowserViewController" bundle:nil];
-    browser.itemUrl = url;
+    browser.itemUrl = item.clickUrl;
+    browser.picUrl = item.picUrl;
+    browser.itemId = item.itemID;
     browser.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
     [self presentModalViewController:browser animated:YES];
 }

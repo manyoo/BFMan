@@ -22,10 +22,13 @@
 // the default poster channel for Men.
 #define DEFAULT_CHANNEL 3
 
+#define WEIBO_USER_FILE @"weibo_user"
+#define ACCESS_KEY_FILE @"weibo_access"
+
 // app key for Sina Weibo
 // TODO: change to new Weibo APP key and secret.
-_EXTERN NSString *const SINA_WEIBO_APP_KEY_STR      _INITIALIZE_AS(@"1926133895");
-_EXTERN NSString *const SINA_WEIBO_APP_SECRET_STR   _INITIALIZE_AS(@"8d0ccb3a9af46ee4cd0cfbc49b9ed3d2");
+_EXTERN NSString *const SINA_WEIBO_APP_KEY_STR      _INITIALIZE_AS(@"103696628");
+_EXTERN NSString *const SINA_WEIBO_APP_SECRET_STR   _INITIALIZE_AS(@"92d5cb536fa4454bc4e356d623d07b11");
 
 
 _EXTERN NSString *const TAOBAO_APP_KEY_STR          _INITIALIZE_AS(@"12494727");

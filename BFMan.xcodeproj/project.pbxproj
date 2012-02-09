@@ -121,6 +121,9 @@
 		0774A7F014B9D91000D795AE /* HuabaoAuctionInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 0774A7EF14B9D91000D795AE /* HuabaoAuctionInfo.m */; };
 		077F9EB614DFBD480035462C /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 077F9EB414DFBD480035462C /* libMobClickLibrary.a */; };
 		077F9EB914DFBECF0035462C /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 077F9EB814DFBECF0035462C /* CoreTelephony.framework */; };
+		07823A5514E35F7A0030F722 /* MoreInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07823A5314E35F7A0030F722 /* MoreInfoViewController.m */; };
+		07823A5614E35F7A0030F722 /* MoreInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07823A5414E35F7A0030F722 /* MoreInfoViewController.xib */; };
+		07823A5A14E3617C0030F722 /* BailuServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 07823A5914E3617B0030F722 /* BailuServer.m */; };
 		07836B1914CBA199005B18A7 /* PosterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07836B1714CBA199005B18A7 /* PosterViewController.m */; };
 		07836B1A14CBA199005B18A7 /* PosterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07836B1814CBA199005B18A7 /* PosterViewController.xib */; };
 		07836B1D14CBA24D005B18A7 /* HotPosterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07836B1C14CBA24D005B18A7 /* HotPosterViewController.m */; };
@@ -130,6 +133,7 @@
 		07A4820414D6948D002C1572 /* FullImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07A4820214D6948D002C1572 /* FullImageViewController.m */; };
 		07A4820514D6948D002C1572 /* FullImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07A4820314D6948D002C1572 /* FullImageViewController.xib */; };
 		07ADF49C14DE47D6003054DC /* HuabaoCoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = 07ADF49B14DE47D6003054DC /* HuabaoCoverView.m */; };
+		07B0306F14E3A56000F26924 /* weibo_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 07B0306E14E3A56000F26924 /* weibo_logo.png */; };
 		07B3CF5714DBCC18005026F5 /* AdBannerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07B3CF5214DBCC18005026F5 /* AdBannerViewController.m */; };
 		07B3CF5814DBCC18005026F5 /* AdBannerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07B3CF5314DBCC18005026F5 /* AdBannerViewController.xib */; };
 		07B3CF5914DBCC18005026F5 /* TaobaoBrowserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07B3CF5514DBCC18005026F5 /* TaobaoBrowserViewController.m */; };
@@ -361,6 +365,11 @@
 		077F9EB414DFBD480035462C /* libMobClickLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMobClickLibrary.a; sourceTree = "<group>"; };
 		077F9EB514DFBD480035462C /* MobClick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClick.h; sourceTree = "<group>"; };
 		077F9EB814DFBECF0035462C /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		07823A5214E35F7A0030F722 /* MoreInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MoreInfoViewController.h; path = BFMan/Controller/MoreInfoViewController.h; sourceTree = "<group>"; };
+		07823A5314E35F7A0030F722 /* MoreInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MoreInfoViewController.m; path = BFMan/Controller/MoreInfoViewController.m; sourceTree = "<group>"; };
+		07823A5414E35F7A0030F722 /* MoreInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MoreInfoViewController.xib; path = BFMan/Controller/MoreInfoViewController.xib; sourceTree = "<group>"; };
+		07823A5814E3617B0030F722 /* BailuServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BailuServer.h; sourceTree = "<group>"; };
+		07823A5914E3617B0030F722 /* BailuServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BailuServer.m; sourceTree = "<group>"; };
 		07836B1614CBA199005B18A7 /* PosterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PosterViewController.h; path = BFMan/Controller/PosterViewController.h; sourceTree = "<group>"; };
 		07836B1714CBA199005B18A7 /* PosterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PosterViewController.m; path = BFMan/Controller/PosterViewController.m; sourceTree = "<group>"; };
 		07836B1814CBA199005B18A7 /* PosterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PosterViewController.xib; path = BFMan/Controller/PosterViewController.xib; sourceTree = "<group>"; };
@@ -377,6 +386,7 @@
 		07A4820314D6948D002C1572 /* FullImageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FullImageViewController.xib; path = BFMan/Controller/FullImageViewController.xib; sourceTree = "<group>"; };
 		07ADF49A14DE47D6003054DC /* HuabaoCoverView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HuabaoCoverView.h; sourceTree = "<group>"; };
 		07ADF49B14DE47D6003054DC /* HuabaoCoverView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HuabaoCoverView.m; sourceTree = "<group>"; };
+		07B0306E14E3A56000F26924 /* weibo_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = weibo_logo.png; sourceTree = "<group>"; };
 		07B3CF5114DBCC18005026F5 /* AdBannerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AdBannerViewController.h; path = BFMan/Controller/AdBannerViewController.h; sourceTree = "<group>"; };
 		07B3CF5214DBCC18005026F5 /* AdBannerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AdBannerViewController.m; path = BFMan/Controller/AdBannerViewController.m; sourceTree = "<group>"; };
 		07B3CF5314DBCC18005026F5 /* AdBannerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AdBannerViewController.xib; path = BFMan/Controller/AdBannerViewController.xib; sourceTree = "<group>"; };
@@ -444,6 +454,7 @@
 				0738BE4F14D784CF00A64F42 /* ItemsListViewController.xib */,
 				07B3CF5314DBCC18005026F5 /* AdBannerViewController.xib */,
 				07B3CF5614DBCC18005026F5 /* TaobaoBrowserViewController.xib */,
+				07823A5414E35F7A0030F722 /* MoreInfoViewController.xib */,
 				07836B1614CBA199005B18A7 /* PosterViewController.h */,
 				07836B1714CBA199005B18A7 /* PosterViewController.m */,
 				07836B1B14CBA24D005B18A7 /* HotPosterViewController.h */,
@@ -460,6 +471,8 @@
 				07B3CF5214DBCC18005026F5 /* AdBannerViewController.m */,
 				07B3CF5414DBCC18005026F5 /* TaobaoBrowserViewController.h */,
 				07B3CF5514DBCC18005026F5 /* TaobaoBrowserViewController.m */,
+				07823A5214E35F7A0030F722 /* MoreInfoViewController.h */,
+				07823A5314E35F7A0030F722 /* MoreInfoViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -470,6 +483,7 @@
 				07EA9A4514DEAE5D00C7F6C4 /* Icon@2x.png */,
 				07EA9A4214DEAE5A00C7F6C4 /* Icon.png */,
 				0774A7D014B9CFE000D795AE /* BFManConstants.h */,
+				07823A5B14E361870030F722 /* BailuServer */,
 				07B3CF5B14DBCD18005026F5 /* JLTServer */,
 				071E9AC814C8684D00C238D9 /* Controllers */,
 				0774A7BD14B9CF4600D795AE /* Views */,
@@ -694,6 +708,7 @@
 		0774A76C14B9CF1D00D795AE /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				07B0306E14E3A56000F26924 /* weibo_logo.png */,
 				07C7F02714DE7ADE007E5EA9 /* navBar.png */,
 				07C7F02414DE786D007E5EA9 /* sperator.png */,
 				0706154914DE6A88008CB073 /* tagLabel.png */,
@@ -800,6 +815,15 @@
 			);
 			name = Views;
 			path = BFMan/Views;
+			sourceTree = "<group>";
+		};
+		07823A5B14E361870030F722 /* BailuServer */ = {
+			isa = PBXGroup;
+			children = (
+				07823A5814E3617B0030F722 /* BailuServer.h */,
+				07823A5914E3617B0030F722 /* BailuServer.m */,
+			);
+			name = BailuServer;
 			sourceTree = "<group>";
 		};
 		07B3CF5B14DBCD18005026F5 /* JLTServer */ = {
@@ -917,6 +941,8 @@
 				07C7F02814DE7ADE007E5EA9 /* navBar.png in Resources */,
 				07EA9A4314DEAE5A00C7F6C4 /* Icon.png in Resources */,
 				07EA9A4614DEAE5D00C7F6C4 /* Icon@2x.png in Resources */,
+				07823A5614E35F7A0030F722 /* MoreInfoViewController.xib in Resources */,
+				07B0306F14E3A56000F26924 /* weibo_logo.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1043,6 +1069,8 @@
 				07B3CF6414DBCD18005026F5 /* JLTServer.m in Sources */,
 				07ADF49C14DE47D6003054DC /* HuabaoCoverView.m in Sources */,
 				07CE6B2614DED02400F65C74 /* ShadowedTableView.m in Sources */,
+				07823A5514E35F7A0030F722 /* MoreInfoViewController.m in Sources */,
+				07823A5A14E3617C0030F722 /* BailuServer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

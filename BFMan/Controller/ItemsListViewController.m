@@ -165,7 +165,7 @@
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
     HuabaoAuctionInfo *auc = [huabaoAuctions objectAtIndex:indexPath.row];
-    [delegate performSelector:@selector(openBrowser:) withObject:auc.tbkItem.clickUrl];
+    [delegate performSelector:@selector(openBrowser:) withObject:auc.tbkItem];
 }
 
 #pragma mark - TBServerDelegate
