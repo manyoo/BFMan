@@ -41,7 +41,7 @@
 
 @implementation JSImageLoaderCache
 
-@synthesize sizeOfCache, cacheDir;
+@synthesize sizeOfCache, cacheDir, trimming = _trimming;
 
 #pragma mark Initialization
 
@@ -134,8 +134,10 @@ static void * volatile sharedInstance = nil;
 		[[NSURLCache sharedURLCache] storeCachedResponse:cachedResponse forRequest:request];
 		
 		// Trim the ache if it exceeds the max size
-		if ([self sizeOfCache] >= kMaxDiskCacheSize) {
+		if ([self sizeOfCache] >= kMaxDiskCacheSize && !self.trimming) {
+            self.trimming = YES;
 			[self trimDiskCacheFilesToMaxSize:kMaxDiskCacheSize * 0.6];
+            self.trimming = NO;
 		}
 		
 		// Get the local file path

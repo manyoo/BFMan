@@ -78,7 +78,7 @@ static void * volatile sharedInstance = nil;
 
 + (JSImageLoader *)sharedInstance {
 	while (!sharedInstance) {
-        [[NSURLCache sharedURLCache] setDiskCapacity:0];
+        //[[NSURLCache sharedURLCache] setDiskCapacity:0];
         [[NSURLCache sharedURLCache] setMemoryCapacity:5*1024*1024];
 		JSImageLoader *temp = [[self alloc] init];
 		if(!OSAtomicCompareAndSwapPtrBarrier(0x0, temp, &sharedInstance)) {

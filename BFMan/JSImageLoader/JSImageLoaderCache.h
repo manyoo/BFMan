@@ -39,10 +39,12 @@
 @private
 	NSString *_cacheDir;
 	NSUInteger _cacheSize;
+    BOOL _trimming;
 }
 
 @property (nonatomic, readonly) NSUInteger sizeOfCache;
 @property (nonatomic, readonly) NSString *cacheDir;
+@property (nonatomic, assign) BOOL trimming;
 
 + (JSImageLoaderCache *)sharedCache;
 

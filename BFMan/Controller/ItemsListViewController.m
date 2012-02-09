@@ -165,6 +165,9 @@
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
     HuabaoAuctionInfo *auc = [huabaoAuctions objectAtIndex:indexPath.row];
+    if (auc == nil) {
+        return;
+    }
     [delegate performSelector:@selector(openBrowser:) withObject:auc.tbkItem];
 }
 
