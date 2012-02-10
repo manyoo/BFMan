@@ -10,6 +10,7 @@
 #import "BlogClient.h"
 #import "WeiboManager.h"
 #import "BFManConstants.h"
+#import "HelpPhotoViewController.h"
 
 @implementation MoreInfoViewController
 
@@ -88,7 +89,7 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return 1;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -135,6 +136,10 @@
             cell.textLabel.text = @"设置新浪微博账户";
         cell.imageView.image = [UIImage imageNamed:@"weibo_logo.png"];
         cell.accessoryType = UITableViewCellAccessoryNone;
+    } else if (indexPath.section == 1) {
+        cell.imageView.image = nil;
+        cell.accessoryType = UITableViewCellAccessoryNone;
+        cell.textLabel.text = @"使用帮助";
     }
     
     return cell;
@@ -203,6 +208,9 @@
             UIViewController *weiboLogin = [blog getOAuthViewController:self];
             [self presentModalViewController:weiboLogin animated:YES];
         }
+    } else if (indexPath.section == 1) {
+        HelpPhotoViewController *helpPhoto = [[HelpPhotoViewController alloc] initWithNibName:@"HelpPhotoViewController" bundle:nil];
+        [self presentModalViewController:helpPhoto animated:YES];
     }
 }
 
