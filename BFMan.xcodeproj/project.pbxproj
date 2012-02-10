@@ -143,6 +143,7 @@
 		07B3CF6414DBCD18005026F5 /* JLTServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 07B3CF6114DBCD18005026F5 /* JLTServer.m */; };
 		07B8653D14E4C26400233FAD /* HelpPhotoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07B8653A14E4C26400233FAD /* HelpPhotoViewController.xib */; };
 		07B8653E14E4C26400233FAD /* HelpPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07B8653C14E4C26400233FAD /* HelpPhotoViewController.m */; };
+		07B8654114E4C51400233FAD /* BFMan-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0774A6AC14B9CD8200D795AE /* BFMan-Info.plist */; };
 		07BF1E1A14DBB6DF004AC743 /* 28-star.png in Resources */ = {isa = PBXBuildFile; fileRef = 07BF1E1714DBB6DF004AC743 /* 28-star.png */; };
 		07BF1E1B14DBB6DF004AC743 /* 41-picture-frame.png in Resources */ = {isa = PBXBuildFile; fileRef = 07BF1E1814DBB6DF004AC743 /* 41-picture-frame.png */; };
 		07BF1E1C14DBB6DF004AC743 /* 42-photos.png in Resources */ = {isa = PBXBuildFile; fileRef = 07BF1E1914DBB6DF004AC743 /* 42-photos.png */; };
@@ -175,7 +176,7 @@
 		0774A6A414B9CD8200D795AE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		0774A6A614B9CD8200D795AE /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		0774A6A814B9CD8200D795AE /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		0774A6AC14B9CD8200D795AE /* BFMan-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BFMan-Info.plist"; sourceTree = "<group>"; };
+		0774A6AC14B9CD8200D795AE /* BFMan-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "BFMan-Info.plist"; sourceTree = "<group>"; };
 		0774A6AE14B9CD8200D795AE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		0774A6B014B9CD8200D795AE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		0774A6B214B9CD8200D795AE /* BFMan-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BFMan-Prefix.pch"; sourceTree = "<group>"; };
@@ -404,6 +405,7 @@
 		07B8653A14E4C26400233FAD /* HelpPhotoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HelpPhotoViewController.xib; sourceTree = "<group>"; };
 		07B8653B14E4C26400233FAD /* HelpPhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelpPhotoViewController.h; sourceTree = "<group>"; };
 		07B8653C14E4C26400233FAD /* HelpPhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelpPhotoViewController.m; sourceTree = "<group>"; };
+		07B8654014E4C51400233FAD /* zh_CN */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = zh_CN; path = zh_CN.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		07BF1E1714DBB6DF004AC743 /* 28-star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "28-star.png"; sourceTree = "<group>"; };
 		07BF1E1814DBB6DF004AC743 /* 41-picture-frame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "41-picture-frame.png"; sourceTree = "<group>"; };
 		07BF1E1914DBB6DF004AC743 /* 42-photos.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "42-photos.png"; sourceTree = "<group>"; };
@@ -902,6 +904,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				zh_CN,
 			);
 			mainGroup = 0774A69314B9CD8100D795AE;
 			productRefGroup = 0774A69F14B9CD8200D795AE /* Products */;
@@ -952,6 +955,7 @@
 				07823A5614E35F7A0030F722 /* MoreInfoViewController.xib in Resources */,
 				07B0306F14E3A56000F26924 /* weibo_logo.png in Resources */,
 				07B8653D14E4C26400233FAD /* HelpPhotoViewController.xib in Resources */,
+				07B8654114E4C51400233FAD /* BFMan-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1107,6 +1111,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				0774A6AE14B9CD8200D795AE /* en */,
+				07B8654014E4C51400233FAD /* zh_CN */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
