@@ -38,7 +38,7 @@
     // Do any additional setup after loading the view from its nib.
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];
 
-    self.images = [NSArray arrayWithObjects:nil];
+    self.images = [NSArray arrayWithObjects:[UIImage imageNamed:@"help1.png"], [UIImage imageNamed:@"help2.png"], nil];
     
     self.titleBarOn = YES;
     self.pageControll.frame = CGRectMake(140, 440, 40, 20);

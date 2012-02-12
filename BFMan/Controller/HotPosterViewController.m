@@ -8,6 +8,7 @@
 
 #import "HotPosterViewController.h"
 #import "BFManConstants.h"
+#import "HelpPhotoViewController.h"
 
 @implementation HotPosterViewController
 
@@ -64,6 +65,23 @@
     
     self.server = [[TBServer alloc] initWithDelegate:self];
     [self doRequest];
+    
+    NSArray *urls = [[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask];
+        
+    NSURL *documentDir;
+    if ([urls count] > 0) {
+        documentDir = [urls objectAtIndex:0];    
+        
+        NSURL *fileUrl = [NSURL URLWithString:@"first_startup" relativeToURL:documentDir];
+        
+        BOOL hasFile = [[NSFileManager defaultManager] fileExistsAtPath:[fileUrl path]];
+        if (!hasFile) {
+            NSString *text = @"started";
+            [text writeToURL:fileUrl atomically:YES encoding:NSUTF8StringEncoding error:nil];
+            HelpPhotoViewController *photo = [[HelpPhotoViewController alloc] initWithNibName:@"HelpPhotoViewController" bundle:nil];
+            [self presentModalViewController:photo animated:YES];       
+        }
+    }
 }
 
 - (void)reloadTableViewDataSource {
