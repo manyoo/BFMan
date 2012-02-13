@@ -12,6 +12,8 @@
 #import <QuartzCore/QuartzCore.h>
 #import "JSImageLoaderClient.h"
 
+UIImage *globalImage = nil;
+
 @interface UIImage (Scaling)
 
 + (UIImage*)imageWithImage:(UIImage*)image scaledToSize:(CGSize)newSize;
@@ -46,7 +48,14 @@
 @implementation AsyncImageView
 
 @synthesize image = _image;
-@synthesize usedInList, usedInPageControl, imageLoaderClient, noBorder;
+@synthesize usedInList, usedInPageControl, imageLoaderClient, noBorder, currentImage;
+
++ (UIImage *)cameraImage {
+    if (globalImage == nil) {
+        globalImage = [UIImage imageNamed:@"camera.png"];
+    }
+    return globalImage;
+}
 
 -(AsyncImageView *)initWithItemImg:(ItemImg *)image andFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
@@ -60,7 +69,7 @@
         self.imageLoaderClient = [[JSImageLoaderClient alloc] init];
         imageLoaderClient.request = [NSURLRequest requestWithURL:[NSURL URLWithString:image.url] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:15.0];
         imageLoaderClient.delegate = self;
-        [self displayImage:[UIImage imageNamed:@"camera.png"]];
+        [self displayImage:[AsyncImageView cameraImage]];
     }
     return self;
 }
@@ -80,9 +89,15 @@
 }
 
 -(void)displayImage:(UIImage *)image {
+    if (image == currentImage)
+        return;
+
+    self.currentImage = image;
+
     if (self.subviews.count > 0) {
         [[self.subviews objectAtIndex:0] removeFromSuperview];
     }
+        
     UIImageView *imgView;
     if (usedInList) {
         //UIImage *newImage = [UIImage imageWithImage:image scaledToSize:self.frame.size];
@@ -129,6 +144,9 @@
 
 
 -(void)getImage {
+    if (currentImage != [AsyncImageView cameraImage]) {
+        return;
+    }
     JSImageLoader *imageLoader = [JSImageLoader sharedInstance];
     [imageLoader addClientToDownloadQueue:imageLoaderClient];
 }
@@ -141,7 +159,7 @@
     self.imageLoaderClient = [[JSImageLoaderClient alloc] init];
     imageLoaderClient.request = [NSURLRequest requestWithURL:[NSURL URLWithString:image.url] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:15.0];
     imageLoaderClient.delegate = self;
-    [self displayImage:[UIImage imageNamed:@"camera.png"]];
+    [self displayImage:[AsyncImageView cameraImage]];
 }
 
 /*

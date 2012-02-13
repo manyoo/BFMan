@@ -17,6 +17,7 @@
 
 @interface FullImageViewController (PrivateMethod)
 - (void)displayCurrentImageNote;
+- (void)focusOnPage:(NSInteger)currentPage;
 @end
 
 @implementation FullImageViewController
@@ -104,9 +105,10 @@
                                                                                         action:@selector(imageViewSwipedDown:)];
         swipeDown.direction = UISwipeGestureRecognizerDirectionDown;
         [imgView addGestureRecognizer:swipeDown];
-    
-        [imgView getImage];
-                
+        
+        //[imgView getImage];
+        imgView.tag = 101;
+        
         x += scrollView.frame.size.width;
         
         [subScrollView addSubview:imgView];
@@ -129,6 +131,7 @@
     [self.view addSubview:noteLabel];
     
     [self displayCurrentImageNote];
+    [self focusOnPage:0];
 }
 
 - (void)viewDidUnload
@@ -178,11 +181,13 @@
     if (titleBarOn) {
         [self displayCurrentImageNote];
     }
+    [self focusOnPage:page];
 }
 
 - (void)displayPage:(NSInteger)pagee {
     [scrollView scrollRectToVisible:CGRectMake(pagee * scrollView.frame.size.width, 0, scrollView.frame.size.width, scrollView.frame.size.height) animated:NO];
 }
+
 
 - (IBAction)cancel:(id)sender {
     [self dismissModalViewControllerAnimated:YES];
@@ -268,6 +273,18 @@
         noteLabel.frame = CGRectMake(0, curSize.height - noteSize.height, curSize.width, noteSize.height);
         noteLabel.alpha = 0.7;
     }];
+}
+
+- (void)focusOnPage:(NSInteger)currentPage {
+    int totalPages = subScrollViews.count;
+    for (int i = 0; i < totalPages; ++i) {
+        UIScrollView *sub = [subScrollViews objectAtIndex:i];
+        AsyncImageView *imgView = (AsyncImageView *)[sub viewWithTag:101];
+        if (abs(i - currentPage) < 3) {
+            [imgView getImage];
+        } else
+            [imgView displayImage:[AsyncImageView cameraImage]];
+    }
 }
 
 @end

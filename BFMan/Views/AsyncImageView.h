@@ -18,6 +18,9 @@
 @property (nonatomic) BOOL usedInPageControl;
 @property (nonatomic) BOOL noBorder;
 @property (nonatomic, retain) JSImageLoaderClient *imageLoaderClient;
+@property (nonatomic, strong) UIImage *currentImage;
+
++ (UIImage *)cameraImage;
 
 -(AsyncImageView *)initWithItemImg:(ItemImg *)image andFrame:(CGRect)frame;
 
