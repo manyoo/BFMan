@@ -223,6 +223,7 @@
     [newParams setValue:fieldsStr forKey:@"fields"];
     [newParams setValue:TAOBAOKE_PID forKey:@"pid"];
     [newParams setValue:@"true" forKey:@"is_mobile"];
+    [newParams setValue:@"BFMan" forKey:@"outer_code"];
     [self processMethod:TOP_TBK_ITEMS_GET params:newParams];
 }
 
@@ -234,6 +235,7 @@
     [params setValue:@"click_url" forKey:@"fields"];
     [params setValue:TAOBAOKE_PID_FOR_WEIBO forKey:@"pid"];
     [params setValue:itemId forKey:@"num_iids"];
+    [params setValue:@"BFMan" forKey:@"outer_code"];
     [self processMethod:TOP_TBK_CONVERT_ITEM params:params];
 }
 
@@ -245,6 +247,7 @@
     [params setValue:[[TaobaokeItem fields] componentsJoinedByString:@","] forKey:@"fields"];
     [params setValue:TAOBAOKE_PID forKey:@"pid"];
     [params setValue:[items componentsJoinedByString:@","] forKey:@"num_iids"];
+    [params setValue:@"BFMan" forKey:@"outer_code"];
     [params setValue:@"true" forKey:@"is_mobile"];
     [self processMethod:TOP_TBK_CONVERT_ITEM params:params];
 }
