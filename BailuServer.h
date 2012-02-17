@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "ASIHTTPRequest.h"
+#import "ASIFormDataRequest.h"
 
 @protocol BailuServerDelegate <NSObject>
 
@@ -18,7 +18,7 @@
 
 @interface BailuServer : NSObject
 
-@property (nonatomic, strong) ASIHTTPRequest *request;
+@property (nonatomic, strong) ASIFormDataRequest *request;
 @property (nonatomic, unsafe_unretained) id<BailuServerDelegate> delegate;
 
 - (void)getShortUrlFor:(NSString *)url;

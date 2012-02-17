@@ -14,21 +14,23 @@
 @synthesize request, delegate;
 
 - (void)getShortUrlFor:(NSString *)url {
-    NSURL *u = [[NSURL alloc] initWithString:[NSString stringWithFormat:@"http://bai.lu/api?url=%@",[url URLEncodedString]]];
-    self.request = [[ASIHTTPRequest alloc] initWithURL:u];
+    NSURL *u = [[NSURL alloc] initWithString:@"http://dwz.cn/create.php"];
+    self.request = [[ASIFormDataRequest alloc] initWithURL:u];
+    request.requestMethod = @"POST";
+    [request setPostValue:url forKey:@"url"];
     request.delegate = self;
     [request startAsynchronous];
 }
 
-- (void)requestFailed:(ASIHTTPRequest *)request {
+- (void)requestFailed:(ASIFormDataRequest *)request {
     [delegate shortUrlFailed:@""];
 }
 
-- (void)requestFinished:(ASIHTTPRequest *)request {
+- (void)requestFinished:(ASIFormDataRequest *)request {
     SBJsonParser *parser = [[SBJsonParser alloc] init];
     NSDictionary *json = [parser objectWithData:request.responseData];
-    if ([[json objectForKey:@"status"] isEqualToString:@"ok"]) {
-        [delegate shortUrlFinished:[json objectForKey:@"url"]];
+    if ([[json objectForKey:@"status"] intValue] == 0) {
+        [delegate shortUrlFinished:[json objectForKey:@"tinyurl"]];
     } else
         [delegate shortUrlFailed:@""];
 }
