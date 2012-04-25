@@ -44,10 +44,10 @@
 	// Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor lightGrayColor];
     
-    self.channelNames = [NSArray arrayWithObjects:@"服饰", @"男人", @"女人",@"时尚",@"美容",@"运动",@"亲子",@"创意",@"数码", @"汽车", @"旅游", @"结婚", @"家居", @"娱乐", @"明星",@"宠物", @"旺铺",@"商城家装", nil];
-    int channel_ids[18] = {2,3,9,7,8,4,6,13,1,14,18,21,5,15,16,17,22,23};
-    self.channelIds = [[NSMutableArray alloc] initWithCapacity:18];
-    for (int i = 0; i < 18; ++i) {
+    self.channelNames = [NSArray arrayWithObjects:@"服饰", @"男人", @"女人",@"时尚",@"美容",@"运动",@"亲子",@"创意",@"数码", @"汽车", @"旅游", @"结婚", @"家居", @"娱乐", @"明星",@"宠物", @"旺铺",@"商城家装", @"实惠", nil];
+    int channel_ids[19] = {2,3,9,7,8,4,6,13,1,14,18,21,5,15,16,17,22,23,20};
+    self.channelIds = [[NSMutableArray alloc] initWithCapacity:19];
+    for (int i = 0; i < 19; ++i) {
         [channelIds addObject:[NSNumber numberWithInt:channel_ids[i]]];
     }
     
