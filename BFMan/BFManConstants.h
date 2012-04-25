@@ -34,6 +34,8 @@ _EXTERN NSString *const SINA_WEIBO_APP_SECRET_STR   _INITIALIZE_AS(@"92d5cb536fa
 _EXTERN NSString *const TAOBAO_APP_KEY_STR          _INITIALIZE_AS(@"12504452");
 _EXTERN NSString *const TAOBAO_APP_SECRET_STR       _INITIALIZE_AS(@"b6dd929403f5e42812ed8750b466d786");
 
+_EXTERN NSString *const TAOBAO_TTID_STR             _INITIALIZE_AS(@"400000_12504452@bfman_iphone_2.0.0");
+
 _EXTERN NSString *const TAOBAO_API_ADDR             _INITIALIZE_AS(@"http://gw.api.taobao.com/router/rest");
 
 

@@ -14,6 +14,7 @@
 #import "ItemsListViewController.h"
 #import "TaobaoBrowserViewController.h"
 #import "TaobaokeItem.h"
+#import "NSString+URLConvert.h"
 
 @interface FullImageViewController (PrivateMethod)
 - (void)displayCurrentImageNote;
@@ -254,7 +255,7 @@
 
 - (void)openBrowser:(TaobaokeItem *)item {
     TaobaoBrowserViewController *browser = [[TaobaoBrowserViewController alloc] initWithNibName:@"TaobaoBrowserViewController" bundle:nil];
-    browser.itemUrl = item.clickUrl;
+    browser.itemUrl = [item.clickUrl newClickUrlForItemId:item.itemID];
     browser.picUrl = item.picUrl;
     browser.itemId = item.itemID;
     browser.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;

@@ -105,6 +105,9 @@
 #pragma mark - UIWebViewControllerDelegate
 
 - (void)webViewDidFinishLoad:(UIWebView *)aWebView {
+    [aWebView stringByEvaluatingJavaScriptFromString:@"var btn=document.getElementsByClassName(\"cart btn\")[0];btn.style.display=\"none\";"];
+    [aWebView stringByEvaluatingJavaScriptFromString:@"var btn2 = document.getElementsByClassName(\"btn-blue\")[0];btn2.style.display=\"none\";"];
+    
     if ([aWebView canGoBack])
         self.previousButton.enabled = YES;
     else

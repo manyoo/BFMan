@@ -124,6 +124,7 @@
 		077DB2141547FD420093C727 /* ChannelSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 077DB2131547FD420093C727 /* ChannelSelectionViewController.m */; };
 		077DB217154806580093C727 /* ChannelSelectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 077DB216154806580093C727 /* ChannelSelectionViewController.xib */; };
 		077DB219154809A40093C727 /* orange_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 077DB218154809A40093C727 /* orange_button.png */; };
+		077DB21E15482C9C0093C727 /* NSString+URLConvert.m in Sources */ = {isa = PBXBuildFile; fileRef = 077DB21D15482C9B0093C727 /* NSString+URLConvert.m */; };
 		077F9EB614DFBD480035462C /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 077F9EB414DFBD480035462C /* libMobClickLibrary.a */; };
 		077F9EB914DFBECF0035462C /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 077F9EB814DFBECF0035462C /* CoreTelephony.framework */; };
 		07823A5514E35F7A0030F722 /* MoreInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07823A5314E35F7A0030F722 /* MoreInfoViewController.m */; };
@@ -378,6 +379,8 @@
 		077DB2131547FD420093C727 /* ChannelSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChannelSelectionViewController.m; path = BFMan/Controller/ChannelSelectionViewController.m; sourceTree = "<group>"; };
 		077DB216154806580093C727 /* ChannelSelectionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ChannelSelectionViewController.xib; path = BFMan/Controller/ChannelSelectionViewController.xib; sourceTree = "<group>"; };
 		077DB218154809A40093C727 /* orange_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = orange_button.png; sourceTree = "<group>"; };
+		077DB21C15482C9B0093C727 /* NSString+URLConvert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+URLConvert.h"; sourceTree = "<group>"; };
+		077DB21D15482C9B0093C727 /* NSString+URLConvert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+URLConvert.m"; sourceTree = "<group>"; };
 		077F9EB414DFBD480035462C /* libMobClickLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMobClickLibrary.a; sourceTree = "<group>"; };
 		077F9EB514DFBD480035462C /* MobClick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClick.h; sourceTree = "<group>"; };
 		077F9EB814DFBECF0035462C /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
@@ -558,6 +561,8 @@
 			isa = PBXGroup;
 			children = (
 				077F9EB414DFBD480035462C /* libMobClickLibrary.a */,
+				077DB21C15482C9B0093C727 /* NSString+URLConvert.h */,
+				077DB21D15482C9B0093C727 /* NSString+URLConvert.m */,
 				077F9EB514DFBD480035462C /* MobClick.h */,
 				0774A6B314B9CD8200D795AE /* AppDelegate.h */,
 				0774A6B414B9CD8200D795AE /* AppDelegate.m */,
@@ -1115,6 +1120,7 @@
 				07823A5A14E3617C0030F722 /* BailuServer.m in Sources */,
 				07B8653E14E4C26400233FAD /* HelpPhotoViewController.m in Sources */,
 				077DB2141547FD420093C727 /* ChannelSelectionViewController.m in Sources */,
+				077DB21E15482C9C0093C727 /* NSString+URLConvert.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1205,8 +1211,8 @@
 		0774A6D214B9CD8200D795AE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Shiyou Wang";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Shiyou Wang";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Shiyou Wang (9RG83E9MH8)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Shiyou Wang (9RG83E9MH8)";
 				COMPRESS_PNG_FILES = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BFMan/BFMan-Prefix.pch";
@@ -1217,8 +1223,8 @@
 					"\"$(SRCROOT)/BFMan\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "54C26455-3B1F-4AB1-8513-C4742A8DC074";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "54C26455-3B1F-4AB1-8513-C4742A8DC074";
+				PROVISIONING_PROFILE = "A3A7BE77-8889-40A7-92A7-881420FD0D5B";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "82DD15C7-E58C-4806-B003-B3FD57E94092";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1226,8 +1232,8 @@
 		0774A6D314B9CD8200D795AE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Shiyou Wang";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Shiyou Wang";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Shiyou Wang (9RG83E9MH8)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Shiyou Wang (9RG83E9MH8)";
 				COMPRESS_PNG_FILES = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BFMan/BFMan-Prefix.pch";
@@ -1238,8 +1244,8 @@
 					"\"$(SRCROOT)/BFMan\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "54C26455-3B1F-4AB1-8513-C4742A8DC074";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "54C26455-3B1F-4AB1-8513-C4742A8DC074";
+				PROVISIONING_PROFILE = "A3A7BE77-8889-40A7-92A7-881420FD0D5B";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "82DD15C7-E58C-4806-B003-B3FD57E94092";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
