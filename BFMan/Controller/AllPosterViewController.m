@@ -115,7 +115,7 @@
 
 - (void)loadMoreData {
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
-    [params setValue:[NSNumber numberWithInt:DEFAULT_CHANNEL] forKey:@"channel_id"];
+    [params setValue:self.currentChannelId forKey:@"channel_id"];
     [params setValue:@"20" forKey:@"page_size"];
     [params setValue:[NSNumber numberWithInt:(self.lastpageLoaded + 1)] forKey:@"page_no"];
     self.apiType = API_GETALL;

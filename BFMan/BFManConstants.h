@@ -19,9 +19,6 @@
 #define _INITIALIZE_AS(x)
 #endif
 
-// the default poster channel for Men.
-#define DEFAULT_CHANNEL 3
-
 #define WEIBO_USER_FILE @"weibo_user"
 #define ACCESS_KEY_FILE @"weibo_access"
 
