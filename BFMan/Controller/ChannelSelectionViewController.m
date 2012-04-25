@@ -70,8 +70,8 @@
     float height = self.view.bounds.size.height;
     for (NSString *type in channelNames) {
         CGSize size = [type sizeWithFont:[UIFont systemFontOfSize:15] constrainedToSize:CGSizeMake(MAXFLOAT, height)];
-        UIView *buttonView = [[UIView alloc] initWithFrame:CGRectMake(x, 0, size.width, height)];
-        UIButton *typeButton = [[UIButton alloc] initWithFrame:CGRectMake(0, (height - size.height) / 2, size.width, size.height)];
+        UIView *buttonView = [[UIView alloc] initWithFrame:CGRectMake(x, 0, size.width + 10, height)];
+        UIButton *typeButton = [[UIButton alloc] initWithFrame:CGRectMake(0, (height - size.height) / 2, size.width + 10, size.height)];
         [typeButton setTitle:type forState:UIControlStateNormal];
         [typeButton addTarget:self action:@selector(buttonTapped:) forControlEvents:UIControlEventTouchUpInside];
         [self setNormal:typeButton];
@@ -90,6 +90,10 @@
     [self setHighlight:currentButton];
     
     [self.view addSubview:scrollView];
+    
+    self.view.layer.shadowRadius = 2.0;
+    self.view.layer.shadowOpacity = 0.7;
+    self.view.layer.shadowOffset = CGSizeMake(0, 1);
 }
 
 - (void)viewDidUnload
