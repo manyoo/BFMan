@@ -10,6 +10,7 @@
 #import "EGORefreshTableHeaderView.h"
 #import "TBServer.h"
 #import "MBProgressHUD.h"
+#import "ChannelSelectionViewController.h"
 
 typedef enum {
     CELL_RELOAD,
@@ -27,7 +28,7 @@ typedef enum {
 @class LoadingTableViewCell;
 @class HuaBao;
 
-@interface PosterViewController : UITableViewController <EGORefreshTableHeaderDelegate,TBServerDelegate, MBProgressHUDDelegate>
+@interface PosterViewController : UITableViewController <EGORefreshTableHeaderDelegate,TBServerDelegate, MBProgressHUDDelegate, ChannelSelectionViewControllerDelegate>
 
 @property (nonatomic, strong) TBServer *server;
 @property (nonatomic) APIType apiType;
@@ -46,10 +47,14 @@ typedef enum {
 @property (nonatomic) BOOL refreshEnabled;
 @property (nonatomic) BOOL multipageEnabled;
 
+@property (nonatomic, strong) ChannelSelectionViewController *channelSelectionViewController;
+@property (nonatomic, strong) NSNumber *currentChannelId;
+
 - (void)reloadTableViewDataSource;
 - (void)doneLoadingTableViewData;
 
 - (void)loadMoreData;
+- (void)loadNewChannel;
 
 - (void)openHuabao:(HuaBao *)huabao;
 

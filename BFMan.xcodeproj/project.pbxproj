@@ -121,6 +121,9 @@
 		0774A7EA14B9D49C00D795AE /* HuaBao.m in Sources */ = {isa = PBXBuildFile; fileRef = 0774A7E914B9D49C00D795AE /* HuaBao.m */; };
 		0774A7ED14B9D7EC00D795AE /* HuabaoPicture.m in Sources */ = {isa = PBXBuildFile; fileRef = 0774A7EC14B9D7EC00D795AE /* HuabaoPicture.m */; };
 		0774A7F014B9D91000D795AE /* HuabaoAuctionInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 0774A7EF14B9D91000D795AE /* HuabaoAuctionInfo.m */; };
+		077DB2141547FD420093C727 /* ChannelSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 077DB2131547FD420093C727 /* ChannelSelectionViewController.m */; };
+		077DB217154806580093C727 /* ChannelSelectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 077DB216154806580093C727 /* ChannelSelectionViewController.xib */; };
+		077DB219154809A40093C727 /* orange_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 077DB218154809A40093C727 /* orange_button.png */; };
 		077F9EB614DFBD480035462C /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 077F9EB414DFBD480035462C /* libMobClickLibrary.a */; };
 		077F9EB914DFBECF0035462C /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 077F9EB814DFBECF0035462C /* CoreTelephony.framework */; };
 		07823A5514E35F7A0030F722 /* MoreInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07823A5314E35F7A0030F722 /* MoreInfoViewController.m */; };
@@ -371,6 +374,10 @@
 		0774A7EC14B9D7EC00D795AE /* HuabaoPicture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HuabaoPicture.m; sourceTree = "<group>"; };
 		0774A7EE14B9D91000D795AE /* HuabaoAuctionInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HuabaoAuctionInfo.h; sourceTree = "<group>"; };
 		0774A7EF14B9D91000D795AE /* HuabaoAuctionInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HuabaoAuctionInfo.m; sourceTree = "<group>"; };
+		077DB2121547FD420093C727 /* ChannelSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChannelSelectionViewController.h; path = BFMan/Controller/ChannelSelectionViewController.h; sourceTree = "<group>"; };
+		077DB2131547FD420093C727 /* ChannelSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChannelSelectionViewController.m; path = BFMan/Controller/ChannelSelectionViewController.m; sourceTree = "<group>"; };
+		077DB216154806580093C727 /* ChannelSelectionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ChannelSelectionViewController.xib; path = BFMan/Controller/ChannelSelectionViewController.xib; sourceTree = "<group>"; };
+		077DB218154809A40093C727 /* orange_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = orange_button.png; sourceTree = "<group>"; };
 		077F9EB414DFBD480035462C /* libMobClickLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMobClickLibrary.a; sourceTree = "<group>"; };
 		077F9EB514DFBD480035462C /* MobClick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClick.h; sourceTree = "<group>"; };
 		077F9EB814DFBECF0035462C /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
@@ -471,6 +478,7 @@
 				07B3CF5614DBCC18005026F5 /* TaobaoBrowserViewController.xib */,
 				07823A5414E35F7A0030F722 /* MoreInfoViewController.xib */,
 				07B8653A14E4C26400233FAD /* HelpPhotoViewController.xib */,
+				077DB216154806580093C727 /* ChannelSelectionViewController.xib */,
 				07836B1614CBA199005B18A7 /* PosterViewController.h */,
 				07836B1714CBA199005B18A7 /* PosterViewController.m */,
 				07836B1B14CBA24D005B18A7 /* HotPosterViewController.h */,
@@ -491,6 +499,8 @@
 				07823A5314E35F7A0030F722 /* MoreInfoViewController.m */,
 				07B8653B14E4C26400233FAD /* HelpPhotoViewController.h */,
 				07B8653C14E4C26400233FAD /* HelpPhotoViewController.m */,
+				077DB2121547FD420093C727 /* ChannelSelectionViewController.h */,
+				077DB2131547FD420093C727 /* ChannelSelectionViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -724,6 +734,7 @@
 		0774A76C14B9CF1D00D795AE /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				077DB218154809A40093C727 /* orange_button.png */,
 				07D4B7EE14E7E46200697C5B /* help1.png */,
 				07D4B7EF14E7E46200697C5B /* help2.png */,
 				0744DC7D14E7A61F00BAD027 /* Default@2x.png */,
@@ -972,6 +983,8 @@
 				0744DC7E14E7A61F00BAD027 /* Default@2x.png in Resources */,
 				07D4B7F014E7E46200697C5B /* help1.png in Resources */,
 				07D4B7F114E7E46200697C5B /* help2.png in Resources */,
+				077DB217154806580093C727 /* ChannelSelectionViewController.xib in Resources */,
+				077DB219154809A40093C727 /* orange_button.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1101,6 +1114,7 @@
 				07823A5514E35F7A0030F722 /* MoreInfoViewController.m in Sources */,
 				07823A5A14E3617C0030F722 /* BailuServer.m in Sources */,
 				07B8653E14E4C26400233FAD /* HelpPhotoViewController.m in Sources */,
+				077DB2141547FD420093C727 /* ChannelSelectionViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1191,8 +1205,8 @@
 		0774A6D214B9CD8200D795AE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Shiyou Wang (9RG83E9MH8)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Shiyou Wang (9RG83E9MH8)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Shiyou Wang";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Shiyou Wang";
 				COMPRESS_PNG_FILES = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BFMan/BFMan-Prefix.pch";
@@ -1203,8 +1217,8 @@
 					"\"$(SRCROOT)/BFMan\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "82DD15C7-E58C-4806-B003-B3FD57E94092";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "82DD15C7-E58C-4806-B003-B3FD57E94092";
+				PROVISIONING_PROFILE = "54C26455-3B1F-4AB1-8513-C4742A8DC074";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "54C26455-3B1F-4AB1-8513-C4742A8DC074";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1212,8 +1226,8 @@
 		0774A6D314B9CD8200D795AE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Shiyou Wang (9RG83E9MH8)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Shiyou Wang (9RG83E9MH8)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Shiyou Wang";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Shiyou Wang";
 				COMPRESS_PNG_FILES = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BFMan/BFMan-Prefix.pch";
@@ -1224,8 +1238,8 @@
 					"\"$(SRCROOT)/BFMan\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "82DD15C7-E58C-4806-B003-B3FD57E94092";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "82DD15C7-E58C-4806-B003-B3FD57E94092";
+				PROVISIONING_PROFILE = "54C26455-3B1F-4AB1-8513-C4742A8DC074";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "54C26455-3B1F-4AB1-8513-C4742A8DC074";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

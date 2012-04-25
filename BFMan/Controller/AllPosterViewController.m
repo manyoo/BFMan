@@ -54,7 +54,7 @@
     
     self.server = [[TBServer alloc] initWithDelegate:self];
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
-    [params setValue:[NSNumber numberWithInt:DEFAULT_CHANNEL] forKey:@"channel_id"];
+    [params setValue:self.currentChannelId forKey:@"channel_id"];
     [params setValue:@"20" forKey:@"page_size"];
     [params setValue:@"1" forKey:@"page_no"];
     self.allItemsReloading = YES;
@@ -118,6 +118,16 @@
     [params setValue:[NSNumber numberWithInt:DEFAULT_CHANNEL] forKey:@"channel_id"];
     [params setValue:@"20" forKey:@"page_size"];
     [params setValue:[NSNumber numberWithInt:(self.lastpageLoaded + 1)] forKey:@"page_no"];
+    self.apiType = API_GETALL;
+    [self.server getPosters:params];
+}
+
+- (void)loadNewChannel {
+    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+    [params setValue:self.currentChannelId forKey:@"channel_id"];
+    [params setValue:@"20" forKey:@"page_size"];
+    [params setValue:@"1" forKey:@"page_no"];
+    self.allItemsReloading = YES;
     self.apiType = API_GETALL;
     [self.server getPosters:params];
 }

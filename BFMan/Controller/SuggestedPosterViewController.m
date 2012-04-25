@@ -40,7 +40,7 @@
 - (void)doRequest {
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
     [params setValue:@"RECOMMEND" forKey:@"appointed_type"];
-    [params setValue:[NSNumber numberWithInt:DEFAULT_CHANNEL] forKey:@"channel_ids"];
+    [params setValue:self.currentChannelId forKey:@"channel_ids"];
     [params setValue:@"20" forKey:@"re_num"];
     self.apiType = API_GETRECOMMEND;
     [self.server getAppointedPosters:params];
@@ -106,6 +106,10 @@
         [self.tableView reloadData];   
     } else
         [super requestFinished:data];
+}
+
+- (void)loadNewChannel {
+    [self doRequest];
 }
 
 @end

@@ -15,7 +15,7 @@
 #import "HuabaoAuctionInfo.h"
 
 @implementation PosterViewController
-@synthesize posters, refreshEnabled, multipageEnabled, cellTypes, refreshHeaderView, lastpageLoaded, reloading, allItemsReloading, loadingCell, server, apiType, huabaoPictures, selectedHuaBao, hud;
+@synthesize posters, refreshEnabled, multipageEnabled, cellTypes, refreshHeaderView, lastpageLoaded, reloading, allItemsReloading, loadingCell, server, apiType, huabaoPictures, selectedHuaBao, hud, channelSelectionViewController, currentChannelId;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -46,6 +46,13 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     self.tableView.allowsSelection = NO;
+    
+    self.channelSelectionViewController = [[ChannelSelectionViewController alloc] initWithNibName:@"ChannelSelectionViewController" bundle:nil];
+    channelSelectionViewController.delegate = self;
+    channelSelectionViewController.view.frame = CGRectMake(0, 0, 320, 40);
+    
+    // 默认频道为 服饰
+    self.currentChannelId = [NSNumber numberWithInt:2];
     
     if (refreshEnabled) {
         self.refreshHeaderView = [[EGORefreshTableHeaderView alloc] initWithFrame:CGRectMake(0.0f,
@@ -112,6 +119,14 @@
 {
     // Return the number of rows in the section.
     return [cellTypes count];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return 40;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    return channelSelectionViewController.view;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -322,6 +337,16 @@
 - (void)hudWasHidden:(MBProgressHUD *)hud {
     [hud removeFromSuperview];
     self.hud = nil;
+}
+
+- (void)loadNewChannel {
+    
+}
+
+- (void)channelSelected:(NSNumber *)channelId {
+    self.currentChannelId = channelId;
+    
+    [self loadNewChannel];
 }
 
 @end
