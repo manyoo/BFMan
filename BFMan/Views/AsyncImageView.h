@@ -25,6 +25,7 @@ typedef enum {
 @property (nonatomic) BOOL noBorder;
 @property (nonatomic, retain) JSImageLoaderClient *imageLoaderClient;
 @property (nonatomic, strong) UIImage *currentImage;
+@property (nonatomic) BOOL isSelected;
 
 + (UIImage *)cameraImage;
 

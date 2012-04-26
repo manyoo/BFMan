@@ -48,7 +48,7 @@ UIImage *globalImage = nil;
 @implementation AsyncImageView
 
 @synthesize image = _image;
-@synthesize usedInList, usedInPageControl, imageLoaderClient, noBorder, currentImage;
+@synthesize usedInList, usedInPageControl, imageLoaderClient, noBorder, currentImage, isSelected;
 
 + (UIImage *)cameraImage {
     if (globalImage == nil) {
@@ -147,6 +147,14 @@ UIImage *globalImage = nil;
         imgView.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
     }
     
+    if (isSelected) {
+        imgView.layer.borderWidth = 2;
+        imgView.layer.borderColor = [UIColor orangeColor].CGColor;
+    } else {
+        imgView.layer.borderWidth = 0.0;
+        imgView.layer.borderColor = [UIColor clearColor].CGColor;
+    }
+    
     [self addSubview:imgView];
     [imgView setNeedsLayout];
     [self setNeedsLayout];
@@ -185,6 +193,7 @@ UIImage *globalImage = nil;
     if (imgView == nil) {
         return;
     }
+    self.isSelected = sel;
     
     if (sel) {
         imgView.layer.borderWidth = 2;
