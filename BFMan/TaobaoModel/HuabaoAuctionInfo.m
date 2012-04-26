@@ -7,6 +7,7 @@
 //
 
 #import "HuabaoAuctionInfo.h"
+#import "NSString+HTML.h"
 
 @implementation HuabaoAuctionInfo
 
@@ -17,10 +18,10 @@
     
     hbInfo.auctionId = [dict objectForKey:@"auction_id"];
     hbInfo.posterId = [dict objectForKey:@"poster_id"];
-    hbInfo.auctionTitle = [dict objectForKey:@"auction_title"];
-    hbInfo.auctionShortTitle = [dict objectForKey:@"auction_short_title"];
+    hbInfo.auctionTitle = [[dict objectForKey:@"auction_title"] stringByDecodingHTMLEntities];
+    hbInfo.auctionShortTitle = [[dict objectForKey:@"auction_short_title"] stringByDecodingHTMLEntities];
     hbInfo.auctionPrice = [NSNumber numberWithFloat:[[dict objectForKey:@"auction_price"] floatValue]];
-    hbInfo.auctionNote = [dict objectForKey:@"auction_note"];
+    hbInfo.auctionNote = [[dict objectForKey:@"auction_note"] stringByDecodingHTMLEntities];
     hbInfo.auctionUrl = [dict objectForKey:@"auction_url"];
     hbInfo.picId = [dict objectForKey:@"pic_id"];
     hbInfo.auctionPosition = [dict objectForKey:@"auction_position"];
