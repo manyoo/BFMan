@@ -31,6 +31,7 @@
 #import "NSString+MD5.h"
 
 #import <libkern/OSAtomic.h>
+#import "MBProgressHUD.h"
 
 @interface JSImageLoaderCache (Privates)
 
@@ -134,12 +135,13 @@ static void * volatile sharedInstance = nil;
 		[[NSURLCache sharedURLCache] storeCachedResponse:cachedResponse forRequest:request];
 		
 		// Trim the ache if it exceeds the max size
+        /*
 		if ([self sizeOfCache] >= kMaxDiskCacheSize && !self.trimming) {
             self.trimming = YES;
 			[self trimDiskCacheFilesToMaxSize:kMaxDiskCacheSize * 0.6];
             self.trimming = NO;
 		}
-		
+		*/
 		// Get the local file path
 		NSString *localPath = [self localPathForURL:[request URL]];
 		
@@ -201,11 +203,16 @@ static void * volatile sharedInstance = nil;
 }
 
 
-- (void)trimDiskCacheFilesToMaxSize:(NSUInteger)targetBytes {
+- (void)trimDiskCacheFilesToZero:(MBProgressHUD *)hud {
 	// Determine the target size of the cache
-	targetBytes = MIN(kMaxDiskCacheSize, MAX(0, targetBytes));
+	NSInteger targetBytes = 0;
 	// Check if the currnet cache size is bigger than the target
-	if ([self sizeOfCache] > targetBytes) {
+    NSInteger totalSize = [self sizeOfCache];
+    
+    [[NSFileManager defaultManager] removeItemAtPath:[self cacheDir] error:nil];
+    return;
+    
+	if (totalSize > targetBytes) {
 		// Get the cache contents
 		NSArray *dirContents = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:[self cacheDir] error:nil];
 		
@@ -216,29 +223,32 @@ static void * volatile sharedInstance = nil;
 		for (NSString *file in dirContents) {
             [filteredArray addObject:[cacheDirectory stringByAppendingPathComponent:file]];
 		}
-		
-		// Sort the images by modification date
-		NSMutableArray *sortedDirContents = [[filteredArray sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
-            NSDictionary *attrs1 = [[NSFileManager defaultManager] attributesOfItemAtPath:obj1 error:nil];
-            NSDictionary *attrs2 = [[NSFileManager defaultManager] attributesOfItemAtPath:obj2 error:nil];
-            return [[attrs2 objectForKey:NSFileModificationDate] compare:[attrs1 objectForKey:NSFileModificationDate]];
-        }] mutableCopy];
+		/*
+         // Sort the images by modification date
+         NSMutableArray *sortedDirContents = [[filteredArray sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+         NSDictionary *attrs1 = [[NSFileManager defaultManager] attributesOfItemAtPath:obj1 error:nil];
+         NSDictionary *attrs2 = [[NSFileManager defaultManager] attributesOfItemAtPath:obj2 error:nil];
+         return [[attrs2 objectForKey:NSFileModificationDate] compare:[attrs1 objectForKey:NSFileModificationDate]];
+         }] mutableCopy];
+         */
 		// While the cache size is bigger than the target size and the cache contents still exist
         NSError *error = nil;
-		while (_cacheSize > targetBytes && [sortedDirContents count] > 0) {
+		while (_cacheSize > targetBytes && [filteredArray count] > 0) {
 			// Decrease the total cache size b the size of the file to be removed
-            NSDictionary *attrs = [[NSFileManager defaultManager] attributesOfItemAtPath:[sortedDirContents lastObject] error:&error];
+            NSDictionary *attrs = [[NSFileManager defaultManager] attributesOfItemAtPath:[filteredArray lastObject] error:&error];
 			_cacheSize -= [[attrs objectForKey:NSFileSize] integerValue];
 			// Remove the file
-			[[NSFileManager defaultManager] removeItemAtPath:[sortedDirContents lastObject] error:&error];
+			[[NSFileManager defaultManager] removeItemAtPath:[filteredArray lastObject] error:&error];
 			// Remove from the array
-			[sortedDirContents removeLastObject];
+			[filteredArray removeLastObject];
+            
+            hud.progress = 1 - ((float)_cacheSize)/totalSize;
 		}
 		// Clean up
         [filteredArray release];
+        //[sortedDirContents release];
 	}
 }
-
 #pragma mark Memory management
 
 - (void)dealloc {

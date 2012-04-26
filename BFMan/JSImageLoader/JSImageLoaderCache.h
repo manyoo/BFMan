@@ -34,6 +34,7 @@
 // Uncomment to enable debugging NSLog statements
 //#define DiskCacheDebug
 
+@class MBProgressHUD;
 
 @interface JSImageLoaderCache : NSObject {
 @private
@@ -53,6 +54,6 @@
 			   request:(NSURLRequest *)request
 			  response:(NSURLResponse *)response;
 - (void)clearCachedDataForRequest:(NSURLRequest *)request;
-
+- (void)trimDiskCacheFilesToZero:(MBProgressHUD *)hud;
 
 @end
