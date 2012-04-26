@@ -130,7 +130,6 @@
 		077DB217154806580093C727 /* ChannelSelectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 077DB216154806580093C727 /* ChannelSelectionViewController.xib */; };
 		077DB219154809A40093C727 /* orange_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 077DB218154809A40093C727 /* orange_button.png */; };
 		077DB21E15482C9C0093C727 /* NSString+URLConvert.m in Sources */ = {isa = PBXBuildFile; fileRef = 077DB21D15482C9B0093C727 /* NSString+URLConvert.m */; };
-		077DB2201548359C0093C727 /* 14-tag.png in Resources */ = {isa = PBXBuildFile; fileRef = 077DB21F1548359C0093C727 /* 14-tag.png */; };
 		077F9EB614DFBD480035462C /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 077F9EB414DFBD480035462C /* libMobClickLibrary.a */; };
 		077F9EB914DFBECF0035462C /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 077F9EB814DFBECF0035462C /* CoreTelephony.framework */; };
 		07823A5514E35F7A0030F722 /* MoreInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07823A5314E35F7A0030F722 /* MoreInfoViewController.m */; };
@@ -142,6 +141,7 @@
 		07836B2014CBA2F1005B18A7 /* SuggestedPosterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07836B1F14CBA2F1005B18A7 /* SuggestedPosterViewController.m */; };
 		07836B2314CBA320005B18A7 /* AllPosterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07836B2214CBA320005B18A7 /* AllPosterViewController.m */; };
 		078A153114D82BC600D733B6 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 078A153014D82BC600D733B6 /* MBProgressHUD.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		078BDA3415497CA400274A16 /* cart.png in Resources */ = {isa = PBXBuildFile; fileRef = 078BDA3315497CA400274A16 /* cart.png */; };
 		07A4820414D6948D002C1572 /* FullImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07A4820214D6948D002C1572 /* FullImageViewController.m */; };
 		07A4820514D6948D002C1572 /* FullImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07A4820314D6948D002C1572 /* FullImageViewController.xib */; };
 		07ADF49C14DE47D6003054DC /* HuabaoCoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = 07ADF49B14DE47D6003054DC /* HuabaoCoverView.m */; };
@@ -393,7 +393,6 @@
 		077DB218154809A40093C727 /* orange_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = orange_button.png; sourceTree = "<group>"; };
 		077DB21C15482C9B0093C727 /* NSString+URLConvert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+URLConvert.h"; sourceTree = "<group>"; };
 		077DB21D15482C9B0093C727 /* NSString+URLConvert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+URLConvert.m"; sourceTree = "<group>"; };
-		077DB21F1548359C0093C727 /* 14-tag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "14-tag.png"; sourceTree = "<group>"; };
 		077F9EB414DFBD480035462C /* libMobClickLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMobClickLibrary.a; sourceTree = "<group>"; };
 		077F9EB514DFBD480035462C /* MobClick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClick.h; sourceTree = "<group>"; };
 		077F9EB814DFBECF0035462C /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
@@ -413,6 +412,7 @@
 		07836B2214CBA320005B18A7 /* AllPosterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AllPosterViewController.m; path = BFMan/Controller/AllPosterViewController.m; sourceTree = "<group>"; };
 		078A152F14D82BC600D733B6 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		078A153014D82BC600D733B6 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		078BDA3315497CA400274A16 /* cart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cart.png; sourceTree = "<group>"; };
 		07A4820114D6948D002C1572 /* FullImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FullImageViewController.h; path = BFMan/Controller/FullImageViewController.h; sourceTree = "<group>"; };
 		07A4820214D6948D002C1572 /* FullImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FullImageViewController.m; path = BFMan/Controller/FullImageViewController.m; sourceTree = "<group>"; };
 		07A4820314D6948D002C1572 /* FullImageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FullImageViewController.xib; path = BFMan/Controller/FullImageViewController.xib; sourceTree = "<group>"; };
@@ -755,10 +755,10 @@
 		0774A76C14B9CF1D00D795AE /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				078BDA3315497CA400274A16 /* cart.png */,
 				077B45EE15495719008322F9 /* up_arrow.png */,
 				077B45EF15495719008322F9 /* down_arrow.png */,
 				077B45E715492C5C008322F9 /* auction_action_bg@2x.png */,
-				077DB21F1548359C0093C727 /* 14-tag.png */,
 				077DB218154809A40093C727 /* orange_button.png */,
 				07D4B7EE14E7E46200697C5B /* help1.png */,
 				07D4B7EF14E7E46200697C5B /* help2.png */,
@@ -1010,11 +1010,11 @@
 				07D4B7F114E7E46200697C5B /* help2.png in Resources */,
 				077DB217154806580093C727 /* ChannelSelectionViewController.xib in Resources */,
 				077DB219154809A40093C727 /* orange_button.png in Resources */,
-				077DB2201548359C0093C727 /* 14-tag.png in Resources */,
 				071FCEC61548DB7800FD3FF6 /* SmallImageViewController.xib in Resources */,
 				077B45E815492C5C008322F9 /* auction_action_bg@2x.png in Resources */,
 				077B45F015495719008322F9 /* up_arrow.png in Resources */,
 				077B45F115495719008322F9 /* down_arrow.png in Resources */,
+				078BDA3415497CA400274A16 /* cart.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
