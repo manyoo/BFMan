@@ -20,11 +20,13 @@
 @property (nonatomic, strong) NSMutableArray *subScrollViews;
 @property (nonatomic) int page;
 @property (nonatomic) BOOL titleBarOn;
+@property (nonatomic) BOOL itemInfoDisplaying;
 @property (nonatomic) NSInteger itemsDisplayedOnPage;
 @property (nonatomic, strong) HuaBao *huabao;
 @property (nonatomic, strong) NSArray *huabaoPictures;
 @property (nonatomic, strong) NSDictionary *huabaoAuctions;
 @property (nonatomic, strong) ItemsListViewController *itemsViewController;
+@property (nonatomic, strong) UIBarButtonItem *tagButton;
 
 - (void)displayPage:(NSInteger)page;
 - (IBAction)cancel:(id)sender;

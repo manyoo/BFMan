@@ -125,6 +125,7 @@
 		077DB217154806580093C727 /* ChannelSelectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 077DB216154806580093C727 /* ChannelSelectionViewController.xib */; };
 		077DB219154809A40093C727 /* orange_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 077DB218154809A40093C727 /* orange_button.png */; };
 		077DB21E15482C9C0093C727 /* NSString+URLConvert.m in Sources */ = {isa = PBXBuildFile; fileRef = 077DB21D15482C9B0093C727 /* NSString+URLConvert.m */; };
+		077DB2201548359C0093C727 /* 14-tag.png in Resources */ = {isa = PBXBuildFile; fileRef = 077DB21F1548359C0093C727 /* 14-tag.png */; };
 		077F9EB614DFBD480035462C /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 077F9EB414DFBD480035462C /* libMobClickLibrary.a */; };
 		077F9EB914DFBECF0035462C /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 077F9EB814DFBECF0035462C /* CoreTelephony.framework */; };
 		07823A5514E35F7A0030F722 /* MoreInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07823A5314E35F7A0030F722 /* MoreInfoViewController.m */; };
@@ -381,6 +382,7 @@
 		077DB218154809A40093C727 /* orange_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = orange_button.png; sourceTree = "<group>"; };
 		077DB21C15482C9B0093C727 /* NSString+URLConvert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+URLConvert.h"; sourceTree = "<group>"; };
 		077DB21D15482C9B0093C727 /* NSString+URLConvert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+URLConvert.m"; sourceTree = "<group>"; };
+		077DB21F1548359C0093C727 /* 14-tag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "14-tag.png"; sourceTree = "<group>"; };
 		077F9EB414DFBD480035462C /* libMobClickLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMobClickLibrary.a; sourceTree = "<group>"; };
 		077F9EB514DFBD480035462C /* MobClick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClick.h; sourceTree = "<group>"; };
 		077F9EB814DFBECF0035462C /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
@@ -739,6 +741,7 @@
 		0774A76C14B9CF1D00D795AE /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				077DB21F1548359C0093C727 /* 14-tag.png */,
 				077DB218154809A40093C727 /* orange_button.png */,
 				07D4B7EE14E7E46200697C5B /* help1.png */,
 				07D4B7EF14E7E46200697C5B /* help2.png */,
@@ -990,6 +993,7 @@
 				07D4B7F114E7E46200697C5B /* help2.png in Resources */,
 				077DB217154806580093C727 /* ChannelSelectionViewController.xib in Resources */,
 				077DB219154809A40093C727 /* orange_button.png in Resources */,
+				077DB2201548359C0093C727 /* 14-tag.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

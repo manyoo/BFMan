@@ -27,9 +27,9 @@
 @synthesize noteLabel;
 @synthesize images = _images;
 @synthesize page;
-@synthesize titleBarOn, itemsDisplayedOnPage;
+@synthesize titleBarOn, itemsDisplayedOnPage, itemInfoDisplaying;
 @synthesize huabao, huabaoPictures, huabaoAuctions, subScrollViews;
-@synthesize itemsViewController;
+@synthesize itemsViewController, tagButton;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -72,6 +72,20 @@
     self.titleBarOn = YES;
     self.itemsDisplayedOnPage = -1;
     self.titleBar.topItem.title = [NSString stringWithFormat:@"%d of %d", page + 1, [_images count]];
+    
+    self.tagButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"14-tag.png"]
+                                                                  style:UIBarButtonItemStyleBordered
+                                                                 target:self
+                                                                 action:@selector(tagButtonTapped:)];
+    HuabaoPicture *picture = [huabaoPictures objectAtIndex:self.page];
+    NSMutableArray *auc = [huabaoAuctions objectForKey:[NSString stringWithFormat:@"%@", picture.picId]];
+    if (auc != nil) {
+        self.titleBar.topItem.rightBarButtonItem = tagButton;
+    } else {
+        self.titleBar.topItem.rightBarButtonItem = nil;
+    }
+    
+    self.itemInfoDisplaying = NO;
 
     scrollView.bouncesZoom = NO;
     scrollView.delegate = self;
@@ -97,15 +111,7 @@
         UITapGestureRecognizer *oneTap = [[UITapGestureRecognizer alloc] initWithTarget:self
                                                                                  action:@selector(imageViewTouched:)];
         oneTap.numberOfTapsRequired = 1;
-        [imgView addGestureRecognizer:oneTap];   
-        UISwipeGestureRecognizer *swipeUp = [[UISwipeGestureRecognizer alloc] initWithTarget:self
-                                                                                      action:@selector(imageViewSwipedUp:)];
-        swipeUp.direction = UISwipeGestureRecognizerDirectionUp;
-        [imgView addGestureRecognizer:swipeUp];
-        UISwipeGestureRecognizer *swipeDown = [[UISwipeGestureRecognizer alloc] initWithTarget:self
-                                                                                        action:@selector(imageViewSwipedDown:)];
-        swipeDown.direction = UISwipeGestureRecognizerDirectionDown;
-        [imgView addGestureRecognizer:swipeDown];
+        [imgView addGestureRecognizer:oneTap];
         
         //[imgView getImage];
         imgView.tag = 101;
@@ -183,6 +189,14 @@
         [self displayCurrentImageNote];
     }
     [self focusOnPage:page];
+    
+    HuabaoPicture *picture = [huabaoPictures objectAtIndex:self.page];
+    NSMutableArray *auc = [huabaoAuctions objectForKey:[NSString stringWithFormat:@"%@", picture.picId]];
+    if (auc != nil) {
+        self.titleBar.topItem.rightBarButtonItem = tagButton;
+    } else {
+        self.titleBar.topItem.rightBarButtonItem = nil;
+    }
 }
 
 - (void)displayPage:(NSInteger)pagee {
@@ -210,50 +224,65 @@
     }
 }
 
-- (void)imageViewSwipedUp:(id)sender {
-    HuabaoPicture *picture = [huabaoPictures objectAtIndex:self.page];
-    NSMutableArray *auc = [huabaoAuctions objectForKey:[NSString stringWithFormat:@"%@", picture.picId]];
-    if (auc == nil) {
-        return;
-    }
-    if (itemsDisplayedOnPage >= 0) {
-        if (itemsDisplayedOnPage == page) {
+- (void)tagButtonTapped:(id)sender {
+    if (itemInfoDisplaying) {
+        self.itemInfoDisplaying = NO;
+        if (itemsDisplayedOnPage < 0 || itemsDisplayedOnPage != page) {
             return;
         }
-        [itemsViewController.view removeFromSuperview];
-    }
-    self.itemsViewController = [[ItemsListViewController alloc] initWithNibName:@"ItemsListViewController" bundle:nil];
-    itemsViewController.delegate = self;
-    itemsViewController.huabaoAuctions = auc;
-    UIScrollView *subScrollView = [subScrollViews objectAtIndex:self.page];
-    [subScrollView addSubview:itemsViewController.view];
-    
-    itemsViewController.view.frame = CGRectMake(0, 480, 320, 80 * auc.count);
-    itemsViewController.view.alpha = 0;
-
-    itemsDisplayedOnPage = page;
-    
-    [UIView animateWithDuration:0.5 animations:^{
-        itemsViewController.view.frame = CGRectMake(0, 100, 320, 80 * auc.count);
-        itemsViewController.view.alpha = 1;
-    }];
-}
-
-- (void)imageViewSwipedDown:(id)sender {
-    if (itemsDisplayedOnPage < 0 || itemsDisplayedOnPage != page) {
-        return;
-    }
-    [UIView animateWithDuration:0.5 animations:^{
-        itemsViewController.view.frame = CGRectMake(0, 480, 320, 0);
+        [UIView animateWithDuration:0.5 animations:^{
+            itemsViewController.view.frame = CGRectMake(0, 480, 320, 0);
+            itemsViewController.view.alpha = 0;
+        } completion:^(BOOL finished) {
+            [itemsViewController.view removeFromSuperview];
+            self.itemsViewController = nil;
+        }];
+        itemsDisplayedOnPage = -1;
+    } else {
+        self.itemInfoDisplaying = YES;
+        HuabaoPicture *picture = [huabaoPictures objectAtIndex:self.page];
+        NSMutableArray *auc = [huabaoAuctions objectForKey:[NSString stringWithFormat:@"%@", picture.picId]];
+        if (auc == nil) {
+            return;
+        }
+        if (itemsDisplayedOnPage >= 0) {
+            if (itemsDisplayedOnPage == page) {
+                return;
+            }
+            [itemsViewController.view removeFromSuperview];
+        }
+        self.itemsViewController = [[ItemsListViewController alloc] initWithNibName:@"ItemsListViewController" bundle:nil];
+        itemsViewController.delegate = self;
+        itemsViewController.huabaoAuctions = auc;
+        UIScrollView *subScrollView = [subScrollViews objectAtIndex:self.page];
+        [subScrollView addSubview:itemsViewController.view];
+        
+        itemsViewController.view.frame = CGRectMake(0, 480, 320, 80 * auc.count);
         itemsViewController.view.alpha = 0;
-    } completion:^(BOOL finished) {
-        [itemsViewController.view removeFromSuperview];
-        self.itemsViewController = nil;
-    }];
-    itemsDisplayedOnPage = -1;
+        
+        itemsDisplayedOnPage = page;
+        
+        [UIView animateWithDuration:0.5 animations:^{
+            itemsViewController.view.frame = CGRectMake(0, 100, 320, 80 * auc.count);
+            itemsViewController.view.alpha = 1;
+        }];   
+    }
 }
 
 - (void)openBrowser:(TaobaokeItem *)item {
+    HuabaoPicture *picture = [huabaoPictures objectAtIndex:self.page];
+    NSMutableArray *auc = [huabaoAuctions objectForKey:[NSString stringWithFormat:@"%@", picture.picId]];
+    if (auc.count == 1) {
+        self.itemInfoDisplaying = NO;
+        [UIView animateWithDuration:0.5 animations:^{
+            itemsViewController.view.frame = CGRectMake(0, 480, 320, 0);
+            itemsViewController.view.alpha = 0;
+        } completion:^(BOOL finished) {
+            [itemsViewController.view removeFromSuperview];
+            self.itemsViewController = nil;
+        }];
+        itemsDisplayedOnPage = -1;
+    }
     TaobaoBrowserViewController *browser = [[TaobaoBrowserViewController alloc] initWithNibName:@"TaobaoBrowserViewController" bundle:nil];
     browser.itemUrl = [item.clickUrl newClickUrlForItemId:item.itemID];
     browser.picUrl = item.picUrl;

@@ -89,7 +89,11 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return [huabaoAuctions count];
+    if (huabaoAuctions.count == 1) {
+        return 0;
+    } else {
+        return huabaoAuctions.count;
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -210,7 +214,12 @@
         self.tableView.frame = CGRectMake(oldFrame.origin.x, oldFrame.origin.y, oldFrame.size.width, huabaoAuctions.count * 80);
     }
     
-    [self.tableView reloadData];
+    if (huabaoAuctions.count == 1) {
+        HuabaoAuctionInfo *auc = [huabaoAuctions lastObject];
+        [delegate performSelector:@selector(openBrowser:) withObject:auc.tbkItem];
+    } else {
+        [self.tableView reloadData];
+    }
 }
 
 @end
