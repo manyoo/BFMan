@@ -331,6 +331,10 @@
     self.page = idx;
     [self displayPage:page];
     [self focusOnPage:page];
+    self.titleBar.topItem.title = [NSString stringWithFormat:@"%d of %d", page + 1, [_images count]];
+    if (titleBarOn) {
+        [self displayCurrentImageNote];
+    }
 }
 
 @end
