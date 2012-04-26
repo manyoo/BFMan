@@ -11,6 +11,12 @@
 
 @class ItemImg;
 
+typedef enum {
+    IMG_SMALL,
+    IMG_MIDDEL,
+    IMG_BIG
+} IMGSize;
+
 @interface AsyncImageView : UIView <CachedImageDelegate>
 
 @property (nonatomic, strong) ItemImg *image;
@@ -22,11 +28,11 @@
 
 + (UIImage *)cameraImage;
 
--(AsyncImageView *)initWithItemImg:(ItemImg *)image andFrame:(CGRect)frame;
+-(AsyncImageView *)initWithItemImg:(ItemImg *)image size:(IMGSize)size andFrame:(CGRect)frame;
 
 -(void)displayImage:(UIImage *)image;
 -(void)getImage;
 -(void)enableTouch;
--(void)setNewImage:(ItemImg *)image;
+-(void)setNewImage:(ItemImg *)image size:(IMGSize)size;
 
 @end

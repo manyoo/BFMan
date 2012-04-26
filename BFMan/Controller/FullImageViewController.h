@@ -7,11 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SmallImageViewController.h"
 
 @class HuaBao;
 @class ItemsListViewController;
 
-@interface FullImageViewController : UIViewController <UIScrollViewDelegate>
+@interface FullImageViewController : UIViewController <UIScrollViewDelegate, SmallImageViewControllerDelegate>
 
 @property (nonatomic, strong) IBOutlet UIScrollView *scrollView;
 @property (strong, nonatomic) IBOutlet UINavigationBar *titleBar;
@@ -27,6 +28,8 @@
 @property (nonatomic, strong) NSDictionary *huabaoAuctions;
 @property (nonatomic, strong) ItemsListViewController *itemsViewController;
 @property (nonatomic, strong) UIBarButtonItem *tagButton;
+
+@property (nonatomic, strong) SmallImageViewController *smallImageViewController;
 
 - (void)displayPage:(NSInteger)page;
 - (IBAction)cancel:(id)sender;

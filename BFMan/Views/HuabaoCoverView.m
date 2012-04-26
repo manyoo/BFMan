@@ -74,7 +74,7 @@
     }
     
     CGRect imgFrame = CGRectMake(10, 5, 140, 140);
-    AsyncImageView *asycImageView = [[AsyncImageView alloc] initWithItemImg:img andFrame:imgFrame];
+    AsyncImageView *asycImageView = [[AsyncImageView alloc] initWithItemImg:img size:IMG_MIDDEL andFrame:imgFrame];
     asycImageView.tag = 99;
     asycImageView.usedInList = YES;
     

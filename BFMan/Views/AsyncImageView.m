@@ -57,7 +57,7 @@ UIImage *globalImage = nil;
     return globalImage;
 }
 
--(AsyncImageView *)initWithItemImg:(ItemImg *)image andFrame:(CGRect)frame {
+-(AsyncImageView *)initWithItemImg:(ItemImg *)image size:(IMGSize)size andFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
@@ -66,8 +66,18 @@ UIImage *globalImage = nil;
         self.usedInList = NO;
         self.usedInPageControl = NO;
         self.noBorder = NO;
+        
+        NSString *imgUrl;
+        if (size == IMG_SMALL) {
+            imgUrl = [NSString stringWithFormat:@"%@_170x170.jpg", image.url];
+        } else if (size == IMG_MIDDEL) {
+            imgUrl = [NSString stringWithFormat:@"%@_310x310.jpg", image.url];
+        } else {
+            imgUrl = image.url;
+        }
+        
         self.imageLoaderClient = [[JSImageLoaderClient alloc] init];
-        imageLoaderClient.request = [NSURLRequest requestWithURL:[NSURL URLWithString:image.url] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:15.0];
+        imageLoaderClient.request = [NSURLRequest requestWithURL:[NSURL URLWithString:imgUrl] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:15.0];
         imageLoaderClient.delegate = self;
         [self displayImage:[AsyncImageView cameraImage]];
     }
@@ -151,13 +161,21 @@ UIImage *globalImage = nil;
     [imageLoader addClientToDownloadQueue:imageLoaderClient];
 }
 
--(void)setNewImage:(ItemImg *)image {
+-(void)setNewImage:(ItemImg *)image size:(IMGSize)size {
     self.image = image;
     self.userInteractionEnabled = NO;
     self.usedInList = NO;
     self.usedInPageControl = NO;
+    NSString *imgUrl;
+    if (size == IMG_SMALL) {
+        imgUrl = [NSString stringWithFormat:@"%@_170x170.jpg", image.url];
+    } else if (size == IMG_MIDDEL) {
+        imgUrl = [NSString stringWithFormat:@"%@_310x310.jpg", image.url];
+    } else {
+        imgUrl = image.url;
+    }
     self.imageLoaderClient = [[JSImageLoaderClient alloc] init];
-    imageLoaderClient.request = [NSURLRequest requestWithURL:[NSURL URLWithString:image.url] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:15.0];
+    imageLoaderClient.request = [NSURLRequest requestWithURL:[NSURL URLWithString:imgUrl] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:15.0];
     imageLoaderClient.delegate = self;
     [self displayImage:[AsyncImageView cameraImage]];
 }

@@ -74,7 +74,7 @@
     }
     
     CGRect imgFrame = CGRectMake(2, 2, IMAGE_WIDTH - 4, 76);
-    AsyncImageView *asycImageView = [[AsyncImageView alloc] initWithItemImg:img andFrame:imgFrame];
+    AsyncImageView *asycImageView = [[AsyncImageView alloc] initWithItemImg:img size:IMG_MIDDEL andFrame:imgFrame];
     asycImageView.tag = 99;
     asycImageView.usedInList = YES;
     [self.contentView addSubview:asycImageView];

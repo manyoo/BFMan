@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		0706154A14DE6A88008CB073 /* tagLabel.png in Resources */ = {isa = PBXBuildFile; fileRef = 0706154914DE6A88008CB073 /* tagLabel.png */; };
 		071E9AD214C86A3300C238D9 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 071E9AD114C86A3300C238D9 /* MainViewController.xib */; };
+		071FCEC51548DB7800FD3FF6 /* SmallImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 071FCEC31548DB7800FD3FF6 /* SmallImageViewController.m */; };
+		071FCEC61548DB7800FD3FF6 /* SmallImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 071FCEC41548DB7800FD3FF6 /* SmallImageViewController.xib */; };
 		0738BE5014D784CF00A64F42 /* ItemsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0738BE4E14D784CF00A64F42 /* ItemsListViewController.m */; };
 		0738BE5114D784CF00A64F42 /* ItemsListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0738BE4F14D784CF00A64F42 /* ItemsListViewController.xib */; };
 		0744DC7B14E7A61A00BAD027 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 0744DC7A14E7A61A00BAD027 /* Default.png */; };
@@ -177,6 +179,9 @@
 /* Begin PBXFileReference section */
 		0706154914DE6A88008CB073 /* tagLabel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tagLabel.png; sourceTree = "<group>"; };
 		071E9AD114C86A3300C238D9 /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MainViewController.xib; path = BFMan/Controller/MainViewController.xib; sourceTree = "<group>"; };
+		071FCEC21548DB7800FD3FF6 /* SmallImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SmallImageViewController.h; path = BFMan/Controller/SmallImageViewController.h; sourceTree = "<group>"; };
+		071FCEC31548DB7800FD3FF6 /* SmallImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SmallImageViewController.m; path = BFMan/Controller/SmallImageViewController.m; sourceTree = "<group>"; };
+		071FCEC41548DB7800FD3FF6 /* SmallImageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SmallImageViewController.xib; path = BFMan/Controller/SmallImageViewController.xib; sourceTree = "<group>"; };
 		0738BE4D14D784CF00A64F42 /* ItemsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ItemsListViewController.h; path = BFMan/Controller/ItemsListViewController.h; sourceTree = "<group>"; };
 		0738BE4E14D784CF00A64F42 /* ItemsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ItemsListViewController.m; path = BFMan/Controller/ItemsListViewController.m; sourceTree = "<group>"; };
 		0738BE4F14D784CF00A64F42 /* ItemsListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ItemsListViewController.xib; path = BFMan/Controller/ItemsListViewController.xib; sourceTree = "<group>"; };
@@ -494,6 +499,9 @@
 				07836B2214CBA320005B18A7 /* AllPosterViewController.m */,
 				07A4820114D6948D002C1572 /* FullImageViewController.h */,
 				07A4820214D6948D002C1572 /* FullImageViewController.m */,
+				071FCEC21548DB7800FD3FF6 /* SmallImageViewController.h */,
+				071FCEC31548DB7800FD3FF6 /* SmallImageViewController.m */,
+				071FCEC41548DB7800FD3FF6 /* SmallImageViewController.xib */,
 				0738BE4D14D784CF00A64F42 /* ItemsListViewController.h */,
 				0738BE4E14D784CF00A64F42 /* ItemsListViewController.m */,
 				07B3CF5114DBCC18005026F5 /* AdBannerViewController.h */,
@@ -994,6 +1002,7 @@
 				077DB217154806580093C727 /* ChannelSelectionViewController.xib in Resources */,
 				077DB219154809A40093C727 /* orange_button.png in Resources */,
 				077DB2201548359C0093C727 /* 14-tag.png in Resources */,
+				071FCEC61548DB7800FD3FF6 /* SmallImageViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1125,6 +1134,7 @@
 				07B8653E14E4C26400233FAD /* HelpPhotoViewController.m in Sources */,
 				077DB2141547FD420093C727 /* ChannelSelectionViewController.m in Sources */,
 				077DB21E15482C9C0093C727 /* NSString+URLConvert.m in Sources */,
+				071FCEC51548DB7800FD3FF6 /* SmallImageViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

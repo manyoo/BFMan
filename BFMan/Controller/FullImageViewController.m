@@ -30,6 +30,7 @@
 @synthesize titleBarOn, itemsDisplayedOnPage, itemInfoDisplaying;
 @synthesize huabao, huabaoPictures, huabaoAuctions, subScrollViews;
 @synthesize itemsViewController, tagButton;
+@synthesize smallImageViewController;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -104,7 +105,7 @@
         subScrollView.delegate = self;
         
         CGRect imgFrame = CGRectMake(0, 0, subScrollFrame.size.width, subScrollFrame.size.height);
-        AsyncImageView *imgView = [[AsyncImageView alloc] initWithItemImg:image andFrame:imgFrame];
+        AsyncImageView *imgView = [[AsyncImageView alloc] initWithItemImg:image size:IMG_BIG andFrame:imgFrame];
         [imgView enableTouch];
         
 
@@ -136,6 +137,13 @@
     noteLabel.numberOfLines = 0;
     
     [self.view addSubview:noteLabel];
+    
+    CGSize curSize = self.view.bounds.size;
+    self.smallImageViewController = [[SmallImageViewController alloc] initWithNibName:@"SmallImageViewController" bundle:nil];
+    smallImageViewController.pictures = huabaoPictures;
+    smallImageViewController.delegate = self;
+    smallImageViewController.view.frame = CGRectMake(0, curSize.height - 88, curSize.width, 88);
+    [self.view addSubview:smallImageViewController.view];
     
     [self displayCurrentImageNote];
     [self focusOnPage:0];
@@ -200,7 +208,9 @@
 }
 
 - (void)displayPage:(NSInteger)pagee {
-    [scrollView scrollRectToVisible:CGRectMake(pagee * scrollView.frame.size.width, 0, scrollView.frame.size.width, scrollView.frame.size.height) animated:NO];
+    [UIView animateWithDuration:0.3 animations:^{
+       [scrollView scrollRectToVisible:CGRectMake(pagee * scrollView.frame.size.width, 0, scrollView.frame.size.width, scrollView.frame.size.height) animated:NO]; 
+    }];
 }
 
 
@@ -315,6 +325,12 @@
         } else
             [imgView displayImage:[AsyncImageView cameraImage]];
     }
+}
+
+- (void)pictureSelected:(int)idx {
+    self.page = idx;
+    [self displayPage:page];
+    [self focusOnPage:page];
 }
 
 @end
