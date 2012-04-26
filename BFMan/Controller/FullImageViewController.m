@@ -29,7 +29,7 @@
 @synthesize page;
 @synthesize titleBarOn, itemsDisplayedOnPage, itemInfoDisplaying;
 @synthesize huabao, huabaoPictures, huabaoAuctions, subScrollViews;
-@synthesize itemsViewController, tagButton;
+@synthesize itemsViewController, tagButton, arrowButton,upArrowImage, downArrowImage,displayingSmallPictures;
 @synthesize smallImageViewController;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -138,16 +138,27 @@
     
     [self.view addSubview:noteLabel];
     
-    CGSize curSize = self.view.bounds.size;
+
     self.smallImageViewController = [[SmallImageViewController alloc] initWithNibName:@"SmallImageViewController" bundle:nil];
     smallImageViewController.pictures = huabaoPictures;
+    smallImageViewController.view.frame = CGRectMake(0, 480, 320, 72);
     smallImageViewController.delegate = self;
-    smallImageViewController.view.frame = CGRectMake(0, curSize.height - 72, curSize.width, 72);
     [self.view addSubview:smallImageViewController.view];
     
     [self displayCurrentImageNote];
     [self focusOnPage:0];
     [smallImageViewController setSelectedPicture:0];
+    
+    self.upArrowImage = [UIImage imageNamed:@"up_arrow.png"];
+    self.downArrowImage = [UIImage imageNamed:@"down_arrow.png"];
+    
+    CGRect f = self.view.frame;
+    self.arrowButton = [[UIButton alloc] initWithFrame:CGRectMake(f.size.width - 20, f.size.height, 15, 15)];
+    [arrowButton setImage:upArrowImage forState:UIControlStateNormal];
+    [arrowButton addTarget:self action:@selector(arrowButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:arrowButton];
+    
+    self.displayingSmallPictures = NO;
 }
 
 - (void)viewDidUnload
@@ -178,8 +189,6 @@
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
-
-
 
 - (UIView *)viewForZoomingInScrollView:(UIScrollView *)sscrollView {
     return [sscrollView.subviews objectAtIndex:0];
@@ -224,12 +233,14 @@
         [UIView animateWithDuration:0.3 animations:^{
             self.titleBar.alpha = 0.0;
             self.noteLabel.alpha = 0.0;
+            arrowButton.alpha = 0.0;
         }];
         self.titleBarOn = NO;
     } else {
         [UIView animateWithDuration:0.3 animations:^{
             self.titleBar.alpha = 1.0;
             self.noteLabel.alpha = 0.7;
+            arrowButton.alpha = 1.0;
         }];
         self.titleBarOn = YES;
     }
@@ -311,7 +322,11 @@
     noteLabel.text = note;
     
     [UIView animateWithDuration:0.2 animations:^{
-        noteLabel.frame = CGRectMake(0, curSize.height - noteSize.height, curSize.width, noteSize.height);
+        if (displayingSmallPictures) {
+            noteLabel.frame = CGRectMake(0, curSize.height - noteSize.height - 88, curSize.width, noteSize.height);
+        } else {
+            noteLabel.frame = CGRectMake(0, curSize.height - noteSize.height, curSize.width, noteSize.height);
+        }
         noteLabel.alpha = 0.7;
     }];
 }
@@ -336,6 +351,31 @@
     if (titleBarOn) {
         [self displayCurrentImageNote];
     }
+}
+
+- (void)arrowButtonTapped:(id)sender {
+    if (displayingSmallPictures) {
+        [UIView animateWithDuration:0.3 animations:^{
+            CGSize curSize = self.view.bounds.size;
+            smallImageViewController.view.frame = CGRectMake(0, curSize.height, curSize.width, 88);
+            CGRect noteFrame = noteLabel.frame;
+            noteLabel.frame = CGRectMake(noteFrame.origin.x, noteFrame.origin.y + 88, noteFrame.size.width, noteFrame.size.height);
+            CGRect btnFrame = arrowButton.frame;
+            arrowButton.frame = CGRectMake(btnFrame.origin.x, btnFrame.origin.y + 88, btnFrame.size.width, btnFrame.size.height);
+            [arrowButton setImage:upArrowImage forState:UIControlStateNormal];
+        }];
+    } else {
+        [UIView animateWithDuration:0.3 animations:^{
+            CGSize curSize = self.view.bounds.size;
+            smallImageViewController.view.frame = CGRectMake(0, curSize.height - 88, curSize.width, 88);
+            CGRect noteFrame = noteLabel.frame;
+            noteLabel.frame = CGRectMake(noteFrame.origin.x, noteFrame.origin.y - 88, noteFrame.size.width, noteFrame.size.height);
+            CGRect btnFrame = arrowButton.frame;
+            arrowButton.frame = CGRectMake(btnFrame.origin.x, btnFrame.origin.y - 88, btnFrame.size.width, btnFrame.size.height);
+            [arrowButton setImage:downArrowImage forState:UIControlStateNormal];
+        }];
+    }
+    self.displayingSmallPictures = !displayingSmallPictures;
 }
 
 @end

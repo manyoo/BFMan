@@ -28,7 +28,10 @@
 @property (nonatomic, strong) NSDictionary *huabaoAuctions;
 @property (nonatomic, strong) ItemsListViewController *itemsViewController;
 @property (nonatomic, strong) UIBarButtonItem *tagButton;
-
+@property (nonatomic, strong) UIButton *arrowButton;
+@property (nonatomic, strong) UIImage *upArrowImage;
+@property (nonatomic, strong) UIImage *downArrowImage;
+@property (nonatomic) BOOL displayingSmallPictures;
 @property (nonatomic, strong) SmallImageViewController *smallImageViewController;
 
 - (void)displayPage:(NSInteger)page;

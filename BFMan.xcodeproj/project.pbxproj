@@ -124,6 +124,8 @@
 		0774A7ED14B9D7EC00D795AE /* HuabaoPicture.m in Sources */ = {isa = PBXBuildFile; fileRef = 0774A7EC14B9D7EC00D795AE /* HuabaoPicture.m */; };
 		0774A7F014B9D91000D795AE /* HuabaoAuctionInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 0774A7EF14B9D91000D795AE /* HuabaoAuctionInfo.m */; };
 		077B45E815492C5C008322F9 /* auction_action_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 077B45E715492C5C008322F9 /* auction_action_bg@2x.png */; };
+		077B45F015495719008322F9 /* up_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 077B45EE15495719008322F9 /* up_arrow.png */; };
+		077B45F115495719008322F9 /* down_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 077B45EF15495719008322F9 /* down_arrow.png */; };
 		077DB2141547FD420093C727 /* ChannelSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 077DB2131547FD420093C727 /* ChannelSelectionViewController.m */; };
 		077DB217154806580093C727 /* ChannelSelectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 077DB216154806580093C727 /* ChannelSelectionViewController.xib */; };
 		077DB219154809A40093C727 /* orange_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 077DB218154809A40093C727 /* orange_button.png */; };
@@ -383,6 +385,8 @@
 		0774A7EE14B9D91000D795AE /* HuabaoAuctionInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HuabaoAuctionInfo.h; sourceTree = "<group>"; };
 		0774A7EF14B9D91000D795AE /* HuabaoAuctionInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HuabaoAuctionInfo.m; sourceTree = "<group>"; };
 		077B45E715492C5C008322F9 /* auction_action_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "auction_action_bg@2x.png"; sourceTree = "<group>"; };
+		077B45EE15495719008322F9 /* up_arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = up_arrow.png; sourceTree = "<group>"; };
+		077B45EF15495719008322F9 /* down_arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = down_arrow.png; sourceTree = "<group>"; };
 		077DB2121547FD420093C727 /* ChannelSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChannelSelectionViewController.h; path = BFMan/Controller/ChannelSelectionViewController.h; sourceTree = "<group>"; };
 		077DB2131547FD420093C727 /* ChannelSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChannelSelectionViewController.m; path = BFMan/Controller/ChannelSelectionViewController.m; sourceTree = "<group>"; };
 		077DB216154806580093C727 /* ChannelSelectionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ChannelSelectionViewController.xib; path = BFMan/Controller/ChannelSelectionViewController.xib; sourceTree = "<group>"; };
@@ -751,6 +755,8 @@
 		0774A76C14B9CF1D00D795AE /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				077B45EE15495719008322F9 /* up_arrow.png */,
+				077B45EF15495719008322F9 /* down_arrow.png */,
 				077B45E715492C5C008322F9 /* auction_action_bg@2x.png */,
 				077DB21F1548359C0093C727 /* 14-tag.png */,
 				077DB218154809A40093C727 /* orange_button.png */,
@@ -1007,6 +1013,8 @@
 				077DB2201548359C0093C727 /* 14-tag.png in Resources */,
 				071FCEC61548DB7800FD3FF6 /* SmallImageViewController.xib in Resources */,
 				077B45E815492C5C008322F9 /* auction_action_bg@2x.png in Resources */,
+				077B45F015495719008322F9 /* up_arrow.png in Resources */,
+				077B45F115495719008322F9 /* down_arrow.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
