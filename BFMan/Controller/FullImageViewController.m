@@ -98,10 +98,11 @@
         CGRect subScrollFrame = CGRectMake(x, 0, scrollView.frame.size.width, scrollView.frame.size.height);
         UIScrollView *subScrollView = [[UIScrollView alloc] initWithFrame:subScrollFrame];
         subScrollView.bounces = NO;
-        subScrollView.bouncesZoom = NO;
+        subScrollView.bouncesZoom = YES;
         subScrollView.showsVerticalScrollIndicator = NO;
         subScrollView.showsHorizontalScrollIndicator = NO;
         subScrollView.minimumZoomScale = 1;
+        subScrollView.maximumZoomScale = 4;
         subScrollView.delegate = self;
         
         CGRect imgFrame = CGRectMake(0, 0, subScrollFrame.size.width, subScrollFrame.size.height);
@@ -222,7 +223,6 @@
 - (void)displayPage:(NSInteger)pagee {
     [scrollView scrollRectToVisible:CGRectMake(pagee * scrollView.frame.size.width, 0, scrollView.frame.size.width, scrollView.frame.size.height) animated:YES]; 
 }
-
 
 - (IBAction)cancel:(id)sender {
     [self dismissModalViewControllerAnimated:YES];
