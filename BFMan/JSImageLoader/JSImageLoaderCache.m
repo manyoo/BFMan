@@ -50,7 +50,7 @@
 	self = [super init];
 	if (self) {
 		// Clean the cache
-		[self trimDiskCacheFilesToMaxSize:kMaxDiskCacheSize];
+		//[self trimDiskCacheFilesToMaxSize:kMaxDiskCacheSize];
 	}
 	return self;	
 }
