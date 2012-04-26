@@ -180,6 +180,21 @@ UIImage *globalImage = nil;
     [self displayImage:[AsyncImageView cameraImage]];
 }
 
+- (void)setSelected:(BOOL)sel {
+    UIImageView *imgView = [self.subviews objectAtIndex:0];
+    if (imgView == nil) {
+        return;
+    }
+    
+    if (sel) {
+        imgView.layer.borderWidth = 2;
+        imgView.layer.borderColor = [UIColor orangeColor].CGColor;
+    } else {
+        imgView.layer.borderWidth = 0.0;
+        imgView.layer.borderColor = [UIColor clearColor].CGColor;
+    }
+}
+
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.

@@ -142,11 +142,12 @@
     self.smallImageViewController = [[SmallImageViewController alloc] initWithNibName:@"SmallImageViewController" bundle:nil];
     smallImageViewController.pictures = huabaoPictures;
     smallImageViewController.delegate = self;
-    smallImageViewController.view.frame = CGRectMake(0, curSize.height - 88, curSize.width, 88);
+    smallImageViewController.view.frame = CGRectMake(0, curSize.height - 72, curSize.width, 72);
     [self.view addSubview:smallImageViewController.view];
     
     [self displayCurrentImageNote];
     [self focusOnPage:0];
+    [smallImageViewController setSelectedPicture:0];
 }
 
 - (void)viewDidUnload
@@ -198,6 +199,8 @@
     }
     [self focusOnPage:page];
     
+    [smallImageViewController setSelectedPicture:page];
+    
     HuabaoPicture *picture = [huabaoPictures objectAtIndex:self.page];
     NSMutableArray *auc = [huabaoAuctions objectForKey:[NSString stringWithFormat:@"%@", picture.picId]];
     if (auc != nil) {
@@ -208,9 +211,7 @@
 }
 
 - (void)displayPage:(NSInteger)pagee {
-    [UIView animateWithDuration:0.3 animations:^{
-       [scrollView scrollRectToVisible:CGRectMake(pagee * scrollView.frame.size.width, 0, scrollView.frame.size.width, scrollView.frame.size.height) animated:NO]; 
-    }];
+    [scrollView scrollRectToVisible:CGRectMake(pagee * scrollView.frame.size.width, 0, scrollView.frame.size.width, scrollView.frame.size.height) animated:YES]; 
 }
 
 

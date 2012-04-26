@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+@class AsyncImageView;
+
 @protocol SmallImageViewControllerDelegate <NSObject>
 
 - (void)pictureSelected:(int)idx;
@@ -19,9 +21,12 @@
 @property (nonatomic, strong) IBOutlet UIScrollView *scrollView;
 @property (nonatomic, strong) NSArray *pictures;
 @property (nonatomic, strong) NSArray *images;
-@property (nonatomic, strong) NSMutableArray *subViews;
+@property (nonatomic, strong) NSMutableArray *imgViews;
 @property (nonatomic) int page;
+@property (nonatomic, strong) AsyncImageView *currentImageView;
 
 @property (nonatomic, unsafe_unretained) id<SmallImageViewControllerDelegate> delegate;
+
+- (void)setSelectedPicture:(int)page;
 
 @end

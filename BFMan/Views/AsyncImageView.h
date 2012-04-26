@@ -34,5 +34,6 @@ typedef enum {
 -(void)getImage;
 -(void)enableTouch;
 -(void)setNewImage:(ItemImg *)image size:(IMGSize)size;
+-(void)setSelected:(BOOL)sel;
 
 @end

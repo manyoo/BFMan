@@ -11,13 +11,14 @@
 #import "HuabaoPicture.h"
 #import "ItemImg.h"
 #import "AsyncImageView.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface SmallImageViewController (PrivateMethod)
 - (void)focusOnPage:(NSInteger)currentPage;
 @end
 
 @implementation SmallImageViewController
-@synthesize scrollView, pictures, images, subViews, page, delegate;
+@synthesize scrollView, pictures, images, imgViews, page, delegate, currentImageView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -49,30 +50,25 @@
     
     int x = 0;
     
-    self.subViews = [[NSMutableArray alloc] initWithCapacity:imgitems.count];
+    self.imgViews = [[NSMutableArray alloc] initWithCapacity:imgitems.count];
     for (id image in imgitems) {
-        CGRect subFrame = CGRectMake(x, 0, 80, scrollView.frame.size.height);
-        UIView *subView = [[UIView alloc] initWithFrame:subFrame];
-        
-        CGRect imgFrame = CGRectMake(0, 0, subFrame.size.width, subFrame.size.height);
+        CGRect imgFrame = CGRectMake(x, 10, 80, scrollView.frame.size.height);
         AsyncImageView *imgView = [[AsyncImageView alloc] initWithItemImg:image size:IMG_SMALL andFrame:imgFrame];
-        
+        imgView.usedInPageControl = YES;
         //[imgView getImage];
-        imgView.tag = 101;
         
-        x += 80;
+        x += 85;
         
-        [subView addSubview:imgView];
+        [scrollView addSubview:imgView];
         [imgView getImage];
-
-        subView.userInteractionEnabled = YES;
+        [imgView enableTouch];
+        
         UITapGestureRecognizer *oneTap = [[UITapGestureRecognizer alloc] initWithTarget:self
                                                                                  action:@selector(imageViewTouched:)];
         oneTap.numberOfTapsRequired = 1;
-        [subView addGestureRecognizer:oneTap];
+        [imgView addGestureRecognizer:oneTap];
         
-        [scrollView addSubview:subView];
-        [self.subViews addObject:subView];
+        [self.imgViews addObject:imgView];
     }
     scrollView.contentSize = CGSizeMake(x, scrollView.bounds.size.height);
     //[self displayPage:page];
@@ -92,12 +88,25 @@
 }
 
 - (void)imageViewTouched:(UITapGestureRecognizer *)v {
-    for (int i = 0; i < subViews.count; ++i) {
-        UIView *sub = [subViews objectAtIndex:i];
-        if (sub == v.view) {
+    for (int i = 0; i < imgViews.count; ++i) {
+        AsyncImageView *imgView = (AsyncImageView *)[imgViews objectAtIndex:i];
+        if (imgView == v.view) {
+            [currentImageView setSelected:NO];
+            self.currentImageView = imgView;
+            [imgView setSelected:YES];
             [delegate pictureSelected:i];
         }
     }
+}
+
+- (void)setSelectedPicture:(int)pagee {
+    self.page = pagee;
+    [currentImageView setSelected:NO];
+    AsyncImageView *imgView = (AsyncImageView *)[imgViews objectAtIndex:pagee];
+    self.currentImageView = imgView;
+    [imgView setSelected:YES];
+    
+    [scrollView scrollRectToVisible:CGRectMake(pagee * 85 - 80, 0, 240, scrollView.frame.size.height) animated:YES]; 
 }
 
 @end
