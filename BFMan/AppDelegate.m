@@ -28,7 +28,7 @@
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     
-    [MobClick setDelegate:self reportPolicy:BATCH];
+    [MobClick startWithAppkey:@"4f327c2d5270154ef4000014" reportPolicy:BATCH channelId:@"App Store"];
     
     [MobClick checkUpdate];
     
@@ -69,11 +69,6 @@
 {
     // Saves changes in the application's managed object context before the application terminates.
     [self saveContext];
-}
-
-// TODO: app key for umeng analytics
-- (NSString *)appKey {
-    return @"4f327c2d5270154ef4000014";
 }
 
 - (void)saveContext
