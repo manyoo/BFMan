@@ -15,6 +15,7 @@
 #import "TaobaoBrowserViewController.h"
 #import "TaobaokeItem.h"
 #import "NSString+URLConvert.h"
+#import "HuabaoAuctionInfo.h"
 
 @interface FullImageViewController (PrivateMethod)
 - (void)displayCurrentImageNote;
@@ -74,7 +75,7 @@
     self.itemsDisplayedOnPage = -1;
     self.titleBar.topItem.title = [NSString stringWithFormat:@"%d of %d", page + 1, [_images count]];
     
-    self.tagButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"14-tag.png"]
+    self.tagButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"cart.png"]
                                                                   style:UIBarButtonItemStyleBordered
                                                                  target:self
                                                                  action:@selector(tagButtonTapped:)];
@@ -276,6 +277,7 @@
         self.itemsViewController = [[ItemsListViewController alloc] initWithNibName:@"ItemsListViewController" bundle:nil];
         itemsViewController.delegate = self;
         itemsViewController.huabaoAuctions = auc;
+        itemsViewController.huabaoPicture = picture;
         UIScrollView *subScrollView = [subScrollViews objectAtIndex:self.page];
         [subScrollView addSubview:itemsViewController.view];
         
@@ -291,10 +293,10 @@
     }
 }
 
-- (void)openBrowser:(TaobaokeItem *)item {
+- (void)openBrowser:(HuabaoAuctionInfo *)auc {
     HuabaoPicture *picture = [huabaoPictures objectAtIndex:self.page];
-    NSMutableArray *auc = [huabaoAuctions objectForKey:[NSString stringWithFormat:@"%@", picture.picId]];
-    if (auc.count == 1) {
+    NSMutableArray *aucs = [huabaoAuctions objectForKey:[NSString stringWithFormat:@"%@", picture.picId]];
+    if (aucs.count == 1) {
         self.itemInfoDisplaying = NO;
         [UIView animateWithDuration:0.5 animations:^{
             itemsViewController.view.frame = CGRectMake(0, 480, 320, 0);
@@ -306,9 +308,16 @@
         itemsDisplayedOnPage = -1;
     }
     TaobaoBrowserViewController *browser = [[TaobaoBrowserViewController alloc] initWithNibName:@"TaobaoBrowserViewController" bundle:nil];
-    browser.itemUrl = [item.clickUrl newClickUrlForItemId:item.itemID];
-    browser.picUrl = item.picUrl;
-    browser.itemId = item.itemID;
+    TaobaokeItem *item = auc.tbkItem;
+    if (item) {
+        browser.itemUrl = [item.clickUrl newClickUrlForItemId:item.itemID];
+        browser.picUrl = item.picUrl;
+        browser.itemId = item.itemID;
+    } else {
+        browser.picUrl = picture.picUrl;
+        browser.itemUrl = auc.auctionUrl;
+        browser.itemId = auc.auctionId;
+    }
     browser.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
     [self presentModalViewController:browser animated:YES];
 }

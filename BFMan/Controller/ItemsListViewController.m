@@ -11,9 +11,10 @@
 #import "BFManConstants.h"
 #import "ItemTableViewCell.h"
 #import "TaobaokeItem.h"
+#import "HuabaoPicture.h"
 
 @implementation ItemsListViewController
-@synthesize server, huabaoAuctions, delegate;
+@synthesize server, huabaoAuctions, huabaoPicture, delegate;
 
 - (void)didReceiveMemoryWarning
 {
@@ -107,9 +108,13 @@
     
     // Configure the cell...
     HuabaoAuctionInfo *auc = [huabaoAuctions objectAtIndex:indexPath.row];
-    cell.item = auc.tbkItem;
+    if (auc.tbkItem) {
+        cell.item = auc.tbkItem;
+        [cell setupCellContents];
+    } else {
+        [cell setupCellWithTitle:auc.auctionTitle pic:huabaoPicture.picUrl price:auc.auctionPrice];
+    }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    [cell setupCellContents];
     
     return cell;
 }
@@ -172,7 +177,7 @@
     if (auc == nil) {
         return;
     }
-    [delegate performSelector:@selector(openBrowser:) withObject:auc.tbkItem];
+    [delegate performSelector:@selector(openBrowser:) withObject:auc];
 }
 
 #pragma mark - TBServerDelegate
@@ -200,23 +205,9 @@
         }
     }
     
-    // delete the HuabaoAuctionInfo items which has no corresponding Taobaoke item
-    NSIndexSet *idxToRemove = [huabaoAuctions indexesOfObjectsPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
-        HuabaoAuctionInfo *auc = (HuabaoAuctionInfo *)obj;
-        if (auc.tbkItem == nil) {
-            return YES;
-        } else
-            return NO;
-    }];
-    if (idxToRemove.count > 0) {
-        [huabaoAuctions removeObjectsAtIndexes:idxToRemove];
-        CGRect oldFrame = self.tableView.frame;
-        self.tableView.frame = CGRectMake(oldFrame.origin.x, oldFrame.origin.y, oldFrame.size.width, huabaoAuctions.count * 80);
-    }
-    
     if (huabaoAuctions.count == 1) {
         HuabaoAuctionInfo *auc = [huabaoAuctions lastObject];
-        [delegate performSelector:@selector(openBrowser:) withObject:auc.tbkItem];
+        [delegate performSelector:@selector(openBrowser:) withObject:auc];
     } else {
         [self.tableView reloadData];
     }

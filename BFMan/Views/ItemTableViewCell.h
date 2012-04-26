@@ -17,5 +17,6 @@
 @property (nonatomic, strong) UILabel *priceLabel;
 
 - (void)setupCellContents;
+- (void)setupCellWithTitle:(NSString *)title pic:(NSString *)picUrl price:(NSNumber *)price;
 
 @end

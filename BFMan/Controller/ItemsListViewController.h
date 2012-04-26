@@ -9,9 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "TBServer.h"
 
+@class HuabaoPicture;
+
 @interface ItemsListViewController : UITableViewController <TBServerDelegate>
 
 @property (nonatomic, strong) NSMutableArray *huabaoAuctions;
+@property (nonatomic, strong) HuabaoPicture *huabaoPicture;
 @property (nonatomic, strong) TBServer *server;
 @property (nonatomic, unsafe_unretained) id delegate;
 

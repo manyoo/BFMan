@@ -88,4 +88,28 @@
     priceLabel.text = price;
 }
 
+- (void)setupCellWithTitle:(NSString *)title pic:(NSString *)picUrl price:(NSNumber *)price {
+    UIView *v = [self.contentView viewWithTag:99];
+    [v removeFromSuperview];
+    
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    NSManagedObjectContext *context = [appDelegate managedObjectContext];
+    
+    ItemImg *img = [NSEntityDescription insertNewObjectForEntityForName:@"ItemImg" inManagedObjectContext:context];
+    img.url = picUrl;
+    item.itemImage = img;
+    
+    
+    CGRect imgFrame = CGRectMake(2, 2, IMAGE_WIDTH - 4, 76);
+    AsyncImageView *asycImageView = [[AsyncImageView alloc] initWithItemImg:img size:IMG_MIDDEL andFrame:imgFrame];
+    asycImageView.tag = 99;
+    asycImageView.usedInList = YES;
+    [self.contentView addSubview:asycImageView];
+    [asycImageView getImage];
+    
+    titleLabel.text = [[title stringByReplacingOccurrencesOfString:@"<span class=H>" withString:@""] stringByReplacingOccurrencesOfString:@"</span>" withString:@""];
+    
+    priceLabel.text = [NSString stringWithFormat:@"价格: %@元", price];
+}
+
 @end
