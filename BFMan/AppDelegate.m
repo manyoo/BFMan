@@ -28,7 +28,7 @@
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     
-    [MobClick startWithAppkey:@"4f327c2d5270154ef4000014" reportPolicy:BATCH channelId:@"App Store"];
+    [MobClick startWithAppkey:UMENG_APP_KEY_STR reportPolicy:BATCH channelId:@"App Store"];
     
     [MobClick checkUpdate];
     

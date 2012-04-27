@@ -7,8 +7,6 @@
 //
 
 #import "MoreInfoViewController.h"
-#import "BlogClient.h"
-#import "WeiboManager.h"
 #import "BFManConstants.h"
 #import "HelpPhotoViewController.h"
 
@@ -98,24 +96,6 @@
     return 1;
 }
 
-- (NSString *)getWeiboUserName {
-    NSArray *urls = [[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask];
-    
-    NSURL *documentDir;
-    if ([urls count] > 0) {
-        documentDir = [urls objectAtIndex:0];    
-        
-        NSURL *fileUrl = [NSURL URLWithString:WEIBO_USER_FILE relativeToURL:documentDir];
-        
-        BOOL hasFile = [[NSFileManager defaultManager] fileExistsAtPath:[fileUrl path]];
-        if (hasFile) {
-            NSString *data = [NSString stringWithContentsOfURL:fileUrl encoding:NSUTF8StringEncoding error:nil];
-            NSArray *rows = [data componentsSeparatedByString:@"\n"];
-            return [rows objectAtIndex:1];
-        }
-    }
-    return nil;
-}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -129,11 +109,7 @@
     // Configure the cell...
     
     if (indexPath.section == 0) {
-        BlogClient *blog = [WeiboManager getBlogClient];
-        if ([blog isAuthorized]) {
-            cell.textLabel.text = [NSString stringWithFormat:@"微博账号:%@", [self getWeiboUserName]];
-        } else
-            cell.textLabel.text = @"设置新浪微博账户";
+        cell.textLabel.text = @"设置新浪微博账户";
         cell.imageView.image = [UIImage imageNamed:@"weibo_logo.png"];
         cell.accessoryType = UITableViewCellAccessoryNone;
     } else if (indexPath.section == 1) {
@@ -196,18 +172,7 @@
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
     if (indexPath.section == 0) {
-        BlogClient *blog = [WeiboManager getBlogClient];
-        if ([blog isAuthorized]) {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"退出"
-                                                            message:[NSString stringWithFormat:@"是否确认退出微博账户\"%@\"?", [self getWeiboUserName]]
-                                                           delegate:self
-                                                  cancelButtonTitle:@"取消"
-                                                  otherButtonTitles:@"退出", nil];
-            [alert show];
-        } else {
-            UIViewController *weiboLogin = [blog getOAuthViewController:self];
-            [self presentModalViewController:weiboLogin animated:YES];
-        }
+
     } else if (indexPath.section == 1) {
         HelpPhotoViewController *helpPhoto = [[HelpPhotoViewController alloc] initWithNibName:@"HelpPhotoViewController" bundle:nil];
         [self presentModalViewController:helpPhoto animated:YES];
@@ -235,45 +200,10 @@
             if (bhasFile) {
                 [[NSFileManager defaultManager] removeItemAtURL:bfileUrl error:nil];
             }
-            BlogClient *blog = [WeiboManager getBlogClient];
-            [blog setAccessKey:nil secret:nil];
+
         }
         [self.tableView reloadData];
     }
-}
-
-#pragma mark - OAuthViewControllerDelegate
-- (void)OAuthViewControllerOk:(NSString *)text {
-    BlogClient *blog = [WeiboManager getBlogClient];
-    NSString *uid = [blog.oauth userID];
-    
-    [blog show:@"" user_id:uid screen_name:@"" delegate:self onSuccess:@selector(getWeiboUser:dict:) onFail:@selector(weiboFailed:msg:)];
-}
-
-- (void)OAuthViewControllerCancel:(NSString *)text {
-    
-}
-
-- (void)getWeiboUser:(NSNumber *)code dict:(NSDictionary *)userDict {
-    BlogClient *blog = [WeiboManager getBlogClient];
-    blog.user = [[WeiboUser alloc] initWithDictionary:userDict];
-    
-    NSArray *urls = [[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask];
-    
-    NSURL *documentDir;
-    if ([urls count] > 0) {
-        documentDir = [urls objectAtIndex:0];
-        
-        NSURL *fileUrl = [NSURL URLWithString:WEIBO_USER_FILE relativeToURL:documentDir];
-        
-        NSString *t = [NSString stringWithFormat:@"%@\n%@",blog.user.userId,blog.user.screen_name];
-        [t writeToURL:fileUrl atomically:YES encoding:NSUTF8StringEncoding error:nil];
-    }
-    [self.tableView reloadData];
-}
-
-- (void)weiboFailed:(NSNumber *)code msg:(NSString *)str {
-    
 }
 
 @end

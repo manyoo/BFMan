@@ -35,6 +35,7 @@ _EXTERN NSString *const TAOBAO_TTID_STR             _INITIALIZE_AS(@"400000_1250
 
 _EXTERN NSString *const TAOBAO_API_ADDR             _INITIALIZE_AS(@"http://gw.api.taobao.com/router/rest");
 
+_EXTERN NSString *const UMENG_APP_KEY_STR           _INITIALIZE_AS(@"4f327c2d5270154ef4000014");
 
 // used TOP APIs
 _EXTERN NSString *const TOP_USER_GET                _INITIALIZE_AS(@"taobao.user.get");

@@ -9,23 +9,15 @@
 #import <UIKit/UIKit.h>
 #import "BailuServer.h"
 #import "TBServer.h"
-#import "JSImageLoader.h"
 
-@class WBSendView;
-
-@interface TaobaoBrowserViewController : UIViewController <UIWebViewDelegate, BailuServerDelegate, UIActionSheetDelegate, TBServerDelegate, CachedImageDelegate>
-
-@property (nonatomic, strong) BailuServer *server;
-@property (nonatomic, strong) NSString *picUrl;
-@property (nonatomic, strong) WBSendView *sendView;
-@property (nonatomic, strong) JSImageLoaderClient *imageLoaderClient;
-@property (nonatomic, strong) UIImage *picForWeibo;
+@interface TaobaoBrowserViewController : UIViewController <UIWebViewDelegate, BailuServerDelegate, TBServerDelegate>
 
 @property (nonatomic, strong) TBServer *tbServer;
-
+@property (nonatomic, strong) BailuServer *server;
+@property (nonatomic, strong) NSString *picUrl;
 @property (nonatomic, strong) NSNumber *itemId;
-
 @property (strong, nonatomic) NSString *itemUrl;
+
 @property (unsafe_unretained, nonatomic) IBOutlet UIBarButtonItem *previousButton;
 @property (unsafe_unretained, nonatomic) IBOutlet UIBarButtonItem *nextButton;
 @property (unsafe_unretained, nonatomic) IBOutlet UIBarButtonItem *refreshButton;
