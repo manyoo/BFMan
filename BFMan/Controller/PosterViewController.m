@@ -15,7 +15,7 @@
 #import "HuabaoAuctionInfo.h"
 
 @implementation PosterViewController
-@synthesize posters, refreshEnabled, multipageEnabled, cellTypes, refreshHeaderView, lastpageLoaded, reloading, allItemsReloading, loadingCell, server, apiType, huabaoPictures, selectedHuaBao, hud, channelSelectionViewController, currentChannelId, searchBar, searchEnabled, searchBarStatus, searchBarDisplayController, searchResultPosters, searchResultCellTypes, lastSearchPageLoaded,searchKeyword;
+@synthesize posters, refreshEnabled, multipageEnabled, cellTypes, refreshHeaderView, lastpageLoaded, reloading, allItemsReloading, loadingCell, server, apiType, huabaoPictures, selectedHuaBao, hud, channelSelectionViewController, currentChannelId, searchBar, searchEnabled, searchBarStatus, searchBarDisplayController, searchResultPosters, searchResultCellTypes, lastSearchPageLoaded,searchKeyword, searching;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -74,7 +74,7 @@
     if (searchEnabled) {
         self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, -44, 320, 44)];
         searchBar.delegate = self;
-        //searchBar.tintColor = [UIColor colorWithRed:192.0/255 green:66.0/255 blue:43.0/255 alpha:1.0];
+        searchBar.tintColor = [UIColor colorWithRed:192.0/255 green:66.0/255 blue:43.0/255 alpha:1.0];
         searchBar.placeholder = @"搜索画报";
         [self.tableView addSubview:searchBar];
         
@@ -85,6 +85,8 @@
         searchBarDisplayController.searchResultsDataSource = self;
         searchBarDisplayController.searchResultsDelegate = self;
         [self setSearchBarDisplayController:searchBarDisplayController];
+        
+        self.searching = NO;
     }
     self.posters = [[NSMutableArray alloc] init];
     self.cellTypes = [[NSMutableArray alloc] init];
@@ -336,7 +338,7 @@
     if (refreshEnabled) {
         [refreshHeaderView egoRefreshScrollViewDidEndDragging:scrollView];
     }
-    if (searchEnabled) {
+    if (searchEnabled && !searching) {
         if (searchBarStatus == SB_HIDDEN && scrollView.contentOffset.y < -30) {
             [UIView animateWithDuration:0.3 animations:^{
                 scrollView.contentInset = UIEdgeInsetsMake(44, 0, 0, 0);                
@@ -475,11 +477,15 @@
 
 - (void)searchBarTextDidBeginEditing:(UISearchBar *)asearchBar {
     asearchBar.showsCancelButton = YES;
+    self.searching = YES;
 }
 - (void)searchBarCancelButtonClicked:(UISearchBar *)asearchBar {
     asearchBar.showsCancelButton = NO;
+    self.searching = NO;
     [asearchBar resignFirstResponder];
     self.tableView.contentInset = UIEdgeInsetsZero;
+    self.searchResultPosters = nil;
+    self.searchResultCellTypes = nil;
     [self.tableView reloadData];
 }
 

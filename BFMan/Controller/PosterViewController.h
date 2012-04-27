@@ -63,6 +63,8 @@ typedef enum {
 @property (nonatomic, strong) NSMutableArray *searchResultCellTypes;
 @property (nonatomic) NSInteger lastSearchPageLoaded;
 
+@property (nonatomic) BOOL searching;
+
 @property (nonatomic, strong) ChannelSelectionViewController *channelSelectionViewController;
 @property (nonatomic, strong) NSNumber *currentChannelId;
 

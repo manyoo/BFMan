@@ -51,6 +51,7 @@
 {
     self.refreshEnabled = NO;
     self.multipageEnabled = NO;
+    self.searchEnabled = YES;
     [super viewDidLoad];
     if ([self.navigationController.navigationBar respondsToSelector:@selector(setBackgroundImage:forBarMetrics:)]) {
         [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"navBar.png"] forBarMetrics:UIBarMetricsDefault];
