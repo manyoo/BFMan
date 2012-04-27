@@ -470,8 +470,7 @@
 }
 
 - (void)channelSelected:(NSNumber *)channelId {
-    self.currentChannelId = channelId;
-    
+    self.currentChannelId = channelId;    
     [self loadNewChannel];
 }
 

@@ -7,6 +7,7 @@
 //
 
 #import "HuabaoPicture.h"
+#import "NSString+HTML.h"
 
 @implementation HuabaoPicture
 
@@ -24,7 +25,7 @@
     pic.createDate = [formatter dateFromString:[dict objectForKey:@"create_date"]];
     pic.modifiedDate = [formatter dateFromString:[dict objectForKey:@"modified_date"]];
     pic.picUrl = [dict objectForKey:@"pic_url"];
-    pic.picNote = [dict objectForKey:@"pic_note"];
+    pic.picNote = [[dict objectForKey:@"pic_note"] stringByDecodingHTMLEntities];
     
     return pic;
 }

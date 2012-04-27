@@ -7,6 +7,7 @@
 //
 
 #import "HuaBao.h"
+#import "NSString+HTML.h"
 
 @implementation HuaBao
 
@@ -22,8 +23,8 @@
     
     huabao.createDate = [formatter dateFromString:[dict objectForKey:@"create_date"]];
     huabao.modifiedDate = [formatter dateFromString:[dict objectForKey:@"modified_date"]];
-    huabao.title = [dict objectForKey:@"title"];
-    huabao.titleShort = [dict objectForKey:@"title_short"];
+    huabao.title = [[dict objectForKey:@"title"] stringByDecodingHTMLEntities];
+    huabao.titleShort = [[dict objectForKey:@"title_short"] stringByDecodingHTMLEntities];
     huabao.tag = [dict objectForKey:@"tag"];
     huabao.weight = [dict objectForKey:@"weight"];
     huabao.coverPicUrl = [dict objectForKey:@"cover_pic_url"];
