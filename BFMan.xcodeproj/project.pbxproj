@@ -13,6 +13,12 @@
 		071FCEC61548DB7800FD3FF6 /* SmallImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 071FCEC41548DB7800FD3FF6 /* SmallImageViewController.xib */; };
 		072CB6A8154A2A1600EB115B /* NSString+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 072CB6A7154A2A1600EB115B /* NSString+Additions.m */; };
 		072CB6A9154A2ABA00EB115B /* NSString+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 072CB6A7154A2A1600EB115B /* NSString+Additions.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		072CB6AD154A310F00EB115B /* RenRen.png in Resources */ = {isa = PBXBuildFile; fileRef = 072CB6AA154A310F00EB115B /* RenRen.png */; };
+		072CB6AE154A310F00EB115B /* Sina.png in Resources */ = {isa = PBXBuildFile; fileRef = 072CB6AB154A310F00EB115B /* Sina.png */; };
+		072CB6AF154A310F00EB115B /* Tencent.png in Resources */ = {isa = PBXBuildFile; fileRef = 072CB6AC154A310F00EB115B /* Tencent.png */; };
+		072CB6B0154A350900EB115B /* Sina.png in Resources */ = {isa = PBXBuildFile; fileRef = 072CB6AB154A310F00EB115B /* Sina.png */; };
+		072CB6B1154A351100EB115B /* RenRen.png in Resources */ = {isa = PBXBuildFile; fileRef = 072CB6AA154A310F00EB115B /* RenRen.png */; };
+		072CB6B2154A351A00EB115B /* Tencent.png in Resources */ = {isa = PBXBuildFile; fileRef = 072CB6AC154A310F00EB115B /* Tencent.png */; };
 		0738BE5014D784CF00A64F42 /* ItemsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0738BE4E14D784CF00A64F42 /* ItemsListViewController.m */; };
 		0738BE5114D784CF00A64F42 /* ItemsListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0738BE4F14D784CF00A64F42 /* ItemsListViewController.xib */; };
 		0744DC7B14E7A61A00BAD027 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 0744DC7A14E7A61A00BAD027 /* Default.png */; };
@@ -234,7 +240,6 @@
 		07A4820414D6948D002C1572 /* FullImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07A4820214D6948D002C1572 /* FullImageViewController.m */; };
 		07A4820514D6948D002C1572 /* FullImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07A4820314D6948D002C1572 /* FullImageViewController.xib */; };
 		07ADF49C14DE47D6003054DC /* HuabaoCoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = 07ADF49B14DE47D6003054DC /* HuabaoCoverView.m */; };
-		07B0306F14E3A56000F26924 /* weibo_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 07B0306E14E3A56000F26924 /* weibo_logo.png */; };
 		07B3CF5814DBCC18005026F5 /* AdBannerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07B3CF5314DBCC18005026F5 /* AdBannerViewController.xib */; };
 		07B3CF5914DBCC18005026F5 /* TaobaoBrowserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07B3CF5514DBCC18005026F5 /* TaobaoBrowserViewController.m */; };
 		07B3CF5A14DBCC18005026F5 /* TaobaoBrowserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07B3CF5614DBCC18005026F5 /* TaobaoBrowserViewController.xib */; };
@@ -272,6 +277,9 @@
 		071FCEC41548DB7800FD3FF6 /* SmallImageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SmallImageViewController.xib; path = BFMan/Controller/SmallImageViewController.xib; sourceTree = "<group>"; };
 		072CB6A6154A2A1600EB115B /* NSString+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Additions.h"; sourceTree = "<group>"; };
 		072CB6A7154A2A1600EB115B /* NSString+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Additions.m"; sourceTree = "<group>"; };
+		072CB6AA154A310F00EB115B /* RenRen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RenRen.png; sourceTree = "<group>"; };
+		072CB6AB154A310F00EB115B /* Sina.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Sina.png; sourceTree = "<group>"; };
+		072CB6AC154A310F00EB115B /* Tencent.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Tencent.png; sourceTree = "<group>"; };
 		0738BE4D14D784CF00A64F42 /* ItemsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ItemsListViewController.h; path = BFMan/Controller/ItemsListViewController.h; sourceTree = "<group>"; };
 		0738BE4E14D784CF00A64F42 /* ItemsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ItemsListViewController.m; path = BFMan/Controller/ItemsListViewController.m; sourceTree = "<group>"; };
 		0738BE4F14D784CF00A64F42 /* ItemsListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ItemsListViewController.xib; path = BFMan/Controller/ItemsListViewController.xib; sourceTree = "<group>"; };
@@ -509,7 +517,6 @@
 		07A4820314D6948D002C1572 /* FullImageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FullImageViewController.xib; path = BFMan/Controller/FullImageViewController.xib; sourceTree = "<group>"; };
 		07ADF49A14DE47D6003054DC /* HuabaoCoverView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HuabaoCoverView.h; sourceTree = "<group>"; };
 		07ADF49B14DE47D6003054DC /* HuabaoCoverView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HuabaoCoverView.m; sourceTree = "<group>"; };
-		07B0306E14E3A56000F26924 /* weibo_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = weibo_logo.png; sourceTree = "<group>"; };
 		07B3CF5314DBCC18005026F5 /* AdBannerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AdBannerViewController.xib; path = BFMan/Controller/AdBannerViewController.xib; sourceTree = "<group>"; };
 		07B3CF5414DBCC18005026F5 /* TaobaoBrowserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TaobaoBrowserViewController.h; path = BFMan/Controller/TaobaoBrowserViewController.h; sourceTree = "<group>"; };
 		07B3CF5514DBCC18005026F5 /* TaobaoBrowserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TaobaoBrowserViewController.m; path = BFMan/Controller/TaobaoBrowserViewController.m; sourceTree = "<group>"; };
@@ -788,6 +795,9 @@
 		0774A76C14B9CF1D00D795AE /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				072CB6AA154A310F00EB115B /* RenRen.png */,
+				072CB6AB154A310F00EB115B /* Sina.png */,
+				072CB6AC154A310F00EB115B /* Tencent.png */,
 				078BDA3F1549913700274A16 /* UMSNSImages */,
 				078BDA3315497CA400274A16 /* cart.png */,
 				077B45EE15495719008322F9 /* up_arrow.png */,
@@ -800,7 +810,6 @@
 				0744DC7A14E7A61A00BAD027 /* Default.png */,
 				07EA9A4514DEAE5D00C7F6C4 /* Icon@2x.png */,
 				07EA9A4214DEAE5A00C7F6C4 /* Icon.png */,
-				07B0306E14E3A56000F26924 /* weibo_logo.png */,
 				07C7F02714DE7ADE007E5EA9 /* navBar.png */,
 				07C7F02414DE786D007E5EA9 /* sperator.png */,
 				0706154914DE6A88008CB073 /* tagLabel.png */,
@@ -1044,6 +1053,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				072CB6B2154A351A00EB115B /* Tencent.png in Resources */,
+				072CB6B1154A351100EB115B /* RenRen.png in Resources */,
+				072CB6B0154A350900EB115B /* Sina.png in Resources */,
 				078BDAB61549917C00274A16 /* umeng_share_at.png in Resources */,
 				078BDAB71549917C00274A16 /* umeng_share_atSel.png in Resources */,
 				078BDAB81549917C00274A16 /* umeng_share_back.png in Resources */,
@@ -1124,7 +1136,6 @@
 				07EA9A4314DEAE5A00C7F6C4 /* Icon.png in Resources */,
 				07EA9A4614DEAE5D00C7F6C4 /* Icon@2x.png in Resources */,
 				07823A5614E35F7A0030F722 /* MoreInfoViewController.xib in Resources */,
-				07B0306F14E3A56000F26924 /* weibo_logo.png in Resources */,
 				07B8653D14E4C26400233FAD /* HelpPhotoViewController.xib in Resources */,
 				07B8654114E4C51400233FAD /* BFMan-Info.plist in Resources */,
 				0744DC7B14E7A61A00BAD027 /* Default.png in Resources */,
@@ -1205,6 +1216,9 @@
 				078BDAB31549913800274A16 /* umeng_share_toolbarBg.png in Resources */,
 				078BDAB41549913800274A16 /* umeng_share_topic.png in Resources */,
 				078BDAB51549913800274A16 /* umeng_share_topicSel.png in Resources */,
+				072CB6AD154A310F00EB115B /* RenRen.png in Resources */,
+				072CB6AE154A310F00EB115B /* Sina.png in Resources */,
+				072CB6AF154A310F00EB115B /* Tencent.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

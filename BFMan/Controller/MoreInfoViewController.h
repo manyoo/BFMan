@@ -8,6 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+typedef enum {
+    SNS_SINA,
+    SNS_TENC,
+    SNS_RENR
+} SNSType;
+
 @interface MoreInfoViewController : UITableViewController <UIAlertViewDelegate>
+
+@property (nonatomic) SNSType snsType;
 
 @end

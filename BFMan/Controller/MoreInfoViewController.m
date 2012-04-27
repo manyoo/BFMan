@@ -9,8 +9,10 @@
 #import "MoreInfoViewController.h"
 #import "BFManConstants.h"
 #import "HelpPhotoViewController.h"
+#import "UMSNSService.h"
 
 @implementation MoreInfoViewController
+@synthesize snsType;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -93,7 +95,11 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return 1;
+    if (section == 0) {
+        return 3;
+    } else {
+        return 1;
+    }
 }
 
 
@@ -109,9 +115,46 @@
     // Configure the cell...
     
     if (indexPath.section == 0) {
-        cell.textLabel.text = @"设置新浪微博账户";
-        cell.imageView.image = [UIImage imageNamed:@"weibo_logo.png"];
-        cell.accessoryType = UITableViewCellAccessoryNone;
+        if (indexPath.row == 0) {
+            NSString *uid = [UMSNSService getLocalUid:UMShareToTypeSina];
+            if (uid) {
+                NSString *nick = [UMSNSService getNicknameWithAppkey:UMENG_APP_KEY_STR
+                                                                 uid:uid
+                                                            platform:UMShareToTypeSina
+                                                               error:nil];
+                cell.textLabel.text = [NSString stringWithFormat:@"当前用户: %@", nick];
+            } else {
+                cell.textLabel.text = @"设置新浪微博账户";
+            }
+            cell.imageView.image = [UIImage imageNamed:@"Sina.png"];
+            cell.accessoryType = UITableViewCellAccessoryNone;
+        } else if (indexPath.row == 1) {
+            NSString *uid = [UMSNSService getLocalUid:UMShareToTypeTenc];
+            if (uid) {
+                NSString *nick = [UMSNSService getNicknameWithAppkey:UMENG_APP_KEY_STR
+                                                                 uid:uid
+                                                            platform:UMShareToTypeTenc
+                                                               error:nil];
+                cell.textLabel.text = [NSString stringWithFormat:@"当前用户: %@", nick];
+            } else {
+                cell.textLabel.text = @"设置腾讯微博账户";
+            }
+            cell.imageView.image = [UIImage imageNamed:@"Tencent.png"];
+            cell.accessoryType = UITableViewCellAccessoryNone;
+        } else {
+            NSString *uid = [UMSNSService getLocalUid:UMShareToTypeRenr];
+            if (uid) {
+                NSString *nick = [UMSNSService getNicknameWithAppkey:UMENG_APP_KEY_STR
+                                                                 uid:uid
+                                                            platform:UMShareToTypeRenr
+                                                               error:nil];
+                cell.textLabel.text = [NSString stringWithFormat:@"当前用户: %@", nick];
+            } else {
+                cell.textLabel.text = @"设置人人网账户";
+            }
+            cell.imageView.image = [UIImage imageNamed:@"RenRen.png"];
+            cell.accessoryType = UITableViewCellAccessoryNone;
+        }
     } else if (indexPath.section == 1) {
         cell.imageView.image = nil;
         cell.accessoryType = UITableViewCellAccessoryNone;
@@ -172,7 +215,68 @@
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
     if (indexPath.section == 0) {
-
+        if (indexPath.row == 0) {
+            NSString *uid = [UMSNSService getLocalUid:UMShareToTypeSina];
+            if (uid) {
+                NSString *nick = [UMSNSService getNicknameWithAppkey:UMENG_APP_KEY_STR
+                                                                 uid:uid
+                                                            platform:UMShareToTypeSina
+                                                               error:nil];
+                NSString *msg = [NSString stringWithFormat:@"确定退出新浪微博账户\"%@\"?", nick];
+                self.snsType = SNS_SINA;
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示"
+                                                                message:msg
+                                                               delegate:self
+                                                      cancelButtonTitle:@"是的"
+                                                      otherButtonTitles:@"取消", nil];
+                [alert show];
+            } else {
+                [UMSNSService oauthInController:self
+                                         appkey:UMENG_APP_KEY_STR
+                                       platform:UMShareToTypeSina];
+            }
+        } else if (indexPath.row == 1) {
+            NSString *uid = [UMSNSService getLocalUid:UMShareToTypeTenc];
+            if (uid) {
+                NSString *nick = [UMSNSService getNicknameWithAppkey:UMENG_APP_KEY_STR
+                                                                 uid:uid
+                                                            platform:UMShareToTypeTenc
+                                                               error:nil];
+                NSString *msg = [NSString stringWithFormat:@"确定退出腾讯微博账户\"%@\"?", nick];
+                self.snsType = SNS_TENC;
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示"
+                                                                message:msg
+                                                               delegate:self
+                                                      cancelButtonTitle:@"是的"
+                                                      otherButtonTitles:@"取消", nil];
+                [alert show];
+            } else {
+                [UMSNSService oauthInController:self
+                                         appkey:UMENG_APP_KEY_STR
+                                       platform:UMShareToTypeTenc];
+            }
+        } else {
+            NSString *uid = [UMSNSService getLocalUid:UMShareToTypeRenr];
+            if (uid) {
+                NSString *nick = [UMSNSService getNicknameWithAppkey:UMENG_APP_KEY_STR
+                                                                 uid:uid
+                                                            platform:UMShareToTypeRenr
+                                                               error:nil];
+                NSString *msg = [NSString stringWithFormat:@"确定退出人人网账户\"%@\"?", nick];
+                self.snsType = SNS_RENR;
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示"
+                                                                message:msg
+                                                               delegate:self
+                                                      cancelButtonTitle:@"是的"
+                                                      otherButtonTitles:@"取消", nil];
+                [alert show];
+            } else {
+                [UMSNSService oauthInController:self
+                                         appkey:UMENG_APP_KEY_STR
+                                       platform:UMShareToTypeRenr];
+            }
+        }
+        [self.tableView reloadData];
     } else if (indexPath.section == 1) {
         HelpPhotoViewController *helpPhoto = [[HelpPhotoViewController alloc] initWithNibName:@"HelpPhotoViewController" bundle:nil];
         [self presentModalViewController:helpPhoto animated:YES];
@@ -181,26 +285,13 @@
 
 #pragma mark - UIAlertViewDelegate
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    if (buttonIndex == 1) {
-        NSArray *urls = [[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask];
-        
-        NSURL *documentDir;
-        if ([urls count] > 0) {
-            documentDir = [urls objectAtIndex:0];    
-            
-            NSURL *fileUrl = [NSURL URLWithString:WEIBO_USER_FILE relativeToURL:documentDir];
-            
-            BOOL hasFile = [[NSFileManager defaultManager] fileExistsAtPath:[fileUrl path]];
-            if (hasFile) {
-                [[NSFileManager defaultManager] removeItemAtURL:fileUrl error:nil];
-            }
-            
-            NSURL *bfileUrl = [NSURL URLWithString:ACCESS_KEY_FILE relativeToURL:documentDir];
-            BOOL bhasFile = [[NSFileManager defaultManager] fileExistsAtPath:[bfileUrl path]];
-            if (bhasFile) {
-                [[NSFileManager defaultManager] removeItemAtURL:bfileUrl error:nil];
-            }
-
+    if (buttonIndex == 0) {
+        if (snsType == SNS_SINA) {
+            [UMSNSService writeOffAccounts:UMShareToTypeSina];
+        } else if (snsType == SNS_TENC) {
+            [UMSNSService writeOffAccounts:UMShareToTypeTenc];
+        } else {
+            [UMSNSService writeOffAccounts:UMShareToTypeRenr];
         }
         [self.tableView reloadData];
     }
