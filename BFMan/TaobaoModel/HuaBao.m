@@ -50,7 +50,7 @@
 }
 
 + (NSArray *)huabaoListFromPosterSearch:(NSDictionary *)resp {
-    NSArray *posters = [[[resp objectForKey:@"poster_searchposters_get_response"] objectForKey:@"search_posters"] objectForKey:@"huabao"];
+    NSArray *posters = [[[resp objectForKey:@"poster_posters_search_response"] objectForKey:@"posters"] objectForKey:@"huabao"];
     return [HuaBao huabaoListFromResponse:posters];
 }
 

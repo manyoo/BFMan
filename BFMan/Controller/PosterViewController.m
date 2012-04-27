@@ -15,7 +15,7 @@
 #import "HuabaoAuctionInfo.h"
 
 @implementation PosterViewController
-@synthesize posters, refreshEnabled, multipageEnabled, cellTypes, refreshHeaderView, lastpageLoaded, reloading, allItemsReloading, loadingCell, server, apiType, huabaoPictures, selectedHuaBao, hud, channelSelectionViewController, currentChannelId;
+@synthesize posters, refreshEnabled, multipageEnabled, cellTypes, refreshHeaderView, lastpageLoaded, reloading, allItemsReloading, loadingCell, server, apiType, huabaoPictures, selectedHuaBao, hud, channelSelectionViewController, currentChannelId, searchBar, searchEnabled, searchBarStatus, searchBarDisplayController;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -68,6 +68,21 @@
     }
     if (multipageEnabled) {
         self.lastpageLoaded = 0;
+    }
+    
+    if (searchEnabled) {
+        self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, -44, 320, 44)];
+        searchBar.delegate = self;
+        //searchBar.tintColor = [UIColor colorWithRed:192.0/255 green:66.0/255 blue:43.0/255 alpha:1.0];
+        searchBar.placeholder = @"搜索画报";
+        [self.tableView addSubview:searchBar];
+        
+        self.searchBarStatus = SB_HIDDEN;
+        
+        self.searchBarDisplayController = [[UISearchDisplayController alloc] initWithSearchBar:searchBar contentsController:self];
+        searchBarDisplayController.delegate = self;
+        searchBarDisplayController.searchResultsDataSource = self;
+        searchBarDisplayController.searchResultsDelegate = self;
     }
     self.posters = [[NSMutableArray alloc] init];
     self.cellTypes = [[NSMutableArray alloc] init];
@@ -256,6 +271,19 @@
     if (refreshEnabled) {
         [refreshHeaderView egoRefreshScrollViewDidEndDragging:scrollView];
     }
+    if (searchEnabled) {
+        if (searchBarStatus == SB_HIDDEN && scrollView.contentOffset.y < -30) {
+            [UIView animateWithDuration:0.3 animations:^{
+                scrollView.contentInset = UIEdgeInsetsMake(44, 0, 0, 0);                
+            }];
+            self.searchBarStatus = SB_SHOWING;
+        } else if (searchBarStatus == SB_SHOWING && (scrollView.contentOffset.y < -50 || scrollView.contentOffset.y > 0)) {
+            [UIView animateWithDuration:0.3 animations:^{
+                scrollView.contentInset = UIEdgeInsetsZero;                
+            }];
+            self.searchBarStatus = SB_HIDDEN;
+        }
+    }
 }
 
 #pragma mark - Refresh delegate
@@ -312,6 +340,16 @@
         imgViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
         
         [self presentModalViewController:imgViewController animated:YES];
+    } else if (apiType == API_SEARCH) {
+        self.posters = (NSMutableArray *)data;
+        self.cellTypes = [[NSMutableArray alloc] initWithCapacity:[self.posters count]];
+        for (id o in self.posters) {
+            [self.cellTypes addObject:[NSNumber numberWithInt:CELL_DATA]];
+        }
+        if (self.reloading) {
+            [self doneLoadingTableViewData];
+        }
+        [self.tableView reloadData];   
     }
 }
 
@@ -347,6 +385,26 @@
     self.currentChannelId = channelId;
     
     [self loadNewChannel];
+}
+
+- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
+    searchBar.showsCancelButton = YES;
+}
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
+    searchBar.showsCancelButton = NO;
+    [searchBar resignFirstResponder];
+}
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+    NSString *keyword = searchBar.text;
+    if (keyword == nil || [keyword isEqualToString:@""]) {
+        return;
+    }
+    NSArray *values = [NSArray arrayWithObjects:keyword, @"20", @"1", nil];
+    NSArray *keys = [NSArray arrayWithObjects:@"key_word", @"page_size", @"page_no", nil];
+    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjects:values forKeys:keys];
+    self.apiType = API_SEARCH;
+    [server searchPosters:params];
 }
 
 @end

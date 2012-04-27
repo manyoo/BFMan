@@ -22,13 +22,19 @@ typedef enum {
     API_GETAUCTION,
     API_GETHOT,
     API_GETRECOMMEND,
-    API_GETALL
+    API_GETALL,
+    API_SEARCH
 } APIType;
+
+typedef enum {
+    SB_SHOWING,
+    SB_HIDDEN
+} SearchBarStatus;
 
 @class LoadingTableViewCell;
 @class HuaBao;
 
-@interface PosterViewController : UITableViewController <EGORefreshTableHeaderDelegate,TBServerDelegate, MBProgressHUDDelegate, ChannelSelectionViewControllerDelegate>
+@interface PosterViewController : UITableViewController <EGORefreshTableHeaderDelegate,TBServerDelegate, MBProgressHUDDelegate, ChannelSelectionViewControllerDelegate, UISearchBarDelegate, UISearchDisplayDelegate>
 
 @property (nonatomic, strong) TBServer *server;
 @property (nonatomic) APIType apiType;
@@ -46,6 +52,11 @@ typedef enum {
 @property (nonatomic) BOOL allItemsReloading;
 @property (nonatomic) BOOL refreshEnabled;
 @property (nonatomic) BOOL multipageEnabled;
+
+@property (nonatomic) BOOL searchEnabled;
+@property (nonatomic, strong) UISearchBar *searchBar;
+@property (nonatomic, strong) UISearchDisplayController *searchBarDisplayController;
+@property (nonatomic) SearchBarStatus searchBarStatus;
 
 @property (nonatomic, strong) ChannelSelectionViewController *channelSelectionViewController;
 @property (nonatomic, strong) NSNumber *currentChannelId;
