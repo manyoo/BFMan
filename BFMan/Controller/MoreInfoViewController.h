@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MBProgressHUD.h"
 
 typedef enum {
     SNS_SINA,
@@ -17,5 +18,6 @@ typedef enum {
 @interface MoreInfoViewController : UITableViewController <UIAlertViewDelegate>
 
 @property (nonatomic) SNSType snsType;
+@property (nonatomic, strong) MBProgressHUD *hud;
 
 @end

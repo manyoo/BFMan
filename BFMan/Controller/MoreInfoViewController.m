@@ -10,9 +10,10 @@
 #import "BFManConstants.h"
 #import "HelpPhotoViewController.h"
 #import "UMSNSService.h"
+#import "JSImageLoaderCache.h"
 
 @implementation MoreInfoViewController
-@synthesize snsType;
+@synthesize snsType, hud;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -158,7 +159,7 @@
     } else if (indexPath.section == 1) {
         cell.imageView.image = nil;
         cell.accessoryType = UITableViewCellAccessoryNone;
-        cell.textLabel.text = @"使用帮助";
+        cell.textLabel.text = @"清除缓存";
     }
     
     return cell;
@@ -278,9 +279,16 @@
         }
         [self.tableView reloadData];
     } else if (indexPath.section == 1) {
-        HelpPhotoViewController *helpPhoto = [[HelpPhotoViewController alloc] initWithNibName:@"HelpPhotoViewController" bundle:nil];
-        [self presentModalViewController:helpPhoto animated:YES];
+        self.hud = [[MBProgressHUD alloc] initWithView:self.view];
+        hud.mode = MBProgressHUDModeDeterminate;
+        hud.labelText = @"正在清除...";
+        [self.view addSubview:hud];
+        [hud showWhileExecuting:@selector(clearCaches) onTarget:self withObject:nil animated:YES];
     }
+}
+
+- (void)clearCaches {
+    [[JSImageLoaderCache sharedCache] trimDiskCacheFilesToZero:hud];
 }
 
 #pragma mark - UIAlertViewDelegate

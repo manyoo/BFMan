@@ -209,9 +209,6 @@ static void * volatile sharedInstance = nil;
 	// Check if the currnet cache size is bigger than the target
     NSInteger totalSize = [self sizeOfCache];
     
-    [[NSFileManager defaultManager] removeItemAtPath:[self cacheDir] error:nil];
-    return;
-    
 	if (totalSize > targetBytes) {
 		// Get the cache contents
 		NSArray *dirContents = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:[self cacheDir] error:nil];
