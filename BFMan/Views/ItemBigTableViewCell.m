@@ -46,9 +46,14 @@
     leftView.delegate = delegate;
     [leftView setupView];
     
-    rightView.huabao = itemRight;
-    rightView.delegate = delegate;
-    [rightView setupView];
+    if (itemRight == nil) {
+        rightView.alpha = 0;
+    } else {
+        rightView.alpha = 1;
+        rightView.huabao = itemRight;
+        rightView.delegate = delegate;
+        [rightView setupView];
+    }
 }
 
 @end
