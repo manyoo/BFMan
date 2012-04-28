@@ -19,6 +19,7 @@ typedef enum {
     TB_API_GETUSER,
     TB_API_GETITEMCATS,
     TB_API_GETITEM,
+    TB_API_GETLISTITEM,
     TB_API_GETITEM_DESC,
     TB_API_GETTBKITEMS,
     TB_API_CONVERTTBKITEMS,
@@ -50,6 +51,7 @@ typedef enum {
 - (void)getUser;                            // get the current user info
 - (void)getItemCatsFor:(NSNumber *)cid;                        // get all taobao categories
 - (void)getItemInfo:(NSNumber *)itemID;
+- (void)getListItems:(NSArray *)itemIds;
 - (void)getItemDesc:(NSNumber *)itemID;
 - (void)getTaobaokeItems:(NSDictionary *)params;
 - (void)convertTaobaokeItems:(NSNumber *)itemId;

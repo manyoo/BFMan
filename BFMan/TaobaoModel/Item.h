@@ -60,5 +60,6 @@ typedef enum {
 + (NSArray *)fields;
 + (NSString *)itemDescFromResponse:(NSDictionary *)respDict;
 + (NSString *)itemClickUrlFromResponse:(NSDictionary *)respDict;
++ (NSArray *)itemsFromGetListItemResponse:(NSDictionary *)respDict;
 
 @end

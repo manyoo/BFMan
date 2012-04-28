@@ -11,14 +11,16 @@
 #import "UMSNSService.h"
 #import "JSImageLoader.h"
 #import "JSImageLoaderCache.h"
+#import "ClickHistoryManager.h"
 
 @implementation TaobaoBrowserViewController
 @synthesize previousButton;
 @synthesize nextButton;
 @synthesize refreshButton;
+@synthesize favoriteButton;
 @synthesize webView, itemUrl, itemId;
 @synthesize server, picUrl;
-@synthesize tbServer;
+@synthesize tbServer, isFavorite;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -53,6 +55,14 @@
     self.previousButton.enabled = NO;
     self.nextButton.enabled = NO;
     self.refreshButton.enabled = NO;
+    
+    if ([[ClickHistoryManager defautManager] hasItem:itemId]) {
+        favoriteButton.image = [UIImage imageNamed:@"is_favorite@2x.png"];
+        self.isFavorite = YES;
+    } else {
+        favoriteButton.image = [UIImage imageNamed:@"isnot_favorite@2x.png"];
+        self.isFavorite = NO;
+    }
 }
 
 - (void)viewDidUnload
@@ -61,6 +71,7 @@
     [self setPreviousButton:nil];
     [self setNextButton:nil];
     [self setRefreshButton:nil];
+    [self setFavoriteButton:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -89,6 +100,15 @@
 
 - (IBAction)refreshPage:(id)sender {
     [self.webView reload];
+}
+
+- (IBAction)favoriteButtonTapped:(id)sender {
+    if (isFavorite) {
+        return;
+    }
+    self.isFavorite = YES;
+    favoriteButton.image = [UIImage imageNamed:@"is_favorite@2x.png"];
+    [[ClickHistoryManager defautManager] addClickItem:itemId];
 }
 
 - (IBAction)shareThisItem:(id)sender {

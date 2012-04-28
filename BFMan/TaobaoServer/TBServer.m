@@ -59,6 +59,9 @@
             case TB_API_GETITEM:
                 [_delegate requestFinished:[Item itemFromResponse:json]];
                 break;
+            case TB_API_GETLISTITEM:
+                [_delegate requestFinished:[Item itemsFromGetListItemResponse:json]];
+                break;
             case TB_API_GETITEM_DESC:
                 [_delegate requestFinished:[Item itemDescFromResponse:json]];
                 break;
@@ -203,6 +206,18 @@
     [params setValue:fieldsStr forKey:@"fields"];
     [params setValue:itemID forKey:@"num_iid"];
     [self processMethod:TOP_ITEM_GET params:params];
+}
+
+- (void)getListItems:(NSArray *)itemIds {
+    self.api = TB_API_GETLISTITEM;
+    
+    self.needAuth = NO;
+    NSString *fieldInfo = [[Item fields] componentsJoinedByString:@","];
+    NSString *numIDs = [itemIds componentsJoinedByString:@","];
+    NSArray *values = [NSArray arrayWithObjects:fieldInfo,numIDs,nil];
+    NSArray *names = [NSArray arrayWithObjects:@"fields",@"num_iids", nil];
+    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjects:values forKeys:names];
+    [self processMethod:TOP_ITEM_LIST_GET params:params];
 }
 
 - (void)getItemDesc:(NSNumber *)itemID {

@@ -18,14 +18,18 @@
 @property (nonatomic, strong) NSNumber *itemId;
 @property (strong, nonatomic) NSString *itemUrl;
 
+@property (nonatomic) BOOL isFavorite;
+
 @property (unsafe_unretained, nonatomic) IBOutlet UIBarButtonItem *previousButton;
 @property (unsafe_unretained, nonatomic) IBOutlet UIBarButtonItem *nextButton;
 @property (unsafe_unretained, nonatomic) IBOutlet UIBarButtonItem *refreshButton;
+@property (unsafe_unretained, nonatomic) IBOutlet UIBarButtonItem *favoriteButton;
 @property (strong, nonatomic) IBOutlet UIWebView *webView;
 - (IBAction)goBack:(id)sender;
 - (IBAction)previousPage:(id)sender;
 - (IBAction)nextPage:(id)sender;
 - (IBAction)refreshPage:(id)sender;
+- (IBAction)favoriteButtonTapped:(id)sender;
 - (IBAction)shareThisItem:(id)sender;
 
 @end

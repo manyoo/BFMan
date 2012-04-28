@@ -41,6 +41,7 @@ _EXTERN NSString *const UMENG_APP_KEY_STR           _INITIALIZE_AS(@"4f327c2d527
 _EXTERN NSString *const TOP_USER_GET                _INITIALIZE_AS(@"taobao.user.get");
 _EXTERN NSString *const TOP_ITEMCATS_GET            _INITIALIZE_AS(@"taobao.itemcats.get");
 _EXTERN NSString *const TOP_ITEM_GET                _INITIALIZE_AS(@"taobao.item.get");
+_EXTERN NSString *const TOP_ITEM_LIST_GET           _INITIALIZE_AS(@"taobao.items.list.get");
 _EXTERN NSString *const TOP_TBK_ITEMS_GET           _INITIALIZE_AS(@"taobao.taobaoke.items.get");
 _EXTERN NSString *const TOP_TBK_CONVERT_ITEM        _INITIALIZE_AS(@"taobao.taobaoke.items.convert");
 _EXTERN NSString *const TOP_TBK_REPORT_GET          _INITIALIZE_AS(@"taobao.taobaoke.report.get");

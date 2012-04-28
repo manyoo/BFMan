@@ -29,11 +29,8 @@ hasWarranty, itemImgs, isVirtual, isTaobao, violation, sellPromise;
     return item_fields;
 }
 
-+ (Item *)itemFromResponse:(NSDictionary *)respDict {
++ (Item *)itemFromDict:(NSDictionary *)itemDict {
     Item *item = [[Item alloc] init];
-    
-    NSDictionary *itemResp = [respDict objectForKey:@"item_get_response"];
-    NSDictionary *itemDict = [itemResp objectForKey:@"item"];
     
     item.itemID = [itemDict objectForKey:@"num_iid"];
     item.title = [itemDict objectForKey:@"title"];
@@ -86,6 +83,12 @@ hasWarranty, itemImgs, isVirtual, isTaobao, violation, sellPromise;
     return item;
 }
 
++ (Item *)itemFromResponse:(NSDictionary *)respDict {
+    NSDictionary *itemResp = [respDict objectForKey:@"item_get_response"];
+    NSDictionary *itemDict = [itemResp objectForKey:@"item"];
+    return [Item itemFromDict:itemDict];
+}
+
 + (NSString *)itemDescFromResponse:(NSDictionary *)respDict {
     if (respDict == nil) {
         return nil;
@@ -109,6 +112,17 @@ hasWarranty, itemImgs, isVirtual, isTaobao, violation, sellPromise;
         return [item objectForKey:@"click_url"];
     }
     return nil;
+}
+
++ (NSArray *)itemsFromGetListItemResponse:(NSMutableDictionary *)respDict {
+    NSDictionary *itemResp = [respDict objectForKey:@"items_list_get_response"];
+    NSArray *respArr = [[itemResp objectForKey:@"items"] objectForKey:@"item"];
+    NSMutableArray *items = [[NSMutableArray alloc] initWithCapacity:respArr.count];
+    
+    for (NSDictionary *dic in respArr) {
+        [items addObject:[Item itemFromDict:dic]];
+    }
+    return items;
 }
 
 @end

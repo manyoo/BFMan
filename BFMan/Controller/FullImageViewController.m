@@ -311,10 +311,10 @@
     TaobaokeItem *item = auc.tbkItem;
     if (item) {
         browser.itemUrl = [item.clickUrl newClickUrlForItemId:item.itemID];
-        browser.picUrl = [NSString stringWithFormat:@"%@_310x310.jpg", item.picUrl];
+        browser.picUrl = item.picUrl;
         browser.itemId = item.itemID;
     } else {
-        browser.picUrl = [NSString stringWithFormat:@"%@_310x310.jpg", picture.picUrl];
+        browser.picUrl = picture.picUrl;
         browser.itemUrl = auc.auctionUrl;
         browser.itemId = auc.auctionId;
     }

@@ -94,6 +94,15 @@ ClickHistoryManager *globalClickHistoryManager = nil;
     [self saveToFile];
 }
 
+- (BOOL)hasItem:(NSNumber *)itemId {
+    for (NSNumber *tid in clickItemsList) {
+        if ([tid isEqualToNumber:itemId]) {
+            return YES;
+        }
+    }
+    return NO;
+}
+
 - (void)clearAllHistory {
     self.clickItemsList = [[NSMutableArray alloc] init];
     [self saveToFile];
