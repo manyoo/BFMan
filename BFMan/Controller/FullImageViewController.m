@@ -311,7 +311,7 @@
     TaobaokeItem *item = auc.tbkItem;
     if (item) {
         browser.itemUrl = [item.clickUrl newClickUrlForItemId:item.itemID];
-        browser.picUrl = item.picUrl;
+        browser.picUrl = picture.picUrl;
         browser.itemId = item.itemID;
     } else {
         browser.picUrl = picture.picUrl;

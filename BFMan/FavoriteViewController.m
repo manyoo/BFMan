@@ -181,7 +181,7 @@
         
         TaobaoBrowserViewController *browser = [[TaobaoBrowserViewController alloc] initWithNibName:@"TaobaoBrowserViewController" bundle:nil];
         browser.itemId = itemId;
-        browser.picUrl = item.picUrl;
+        browser.picUrl = [NSString stringWithFormat:@"%@_310x310.jpg", item.picUrl];
         if (tbkItem) {
             browser.itemUrl = [tbkItem.clickUrl newClickUrlForItemId:itemId];
         } else {
