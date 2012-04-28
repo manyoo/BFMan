@@ -244,6 +244,7 @@
             arrowButton.alpha = 1.0;
         }];
         self.titleBarOn = YES;
+        [self displayCurrentImageNote];
     }
 }
 
