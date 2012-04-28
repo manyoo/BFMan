@@ -373,6 +373,7 @@
 - (void)channelSelected:(NSNumber *)channelId {
     self.currentChannelId = channelId;    
     [self loadNewChannel];
+    self.tableView.contentOffset = CGPointMake(0, 0);
 }
 
 @end
