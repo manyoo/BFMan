@@ -29,7 +29,7 @@
     [self.window makeKeyAndVisible];
     
     [MobClick startWithAppkey:UMENG_APP_KEY_STR reportPolicy:BATCH channelId:@"App Store"];
-    
+    [MobClick updateOnlineConfig];
     [MobClick checkUpdate];
     
     return YES;

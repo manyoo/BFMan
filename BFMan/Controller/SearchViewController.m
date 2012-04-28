@@ -9,6 +9,7 @@
 #import "SearchViewController.h"
 #import "SearchHistoryManager.h"
 #import "SearchResultViewController.h"
+#import "MobClick.h"
 
 @interface SearchViewController ()
 
@@ -46,7 +47,10 @@
     
     self.listType = SL_HISTORY;
     self.searchHistory = [[SearchHistoryManager defaultManager] getSearchHistoryList];
-
+    
+    NSString *hotWordsStr = [MobClick getConfigParams:@"hot"];
+    self.hottestSearches = [hotWordsStr componentsSeparatedByString:@";"];
+    
     self.navigationController.delegate = self;
     self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
     _searchBar.tintColor = [UIColor colorWithRed:192.0/255 green:66.0/255 blue:43.0/255 alpha:1.0];

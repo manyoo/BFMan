@@ -8,9 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "SearchListButtonView.h"
-#import "SearchSwitchViewController.h"
 
-@interface SearchViewController : UITableViewController <UISearchBarDelegate,SearchSwitchViewDelegate,UINavigationControllerDelegate>
+@interface SearchViewController : UITableViewController <UISearchBarDelegate,SearchListButtonViewDelegate,UINavigationControllerDelegate>
 
 @property (nonatomic, strong) NSString *keyword;
 @property (nonatomic, strong) UISearchBar *searchBar;
