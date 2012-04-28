@@ -67,6 +67,7 @@
     self.server = [[TBServer alloc] initWithDelegate:self];
     [self doRequest];
     
+    /*
     NSArray *urls = [[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask];
         
     NSURL *documentDir;
@@ -82,7 +83,7 @@
             HelpPhotoViewController *photo = [[HelpPhotoViewController alloc] initWithNibName:@"HelpPhotoViewController" bundle:nil];
             [self presentModalViewController:photo animated:YES];       
         }
-    }
+    }*/
 }
 
 - (void)reloadTableViewDataSource {
