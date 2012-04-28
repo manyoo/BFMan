@@ -38,12 +38,21 @@
 }
 */
 
-- (void)doRequest {
+- (void)requestHot {
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
     [params setValue:@"HOT" forKey:@"appointed_type"];
     [params setValue:self.currentChannelId forKey:@"channel_ids"];
     [params setValue:@"20" forKey:@"re_num"];
     self.apiType = API_GETHOT;
+    [self.server getAppointedPosters:params];
+}
+
+- (void)requestRecommend {
+    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+    [params setValue:@"RECOMMEND" forKey:@"appointed_type"];
+    [params setValue:self.currentChannelId forKey:@"channel_ids"];
+    [params setValue:@"20" forKey:@"re_num"];
+    self.apiType = API_GETRECOMMEND;
     [self.server getAppointedPosters:params];
 }
 
@@ -64,7 +73,7 @@
     self.title = @"热门";
     
     self.server = [[TBServer alloc] initWithDelegate:self];
-    [self doRequest];
+    [self requestHot];
     
     /*
     NSArray *urls = [[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask];
@@ -87,7 +96,7 @@
 
 - (void)reloadTableViewDataSource {
     [super reloadTableViewDataSource];
-    [self doRequest];
+    [self requestHot];
 }
 
 - (void)viewDidUnload
@@ -119,16 +128,23 @@
         for (id o in self.posters) {
             [self.cellTypes addObject:[NSNumber numberWithInt:CELL_DATA]];
         }
+        [self requestRecommend];
+    } else if (self.apiType == API_GETRECOMMEND) {
+        NSArray *newPosters = (NSArray *)data;
+        for (id o in newPosters) {
+            [self.cellTypes addObject:[NSNumber numberWithInt:CELL_DATA]];
+        }
+        [self.posters addObjectsFromArray:newPosters];
         if (self.reloading) {
             [self doneLoadingTableViewData];
         }
-        [self.tableView reloadData];   
+        [self.tableView reloadData];
     } else
         [super requestFinished:data];
 }
 
 - (void)loadNewChannel {
-    [self doRequest];
+    [self requestHot];
 }
 
 @end

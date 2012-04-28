@@ -137,7 +137,6 @@
 		07836B1914CBA199005B18A7 /* PosterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07836B1714CBA199005B18A7 /* PosterViewController.m */; };
 		07836B1A14CBA199005B18A7 /* PosterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07836B1814CBA199005B18A7 /* PosterViewController.xib */; };
 		07836B1D14CBA24D005B18A7 /* HotPosterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07836B1C14CBA24D005B18A7 /* HotPosterViewController.m */; };
-		07836B2014CBA2F1005B18A7 /* SuggestedPosterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07836B1F14CBA2F1005B18A7 /* SuggestedPosterViewController.m */; };
 		07836B2314CBA320005B18A7 /* AllPosterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07836B2214CBA320005B18A7 /* AllPosterViewController.m */; };
 		078A153114D82BC600D733B6 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 078A153014D82BC600D733B6 /* MBProgressHUD.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		078BDA3415497CA400274A16 /* cart.png in Resources */ = {isa = PBXBuildFile; fileRef = 078BDA3315497CA400274A16 /* cart.png */; };
@@ -495,8 +494,6 @@
 		07836B1814CBA199005B18A7 /* PosterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PosterViewController.xib; path = BFMan/Controller/PosterViewController.xib; sourceTree = "<group>"; };
 		07836B1B14CBA24D005B18A7 /* HotPosterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HotPosterViewController.h; path = BFMan/Controller/HotPosterViewController.h; sourceTree = "<group>"; };
 		07836B1C14CBA24D005B18A7 /* HotPosterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HotPosterViewController.m; path = BFMan/Controller/HotPosterViewController.m; sourceTree = "<group>"; };
-		07836B1E14CBA2F1005B18A7 /* SuggestedPosterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SuggestedPosterViewController.h; path = BFMan/Controller/SuggestedPosterViewController.h; sourceTree = "<group>"; };
-		07836B1F14CBA2F1005B18A7 /* SuggestedPosterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SuggestedPosterViewController.m; path = BFMan/Controller/SuggestedPosterViewController.m; sourceTree = "<group>"; };
 		07836B2114CBA320005B18A7 /* AllPosterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AllPosterViewController.h; path = BFMan/Controller/AllPosterViewController.h; sourceTree = "<group>"; };
 		07836B2214CBA320005B18A7 /* AllPosterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AllPosterViewController.m; path = BFMan/Controller/AllPosterViewController.m; sourceTree = "<group>"; };
 		078A152F14D82BC600D733B6 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
@@ -647,8 +644,6 @@
 				07836B1714CBA199005B18A7 /* PosterViewController.m */,
 				07836B1B14CBA24D005B18A7 /* HotPosterViewController.h */,
 				07836B1C14CBA24D005B18A7 /* HotPosterViewController.m */,
-				07836B1E14CBA2F1005B18A7 /* SuggestedPosterViewController.h */,
-				07836B1F14CBA2F1005B18A7 /* SuggestedPosterViewController.m */,
 				07836B2114CBA320005B18A7 /* AllPosterViewController.h */,
 				07836B2214CBA320005B18A7 /* AllPosterViewController.m */,
 				07A4820114D6948D002C1572 /* FullImageViewController.h */,
@@ -1393,7 +1388,6 @@
 				0774A7F014B9D91000D795AE /* HuabaoAuctionInfo.m in Sources */,
 				07836B1914CBA199005B18A7 /* PosterViewController.m in Sources */,
 				07836B1D14CBA24D005B18A7 /* HotPosterViewController.m in Sources */,
-				07836B2014CBA2F1005B18A7 /* SuggestedPosterViewController.m in Sources */,
 				07836B2314CBA320005B18A7 /* AllPosterViewController.m in Sources */,
 				07A4820414D6948D002C1572 /* FullImageViewController.m in Sources */,
 				0738BE5014D784CF00A64F42 /* ItemsListViewController.m in Sources */,
