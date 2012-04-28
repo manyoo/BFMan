@@ -315,6 +315,15 @@
         browser.itemId = item.itemID;
     } else {
         browser.picUrl = picture.picUrl;
+        if (auc.auctionUrl == nil) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示"
+                                                            message:@"该商品无法打开"
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"好的"
+                                                  otherButtonTitles:nil];
+            [alert show];
+            return;
+        } 
         browser.itemUrl = auc.auctionUrl;
         browser.itemId = auc.auctionId;
     }
