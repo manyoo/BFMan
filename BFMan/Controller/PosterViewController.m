@@ -15,7 +15,7 @@
 #import "HuabaoAuctionInfo.h"
 
 @implementation PosterViewController
-@synthesize posters, refreshEnabled, multipageEnabled, cellTypes, refreshHeaderView, lastpageLoaded, reloading, allItemsReloading, loadingCell, server, apiType, huabaoPictures, selectedHuaBao, hud, channelSelectionViewController, currentChannelId, searchBar, searchEnabled, searchBarStatus, searchBarDisplayController, searchResultPosters, searchResultCellTypes, lastSearchPageLoaded,searchKeyword, searching;
+@synthesize posters, refreshEnabled, multipageEnabled, cellTypes, refreshHeaderView, lastpageLoaded, reloading, allItemsReloading, loadingCell, server, apiType, huabaoPictures, selectedHuaBao, hud, channelSelectionViewController, currentChannelId;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -66,28 +66,11 @@
         
         [refreshHeaderView refreshLastUpdatedDate];
     }
-    if (multipageEnabled || searchEnabled) {
+    if (multipageEnabled) {
         self.multipageEnabled = YES;
         self.lastpageLoaded = 0;
     }
     
-    if (searchEnabled) {
-        self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, -44, 320, 44)];
-        searchBar.delegate = self;
-        searchBar.tintColor = [UIColor colorWithRed:192.0/255 green:66.0/255 blue:43.0/255 alpha:1.0];
-        searchBar.placeholder = @"搜索画报";
-        [self.tableView addSubview:searchBar];
-        
-        self.searchBarStatus = SB_HIDDEN;
-        
-        self.searchBarDisplayController = [[UISearchDisplayController alloc] initWithSearchBar:searchBar contentsController:self];
-        searchBarDisplayController.delegate = self;
-        searchBarDisplayController.searchResultsDataSource = self;
-        searchBarDisplayController.searchResultsDelegate = self;
-        [self setSearchBarDisplayController:searchBarDisplayController];
-        
-        self.searching = NO;
-    }
     self.posters = [[NSMutableArray alloc] init];
     self.cellTypes = [[NSMutableArray alloc] init];
     self.server = [[TBServer alloc] initWithDelegate:self];
@@ -137,114 +120,59 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    if (tableView == self.tableView) {
-        return [cellTypes count];
-    } else {
-        return [searchResultCellTypes count];
-    }
+    return [cellTypes count];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    if (tableView == self.tableView) {
-        return 40;
-    } else {
-        return 0;
-    }
+    return 40;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    if (tableView == self.tableView) {
-        return channelSelectionViewController.view;
-    } else {
-        return nil;
-    }
+    return channelSelectionViewController.view;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {   
-    if (tableView == self.tableView) {
-        CellType cellType = [[cellTypes objectAtIndex:indexPath.row] intValue];
-        
-        if (cellType == CELL_DATA) {
-            if (indexPath.row % 2 == 1) {
-                static NSString *CellIdentifier = @"SplitCell";
-                UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-                if (cell == nil) {
-                    cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-                    UIImageView *imgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"sperator.png"]];
-                    imgView.frame = CGRectMake(0, 0, 320, 8);
-                    [cell.contentView addSubview:imgView];
-                }
-                return cell;
-            } else {
-                static NSString *CellIdentifier = @"Cell";
-                
-                ItemBigTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-                if (cell == nil) {
-                    cell = [[ItemBigTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-                }
-                HuaBao *huabao = [posters objectAtIndex:indexPath.row];
-                HuaBao *huabao2 = [posters objectAtIndex:indexPath.row + 1];
-                cell.itemLeft = huabao;
-                cell.itemRight = huabao2;
-                [cell setupCellContentsWithDelegate:self];
-                return cell;
-            }
-        } else if (cellType == CELL_RELOAD) {
-            static NSString *CellIdentifier = @"LoadingCell";
-            
-            LoadingTableViewCell *cell = self.loadingCell;
+    CellType cellType = [[cellTypes objectAtIndex:indexPath.row] intValue];
+    
+    if (cellType == CELL_DATA) {
+        if (indexPath.row % 2 == 1) {
+            static NSString *CellIdentifier = @"SplitCell";
+            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
             if (cell == nil) {
-                self.loadingCell = [[LoadingTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-                cell = self.loadingCell;
+                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+                UIImageView *imgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"sperator.png"]];
+                imgView.frame = CGRectMake(0, 0, 320, 8);
+                [cell.contentView addSubview:imgView];
             }
-            [self loadMoreData];
+            return cell;
+        } else {
+            static NSString *CellIdentifier = @"Cell";
+            
+            ItemBigTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+            if (cell == nil) {
+                cell = [[ItemBigTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+            }
+            HuaBao *huabao = [posters objectAtIndex:indexPath.row];
+            HuaBao *huabao2 = nil;
+            if (indexPath.row + 1 < posters.count) {
+                huabao2 = [posters objectAtIndex:indexPath.row + 1];
+            }
+            cell.itemLeft = huabao;
+            cell.itemRight = huabao2;
+            [cell setupCellContentsWithDelegate:self];
             return cell;
         }
-    } else if (tableView == self.searchBarDisplayController.searchResultsTableView) {
-        CellType cellType = [[searchResultCellTypes objectAtIndex:indexPath.row] intValue];
+    } else if (cellType == CELL_RELOAD) {
+        static NSString *CellIdentifier = @"LoadingCell";
         
-        if (cellType == CELL_DATA) {
-            if (indexPath.row % 2 == 1) {
-                static NSString *CellIdentifier = @"SplitCell";
-                UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-                if (cell == nil) {
-                    cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-                    UIImageView *imgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"sperator.png"]];
-                    imgView.frame = CGRectMake(0, 0, 320, 8);
-                    [cell.contentView addSubview:imgView];
-                }
-                return cell;
-            } else {
-                static NSString *CellIdentifier = @"Cell";
-                
-                ItemBigTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-                if (cell == nil) {
-                    cell = [[ItemBigTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-                }
-                HuaBao *huabao = [searchResultPosters objectAtIndex:indexPath.row];
-                HuaBao *huabao2;
-                if (indexPath.row + 1 == searchResultPosters.count) {
-                    huabao2 = nil;
-                } else {
-                    huabao2 = [searchResultPosters objectAtIndex:indexPath.row + 1];
-                }
-                cell.itemLeft = huabao;
-                cell.itemRight = huabao2;
-                [cell setupCellContentsWithDelegate:self];
-                return cell;
-            }
-        } else if (cellType == CELL_RELOAD) {
-            static NSString *CellIdentifier = @"LoadingCell";
-            
-            LoadingTableViewCell *cell = self.loadingCell;
-            if (cell == nil) {
-                self.loadingCell = [[LoadingTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-                cell = self.loadingCell;
-            }
-            [self loadMoreSearchData];
-            return cell;
+        LoadingTableViewCell *cell = self.loadingCell;
+        if (cell == nil) {
+            self.loadingCell = [[LoadingTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+            cell = self.loadingCell;
         }
+        [self loadMoreData];
+        return cell;
     }
     return nil;
 }
@@ -289,12 +217,7 @@
 */
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    CellType cellType;
-    if (tableView == self.tableView) {
-        cellType = [[cellTypes objectAtIndex:indexPath.row] intValue];
-    } else {
-        cellType = [[searchResultCellTypes objectAtIndex:indexPath.row] intValue];
-    }
+    CellType cellType = [[cellTypes objectAtIndex:indexPath.row] intValue];
     if (cellType == CELL_DATA) {
         if (indexPath.row % 2 == 1) {
             return 8;
@@ -338,19 +261,6 @@
     if (refreshEnabled) {
         [refreshHeaderView egoRefreshScrollViewDidEndDragging:scrollView];
     }
-    if (searchEnabled && !searching) {
-        if (searchBarStatus == SB_HIDDEN && scrollView.contentOffset.y < -30) {
-            [UIView animateWithDuration:0.3 animations:^{
-                scrollView.contentInset = UIEdgeInsetsMake(44, 0, 0, 0);                
-            }];
-            self.searchBarStatus = SB_SHOWING;
-        } else if (searchBarStatus == SB_SHOWING && (scrollView.contentOffset.y < -50 || scrollView.contentOffset.y > 0)) {
-            [UIView animateWithDuration:0.3 animations:^{
-                scrollView.contentInset = UIEdgeInsetsZero;                
-            }];
-            self.searchBarStatus = SB_HIDDEN;
-        }
-    }
 }
 
 #pragma mark - Refresh delegate
@@ -368,15 +278,6 @@
 
 - (void)loadMoreData {
     
-}
-
-- (void)loadMoreSearchData {
-    lastSearchPageLoaded ++;
-    NSArray *values = [NSArray arrayWithObjects:searchKeyword, @"20", [NSNumber numberWithInt:lastSearchPageLoaded], nil];
-    NSArray *keys = [NSArray arrayWithObjects:@"key_word", @"page_size", @"page_no", nil];
-    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjects:values forKeys:keys];
-    self.apiType = API_SEARCH;
-    [server searchPosters:params];
 }
 
 #pragma mark - TBServerDelegate
@@ -417,27 +318,27 @@
         
         [self presentModalViewController:imgViewController animated:YES];
     } else if (apiType == API_SEARCH) {
-        if (lastSearchPageLoaded == 1) {
-            self.searchResultPosters = (NSMutableArray *)data;
-            self.searchResultCellTypes = [[NSMutableArray alloc] initWithCapacity:[self.searchResultPosters count]];
-            for (id o in searchResultPosters) {
-                [searchResultCellTypes addObject:[NSNumber numberWithInt:CELL_DATA]];
+        if (lastpageLoaded == 1) {
+            self.posters = (NSMutableArray *)data;
+            self.cellTypes = [[NSMutableArray alloc] initWithCapacity:[self.posters count]];
+            for (id o in posters) {
+                [cellTypes addObject:[NSNumber numberWithInt:CELL_DATA]];
             }
         } else {
-            [searchResultCellTypes removeLastObject];
+            [cellTypes removeLastObject];
             NSArray *newData = (NSArray *)data;
-            [searchResultPosters addObjectsFromArray:newData];
+            [posters addObjectsFromArray:newData];
             for (id o in newData) {
-                [searchResultCellTypes addObject:[NSNumber numberWithInt:CELL_DATA]];
+                [cellTypes addObject:[NSNumber numberWithInt:CELL_DATA]];
             }
         }
         /*if (self.reloading) {
             [self doneLoadingTableViewData];
         }*/
-        if (searchResultPosters.count % 20 == 0 && searchResultPosters.count != 0) {
-            [searchResultCellTypes addObject:[NSNumber numberWithInt:CELL_RELOAD]];
+        if (posters.count % 20 == 0 && posters.count != 0) {
+            [cellTypes addObject:[NSNumber numberWithInt:CELL_RELOAD]];
         }
-        [self.searchBarDisplayController.searchResultsTableView reloadData];   
+        [self.tableView reloadData];
     }
 }
 
@@ -472,34 +373,6 @@
 - (void)channelSelected:(NSNumber *)channelId {
     self.currentChannelId = channelId;    
     [self loadNewChannel];
-}
-
-- (void)searchBarTextDidBeginEditing:(UISearchBar *)asearchBar {
-    asearchBar.showsCancelButton = YES;
-    self.searching = YES;
-}
-- (void)searchBarCancelButtonClicked:(UISearchBar *)asearchBar {
-    asearchBar.showsCancelButton = NO;
-    self.searching = NO;
-    [asearchBar resignFirstResponder];
-    self.tableView.contentInset = UIEdgeInsetsZero;
-    self.searchResultPosters = nil;
-    self.searchResultCellTypes = nil;
-    [self.tableView reloadData];
-}
-
-- (void)searchBarSearchButtonClicked:(UISearchBar *)asearchBar {
-    NSString *keyword = asearchBar.text;
-    if (keyword == nil || [keyword isEqualToString:@""]) {
-        return;
-    }
-    self.searchKeyword = keyword;
-    self.lastSearchPageLoaded = 1;
-    NSArray *values = [NSArray arrayWithObjects:keyword, @"20", @"1", nil];
-    NSArray *keys = [NSArray arrayWithObjects:@"key_word", @"page_size", @"page_no", nil];
-    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjects:values forKeys:keys];
-    self.apiType = API_SEARCH;
-    [server searchPosters:params];
 }
 
 @end

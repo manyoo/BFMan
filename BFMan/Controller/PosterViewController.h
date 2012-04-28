@@ -34,7 +34,7 @@ typedef enum {
 @class LoadingTableViewCell;
 @class HuaBao;
 
-@interface PosterViewController : UITableViewController <EGORefreshTableHeaderDelegate,TBServerDelegate, MBProgressHUDDelegate, ChannelSelectionViewControllerDelegate, UISearchBarDelegate, UISearchDisplayDelegate>
+@interface PosterViewController : UITableViewController <EGORefreshTableHeaderDelegate,TBServerDelegate, MBProgressHUDDelegate, ChannelSelectionViewControllerDelegate>
 
 @property (nonatomic, strong) TBServer *server;
 @property (nonatomic) APIType apiType;
@@ -53,18 +53,6 @@ typedef enum {
 @property (nonatomic) BOOL refreshEnabled;
 @property (nonatomic) BOOL multipageEnabled;
 
-@property (nonatomic) BOOL searchEnabled;
-@property (nonatomic, strong) UISearchBar *searchBar;
-@property (nonatomic, strong) UISearchDisplayController *searchBarDisplayController;
-@property (nonatomic) SearchBarStatus searchBarStatus;
-
-@property (nonatomic, strong) NSString *searchKeyword;
-@property (nonatomic, strong) NSMutableArray *searchResultPosters;
-@property (nonatomic, strong) NSMutableArray *searchResultCellTypes;
-@property (nonatomic) NSInteger lastSearchPageLoaded;
-
-@property (nonatomic) BOOL searching;
-
 @property (nonatomic, strong) ChannelSelectionViewController *channelSelectionViewController;
 @property (nonatomic, strong) NSNumber *currentChannelId;
 
@@ -73,7 +61,6 @@ typedef enum {
 
 - (void)loadMoreData;
 - (void)loadNewChannel;
-- (void)loadMoreSearchData;
 
 - (void)openHuabao:(HuaBao *)huabao;
 
