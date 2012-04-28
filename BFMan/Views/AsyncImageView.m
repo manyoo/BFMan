@@ -105,7 +105,11 @@ UIImage *globalImage = nil;
     self.currentImage = image;
 
     if (self.subviews.count > 0) {
-        [[self.subviews objectAtIndex:0] removeFromSuperview];
+        [UIView animateWithDuration:0.2 animations:^{
+            self.alpha = 0.3;
+        } completion:^(BOOL finished) {
+            [[self.subviews objectAtIndex:0] removeFromSuperview];
+        }];
     }
         
     UIImageView *imgView;
@@ -155,7 +159,10 @@ UIImage *globalImage = nil;
         imgView.layer.borderColor = [UIColor clearColor].CGColor;
     }
     
-    [self addSubview:imgView];
+    [UIView animateWithDuration:0.2 animations:^{
+        [self addSubview:imgView];
+        self.alpha = 1.0;
+    }];
     [imgView setNeedsLayout];
     [self setNeedsLayout];
 }
