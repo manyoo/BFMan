@@ -94,6 +94,11 @@ ClickHistoryManager *globalClickHistoryManager = nil;
     [self saveToFile];
 }
 
+- (void)deleteHistoryAtIndex:(NSInteger)idx {
+    [clickItemsList removeObjectAtIndex:idx];
+    [self saveToFile];
+}
+
 - (BOOL)hasItem:(NSNumber *)itemId {
     for (NSNumber *tid in clickItemsList) {
         if ([tid isEqualToNumber:itemId]) {

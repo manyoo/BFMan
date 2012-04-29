@@ -125,12 +125,17 @@
     return nil;
 }
 
-/*
+
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Return NO if you do not want the specified item to be editable.
-    return YES;
+    CellType cellType = [[cellTypes objectAtIndex:indexPath.row] intValue];
+    if (cellType == CELL_DATA) {
+        return YES;
+    } else {
+        return NO;
+    }
 }
 
 
@@ -140,9 +145,13 @@
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
+        [self.cellTypes removeObjectAtIndex:indexPath.row];
+        [self.itemIds removeObjectAtIndex:indexPath.row];
+        [[ClickHistoryManager defautManager] deleteHistoryAtIndex:indexPath.row];
+        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
     }   
 }
- */
+
 
 
 /*

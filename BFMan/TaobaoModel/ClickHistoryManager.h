@@ -17,6 +17,7 @@
 - (NSArray *)getClickHistoryAtPage:(NSInteger)page;
 - (void)addClickItem:(NSNumber *)itemId;
 - (BOOL)hasItem:(NSNumber *)itemId;
+- (void)deleteHistoryAtIndex:(NSInteger)idx;
 - (void)clearAllHistory;
 
 @end
