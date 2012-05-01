@@ -34,6 +34,7 @@
 @property (nonatomic) BOOL displayingSmallPictures;
 @property (nonatomic, strong) SmallImageViewController *smallImageViewController;
 
+- (void)setHuabao:(HuaBao *)huabao pictures:(NSArray *)pictures auctions:(NSDictionary *)auctions;
 - (void)displayPage:(NSInteger)page;
 - (IBAction)cancel:(id)sender;
 

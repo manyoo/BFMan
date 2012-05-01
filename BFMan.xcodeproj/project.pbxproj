@@ -1504,8 +1504,8 @@
 		0774A6D214B9CD8200D795AE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Shiyou Wang (9RG83E9MH8)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Shiyou Wang (9RG83E9MH8)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Shiyou Wang";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Shiyou Wang";
 				COMPRESS_PNG_FILES = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BFMan/BFMan-Prefix.pch";
@@ -1516,8 +1516,8 @@
 					"\"$(SRCROOT)/BFMan\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "82DD15C7-E58C-4806-B003-B3FD57E94092";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "82DD15C7-E58C-4806-B003-B3FD57E94092";
+				PROVISIONING_PROFILE = "54C26455-3B1F-4AB1-8513-C4742A8DC074";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "54C26455-3B1F-4AB1-8513-C4742A8DC074";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1525,8 +1525,8 @@
 		0774A6D314B9CD8200D795AE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Shiyou Wang (9RG83E9MH8)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Shiyou Wang (9RG83E9MH8)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Shiyou Wang";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Shiyou Wang";
 				COMPRESS_PNG_FILES = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BFMan/BFMan-Prefix.pch";
@@ -1537,8 +1537,8 @@
 					"\"$(SRCROOT)/BFMan\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "82DD15C7-E58C-4806-B003-B3FD57E94092";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "82DD15C7-E58C-4806-B003-B3FD57E94092";
+				PROVISIONING_PROFILE = "54C26455-3B1F-4AB1-8513-C4742A8DC074";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "54C26455-3B1F-4AB1-8513-C4742A8DC074";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

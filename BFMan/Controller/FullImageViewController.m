@@ -38,6 +38,11 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        self.upArrowImage = [UIImage imageNamed:@"up_arrow.png"];
+        self.downArrowImage = [UIImage imageNamed:@"down_arrow.png"];
+        
+        self.displayingSmallPictures = NO;
+        self.page = 0;
     }
     return self;
 }
@@ -50,16 +55,11 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
-#pragma mark - View lifecycle
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
-    if ([self respondsToSelector:@selector(presentingViewController)]) {
-        [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];
-    }
-
+- (void)setHuabao:(HuaBao *)ahuabao pictures:(NSArray *)pictures auctions:(NSDictionary *)auctions {
+    self.huabao = ahuabao;
+    self.huabaoPictures = pictures;
+    self.huabaoAuctions = auctions;
+    
     NSMutableArray *imgitems = [[NSMutableArray alloc] initWithCapacity:huabaoPictures.count];
     for (HuabaoPicture *hp in huabaoPictures) {
         AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -70,6 +70,17 @@
         [imgitems addObject:img];
     }
     self.images = imgitems;
+}
+
+#pragma mark - View lifecycle
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    // Do any additional setup after loading the view from its nib.
+    if ([self respondsToSelector:@selector(presentingViewController)]) {
+        [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];
+    }
     
     self.titleBarOn = YES;
     self.itemsDisplayedOnPage = -1;
@@ -94,7 +105,7 @@
     
     int x = 0;
 
-    self.subScrollViews = [[NSMutableArray alloc] initWithCapacity:imgitems.count];
+    self.subScrollViews = [[NSMutableArray alloc] initWithCapacity:self.images.count];
     for (id image in _images) {
         CGRect subScrollFrame = CGRectMake(x, 0, scrollView.frame.size.width, scrollView.frame.size.height);
         UIScrollView *subScrollView = [[UIScrollView alloc] initWithFrame:subScrollFrame];
@@ -140,19 +151,14 @@
     
     [self.view addSubview:noteLabel];
     
-
+    [self displayCurrentImageNote];
+    [self focusOnPage:page];
+    
     self.smallImageViewController = [[SmallImageViewController alloc] initWithNibName:@"SmallImageViewController" bundle:nil];
     smallImageViewController.pictures = huabaoPictures;
     smallImageViewController.view.frame = CGRectMake(0, 480, 320, 72);
     smallImageViewController.delegate = self;
     [self.view addSubview:smallImageViewController.view];
-    
-    [self displayCurrentImageNote];
-    [self focusOnPage:0];
-    [smallImageViewController setSelectedPicture:0];
-    
-    self.upArrowImage = [UIImage imageNamed:@"up_arrow.png"];
-    self.downArrowImage = [UIImage imageNamed:@"down_arrow.png"];
     
     CGRect f = self.view.frame;
     self.arrowButton = [[UIButton alloc] initWithFrame:CGRectMake(f.size.width - 20, f.size.height, 15, 15)];
@@ -160,13 +166,35 @@
     [arrowButton addTarget:self action:@selector(arrowButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:arrowButton];
     
-    self.displayingSmallPictures = NO;
+    if (!displayingSmallPictures) {
+        CGSize curSize = self.view.bounds.size;
+        smallImageViewController.view.frame = CGRectMake(0, curSize.height + 20, curSize.width, 88);
+        CGRect noteFrame = noteLabel.frame;
+        noteLabel.frame = CGRectMake(noteFrame.origin.x, noteFrame.origin.y + 20, noteFrame.size.width, noteFrame.size.height);
+        CGRect btnFrame = arrowButton.frame;
+        arrowButton.frame = CGRectMake(btnFrame.origin.x, btnFrame.origin.y, btnFrame.size.width, btnFrame.size.height);
+        [arrowButton setImage:upArrowImage forState:UIControlStateNormal];
+    } else {
+        CGSize curSize = self.view.bounds.size;
+        smallImageViewController.view.frame = CGRectMake(0, curSize.height - 68, curSize.width, 88);
+        CGRect noteFrame = noteLabel.frame;
+        noteLabel.frame = CGRectMake(noteFrame.origin.x, noteFrame.origin.y + 20, noteFrame.size.width, noteFrame.size.height);
+        CGRect btnFrame = arrowButton.frame;
+        arrowButton.frame = CGRectMake(btnFrame.origin.x, btnFrame.origin.y - 88, btnFrame.size.width, btnFrame.size.height);
+        [arrowButton setImage:downArrowImage forState:UIControlStateNormal];
+    }
+    [smallImageViewController setSelectedPicture:page];
 }
 
 - (void)viewDidUnload
 {
     [self setScrollView:nil];
     [self setTitleBar:nil];
+    self.subScrollViews = nil;
+    self.tagButton = nil;
+    self.noteLabel = nil;
+    self.arrowButton = nil;
+    
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;

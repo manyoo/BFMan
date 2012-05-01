@@ -14,7 +14,15 @@
 #import "HuabaoPicture.h"
 
 @implementation ItemsListViewController
-@synthesize server, huabaoAuctions, huabaoPicture, delegate;
+@synthesize server, huabaoAuctions, huabaoPicture, delegate, tbkInfoLoaded;
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        self.tbkInfoLoaded = NO;
+    }
+    return self;
+}
 
 - (void)didReceiveMemoryWarning
 {
@@ -38,12 +46,14 @@
     self.tableView.backgroundColor = [UIColor clearColor];
     self.tableView.backgroundView = nil;
     
-    self.server = [[TBServer alloc] initWithDelegate:self];
-    NSMutableArray *itemIds = [[NSMutableArray alloc] initWithCapacity:huabaoAuctions.count];
-    for (HuabaoAuctionInfo *auc in huabaoAuctions) {
-        [itemIds addObject:auc.auctionId];
+    if (!tbkInfoLoaded) {
+        self.server = [[TBServer alloc] initWithDelegate:self];
+        NSMutableArray *itemIds = [[NSMutableArray alloc] initWithCapacity:huabaoAuctions.count];
+        for (HuabaoAuctionInfo *auc in huabaoAuctions) {
+            [itemIds addObject:auc.auctionId];
+        }
+        [server convertListOfTBKItems:itemIds];   
     }
-    [server convertListOfTBKItems:itemIds];
 }
 
 - (void)viewDidUnload
@@ -191,6 +201,7 @@
 }
 
 - (void)requestFinished:(id)data {
+    self.tbkInfoLoaded = YES;
     NSDictionary *res = (NSDictionary *)data;
     NSArray *tbkItems = [res objectForKey:@"items"];
     if (tbkItems == nil) {

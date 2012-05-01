@@ -26,6 +26,19 @@
     return self;
 }
 
+- (id)initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        // 默认频道为 服饰
+        self.currentChannelId = [NSNumber numberWithInt:2];
+        
+        self.posters = [[NSMutableArray alloc] init];
+        self.cellTypes = [[NSMutableArray alloc] init];
+        self.server = [[TBServer alloc] initWithDelegate:self];
+    }
+    return self;
+}
+
 - (void)didReceiveMemoryWarning
 {
     // Releases the view if it doesn't have a superview.
@@ -51,9 +64,6 @@
     channelSelectionViewController.delegate = self;
     channelSelectionViewController.view.frame = CGRectMake(0, 0, 320, 40);
     
-    // 默认频道为 服饰
-    self.currentChannelId = [NSNumber numberWithInt:2];
-    
     if (refreshEnabled) {
         self.refreshHeaderView = [[EGORefreshTableHeaderView alloc] initWithFrame:CGRectMake(0.0f,
                                                                                              0.0f - self.tableView.bounds.size.height, 
@@ -70,14 +80,11 @@
         self.multipageEnabled = YES;
         self.lastpageLoaded = 0;
     }
-    
-    self.posters = [[NSMutableArray alloc] init];
-    self.cellTypes = [[NSMutableArray alloc] init];
-    self.server = [[TBServer alloc] initWithDelegate:self];
 }
 
 - (void)viewDidUnload
 {
+    self.refreshHeaderView = nil;
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -311,9 +318,7 @@
         [self.hud hide:YES];
         
         FullImageViewController *imgViewController = [[FullImageViewController alloc] initWithNibName:@"FullImageViewController" bundle:nil];
-        imgViewController.huabao = selectedHuaBao;
-        imgViewController.huabaoPictures = huabaoPictures;
-        imgViewController.huabaoAuctions = auctions;
+        [imgViewController setHuabao:selectedHuaBao pictures:huabaoPictures auctions:auctions];
         imgViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
         
         [self presentModalViewController:imgViewController animated:YES];

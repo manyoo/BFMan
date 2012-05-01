@@ -21,6 +21,14 @@
     return self;
 }
 
+- (id)initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        
+    }
+    return self;
+}
+
 - (void)didReceiveMemoryWarning
 {
     // Releases the view if it doesn't have a superview.
@@ -72,9 +80,9 @@
     
     self.title = @"热门";
     
-    self.server = [[TBServer alloc] initWithDelegate:self];
-    [self requestHot];
-    
+    if ([self.cellTypes count] == 0) {
+        [self requestHot];
+    }
     /*
     NSArray *urls = [[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask];
         

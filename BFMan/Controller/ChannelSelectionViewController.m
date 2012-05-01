@@ -22,6 +22,12 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        self.channelNames = [NSArray arrayWithObjects:@"服饰", @"男人", @"女人",@"时尚",@"美容",@"运动",@"亲子",@"创意",@"数码", @"汽车", @"旅游", @"结婚", @"家居", @"娱乐", @"明星",@"宠物", @"旺铺",@"商城家装", @"实惠", nil];
+        int channel_ids[19] = {2,3,9,7,8,4,6,13,1,14,18,21,5,15,16,17,22,23,20};
+        self.channelIds = [[NSMutableArray alloc] initWithCapacity:19];
+        for (int i = 0; i < 19; ++i) {
+            [channelIds addObject:[NSNumber numberWithInt:channel_ids[i]]];
+        }
     }
     return self;
 }
@@ -43,13 +49,6 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor lightGrayColor];
-    
-    self.channelNames = [NSArray arrayWithObjects:@"服饰", @"男人", @"女人",@"时尚",@"美容",@"运动",@"亲子",@"创意",@"数码", @"汽车", @"旅游", @"结婚", @"家居", @"娱乐", @"明星",@"宠物", @"旺铺",@"商城家装", @"实惠", nil];
-    int channel_ids[19] = {2,3,9,7,8,4,6,13,1,14,18,21,5,15,16,17,22,23,20};
-    self.channelIds = [[NSMutableArray alloc] initWithCapacity:19];
-    for (int i = 0; i < 19; ++i) {
-        [channelIds addObject:[NSNumber numberWithInt:channel_ids[i]]];
-    }
     
     GradientView *backgroundView = [[GradientView alloc] initWithFrame:CGRectMake(0, 0, 320, 39.5)];
     CGFloat c1 = 254.0/255.0, c2 = 240.0/255.0;
@@ -98,6 +97,8 @@
 
 - (void)viewDidUnload
 {
+    self.scrollView = nil;
+    self.buttons = nil;
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }

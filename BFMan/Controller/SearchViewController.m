@@ -27,6 +27,20 @@
     return self;
 }
 
+- (id)initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        self.searchTypeHasChanged = NO;
+        
+        self.listType = SL_HISTORY;
+        self.searchHistory = [[SearchHistoryManager defaultManager] getSearchHistoryList];
+        
+        NSString *hotWordsStr = [MobClick getConfigParams:@"hot"];
+        self.hottestSearches = [hotWordsStr componentsSeparatedByString:@";"];
+    }
+    return self;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -42,14 +56,6 @@
     label.text = @"";
     
     self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:192.0/255 green:66.0/255 blue:43.0/255 alpha:1.0];
-    
-    self.searchTypeHasChanged = NO;
-    
-    self.listType = SL_HISTORY;
-    self.searchHistory = [[SearchHistoryManager defaultManager] getSearchHistoryList];
-    
-    NSString *hotWordsStr = [MobClick getConfigParams:@"hot"];
-    self.hottestSearches = [hotWordsStr componentsSeparatedByString:@";"];
     
     self.navigationController.delegate = self;
     self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
@@ -78,6 +84,7 @@
     // e.g. self.myOutlet = nil;
     [self.searchBar removeFromSuperview];
     self.searchBar = nil;
+    self.searchListButtonView = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

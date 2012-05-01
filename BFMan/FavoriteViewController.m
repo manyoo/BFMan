@@ -31,6 +31,14 @@
     return self;
 }
 
+- (id)initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        self.helper = [[TBHelper alloc] init];
+    }
+    return self;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -49,7 +57,6 @@
     }
     
     self.title = @"个人收藏";
-    self.helper = [[TBHelper alloc] init];
 }
 
 - (void)viewDidUnload

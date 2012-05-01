@@ -52,14 +52,15 @@
     }
     self.title = @"全部";
     
-    self.server = [[TBServer alloc] initWithDelegate:self];
-    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
-    [params setValue:self.currentChannelId forKey:@"channel_id"];
-    [params setValue:@"20" forKey:@"page_size"];
-    [params setValue:@"1" forKey:@"page_no"];
-    self.allItemsReloading = YES;
-    self.apiType = API_GETALL;
-    [self.server getPosters:params];
+    if ([self.cellTypes count] == 0) {
+        NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+        [params setValue:self.currentChannelId forKey:@"channel_id"];
+        [params setValue:@"20" forKey:@"page_size"];
+        [params setValue:@"1" forKey:@"page_no"];
+        self.allItemsReloading = YES;
+        self.apiType = API_GETALL;
+        [self.server getPosters:params];
+    }
 }
 
 

@@ -77,6 +77,8 @@
 
 - (void)viewDidUnload
 {
+    self.scrollView = nil;
+    self.imgViews = nil;
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;

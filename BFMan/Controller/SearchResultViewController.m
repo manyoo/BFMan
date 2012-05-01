@@ -44,12 +44,17 @@
         
     self.title = keyword;
     
-    self.lastpageLoaded = 1;
-    NSArray *values = [NSArray arrayWithObjects:keyword, @"20", [NSNumber numberWithInt:self.lastpageLoaded], nil];
-    NSArray *keys = [NSArray arrayWithObjects:@"key_word", @"page_size", @"page_no", nil];
-    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjects:values forKeys:keys];
-    self.apiType = API_SEARCH;
-    [self.server searchPosters:params];
+    if ([self.cellTypes count] == 0) {
+        self.lastpageLoaded = 1;
+        if (self.server == nil) {
+            self.server = [[TBServer alloc] initWithDelegate:self];
+        }
+        NSArray *values = [NSArray arrayWithObjects:keyword, @"20", [NSNumber numberWithInt:self.lastpageLoaded], nil];
+        NSArray *keys = [NSArray arrayWithObjects:@"key_word", @"page_size", @"page_no", nil];
+        NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjects:values forKeys:keys];
+        self.apiType = API_SEARCH;
+        [self.server searchPosters:params];
+    }
 }
 
 - (void)viewDidUnload

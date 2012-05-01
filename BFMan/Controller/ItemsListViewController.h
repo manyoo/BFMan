@@ -16,6 +16,7 @@
 @property (nonatomic, strong) NSMutableArray *huabaoAuctions;
 @property (nonatomic, strong) HuabaoPicture *huabaoPicture;
 @property (nonatomic, strong) TBServer *server;
+@property (nonatomic) BOOL tbkInfoLoaded;
 @property (nonatomic, unsafe_unretained) id delegate;
 
 @end
