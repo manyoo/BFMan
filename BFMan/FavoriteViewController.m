@@ -20,7 +20,7 @@
 @end
 
 @implementation FavoriteViewController
-@synthesize helper, lastpageLoaded, cellTypes, itemIds, itemIdsLastPage, itemWrappers, loadingCell;
+@synthesize helper, lastpageLoaded, cellTypes, itemIds, itemIdsLastPage, itemWrappers, loadingCell, needToScroll, indexOpened;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -35,6 +35,8 @@
     self = [super initWithCoder:aDecoder];
     if (self) {
         self.helper = [[TBHelper alloc] init];
+        self.needToScroll = NO;
+        self.indexOpened = -1;
     }
     return self;
 }
@@ -61,6 +63,7 @@
 
 - (void)viewDidUnload
 {
+    self.needToScroll = YES;
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -68,14 +71,26 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    self.lastpageLoaded = 0;
-    self.itemIdsLastPage = [[ClickHistoryManager defautManager] getClickHistoryAtPage:lastpageLoaded];
-    if (itemIdsLastPage == nil) {
-        return;
+    if ([cellTypes count] == 0) {
+        self.lastpageLoaded = 0;
+        self.itemIdsLastPage = [[ClickHistoryManager defautManager] getClickHistoryAtPage:lastpageLoaded];
+        if (itemIdsLastPage == nil) {
+            return;
+        }
+        self.itemIds = [itemIdsLastPage mutableCopy];
+        helper.delegate = self;
+        [helper getTaobaokeItemsForItems:itemIds];
     }
-    self.itemIds = [itemIdsLastPage mutableCopy];
-    helper.delegate = self;
-    [helper getTaobaokeItemsForItems:itemIds];
+    
+    if (needToScroll) {
+        self.needToScroll = NO;
+        unsigned int *idx = (unsigned int *)malloc(2 * sizeof(unsigned int));
+        idx[0] = 0;
+        idx[1] = indexOpened;
+        NSIndexPath *path = [[NSIndexPath alloc] initWithIndexes:idx length:2];
+        free(idx);
+        [self.tableView scrollToRowAtIndexPath:path atScrollPosition:UITableViewScrollPositionMiddle animated:NO];
+    }
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -188,6 +203,7 @@
      // Pass the selected object to the new view controller.
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
+    self.indexOpened = indexPath.row;
     CellType cellType = [[cellTypes objectAtIndex:indexPath.row] intValue];
     if (cellType == CELL_DATA) {
         NSNumber *itemId = [itemIds objectAtIndex:indexPath.row];

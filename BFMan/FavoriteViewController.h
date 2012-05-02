@@ -24,6 +24,9 @@ typedef enum {
 @property (nonatomic, strong) NSMutableArray *cellTypes;
 @property (nonatomic, strong) NSMutableDictionary *itemWrappers;
 
+@property (nonatomic) BOOL needToScroll;
+@property (nonatomic) NSInteger indexOpened;
+
 @property (nonatomic, strong) LoadingTableViewCell *loadingCell;
 
 @end

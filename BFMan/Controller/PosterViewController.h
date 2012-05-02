@@ -52,7 +52,8 @@ typedef enum {
 @property (nonatomic) BOOL allItemsReloading;
 @property (nonatomic) BOOL refreshEnabled;
 @property (nonatomic) BOOL multipageEnabled;
-
+@property (nonatomic) BOOL needToScroll;
+@property (nonatomic) NSInteger indexOpened;
 @property (nonatomic, strong) ChannelSelectionViewController *channelSelectionViewController;
 @property (nonatomic, strong) NSNumber *currentChannelId;
 

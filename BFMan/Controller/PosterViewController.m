@@ -15,7 +15,7 @@
 #import "HuabaoAuctionInfo.h"
 
 @implementation PosterViewController
-@synthesize posters, refreshEnabled, multipageEnabled, cellTypes, refreshHeaderView, lastpageLoaded, reloading, allItemsReloading, loadingCell, server, apiType, huabaoPictures, selectedHuaBao, hud, channelSelectionViewController, currentChannelId;
+@synthesize posters, refreshEnabled, multipageEnabled, cellTypes, refreshHeaderView, lastpageLoaded, reloading, allItemsReloading, loadingCell, server, apiType, huabaoPictures, selectedHuaBao, hud, channelSelectionViewController, currentChannelId,needToScroll, indexOpened;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -35,6 +35,8 @@
         self.posters = [[NSMutableArray alloc] init];
         self.cellTypes = [[NSMutableArray alloc] init];
         self.server = [[TBServer alloc] initWithDelegate:self];
+        self.needToScroll = NO;
+        self.indexOpened = -1;
     }
     return self;
 }
@@ -85,6 +87,7 @@
 - (void)viewDidUnload
 {
     self.refreshHeaderView = nil;
+    self.needToScroll = YES;
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -93,6 +96,15 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    if (needToScroll) {
+        self.needToScroll = NO;
+        unsigned int *idx = (unsigned int *)malloc(2 * sizeof(unsigned int));
+        idx[0] = 0;
+        idx[1] = indexOpened / 2;
+        NSIndexPath *path = [[NSIndexPath alloc] initWithIndexes:idx length:2];
+        free(idx);
+        [self.tableView scrollToRowAtIndexPath:path atScrollPosition:UITableViewScrollPositionMiddle animated:NO];
+    }
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -349,6 +361,7 @@
 
 
 - (void)openHuabao:(HuaBao *)huabao {
+    self.indexOpened = [posters indexOfObject:huabao];
     self.apiType = API_GETPICTURE;
     self.selectedHuaBao = huabao;
     
