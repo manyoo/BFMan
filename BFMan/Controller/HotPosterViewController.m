@@ -80,6 +80,7 @@
     
     self.title = @"热门";
     
+    
     if ([self.cellTypes count] == 0) {
         [self requestHot];
     }
@@ -146,6 +147,8 @@
         if (self.reloading) {
             [self doneLoadingTableViewData];
         }
+        self.tableView.tableHeaderView = self.channelSelectionViewController.view;
+
         [self.tableView reloadData];
     } else
         [super requestFinished:data];

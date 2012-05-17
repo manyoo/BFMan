@@ -104,11 +104,13 @@
             [self.cellTypes addObject:[NSNumber numberWithInt:CELL_DATA]];
         }
         if (newItems.count == 20) {
-            [self.cellTypes addObject:[NSNumber numberWithInt:CELL_RELOAD]];
+             [self.cellTypes addObject:[NSNumber numberWithInt:CELL_RELOAD]];
         }
         
         self.lastpageLoaded ++;
 
+        self.tableView.tableHeaderView = self.channelSelectionViewController.view;
+        
         [self.tableView reloadData];
     } else 
         [super requestFinished:data];
