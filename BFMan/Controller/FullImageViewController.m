@@ -339,7 +339,12 @@
     TaobaoBrowserViewController *browser = [[TaobaoBrowserViewController alloc] initWithNibName:@"TaobaoBrowserViewController" bundle:nil];
     TaobaokeItem *item = auc.tbkItem;
     if (item) {
-        browser.itemUrl = [item.clickUrl newClickUrlForItemId:item.itemID];
+        NSString *newUrl = [item.clickUrl newClickUrlForItemId:item.itemID];
+        if (newUrl) {
+            browser.itemUrl = newUrl;
+        } else {
+            browser.itemUrl = item.clickUrl;
+        }
         browser.picUrl = picture.picUrl;
         browser.itemId = item.itemID;
     } else {
