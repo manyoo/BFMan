@@ -16,6 +16,7 @@
 #import "TaobaokeItem.h"
 #import "NSString+URLConvert.h"
 #import "HuabaoAuctionInfo.h"
+#import "BFManConstants.h"
 
 @interface FullImageViewController (PrivateMethod)
 - (void)displayCurrentImageNote;
@@ -343,7 +344,7 @@
         if (newUrl) {
             browser.itemUrl = newUrl;
         } else {
-            browser.itemUrl = item.clickUrl;
+            browser.itemUrl = [NSString stringWithFormat:@"%@&ttid=%@", item.clickUrl, TAOBAO_TTID_STR];
         }
         browser.picUrl = picture.picUrl;
         browser.itemId = item.itemID;
