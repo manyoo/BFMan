@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "JSImageLoader.h"
 
 @class ItemImg;
+@class ASIHTTPRequest;
 
 typedef enum {
     IMG_SMALL,
@@ -17,15 +17,17 @@ typedef enum {
     IMG_BIG
 } IMGSize;
 
-@interface AsyncImageView : UIView <CachedImageDelegate>
+@interface AsyncImageView : UIView
 
 @property (nonatomic, strong) ItemImg *image;
 @property (nonatomic) BOOL usedInList;
 @property (nonatomic) BOOL usedInPageControl;
 @property (nonatomic) BOOL noBorder;
-@property (nonatomic, retain) JSImageLoaderClient *imageLoaderClient;
 @property (nonatomic, strong) UIImage *currentImage;
 @property (nonatomic) BOOL isSelected;
+@property (nonatomic, strong) UIImageView *imageView;
+@property (nonatomic, strong) ASIHTTPRequest *request;
+@property (nonatomic, strong) NSString *urlStr;
 
 + (UIImage *)cameraImage;
 

@@ -281,6 +281,8 @@
 		07E37E4114D90CAD009948D5 /* ItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 07E37E4014D90CAD009948D5 /* ItemTableViewCell.m */; };
 		07F75FB8154C23EA005320CC /* iPhoneIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 07F75FB7154C23EA005320CC /* iPhoneIcon.png */; };
 		07F75FBB154C23EE005320CC /* iPhoneIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 07F75FBA154C23EE005320CC /* iPhoneIcon@2x.png */; };
+		09BDE902156E2FDE006EA769 /* ImageMemCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 09BDE901156E2FDE006EA769 /* ImageMemCache.m */; };
+		09BDE904156E30C4006EA769 /* ImageMemCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 09BDE901156E2FDE006EA769 /* ImageMemCache.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -586,6 +588,8 @@
 		07E37E4014D90CAD009948D5 /* ItemTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemTableViewCell.m; sourceTree = "<group>"; };
 		07F75FB7154C23EA005320CC /* iPhoneIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = iPhoneIcon.png; path = ../../iPhoneIcon.png; sourceTree = "<group>"; };
 		07F75FBA154C23EE005320CC /* iPhoneIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iPhoneIcon@2x.png"; path = "../../iPhoneIcon@2x.png"; sourceTree = "<group>"; };
+		09BDE900156E2FDE006EA769 /* ImageMemCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageMemCache.h; sourceTree = "<group>"; };
+		09BDE901156E2FDE006EA769 /* ImageMemCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageMemCache.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -949,6 +953,8 @@
 		0774A7BD14B9CF4600D795AE /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				09BDE900156E2FDE006EA769 /* ImageMemCache.h */,
+				09BDE901156E2FDE006EA769 /* ImageMemCache.m */,
 				076563E4154B85F300156B34 /* SearchButton.h */,
 				076563E5154B85F300156B34 /* SearchButton.m */,
 				076563E6154B85F300156B34 /* SearchListButtonView.h */,
@@ -1323,6 +1329,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				09BDE904156E30C4006EA769 /* ImageMemCache.m in Sources */,
 				07DFC6BB154BD33200EAD8C0 /* ItemWrapper.m in Sources */,
 				07DFC6B9154BD31A00EAD8C0 /* TBHelper.m in Sources */,
 				077B02CE154BBCDB00059E6D /* ClickHistoryManager.m in Sources */,
@@ -1422,6 +1429,7 @@
 				076563F7154B905100156B34 /* SearchResultViewController.m in Sources */,
 				077B02D1154BBE5900059E6D /* TBHelper.m in Sources */,
 				077B02D4154BBEDE00059E6D /* ItemWrapper.m in Sources */,
+				09BDE902156E2FDE006EA769 /* ImageMemCache.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1504,8 +1512,8 @@
 		0774A6D214B9CD8200D795AE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Shiyou Wang (9RG83E9MH8)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Shiyou Wang (9RG83E9MH8)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Shiyou Wang";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Shiyou Wang";
 				COMPRESS_PNG_FILES = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BFMan/BFMan-Prefix.pch";
@@ -1516,8 +1524,8 @@
 					"\"$(SRCROOT)/BFMan\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "82DD15C7-E58C-4806-B003-B3FD57E94092";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "82DD15C7-E58C-4806-B003-B3FD57E94092";
+				PROVISIONING_PROFILE = "54C26455-3B1F-4AB1-8513-C4742A8DC074";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "54C26455-3B1F-4AB1-8513-C4742A8DC074";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1525,8 +1533,8 @@
 		0774A6D314B9CD8200D795AE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Shiyou Wang (9RG83E9MH8)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Shiyou Wang (9RG83E9MH8)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Shiyou Wang";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Shiyou Wang";
 				COMPRESS_PNG_FILES = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BFMan/BFMan-Prefix.pch";
@@ -1537,8 +1545,8 @@
 					"\"$(SRCROOT)/BFMan\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "82DD15C7-E58C-4806-B003-B3FD57E94092";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "82DD15C7-E58C-4806-B003-B3FD57E94092";
+				PROVISIONING_PROFILE = "54C26455-3B1F-4AB1-8513-C4742A8DC074";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "54C26455-3B1F-4AB1-8513-C4742A8DC074";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

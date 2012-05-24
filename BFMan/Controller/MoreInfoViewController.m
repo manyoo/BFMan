@@ -11,6 +11,7 @@
 #import "HelpPhotoViewController.h"
 #import "UMSNSService.h"
 #import "JSImageLoaderCache.h"
+#import "ASIDownloadCache.h"
 
 @implementation MoreInfoViewController
 @synthesize snsType, hud;
@@ -280,7 +281,7 @@
         [self.tableView reloadData];
     } else if (indexPath.section == 1) {
         self.hud = [[MBProgressHUD alloc] initWithView:self.view];
-        hud.mode = MBProgressHUDModeDeterminate;
+        hud.mode = MBProgressHUDModeIndeterminate;
         hud.labelText = @"正在清除...";
         [self.view addSubview:hud];
         [hud showWhileExecuting:@selector(clearCaches) onTarget:self withObject:nil animated:YES];
@@ -289,6 +290,7 @@
 
 - (void)clearCaches {
     [[JSImageLoaderCache sharedCache] trimDiskCacheFilesToZero:hud];
+    [[ASIDownloadCache sharedCache] clearCachedResponsesForStoragePolicy:ASICachePermanentlyCacheStoragePolicy];
 }
 
 #pragma mark - UIAlertViewDelegate

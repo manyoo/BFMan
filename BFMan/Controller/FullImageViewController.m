@@ -17,6 +17,7 @@
 #import "NSString+URLConvert.h"
 #import "HuabaoAuctionInfo.h"
 #import "BFManConstants.h"
+#import "ImageMemCache.h"
 
 @interface FullImageViewController (PrivateMethod)
 - (void)displayCurrentImageNote;
@@ -54,6 +55,7 @@
     [super didReceiveMemoryWarning];
     
     // Release any cached data, images, etc that aren't in use.
+    [[ImageMemCache sharedImageMemCache] clearCache];
 }
 
 - (void)setHuabao:(HuaBao *)ahuabao pictures:(NSArray *)pictures auctions:(NSDictionary *)auctions {

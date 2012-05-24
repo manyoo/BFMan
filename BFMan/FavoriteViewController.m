@@ -14,6 +14,7 @@
 #import "TaobaoBrowserViewController.h"
 #import "TaobaokeItem.h"
 #import "NSString+URLConvert.h"
+#import "ImageMemCache.h"
 
 @interface FavoriteViewController ()
 
@@ -39,6 +40,12 @@
         self.indexOpened = -1;
     }
     return self;
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    
+    [[ImageMemCache sharedImageMemCache] clearCache];
 }
 
 - (void)viewDidLoad

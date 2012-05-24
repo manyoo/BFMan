@@ -12,6 +12,7 @@
 #import "ItemImg.h"
 #import "AsyncImageView.h"
 #import <QuartzCore/QuartzCore.h>
+#import "ImageMemCache.h"
 
 @interface SmallImageViewController (PrivateMethod)
 - (void)focusOnPage:(NSInteger)currentPage;
@@ -82,6 +83,12 @@
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    
+    [[ImageMemCache sharedImageMemCache] clearCache];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

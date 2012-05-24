@@ -13,6 +13,7 @@
 #import "BFManConstants.h"
 #import "FullImageViewController.h"
 #import "HuabaoAuctionInfo.h"
+#import "ImageMemCache.h"
 
 @implementation PosterViewController
 @synthesize posters, refreshEnabled, multipageEnabled, cellTypes, refreshHeaderView, lastpageLoaded, reloading, allItemsReloading, loadingCell, server, apiType, huabaoPictures, selectedHuaBao, hud, channelSelectionViewController, currentChannelId,needToScroll, indexOpened;
@@ -47,6 +48,7 @@
     [super didReceiveMemoryWarning];
     
     // Release any cached data, images, etc that aren't in use.
+    [[ImageMemCache sharedImageMemCache] clearCache];
 }
 
 #pragma mark - View lifecycle

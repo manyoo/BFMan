@@ -10,6 +10,7 @@
 #import "SearchHistoryManager.h"
 #import "SearchResultViewController.h"
 #import "MobClick.h"
+#import "ImageMemCache.h"
 
 @interface SearchViewController ()
 
@@ -39,6 +40,12 @@
         self.hottestSearches = [hotWordsStr componentsSeparatedByString:@";"];
     }
     return self;
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    
+    [[ImageMemCache sharedImageMemCache] clearCache];
 }
 
 - (void)viewDidLoad

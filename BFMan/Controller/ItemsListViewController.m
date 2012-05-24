@@ -12,6 +12,7 @@
 #import "ItemTableViewCell.h"
 #import "TaobaokeItem.h"
 #import "HuabaoPicture.h"
+#import "ImageMemCache.h"
 
 @implementation ItemsListViewController
 @synthesize server, huabaoAuctions, huabaoPicture, delegate, tbkInfoLoaded;
@@ -30,6 +31,7 @@
     [super didReceiveMemoryWarning];
     
     // Release any cached data, images, etc that aren't in use.
+    [[ImageMemCache sharedImageMemCache] clearCache];
 }
 
 #pragma mark - View lifecycle
