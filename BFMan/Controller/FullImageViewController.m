@@ -33,7 +33,7 @@
 @synthesize titleBarOn, itemsDisplayedOnPage, itemInfoDisplaying;
 @synthesize huabao, huabaoPictures, huabaoAuctions, subScrollViews;
 @synthesize itemsViewController, tagButton, arrowButton,upArrowImage, downArrowImage,displayingSmallPictures;
-@synthesize smallImageViewController;
+@synthesize smallImageViewController, zoomScale;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -45,6 +45,7 @@
         
         self.displayingSmallPictures = NO;
         self.page = 0;
+        self.zoomScale = 1;
     }
     return self;
 }
@@ -125,10 +126,17 @@
         [imgView enableTouch];
         
 
+        UITapGestureRecognizer *twoTap = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                                                 action:@selector(imageViewDoubleTapped:)];
+        twoTap.numberOfTapsRequired = 2;
+        [imgView addGestureRecognizer:twoTap];
+        
         UITapGestureRecognizer *oneTap = [[UITapGestureRecognizer alloc] initWithTarget:self
                                                                                  action:@selector(imageViewTouched:)];
         oneTap.numberOfTapsRequired = 1;
+        [oneTap requireGestureRecognizerToFail:twoTap];
         [imgView addGestureRecognizer:oneTap];
+
         
         //[imgView getImage];
         imgView.tag = 101;
@@ -276,6 +284,20 @@
         }];
         self.titleBarOn = YES;
         [self displayCurrentImageNote];
+    }
+}
+
+- (void)imageViewDoubleTapped:(id)sender {
+    UIScrollView *subScroll = [subScrollViews objectAtIndex:page];
+    if (zoomScale == 1) {
+        self.zoomScale = 2;
+        subScroll.zoomScale = 2;
+    } else if (zoomScale == 2) {
+        self.zoomScale = 4;
+        subScroll.zoomScale = 4;
+    } else {
+        self.zoomScale = 1;
+        subScroll.zoomScale = 1;
     }
 }
 
