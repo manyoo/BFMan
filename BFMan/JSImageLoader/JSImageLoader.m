@@ -78,8 +78,8 @@ static void * volatile sharedInstance = nil;
 
 + (JSImageLoader *)sharedInstance {
 	while (!sharedInstance) {
-        [[NSURLCache sharedURLCache] setDiskCapacity:0];
-        [[NSURLCache sharedURLCache] setMemoryCapacity:5*1024*1024];
+       // [[NSURLCache sharedURLCache] setDiskCapacity:0];
+       // [[NSURLCache sharedURLCache] setMemoryCapacity:5*1024*1024];
 		JSImageLoader *temp = [[self alloc] init];
 		if(!OSAtomicCompareAndSwapPtrBarrier(0x0, temp, &sharedInstance)) {
 			[temp release];
@@ -132,13 +132,13 @@ static void * volatile sharedInstance = nil;
 	// Get the request from the client
 	NSURLRequest *request = [client request];
 	// Try the in-memory cache
-	NSCachedURLResponse *cachedResponse = [[NSURLCache sharedURLCache] cachedResponseForRequest:request];
+	/*NSCachedURLResponse *cachedResponse = [[NSURLCache sharedURLCache] cachedResponseForRequest:request];
 	if (cachedResponse) {
 		imageData = [cachedResponse data];
 		image = [UIImage imageWithData:imageData];
 		
 		return image;
-	}
+	}*/
 	//return nil;
 	// Try the on-disk cache
 	imageData = [[JSImageLoaderCache sharedCache] imageDataInCacheForURLString:[[request URL] absoluteString]];
@@ -262,6 +262,7 @@ static void * volatile sharedInstance = nil;
 		NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
 		
 		// Try the in-memory cache
+        /*
 		NSCachedURLResponse *cachedResponse = [[NSURLCache sharedURLCache] cachedResponseForRequest:request];
 		if (cachedResponse)
 		{
@@ -271,7 +272,7 @@ static void * volatile sharedInstance = nil;
 			// Exit
 			return;
 		}
-		
+		*/
 		// Try the on-disk cache
 		NSData *imageData = [[JSImageLoaderCache sharedCache] imageDataInCacheForURLString:[[request URL] absoluteString]];
 		if (imageData)

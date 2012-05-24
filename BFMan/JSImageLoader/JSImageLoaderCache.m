@@ -132,7 +132,7 @@ static void * volatile sharedInstance = nil;
 		// Create a cached url response
 		NSCachedURLResponse *cachedResponse = [[NSCachedURLResponse alloc] initWithResponse:response data:imageData];
 		// Store it in the url cache
-		[[NSURLCache sharedURLCache] storeCachedResponse:cachedResponse forRequest:request];
+		//[[NSURLCache sharedURLCache] storeCachedResponse:cachedResponse forRequest:request];
 		
 		// Trim the ache if it exceeds the max size
         /*
@@ -165,7 +165,7 @@ static void * volatile sharedInstance = nil;
 
 - (void)clearCachedDataForRequest:(NSURLRequest *)request {
 	// Remove the cache in the shared URL cache
-	[[NSURLCache sharedURLCache] removeCachedResponseForRequest:request];
+	//[[NSURLCache sharedURLCache] removeCachedResponseForRequest:request];
 	// Get the data of the disk cache for the request
 	NSData *data = [self imageDataInCacheForURLString:[[request URL] path]];
 	// Decrease the total cache size by the data that will be removed
