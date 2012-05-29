@@ -21,7 +21,8 @@
 @end
 
 @implementation HomeViewController
-@synthesize tableView, server, apiType, listType, posters, hotPosters, allPosters, currentChannelId, loadingCell, lastpageLoaded, reloading, allItemsReloading, multipageEnabled, needToScroll, indexOpened, channelSelectionViewController, huabaoPictures, selectedHuaBao, refreshHeaderView, refreshEnabled, hasMoreData;
+@synthesize channelButton;
+@synthesize tableView, server, apiType, listType, posters, hotPosters, allPosters, currentChannelId, loadingCell, lastpageLoaded, reloading, allItemsReloading, multipageEnabled, needToScroll, indexOpened, channelSelectionViewController, huabaoPictures, selectedHuaBao, refreshHeaderView, refreshEnabled, hasMoreData, popoverController;
 
 - (void)initialize {
     self.server = [[TBServer alloc] initWithDelegate:self];
@@ -110,6 +111,10 @@
         self.posters = allPosters;
     }
     
+    self.channelSelectionViewController = [[ChannelSelectioniPadViewController alloc] initWithNibName:@"ChannelSelectioniPadViewController" bundle:nil];
+    channelSelectionViewController.contentSizeForViewInPopover = CGSizeMake(100, 300);
+    channelSelectionViewController.delegate = self;
+    
     if (posters.count == 0) {
         if (listType == HOT_POSTERS) {
             [self requestHot];
@@ -122,6 +127,7 @@
 
 - (void)viewDidUnload
 {
+    [self setChannelButton:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -286,6 +292,9 @@
 }
 
 - (IBAction)channelButtonClicked:(id)sender {
+    self.popoverController = [[UIPopoverController alloc] initWithContentViewController:channelSelectionViewController];
+    popoverController.popoverContentSize = CGSizeMake(100, 300);
+    [popoverController presentPopoverFromBarButtonItem:channelButton permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
 }
 
 - (void)reloadTableViewDataSource {
@@ -401,6 +410,26 @@
 
 - (void)openHuabao:(HuaBao *)huabao {
     
+}
+
+#pragma mark - UIPopoverController
+- (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController {
+}
+
+- (BOOL)popoverControllerShouldDismissPopover:(UIPopoverController *)popoverController {
+    return YES;
+}
+
+- (void)channelSelected:(NSNumber *)channelId {
+    [popoverController dismissPopoverAnimated:YES];
+    self.currentChannelId = channelId;
+    if (listType == HOT_POSTERS) {
+        [self requestHot];
+    } else {
+        self.lastpageLoaded = 0;
+        self.allItemsReloading = YES;
+        [self requestAllPostersOnPage:(lastpageLoaded + 1)];
+    }
 }
 
 @end

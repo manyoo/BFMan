@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "TBServer.h"
-#import "ChannelSelectionViewController.h"
+#import "ChannelSelectioniPadViewController.h"
 #import "EGORefreshTableHeaderView.h"
 
 typedef enum {
@@ -28,7 +28,7 @@ typedef enum {
 @class LoadingTableViewCell;
 @class HuaBao;
 
-@interface HomeViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, TBServerDelegate, ChannelSelectionViewControllerDelegate, EGORefreshTableHeaderDelegate>
+@interface HomeViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, TBServerDelegate, ChannelSelectioniPadViewControllerDelegate, EGORefreshTableHeaderDelegate, UIPopoverControllerDelegate>
 
 @property (nonatomic, strong) TBServer *server;
 @property (nonatomic) APIType apiType;
@@ -56,7 +56,9 @@ typedef enum {
 @property (nonatomic) BOOL multipageEnabled;
 @property (nonatomic) BOOL needToScroll;
 @property (nonatomic) NSInteger indexOpened;
-@property (nonatomic, strong) ChannelSelectionViewController *channelSelectionViewController;
+@property (nonatomic, strong) ChannelSelectioniPadViewController *channelSelectionViewController;
+@property (nonatomic, strong) UIPopoverController *popoverController;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *channelButton;
 
 - (IBAction)changeType:(id)sender;
 - (IBAction)channelButtonClicked:(id)sender;

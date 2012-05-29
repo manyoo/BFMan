@@ -289,6 +289,8 @@
 		0946405E1573B0AF0021F2CA /* MainViewController-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0946405D1573B0AF0021F2CA /* MainViewController-iPad.xib */; };
 		09BDE902156E2FDE006EA769 /* ImageMemCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 09BDE901156E2FDE006EA769 /* ImageMemCache.m */; };
 		09BDE904156E30C4006EA769 /* ImageMemCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 09BDE901156E2FDE006EA769 /* ImageMemCache.m */; };
+		09C239F91574F83E005006E8 /* ChannelSelectioniPadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C239F71574F83E005006E8 /* ChannelSelectioniPadViewController.m */; };
+		09C239FA1574F83E005006E8 /* ChannelSelectioniPadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09C239F81574F83E005006E8 /* ChannelSelectioniPadViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -606,6 +608,9 @@
 		0946405D1573B0AF0021F2CA /* MainViewController-iPad.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "MainViewController-iPad.xib"; path = "Controller/iPad/MainViewController-iPad.xib"; sourceTree = "<group>"; };
 		09BDE900156E2FDE006EA769 /* ImageMemCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageMemCache.h; sourceTree = "<group>"; };
 		09BDE901156E2FDE006EA769 /* ImageMemCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageMemCache.m; sourceTree = "<group>"; };
+		09C239F61574F83E005006E8 /* ChannelSelectioniPadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChannelSelectioniPadViewController.h; path = Controller/ChannelSelectioniPadViewController.h; sourceTree = "<group>"; };
+		09C239F71574F83E005006E8 /* ChannelSelectioniPadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChannelSelectioniPadViewController.m; path = Controller/ChannelSelectioniPadViewController.m; sourceTree = "<group>"; };
+		09C239F81574F83E005006E8 /* ChannelSelectioniPadViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ChannelSelectioniPadViewController.xib; path = Controller/ChannelSelectioniPadViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1089,6 +1094,9 @@
 				090533FA1573C23D0015D1DA /* HomeViewController.h */,
 				090533FB1573C23D0015D1DA /* HomeViewController.m */,
 				090533FC1573C23D0015D1DA /* HomeViewController.xib */,
+				09C239F61574F83E005006E8 /* ChannelSelectioniPadViewController.h */,
+				09C239F71574F83E005006E8 /* ChannelSelectioniPadViewController.m */,
+				09C239F81574F83E005006E8 /* ChannelSelectioniPadViewController.xib */,
 			);
 			name = iPad;
 			path = BFMan;
@@ -1268,6 +1276,7 @@
 				07F75FBB154C23EE005320CC /* iPhoneIcon@2x.png in Resources */,
 				0946405E1573B0AF0021F2CA /* MainViewController-iPad.xib in Resources */,
 				090533FE1573C23D0015D1DA /* HomeViewController.xib in Resources */,
+				09C239FA1574F83E005006E8 /* ChannelSelectioniPadViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1453,6 +1462,7 @@
 				0944FAC9157473D500353E5F /* ItemBigiPadCell.m in Sources */,
 				0944FACD1574A04800353E5F /* HuabaoCoveriPadView.m in Sources */,
 				0944FAD01574A53500353E5F /* ItemBigiPadCell2.m in Sources */,
+				09C239F91574F83E005006E8 /* ChannelSelectioniPadViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
