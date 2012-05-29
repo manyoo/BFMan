@@ -52,6 +52,8 @@
 	<true/>
 	<key>NSMainNibFile</key>
 	<string>MainViewController</string>
+	<key>NSMainNibFile~ipad</key>
+	<string>MainViewController-iPad</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>

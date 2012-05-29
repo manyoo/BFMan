@@ -281,6 +281,12 @@
 		07E37E4114D90CAD009948D5 /* ItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 07E37E4014D90CAD009948D5 /* ItemTableViewCell.m */; };
 		07F75FB8154C23EA005320CC /* iPhoneIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 07F75FB7154C23EA005320CC /* iPhoneIcon.png */; };
 		07F75FBB154C23EE005320CC /* iPhoneIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 07F75FBA154C23EE005320CC /* iPhoneIcon@2x.png */; };
+		090533FD1573C23D0015D1DA /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 090533FB1573C23D0015D1DA /* HomeViewController.m */; };
+		090533FE1573C23D0015D1DA /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 090533FC1573C23D0015D1DA /* HomeViewController.xib */; };
+		0944FAC9157473D500353E5F /* ItemBigiPadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0944FAC8157473D500353E5F /* ItemBigiPadCell.m */; };
+		0944FACD1574A04800353E5F /* HuabaoCoveriPadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0944FACC1574A04800353E5F /* HuabaoCoveriPadView.m */; };
+		0944FAD01574A53500353E5F /* ItemBigiPadCell2.m in Sources */ = {isa = PBXBuildFile; fileRef = 0944FACF1574A53500353E5F /* ItemBigiPadCell2.m */; };
+		0946405E1573B0AF0021F2CA /* MainViewController-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0946405D1573B0AF0021F2CA /* MainViewController-iPad.xib */; };
 		09BDE902156E2FDE006EA769 /* ImageMemCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 09BDE901156E2FDE006EA769 /* ImageMemCache.m */; };
 		09BDE904156E30C4006EA769 /* ImageMemCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 09BDE901156E2FDE006EA769 /* ImageMemCache.m */; };
 /* End PBXBuildFile section */
@@ -588,6 +594,16 @@
 		07E37E4014D90CAD009948D5 /* ItemTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemTableViewCell.m; sourceTree = "<group>"; };
 		07F75FB7154C23EA005320CC /* iPhoneIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = iPhoneIcon.png; path = ../../iPhoneIcon.png; sourceTree = "<group>"; };
 		07F75FBA154C23EE005320CC /* iPhoneIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iPhoneIcon@2x.png"; path = "../../iPhoneIcon@2x.png"; sourceTree = "<group>"; };
+		090533FA1573C23D0015D1DA /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HomeViewController.h; path = Controller/iPad/HomeViewController.h; sourceTree = "<group>"; };
+		090533FB1573C23D0015D1DA /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HomeViewController.m; path = Controller/iPad/HomeViewController.m; sourceTree = "<group>"; };
+		090533FC1573C23D0015D1DA /* HomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HomeViewController.xib; path = Controller/iPad/HomeViewController.xib; sourceTree = "<group>"; };
+		0944FAC7157473D400353E5F /* ItemBigiPadCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemBigiPadCell.h; sourceTree = "<group>"; };
+		0944FAC8157473D500353E5F /* ItemBigiPadCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemBigiPadCell.m; sourceTree = "<group>"; };
+		0944FACB1574A04800353E5F /* HuabaoCoveriPadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HuabaoCoveriPadView.h; sourceTree = "<group>"; };
+		0944FACC1574A04800353E5F /* HuabaoCoveriPadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HuabaoCoveriPadView.m; sourceTree = "<group>"; };
+		0944FACE1574A53500353E5F /* ItemBigiPadCell2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemBigiPadCell2.h; sourceTree = "<group>"; };
+		0944FACF1574A53500353E5F /* ItemBigiPadCell2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemBigiPadCell2.m; sourceTree = "<group>"; };
+		0946405D1573B0AF0021F2CA /* MainViewController-iPad.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "MainViewController-iPad.xib"; path = "Controller/iPad/MainViewController-iPad.xib"; sourceTree = "<group>"; };
 		09BDE900156E2FDE006EA769 /* ImageMemCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageMemCache.h; sourceTree = "<group>"; };
 		09BDE901156E2FDE006EA769 /* ImageMemCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageMemCache.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -630,6 +646,7 @@
 		071E9AC814C8684D00C238D9 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				0946405C1573B0AE0021F2CA /* iPad */,
 				07A4820314D6948D002C1572 /* FullImageViewController.xib */,
 				071E9AD114C86A3300C238D9 /* MainViewController.xib */,
 				07836B1814CBA199005B18A7 /* PosterViewController.xib */,
@@ -975,8 +992,14 @@
 				0774A7C314B9CF4600D795AE /* GradientView.m */,
 				0774A7C414B9CF4600D795AE /* ItemBigTableViewCell.h */,
 				0774A7C514B9CF4600D795AE /* ItemBigTableViewCell.m */,
+				0944FAC7157473D400353E5F /* ItemBigiPadCell.h */,
+				0944FAC8157473D500353E5F /* ItemBigiPadCell.m */,
+				0944FACE1574A53500353E5F /* ItemBigiPadCell2.h */,
+				0944FACF1574A53500353E5F /* ItemBigiPadCell2.m */,
 				07ADF49A14DE47D6003054DC /* HuabaoCoverView.h */,
 				07ADF49B14DE47D6003054DC /* HuabaoCoverView.m */,
+				0944FACB1574A04800353E5F /* HuabaoCoveriPadView.h */,
+				0944FACC1574A04800353E5F /* HuabaoCoveriPadView.m */,
 				0774A7C614B9CF4600D795AE /* LoadingTableViewCell.h */,
 				0774A7C714B9CF4600D795AE /* LoadingTableViewCell.m */,
 			);
@@ -1057,6 +1080,18 @@
 				078BDA7A1549913800274A16 /* umeng_share_topicSel.png */,
 			);
 			path = UMSNSImages;
+			sourceTree = "<group>";
+		};
+		0946405C1573B0AE0021F2CA /* iPad */ = {
+			isa = PBXGroup;
+			children = (
+				0946405D1573B0AF0021F2CA /* MainViewController-iPad.xib */,
+				090533FA1573C23D0015D1DA /* HomeViewController.h */,
+				090533FB1573C23D0015D1DA /* HomeViewController.m */,
+				090533FC1573C23D0015D1DA /* HomeViewController.xib */,
+			);
+			name = iPad;
+			path = BFMan;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1231,6 +1266,8 @@
 				077B02CC154BB80300059E6D /* isnot_favorite@2x.png in Resources */,
 				07F75FB8154C23EA005320CC /* iPhoneIcon.png in Resources */,
 				07F75FBB154C23EE005320CC /* iPhoneIcon@2x.png in Resources */,
+				0946405E1573B0AF0021F2CA /* MainViewController-iPad.xib in Resources */,
+				090533FE1573C23D0015D1DA /* HomeViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1412,6 +1449,10 @@
 				076563D8154B832200156B34 /* SearchViewController.m in Sources */,
 				076563DE154B833900156B34 /* FavoriteViewController.m in Sources */,
 				07DFC6BE154BD87300EAD8C0 /* ItemCell.m in Sources */,
+				090533FD1573C23D0015D1DA /* HomeViewController.m in Sources */,
+				0944FAC9157473D500353E5F /* ItemBigiPadCell.m in Sources */,
+				0944FACD1574A04800353E5F /* HuabaoCoveriPadView.m in Sources */,
+				0944FAD01574A53500353E5F /* ItemBigiPadCell2.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1518,7 +1559,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BFMan/BFMan-Prefix.pch";
 				INFOPLIST_FILE = "BFMan/BFMan-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/BFMan\"",
@@ -1526,6 +1567,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "82DD15C7-E58C-4806-B003-B3FD57E94092";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "82DD15C7-E58C-4806-B003-B3FD57E94092";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1539,7 +1581,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BFMan/BFMan-Prefix.pch";
 				INFOPLIST_FILE = "BFMan/BFMan-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/BFMan\"",
@@ -1547,6 +1589,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "82DD15C7-E58C-4806-B003-B3FD57E94092";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "82DD15C7-E58C-4806-B003-B3FD57E94092";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
