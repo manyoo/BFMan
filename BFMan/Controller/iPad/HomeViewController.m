@@ -22,7 +22,7 @@
 
 @implementation HomeViewController
 @synthesize channelButton;
-@synthesize tableView, server, apiType, listType, posters, hotPosters, allPosters, currentChannelId, loadingCell, lastpageLoaded, reloading, allItemsReloading, multipageEnabled, needToScroll, indexOpened, channelSelectionViewController, huabaoPictures, selectedHuaBao, refreshHeaderView, refreshEnabled, hasMoreData, popoverController;
+@synthesize tableView, server, apiType, listType, posters, hotPosters, allPosters, currentChannelId, loadingCell, lastpageLoaded, reloading, allItemsReloading, multipageEnabled, needToScroll, indexOpened, channelSelectionViewController, huabaoPictures, selectedHuaBao, refreshHeaderView, refreshEnabled, hasMoreData, popoverController, searchKeyword;
 
 - (void)initialize {
     self.server = [[TBServer alloc] initWithDelegate:self];
@@ -83,6 +83,14 @@
     [params setValue:[NSNumber numberWithInt:p] forKey:@"page_no"];
     self.apiType = API_GETALL;
     [self.server getPosters:params];
+}
+
+- (void)searchWithKeyword:(NSString *)keyword onPage:(NSInteger)p {
+    NSArray *values = [NSArray arrayWithObjects:keyword, @"20", [NSNumber numberWithInt:p], nil];
+    NSArray *keys = [NSArray arrayWithObjects:@"key_word", @"page_size", @"page_no", nil];
+    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjects:values forKeys:keys];
+    self.apiType = API_SEARCH;
+    [self.server searchPosters:params];
 }
 
 - (void)viewDidLoad
@@ -163,7 +171,7 @@
     } else if (UIInterfaceOrientationIsLandscape(orient)) {
         c = count % 4 != 0 ? (count / 4) + 1 : count / 4;
     }
-    if (listType == ALL_POSTERS && hasMoreData) {
+    if (listType != HOT_POSTERS && hasMoreData) {
         c++;
     }
     return c;
@@ -274,6 +282,7 @@
 }
 
 - (IBAction)changeType:(UISegmentedControl *)seg {
+    self.hasMoreData = NO;
     self.listType = seg.selectedSegmentIndex;
     if (listType == HOT_POSTERS) {
         self.posters = hotPosters;
@@ -334,8 +343,14 @@
 }
 
 - (void)loadMoreData {
-    self.allItemsReloading = NO;
-    [self requestAllPostersOnPage:(lastpageLoaded + 1)];
+    if (listType == ALL_POSTERS) {
+        self.allItemsReloading = NO;
+        [self requestAllPostersOnPage:(lastpageLoaded + 1)];
+    } else if (listType == SEARCH_RESULTS) {
+        self.allItemsReloading = NO;
+        [self searchWithKeyword:searchKeyword onPage:lastpageLoaded + 1];
+    }
+
 }
 
 #pragma mark - TBServerDelegate
@@ -368,13 +383,21 @@
     } else if (apiType == API_SEARCH) {
         if (lastpageLoaded == 1) {
             self.posters = (NSMutableArray *)data;
+            if (posters.count == 20) {
+                self.hasMoreData = YES;
+            } else {
+                self.hasMoreData = NO;
+            }
         } else {
             NSArray *newData = (NSArray *)data;
             [posters addObjectsFromArray:newData];
+            if (newData.count == 20) {
+                self.hasMoreData = YES;
+            } else {
+                self.hasMoreData = NO;
+            }
         }
-        /*if (self.reloading) {
-         [self doneLoadingTableViewData];
-         }*/
+        self.lastpageLoaded ++;
         [self.tableView reloadData];
     } else if (self.apiType == API_GETHOT) {
         self.hotPosters = (NSMutableArray *)data;
@@ -430,6 +453,27 @@
         self.allItemsReloading = YES;
         [self requestAllPostersOnPage:(lastpageLoaded + 1)];
     }
+}
+
+#pragma mark - UISearchBarDelegate
+- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
+    
+}
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+    [searchBar resignFirstResponder];
+    
+    self.listType = SEARCH_RESULTS;
+    self.searchKeyword = searchBar.text;
+    if (searchKeyword) {
+        self.allItemsReloading = YES;
+        self.lastpageLoaded = 1;
+        [self searchWithKeyword:searchKeyword onPage:lastpageLoaded];
+    }
+}
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
+    [searchBar resignFirstResponder];
 }
 
 @end

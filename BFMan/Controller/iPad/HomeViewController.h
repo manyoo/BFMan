@@ -13,7 +13,8 @@
 
 typedef enum {
     HOT_POSTERS,
-    ALL_POSTERS
+    ALL_POSTERS,
+    SEARCH_RESULTS 
 } PosterListType;
 
 typedef enum {
@@ -59,6 +60,8 @@ typedef enum {
 @property (nonatomic, strong) ChannelSelectioniPadViewController *channelSelectionViewController;
 @property (nonatomic, strong) UIPopoverController *popoverController;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *channelButton;
+
+@property (nonatomic, strong) NSString *searchKeyword;
 
 - (IBAction)changeType:(id)sender;
 - (IBAction)channelButtonClicked:(id)sender;
