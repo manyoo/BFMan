@@ -10,7 +10,6 @@
 #import "AsyncImageView.h"
 #import "HuabaoPicture.h"
 #import "ItemImg.h"
-#import "AppDelegate.h"
 #import "ItemsListViewController.h"
 #import "TaobaoBrowserViewController.h"
 #import "TaobaokeItem.h"
@@ -65,11 +64,8 @@
     self.huabaoAuctions = auctions;
     
     NSMutableArray *imgitems = [[NSMutableArray alloc] initWithCapacity:huabaoPictures.count];
-    for (HuabaoPicture *hp in huabaoPictures) {
-        AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-        NSManagedObjectContext *context = [appDelegate managedObjectContext];
-        
-        ItemImg *img = (ItemImg *)[NSEntityDescription insertNewObjectForEntityForName:@"ItemImg" inManagedObjectContext:context];
+    for (HuabaoPicture *hp in huabaoPictures) { 
+        ItemImg *img = [[ItemImg alloc] init];
         img.url = hp.picUrl;
         [imgitems addObject:img];
     }

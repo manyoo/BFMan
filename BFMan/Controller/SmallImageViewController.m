@@ -7,7 +7,6 @@
 //
 
 #import "SmallImageViewController.h"
-#import "AppDelegate.h"
 #import "HuabaoPicture.h"
 #import "ItemImg.h"
 #import "AsyncImageView.h"
@@ -36,10 +35,7 @@
     // Do any additional setup after loading the view from its nib.
     NSMutableArray *imgitems = [[NSMutableArray alloc] initWithCapacity:pictures.count];
     for (HuabaoPicture *hp in pictures) {
-        AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-        NSManagedObjectContext *context = [appDelegate managedObjectContext];
-        
-        ItemImg *img = (ItemImg *)[NSEntityDescription insertNewObjectForEntityForName:@"ItemImg" inManagedObjectContext:context];
+        ItemImg *img = [[ItemImg alloc] init];
         img.url = hp.picUrl;
         [imgitems addObject:img];
     }

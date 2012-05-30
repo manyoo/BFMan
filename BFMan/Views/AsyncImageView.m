@@ -8,7 +8,6 @@
 
 #import "AsyncImageView.h"
 #import "ItemImg.h"
-#import "AppDelegate.h"
 #import <QuartzCore/QuartzCore.h>
 #import "ASIHTTPRequest.h"
 #import "ASIDownloadCache.h"

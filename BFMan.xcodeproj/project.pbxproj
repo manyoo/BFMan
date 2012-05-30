@@ -49,7 +49,6 @@
 		0774A6AF14B9CD8200D795AE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0774A6AD14B9CD8200D795AE /* InfoPlist.strings */; };
 		0774A6B114B9CD8200D795AE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0774A6B014B9CD8200D795AE /* main.m */; };
 		0774A6B514B9CD8200D795AE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0774A6B414B9CD8200D795AE /* AppDelegate.m */; };
-		0774A6B814B9CD8200D795AE /* BFMan.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0774A6B614B9CD8200D795AE /* BFMan.xcdatamodeld */; };
 		0774A6C014B9CD8200D795AE /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0774A6BF14B9CD8200D795AE /* SenTestingKit.framework */; };
 		0774A6C114B9CD8200D795AE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0774A6A214B9CD8200D795AE /* UIKit.framework */; };
 		0774A6C214B9CD8200D795AE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0774A6A414B9CD8200D795AE /* Foundation.framework */; };
@@ -85,16 +84,13 @@
 		0774A78214B9CF1D00D795AE /* blueArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0774A77314B9CF1D00D795AE /* blueArrow@2x.png */; };
 		0774A78514B9CF1D00D795AE /* camera.png in Resources */ = {isa = PBXBuildFile; fileRef = 0774A77614B9CF1D00D795AE /* camera.png */; };
 		0774A78A14B9CF1D00D795AE /* forwardbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 0774A77B14B9CF1D00D795AE /* forwardbutton.png */; };
-		0774A7AA14B9CF2F00D795AE /* CategoryCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 0774A78D14B9CF2F00D795AE /* CategoryCache.m */; };
 		0774A7AB14B9CF2F00D795AE /* CollectItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 0774A78F14B9CF2F00D795AE /* CollectItem.m */; };
 		0774A7AC14B9CF2F00D795AE /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = 0774A79114B9CF2F00D795AE /* Item.m */; };
 		0774A7AD14B9CF2F00D795AE /* ItemCat.m in Sources */ = {isa = PBXBuildFile; fileRef = 0774A79314B9CF2F00D795AE /* ItemCat.m */; };
 		0774A7AE14B9CF2F00D795AE /* ItemImg.m in Sources */ = {isa = PBXBuildFile; fileRef = 0774A79514B9CF2F00D795AE /* ItemImg.m */; };
 		0774A7AF14B9CF2F00D795AE /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = 0774A79714B9CF2F00D795AE /* Location.m */; };
-		0774A7B014B9CF2F00D795AE /* SearchCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 0774A79914B9CF2F00D795AE /* SearchCache.m */; };
 		0774A7B114B9CF2F00D795AE /* Shop.m in Sources */ = {isa = PBXBuildFile; fileRef = 0774A79B14B9CF2F00D795AE /* Shop.m */; };
 		0774A7B214B9CF2F00D795AE /* ShopScore.m in Sources */ = {isa = PBXBuildFile; fileRef = 0774A79D14B9CF2F00D795AE /* ShopScore.m */; };
-		0774A7B314B9CF2F00D795AE /* ShopSearchCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 0774A79F14B9CF2F00D795AE /* ShopSearchCache.m */; };
 		0774A7B414B9CF2F00D795AE /* TaobaokeItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 0774A7A114B9CF2F00D795AE /* TaobaokeItem.m */; };
 		0774A7B514B9CF2F00D795AE /* TaobaokeShop.m in Sources */ = {isa = PBXBuildFile; fileRef = 0774A7A314B9CF2F00D795AE /* TaobaokeShop.m */; };
 		0774A7B614B9CF2F00D795AE /* TradeRate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0774A7A514B9CF2F00D795AE /* TradeRate.m */; };
@@ -287,6 +283,8 @@
 		0944FACD1574A04800353E5F /* HuabaoCoveriPadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0944FACC1574A04800353E5F /* HuabaoCoveriPadView.m */; };
 		0944FAD01574A53500353E5F /* ItemBigiPadCell2.m in Sources */ = {isa = PBXBuildFile; fileRef = 0944FACF1574A53500353E5F /* ItemBigiPadCell2.m */; };
 		0946405E1573B0AF0021F2CA /* MainViewController-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0946405D1573B0AF0021F2CA /* MainViewController-iPad.xib */; };
+		099632061575FB460047198E /* iPadDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 099632041575FB460047198E /* iPadDetailViewController.m */; };
+		099632071575FB460047198E /* iPadDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 099632051575FB460047198E /* iPadDetailViewController.xib */; };
 		09BDE902156E2FDE006EA769 /* ImageMemCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 09BDE901156E2FDE006EA769 /* ImageMemCache.m */; };
 		09BDE904156E30C4006EA769 /* ImageMemCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 09BDE901156E2FDE006EA769 /* ImageMemCache.m */; };
 		09C239F91574F83E005006E8 /* ChannelSelectioniPadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C239F71574F83E005006E8 /* ChannelSelectioniPadViewController.m */; };
@@ -350,7 +348,6 @@
 		0774A6B214B9CD8200D795AE /* BFMan-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BFMan-Prefix.pch"; sourceTree = "<group>"; };
 		0774A6B314B9CD8200D795AE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		0774A6B414B9CD8200D795AE /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		0774A6B714B9CD8200D795AE /* BFMan.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BFMan.xcdatamodel; sourceTree = "<group>"; };
 		0774A6BE14B9CD8200D795AE /* BFManTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BFManTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0774A6BF14B9CD8200D795AE /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		0774A6C814B9CD8200D795AE /* BFManTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BFManTests-Info.plist"; sourceTree = "<group>"; };
@@ -416,8 +413,6 @@
 		0774A77314B9CF1D00D795AE /* blueArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blueArrow@2x.png"; sourceTree = "<group>"; };
 		0774A77614B9CF1D00D795AE /* camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera.png; sourceTree = "<group>"; };
 		0774A77B14B9CF1D00D795AE /* forwardbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = forwardbutton.png; sourceTree = "<group>"; };
-		0774A78C14B9CF2F00D795AE /* CategoryCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryCache.h; sourceTree = "<group>"; };
-		0774A78D14B9CF2F00D795AE /* CategoryCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryCache.m; sourceTree = "<group>"; };
 		0774A78E14B9CF2F00D795AE /* CollectItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectItem.h; sourceTree = "<group>"; };
 		0774A78F14B9CF2F00D795AE /* CollectItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectItem.m; sourceTree = "<group>"; };
 		0774A79014B9CF2F00D795AE /* Item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Item.h; sourceTree = "<group>"; };
@@ -428,14 +423,10 @@
 		0774A79514B9CF2F00D795AE /* ItemImg.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemImg.m; sourceTree = "<group>"; };
 		0774A79614B9CF2F00D795AE /* Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Location.h; sourceTree = "<group>"; };
 		0774A79714B9CF2F00D795AE /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Location.m; sourceTree = "<group>"; };
-		0774A79814B9CF2F00D795AE /* SearchCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchCache.h; sourceTree = "<group>"; };
-		0774A79914B9CF2F00D795AE /* SearchCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchCache.m; sourceTree = "<group>"; };
 		0774A79A14B9CF2F00D795AE /* Shop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Shop.h; sourceTree = "<group>"; };
 		0774A79B14B9CF2F00D795AE /* Shop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Shop.m; sourceTree = "<group>"; };
 		0774A79C14B9CF2F00D795AE /* ShopScore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopScore.h; sourceTree = "<group>"; };
 		0774A79D14B9CF2F00D795AE /* ShopScore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopScore.m; sourceTree = "<group>"; };
-		0774A79E14B9CF2F00D795AE /* ShopSearchCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopSearchCache.h; sourceTree = "<group>"; };
-		0774A79F14B9CF2F00D795AE /* ShopSearchCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopSearchCache.m; sourceTree = "<group>"; };
 		0774A7A014B9CF2F00D795AE /* TaobaokeItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaobaokeItem.h; sourceTree = "<group>"; };
 		0774A7A114B9CF2F00D795AE /* TaobaokeItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaobaokeItem.m; sourceTree = "<group>"; };
 		0774A7A214B9CF2F00D795AE /* TaobaokeShop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaobaokeShop.h; sourceTree = "<group>"; };
@@ -606,6 +597,9 @@
 		0944FACE1574A53500353E5F /* ItemBigiPadCell2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemBigiPadCell2.h; sourceTree = "<group>"; };
 		0944FACF1574A53500353E5F /* ItemBigiPadCell2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemBigiPadCell2.m; sourceTree = "<group>"; };
 		0946405D1573B0AF0021F2CA /* MainViewController-iPad.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "MainViewController-iPad.xib"; path = "Controller/iPad/MainViewController-iPad.xib"; sourceTree = "<group>"; };
+		099632031575FB460047198E /* iPadDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = iPadDetailViewController.h; path = Controller/iPad/iPadDetailViewController.h; sourceTree = "<group>"; };
+		099632041575FB460047198E /* iPadDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = iPadDetailViewController.m; path = Controller/iPad/iPadDetailViewController.m; sourceTree = "<group>"; };
+		099632051575FB460047198E /* iPadDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = iPadDetailViewController.xib; path = Controller/iPad/iPadDetailViewController.xib; sourceTree = "<group>"; };
 		09BDE900156E2FDE006EA769 /* ImageMemCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageMemCache.h; sourceTree = "<group>"; };
 		09BDE901156E2FDE006EA769 /* ImageMemCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageMemCache.m; sourceTree = "<group>"; };
 		09C239F61574F83E005006E8 /* ChannelSelectioniPadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChannelSelectioniPadViewController.h; path = Controller/ChannelSelectioniPadViewController.h; sourceTree = "<group>"; };
@@ -764,7 +758,6 @@
 				0774A7D614B9D09F00D795AE /* GTMNSString+HTML.m */,
 				0774A7D714B9D09F00D795AE /* NSString+MD5.h */,
 				0774A7D814B9D09F00D795AE /* NSString+MD5.m */,
-				0774A6B614B9CD8200D795AE /* BFMan.xcdatamodeld */,
 				0774A6AB14B9CD8200D795AE /* Supporting Files */,
 			);
 			path = BFMan;
@@ -917,8 +910,6 @@
 				072CB6B7154A365C00EB115B /* ClickHistoryManager.m */,
 				072CB6B3154A362F00EB115B /* SearchHistoryManager.h */,
 				072CB6B4154A362F00EB115B /* SearchHistoryManager.m */,
-				0774A78C14B9CF2F00D795AE /* CategoryCache.h */,
-				0774A78D14B9CF2F00D795AE /* CategoryCache.m */,
 				0774A78E14B9CF2F00D795AE /* CollectItem.h */,
 				0774A78F14B9CF2F00D795AE /* CollectItem.m */,
 				0774A79014B9CF2F00D795AE /* Item.h */,
@@ -929,14 +920,10 @@
 				0774A79514B9CF2F00D795AE /* ItemImg.m */,
 				0774A79614B9CF2F00D795AE /* Location.h */,
 				0774A79714B9CF2F00D795AE /* Location.m */,
-				0774A79814B9CF2F00D795AE /* SearchCache.h */,
-				0774A79914B9CF2F00D795AE /* SearchCache.m */,
 				0774A79A14B9CF2F00D795AE /* Shop.h */,
 				0774A79B14B9CF2F00D795AE /* Shop.m */,
 				0774A79C14B9CF2F00D795AE /* ShopScore.h */,
 				0774A79D14B9CF2F00D795AE /* ShopScore.m */,
-				0774A79E14B9CF2F00D795AE /* ShopSearchCache.h */,
-				0774A79F14B9CF2F00D795AE /* ShopSearchCache.m */,
 				0774A7A014B9CF2F00D795AE /* TaobaokeItem.h */,
 				0774A7A114B9CF2F00D795AE /* TaobaokeItem.m */,
 				0774A7A214B9CF2F00D795AE /* TaobaokeShop.h */,
@@ -1097,6 +1084,9 @@
 				09C239F61574F83E005006E8 /* ChannelSelectioniPadViewController.h */,
 				09C239F71574F83E005006E8 /* ChannelSelectioniPadViewController.m */,
 				09C239F81574F83E005006E8 /* ChannelSelectioniPadViewController.xib */,
+				099632031575FB460047198E /* iPadDetailViewController.h */,
+				099632041575FB460047198E /* iPadDetailViewController.m */,
+				099632051575FB460047198E /* iPadDetailViewController.xib */,
 			);
 			name = iPad;
 			path = BFMan;
@@ -1277,6 +1267,7 @@
 				0946405E1573B0AF0021F2CA /* MainViewController-iPad.xib in Resources */,
 				090533FE1573C23D0015D1DA /* HomeViewController.xib in Resources */,
 				09C239FA1574F83E005006E8 /* ChannelSelectioniPadViewController.xib in Resources */,
+				099632071575FB460047198E /* iPadDetailViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1387,7 +1378,6 @@
 				072CB6A9154A2ABA00EB115B /* NSString+Additions.m in Sources */,
 				0774A6B114B9CD8200D795AE /* main.m in Sources */,
 				0774A6B514B9CD8200D795AE /* AppDelegate.m in Sources */,
-				0774A6B814B9CD8200D795AE /* BFMan.xcdatamodeld in Sources */,
 				0774A6EE14B9CEE900D795AE /* ASIAuthenticationDialog.m in Sources */,
 				0774A6EF14B9CEE900D795AE /* ASIDataCompressor.m in Sources */,
 				0774A6F014B9CEE900D795AE /* ASIDataDecompressor.m in Sources */,
@@ -1412,16 +1402,13 @@
 				0774A76914B9CF0D00D795AE /* JSImageLoader.m in Sources */,
 				0774A76A14B9CF0D00D795AE /* JSImageLoaderCache.m in Sources */,
 				0774A76B14B9CF0D00D795AE /* JSImageLoaderClient.m in Sources */,
-				0774A7AA14B9CF2F00D795AE /* CategoryCache.m in Sources */,
 				0774A7AB14B9CF2F00D795AE /* CollectItem.m in Sources */,
 				0774A7AC14B9CF2F00D795AE /* Item.m in Sources */,
 				0774A7AD14B9CF2F00D795AE /* ItemCat.m in Sources */,
 				0774A7AE14B9CF2F00D795AE /* ItemImg.m in Sources */,
 				0774A7AF14B9CF2F00D795AE /* Location.m in Sources */,
-				0774A7B014B9CF2F00D795AE /* SearchCache.m in Sources */,
 				0774A7B114B9CF2F00D795AE /* Shop.m in Sources */,
 				0774A7B214B9CF2F00D795AE /* ShopScore.m in Sources */,
-				0774A7B314B9CF2F00D795AE /* ShopSearchCache.m in Sources */,
 				0774A7B414B9CF2F00D795AE /* TaobaokeItem.m in Sources */,
 				0774A7B514B9CF2F00D795AE /* TaobaokeShop.m in Sources */,
 				0774A7B614B9CF2F00D795AE /* TradeRate.m in Sources */,
@@ -1463,6 +1450,7 @@
 				0944FACD1574A04800353E5F /* HuabaoCoveriPadView.m in Sources */,
 				0944FAD01574A53500353E5F /* ItemBigiPadCell2.m in Sources */,
 				09C239F91574F83E005006E8 /* ChannelSelectioniPadViewController.m in Sources */,
+				099632061575FB460047198E /* iPadDetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1677,19 +1665,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		0774A6B614B9CD8200D795AE /* BFMan.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				0774A6B714B9CD8200D795AE /* BFMan.xcdatamodel */,
-			);
-			currentVersion = 0774A6B714B9CD8200D795AE /* BFMan.xcdatamodel */;
-			path = BFMan.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 0774A69514B9CD8100D795AE /* Project object */;
 }

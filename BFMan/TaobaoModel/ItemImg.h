@@ -9,10 +9,10 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@interface ItemImg : NSManagedObject
-@property (nonatomic, retain) NSNumber * imgId;
-@property (nonatomic, retain) NSNumber * position;
-@property (nonatomic, retain) NSString * url;
+@interface ItemImg : NSObject
+@property (nonatomic, strong) NSNumber * imgId;
+@property (nonatomic, strong) NSNumber * position;
+@property (nonatomic, strong) NSString * url;
 
 + (NSArray *)itemImgsFromResponse:(NSDictionary *)respDict;
 

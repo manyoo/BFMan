@@ -10,11 +10,11 @@
 #import <CoreData/CoreData.h>
 
 
-@interface ShopScore : NSManagedObject
+@interface ShopScore : NSObject
 
-@property (nonatomic, retain) NSNumber * itemScore;           // 商品描述评分
-@property (nonatomic, retain) NSNumber * serviceScore;        // 服务态度评分
-@property (nonatomic, retain) NSNumber * deliveryScore;       // 发货速度评分
+@property (nonatomic, strong) NSNumber * itemScore;           // 商品描述评分
+@property (nonatomic, strong) NSNumber * serviceScore;        // 服务态度评分
+@property (nonatomic, strong) NSNumber * deliveryScore;       // 发货速度评分
 
 + (ShopScore *)shopScoreFromDict:(NSDictionary *)dict;
 

@@ -7,16 +7,12 @@
 //
 
 #import "ItemImg.h"
-#import "AppDelegate.h"
 
 @implementation ItemImg
-@dynamic imgId, url, position;
+@synthesize imgId, url, position;
 
-+ (ItemImg *)itemImgFromDictionary:(NSDictionary *)dict {
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    NSManagedObjectContext *context = [appDelegate managedObjectContext];
-    
-    ItemImg *img = (ItemImg *)[NSEntityDescription insertNewObjectForEntityForName:@"ItemImg" inManagedObjectContext:context];
++ (ItemImg *)itemImgFromDictionary:(NSDictionary *)dict {    
+    ItemImg *img = [[ItemImg alloc] init];
     
     img.imgId = [dict objectForKey:@"img_id"];
     img.url = [dict objectForKey:@"url"];

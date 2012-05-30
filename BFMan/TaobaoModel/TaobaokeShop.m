@@ -7,23 +7,22 @@
 //
 
 #import "TaobaokeShop.h"
-#import "AppDelegate.h"
 #import "NSString+HTML.h"
 
 NSArray *taobaoke_shop_fields = nil;
 
 @implementation TaobaokeShop
 
-@dynamic userId;
-@dynamic shopTitle;
-@dynamic clickUrl;
-@dynamic commissionRate;
-@dynamic sellerCredit;
-@dynamic shopType;
-@dynamic totalAuction;
-@dynamic auctionCount;
-@dynamic shop;
-@dynamic position;
+@synthesize userId;
+@synthesize shopTitle;
+@synthesize clickUrl;
+@synthesize commissionRate;
+@synthesize sellerCredit;
+@synthesize shopType;
+@synthesize totalAuction;
+@synthesize auctionCount;
+@synthesize shop;
+@synthesize position;
 
 + (NSArray *)fields {
     if (taobaoke_shop_fields == nil) {
@@ -33,10 +32,7 @@ NSArray *taobaoke_shop_fields = nil;
 }
 
 + (TaobaokeShop *)taobaokeShopFromResponse:(NSDictionary *)resp {
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    NSManagedObjectContext *context = appDelegate.managedObjectContext;
-    
-    TaobaokeShop *shop = [NSEntityDescription insertNewObjectForEntityForName:@"TaobaokeShop" inManagedObjectContext:context];
+    TaobaokeShop *shop = [[TaobaokeShop alloc] init];
     shop.userId = [resp objectForKey:@"user_id"];
     shop.shopTitle = [[resp objectForKey:@"shop_title"] stringByDecodingHTMLEntities];
     shop.clickUrl = [resp objectForKey:@"click_url"];

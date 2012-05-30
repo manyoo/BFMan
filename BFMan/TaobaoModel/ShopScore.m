@@ -7,19 +7,15 @@
 //
 
 #import "ShopScore.h"
-#import "AppDelegate.h"
 
 @implementation ShopScore
 
-@dynamic itemScore;
-@dynamic serviceScore;
-@dynamic deliveryScore;
+@synthesize itemScore;
+@synthesize serviceScore;
+@synthesize deliveryScore;
 
 + (ShopScore *)shopScoreFromDict:(NSDictionary *)dict {
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    NSManagedObjectContext *context = appDelegate.managedObjectContext;
-    
-    ShopScore *score = (ShopScore *)[NSEntityDescription insertNewObjectForEntityForName:@"ShopScore" inManagedObjectContext:context];
+    ShopScore *score = [[ShopScore alloc] init];
     score.itemScore = [NSNumber numberWithInt:[[dict objectForKey:@"item_score"] intValue]];
     score.serviceScore = [NSNumber numberWithInt:[[dict objectForKey:@"service_score"] intValue]];
     score.deliveryScore = [NSNumber numberWithInt:[[dict objectForKey:@"delivery_score"] intValue]];

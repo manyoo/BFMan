@@ -7,23 +7,22 @@
 //
 
 #import "Shop.h"
-#import "AppDelegate.h"
 #import "ShopScore.h"
 
 NSArray *shop_fields = nil;
 
 @implementation Shop
 
-@dynamic sid;
-@dynamic cid;
-@dynamic nick;
-@dynamic title;
-@dynamic desc;
-@dynamic bulletin;
-@dynamic picUrl;
-@dynamic created;
-@dynamic modified;
-@dynamic shopScore;
+@synthesize sid;
+@synthesize cid;
+@synthesize nick;
+@synthesize title;
+@synthesize desc;
+@synthesize bulletin;
+@synthesize picUrl;
+@synthesize created;
+@synthesize modified;
+@synthesize shopScore;
 
 + (NSArray *)fields {
     if (shop_fields == nil) {
@@ -33,10 +32,7 @@ NSArray *shop_fields = nil;
 }
 
 + (Shop *)shopFromResponse:(NSDictionary *)resp {
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    NSManagedObjectContext *context = appDelegate.managedObjectContext;
-    
-    Shop *shop = (Shop *)[NSEntityDescription insertNewObjectForEntityForName:@"Shop" inManagedObjectContext:context];
+    Shop *shop = [[Shop alloc] init];
     
     NSDictionary *shopDict = [[resp objectForKey:@"shop_get_response"] objectForKey:@"shop"];
     shop.sid = [shopDict objectForKey:@"sid"];

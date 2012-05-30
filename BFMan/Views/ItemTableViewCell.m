@@ -11,7 +11,6 @@
 #import "ItemImg.h"
 #import "AsyncImageView.h"
 #import "GradientView.h"
-#import "AppDelegate.h"
 
 #define IMAGE_WIDTH 90
 
@@ -62,13 +61,10 @@
 
     UIView *v = [self.contentView viewWithTag:99];
     [v removeFromSuperview];
-    
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    NSManagedObjectContext *context = [appDelegate managedObjectContext];
-    
+
     ItemImg *img = item.itemImage;
     if (img == nil) {
-        img = [NSEntityDescription insertNewObjectForEntityForName:@"ItemImg" inManagedObjectContext:context];
+        img = [[ItemImg alloc] init];
         img.url = item.picUrl;
         item.itemImage = img;
     }
@@ -92,10 +88,7 @@
     UIView *v = [self.contentView viewWithTag:99];
     [v removeFromSuperview];
     
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    NSManagedObjectContext *context = [appDelegate managedObjectContext];
-    
-    ItemImg *img = [NSEntityDescription insertNewObjectForEntityForName:@"ItemImg" inManagedObjectContext:context];
+    ItemImg *img = [[ItemImg alloc] init];
     img.url = picUrl;
     item.itemImage = img;
     
