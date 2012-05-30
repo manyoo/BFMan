@@ -10,7 +10,6 @@
 #import "HuaBao.h"
 #import "ItemImg.h"
 #import "AsyncImageView.h"
-#import "AppDelegate.h"
 #import <QuartzCore/QuartzCore.h>
 
 @implementation HuabaoCoverView
@@ -63,12 +62,9 @@
     UIView *v = [self viewWithTag:99];
     [v removeFromSuperview];
     
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    NSManagedObjectContext *context = [appDelegate managedObjectContext];
-    
     ItemImg *img = huabao.itemImg;
     if (img == nil) {
-        img = [NSEntityDescription insertNewObjectForEntityForName:@"ItemImg" inManagedObjectContext:context];
+        img = [[ItemImg alloc] init];
         img.url = huabao.coverPicUrl;
         huabao.itemImg = img;
     }
