@@ -45,6 +45,7 @@ typedef enum {
 @property (nonatomic) TBAPI api;
 @property (nonatomic) BOOL needAuth;
 @property (nonatomic, strong) ASIHTTPRequest *request;
+@property (nonatomic) BOOL isMobile;
 
 - (TBServer *)initWithDelegate:(id<TBServerDelegate>)delegate;
 

@@ -15,21 +15,36 @@
 #define IMAGE_WIDTH 90
 
 @implementation ItemTableViewCell
-@synthesize item, titleLabel, priceLabel;
+@synthesize item, titleLabel, priceLabel, usedIniPad;
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier inIpad:(BOOL)inIpad frame:(CGRect)f
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         // Initialization code
-        self.backgroundView = [[UIView alloc] initWithFrame:self.frame];
-        self.backgroundView.backgroundColor = [UIColor blackColor];
-        self.backgroundView.alpha = 0.7;
+        self.usedIniPad = inIpad;
+        if (!usedIniPad) {
+            self.backgroundView = [[UIView alloc] initWithFrame:self.frame];
+            self.backgroundView.backgroundColor = [UIColor blackColor];
+            self.backgroundView.alpha = 0.7;
+        }
+        
+        self.frame = f;
         
         // title label
-        self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(IMAGE_WIDTH + 10, 0, self.frame.size.width - IMAGE_WIDTH - 20, IMAGE_WIDTH / 2)];
+        CGRect f;
+        if (usedIniPad) {
+            f = CGRectMake(0, IMAGE_WIDTH, self.frame.size.width, self.frame.size.height - IMAGE_WIDTH - 35);
+        } else {
+            f = CGRectMake(IMAGE_WIDTH + 10, 0, self.frame.size.width - IMAGE_WIDTH - 20, IMAGE_WIDTH / 2);
+        }
+        self.titleLabel = [[UILabel alloc] initWithFrame:f];
         titleLabel.font = [UIFont systemFontOfSize:17];
-        titleLabel.textColor = [UIColor whiteColor];
+        if (usedIniPad) {
+            titleLabel.textColor = [UIColor darkTextColor];
+        } else {
+            titleLabel.textColor = [UIColor whiteColor];            
+        }
         titleLabel.backgroundColor = [UIColor clearColor];
         titleLabel.lineBreakMode = UILineBreakModeWordWrap;
         titleLabel.numberOfLines = 0;
@@ -37,11 +52,20 @@
         
         // price label
         
-        CGRect priceFrame = CGRectMake(IMAGE_WIDTH + 10, IMAGE_WIDTH / 2 + 10, titleLabel.frame.size.width / 2, 20);
-        self.priceLabel = [[UILabel alloc] initWithFrame:priceFrame];
+        CGRect pf;
+        if (usedIniPad) {
+            pf = CGRectMake(0, self.frame.size.height - 20, self.frame.size.width, 20);
+        } else {
+            pf = CGRectMake(IMAGE_WIDTH + 10, IMAGE_WIDTH / 2 + 10, titleLabel.frame.size.width / 2, 20);
+        }
+        self.priceLabel = [[UILabel alloc] initWithFrame:pf];
         priceLabel.backgroundColor = [UIColor clearColor];
         priceLabel.textAlignment = UITextAlignmentLeft;
-        priceLabel.textColor = [UIColor whiteColor];
+        if (usedIniPad) {
+            priceLabel.textColor = [UIColor darkTextColor];
+        } else {
+            priceLabel.textColor = [UIColor whiteColor];
+        }
         priceLabel.font = [UIFont systemFontOfSize:12];
         [self.contentView addSubview:priceLabel];
     }

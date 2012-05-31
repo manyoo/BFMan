@@ -9,9 +9,8 @@
 #import "TaobaoBrowserViewController.h"
 #import "BFManConstants.h"
 #import "UMSNSService.h"
-#import "JSImageLoader.h"
-#import "JSImageLoaderCache.h"
 #import "ClickHistoryManager.h"
+#import "ImageMemCache.h"
 
 @implementation TaobaoBrowserViewController
 @synthesize previousButton;
@@ -177,8 +176,7 @@
 
 - (void)shortUrlFinished:(NSString *)shortUrl {
     NSString *msg = [NSString stringWithFormat:@"看到一个宝贝，分享给大家！%@ ", shortUrl];
-    JSImageLoaderCache *cache = [JSImageLoaderCache sharedCache];
-    UIImage *img = [UIImage imageWithData:[cache imageDataInCacheForURLString:picUrl]];
+    UIImage *img = [[ImageMemCache sharedImageMemCache] getImageForKey:picUrl];
     [UMSNSService showSNSActionSheetInController:self
                                           appkey:UMENG_APP_KEY_STR
                                           status:msg

@@ -15,12 +15,13 @@
 #import "ImageMemCache.h"
 
 @implementation ItemsListViewController
-@synthesize server, huabaoAuctions, huabaoPicture, delegate, tbkInfoLoaded;
+@synthesize server, huabaoAuctions, huabaoPicture, delegate, tbkInfoLoaded, usedInIpad;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         self.tbkInfoLoaded = NO;
+        self.usedInIpad = NO;
     }
     return self;
 }
@@ -45,11 +46,18 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    self.tableView.backgroundColor = [UIColor clearColor];
-    self.tableView.backgroundView = nil;
+    if (usedInIpad) {
+        self.tableView.backgroundColor = [UIColor whiteColor];
+    } else {
+        self.tableView.backgroundColor = [UIColor clearColor];
+        self.tableView.backgroundView = nil;
+    }
     
     if (!tbkInfoLoaded) {
         self.server = [[TBServer alloc] initWithDelegate:self];
+        if (usedInIpad) {
+            server.isMobile = NO;
+        }
         NSMutableArray *itemIds = [[NSMutableArray alloc] initWithCapacity:huabaoAuctions.count];
         for (HuabaoAuctionInfo *auc in huabaoAuctions) {
             [itemIds addObject:auc.auctionId];
@@ -102,7 +110,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    if (huabaoAuctions.count == 1) {
+    if (huabaoAuctions.count == 1 && !usedInIpad) {
         return 0;
     } else {
         return huabaoAuctions.count;
@@ -112,13 +120,23 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
-    
+
     ItemTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[ItemTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        CGRect f;
+        if (usedInIpad) {
+            f = CGRectMake(0, 0, self.view.frame.size.width, 200);
+        } else {
+            f = CGRectMake(0, 0, 320, 80);
+        }
+        cell = [[ItemTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault 
+                                        reuseIdentifier:CellIdentifier 
+                                                 inIpad:usedInIpad
+                                                  frame:f];
     }
     
     // Configure the cell...
+    cell.usedIniPad = usedInIpad;
     HuabaoAuctionInfo *auc = [huabaoAuctions objectAtIndex:indexPath.row];
     if (auc.tbkItem) {
         cell.item = auc.tbkItem;
@@ -171,7 +189,11 @@
 */
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 80;
+    if (usedInIpad) {
+        return 200;
+    } else {
+        return 80;
+    }
 }
 
 #pragma mark - Table view delegate
@@ -218,7 +240,7 @@
         }
     }
     
-    if (huabaoAuctions.count == 1) {
+    if (huabaoAuctions.count == 1 && !usedInIpad) {
         HuabaoAuctionInfo *auc = [huabaoAuctions lastObject];
         [delegate performSelector:@selector(openBrowser:) withObject:auc];
     } else {

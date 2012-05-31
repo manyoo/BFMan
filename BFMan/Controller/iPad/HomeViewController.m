@@ -10,7 +10,7 @@
 #import "HuaBao.h"
 #import "HuabaoAuctionInfo.h"
 #import "HuabaoPicture.h"
-#import "FullImageViewController.h"
+#import "iPadDetailViewController.h"
 #import "ItemBigiPadCell.h"
 #import "ItemBigiPadCell2.h"
 #import "LoadingTableViewCell.h"
@@ -27,7 +27,7 @@
 - (void)initialize {
     self.server = [[TBServer alloc] initWithDelegate:self];
     self.listType = HOT_POSTERS;
-    self.currentChannelId = [NSNumber numberWithInt:3];
+    self.currentChannelId = [NSNumber numberWithInt:2];
     self.hasMoreData = NO;
     self.lastpageLoaded = 0;
 }
@@ -375,11 +375,11 @@
             [auctions setValue:item forKey:[NSString stringWithFormat:@"%@", auc.picId]];
         }
                 
-        FullImageViewController *imgViewController = [[FullImageViewController alloc] initWithNibName:@"FullImageViewController" bundle:nil];
-        [imgViewController setHuabao:selectedHuaBao pictures:huabaoPictures auctions:auctions];
-        imgViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+        iPadDetailViewController *detailView = [[iPadDetailViewController alloc] initWithNibName:@"iPadDetailViewController" bundle:nil];
+        [detailView setHuabao:selectedHuaBao pictures:huabaoPictures auctions:auctions];
+        detailView.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
         
-        [self presentModalViewController:imgViewController animated:YES];
+        [self presentModalViewController:detailView animated:YES];
     } else if (apiType == API_SEARCH) {
         if (lastpageLoaded == 1) {
             self.posters = (NSMutableArray *)data;
@@ -432,7 +432,20 @@
 }
 
 - (void)openHuabao:(HuaBao *)huabao {
+    self.indexOpened = [posters indexOfObject:huabao];
+    self.apiType = API_GETPICTURE;
+    self.selectedHuaBao = huabao;
+    /*
+    MBProgressHUD *progressHUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
+    [self.navigationController.view addSubview:progressHUD];
     
+    progressHUD.delegate = self;
+    progressHUD.labelText = @"正在加载";
+    
+    self.hud = progressHUD;
+    
+    [progressHUD show:YES];*/
+    [self.server getPosterDetail:huabao.huabaoID];
 }
 
 #pragma mark - UIPopoverController

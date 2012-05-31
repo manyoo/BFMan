@@ -25,12 +25,13 @@
 #import "NSString+Additions.h"
 
 @implementation TBServer
-@synthesize delegate = _delegate, api, needAuth, request = _request;
+@synthesize delegate = _delegate, api, needAuth, request = _request, isMobile;
 
 - (TBServer *)initWithDelegate:(id<TBServerDelegate>)delegate {
     self = [super init];
     if (self) {
         self.delegate = delegate;
+        self.isMobile = YES;
     }
     return self;
 }
@@ -237,7 +238,9 @@
     NSMutableDictionary *newParams = [[NSMutableDictionary alloc] initWithDictionary:params];
     [newParams setValue:fieldsStr forKey:@"fields"];
     [newParams setValue:TAOBAOKE_PID forKey:@"pid"];
-    [newParams setValue:@"true" forKey:@"is_mobile"];
+    if (isMobile) {
+        [newParams setValue:@"true" forKey:@"is_mobile"];
+    }
     [newParams setValue:@"BFMan" forKey:@"outer_code"];
     [self processMethod:TOP_TBK_ITEMS_GET params:newParams];
 }
@@ -263,7 +266,9 @@
     [params setValue:TAOBAOKE_PID forKey:@"pid"];
     [params setValue:[items componentsJoinedByString:@","] forKey:@"num_iids"];
     [params setValue:@"BFMan" forKey:@"outer_code"];
-    [params setValue:@"true" forKey:@"is_mobile"];
+    if (isMobile) {
+        [params setValue:@"true" forKey:@"is_mobile"];
+    }
     [self processMethod:TOP_TBK_CONVERT_ITEM params:params];
 }
 
@@ -275,7 +280,9 @@
     [params setValue:[[TaobaokeItem fields] componentsJoinedByString:@","] forKey:@"fields"];
     [params setValue:TAOBAOKE_PID forKey:@"pid"];
     [params setValue:itemId forKey:@"num_iids"];
-    [params setValue:@"true" forKey:@"is_mobile"];
+    if (isMobile) {
+        [params setValue:@"true" forKey:@"is_mobile"];   
+    }
     [self processMethod:TOP_TBK_CONVERT_ITEM params:params];
 }
 

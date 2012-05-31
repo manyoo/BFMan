@@ -279,6 +279,8 @@
 		07F75FBB154C23EE005320CC /* iPhoneIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 07F75FBA154C23EE005320CC /* iPhoneIcon@2x.png */; };
 		090533FD1573C23D0015D1DA /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 090533FB1573C23D0015D1DA /* HomeViewController.m */; };
 		090533FE1573C23D0015D1DA /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 090533FC1573C23D0015D1DA /* HomeViewController.xib */; };
+		091DED4E1577628C00E42095 /* iPadBrowserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 091DED4C1577628B00E42095 /* iPadBrowserViewController.m */; };
+		091DED4F1577628C00E42095 /* iPadBrowserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 091DED4D1577628B00E42095 /* iPadBrowserViewController.xib */; };
 		0944FAC9157473D500353E5F /* ItemBigiPadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0944FAC8157473D500353E5F /* ItemBigiPadCell.m */; };
 		0944FACD1574A04800353E5F /* HuabaoCoveriPadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0944FACC1574A04800353E5F /* HuabaoCoveriPadView.m */; };
 		0944FAD01574A53500353E5F /* ItemBigiPadCell2.m in Sources */ = {isa = PBXBuildFile; fileRef = 0944FACF1574A53500353E5F /* ItemBigiPadCell2.m */; };
@@ -590,6 +592,9 @@
 		090533FA1573C23D0015D1DA /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HomeViewController.h; path = Controller/iPad/HomeViewController.h; sourceTree = "<group>"; };
 		090533FB1573C23D0015D1DA /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HomeViewController.m; path = Controller/iPad/HomeViewController.m; sourceTree = "<group>"; };
 		090533FC1573C23D0015D1DA /* HomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HomeViewController.xib; path = Controller/iPad/HomeViewController.xib; sourceTree = "<group>"; };
+		091DED4B1577628B00E42095 /* iPadBrowserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = iPadBrowserViewController.h; path = Controller/iPadBrowserViewController.h; sourceTree = "<group>"; };
+		091DED4C1577628B00E42095 /* iPadBrowserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = iPadBrowserViewController.m; path = Controller/iPadBrowserViewController.m; sourceTree = "<group>"; };
+		091DED4D1577628B00E42095 /* iPadBrowserViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = iPadBrowserViewController.xib; path = Controller/iPadBrowserViewController.xib; sourceTree = "<group>"; };
 		0944FAC7157473D400353E5F /* ItemBigiPadCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemBigiPadCell.h; sourceTree = "<group>"; };
 		0944FAC8157473D500353E5F /* ItemBigiPadCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemBigiPadCell.m; sourceTree = "<group>"; };
 		0944FACB1574A04800353E5F /* HuabaoCoveriPadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HuabaoCoveriPadView.h; sourceTree = "<group>"; };
@@ -1087,6 +1092,9 @@
 				099632031575FB460047198E /* iPadDetailViewController.h */,
 				099632041575FB460047198E /* iPadDetailViewController.m */,
 				099632051575FB460047198E /* iPadDetailViewController.xib */,
+				091DED4B1577628B00E42095 /* iPadBrowserViewController.h */,
+				091DED4C1577628B00E42095 /* iPadBrowserViewController.m */,
+				091DED4D1577628B00E42095 /* iPadBrowserViewController.xib */,
 			);
 			name = iPad;
 			path = BFMan;
@@ -1268,6 +1276,7 @@
 				090533FE1573C23D0015D1DA /* HomeViewController.xib in Resources */,
 				09C239FA1574F83E005006E8 /* ChannelSelectioniPadViewController.xib in Resources */,
 				099632071575FB460047198E /* iPadDetailViewController.xib in Resources */,
+				091DED4F1577628C00E42095 /* iPadBrowserViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1451,6 +1460,7 @@
 				0944FAD01574A53500353E5F /* ItemBigiPadCell2.m in Sources */,
 				09C239F91574F83E005006E8 /* ChannelSelectioniPadViewController.m in Sources */,
 				099632061575FB460047198E /* iPadDetailViewController.m in Sources */,
+				091DED4E1577628C00E42095 /* iPadBrowserViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

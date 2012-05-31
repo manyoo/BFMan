@@ -18,5 +18,6 @@
 @property (nonatomic, strong) TBServer *server;
 @property (nonatomic) BOOL tbkInfoLoaded;
 @property (nonatomic, unsafe_unretained) id delegate;
+@property (nonatomic) BOOL usedInIpad;
 
 @end
