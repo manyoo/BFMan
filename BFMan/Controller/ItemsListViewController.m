@@ -52,6 +52,9 @@
         self.tableView.backgroundColor = [UIColor clearColor];
         self.tableView.backgroundView = nil;
     }
+    self.tableView.bounces = YES;
+    self.tableView.scrollEnabled = YES;
+    self.tableView.alwaysBounceVertical = YES;
     
     if (!tbkInfoLoaded) {
         self.server = [[TBServer alloc] initWithDelegate:self];
@@ -96,7 +99,11 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    return YES;
+}
+
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
+    self.tableView.scrollEnabled = YES;
 }
 
 #pragma mark - Table view data source
@@ -106,7 +113,7 @@
     // Return the number of sections.
     return 1;
 }
-
+    
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.

@@ -251,8 +251,8 @@
             height = 400;
         }
     }
-    itemsViewController.view.frame = CGRectMake(0, 0, f.size.width, height);
-    [itemsInfoView addSubview:itemsViewController.view];
+    itemsViewController.tableView.frame = CGRectMake(0, 0, f.size.width, height);
+    [itemsInfoView addSubview:itemsViewController.tableView];
 }
 
 - (void)focusOnPage:(NSInteger)currentPage {
