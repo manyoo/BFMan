@@ -11,6 +11,7 @@
 #import "ItemImg.h"
 #import "AsyncImageView.h"
 #import "GradientView.h"
+#import <QuartzCore/QuartzCore.h>
 
 #define IMAGE_WIDTH 90
 
@@ -54,7 +55,7 @@
         
         CGRect pf;
         if (usedIniPad) {
-            pf = CGRectMake(0, self.frame.size.height - 20, self.frame.size.width, 20);
+            pf = CGRectMake(IMAGE_WIDTH + 10, 10, self.frame.size.width - IMAGE_WIDTH - 20, 20);
         } else {
             pf = CGRectMake(IMAGE_WIDTH + 10, IMAGE_WIDTH / 2 + 10, titleLabel.frame.size.width / 2, 20);
         }
@@ -99,6 +100,30 @@
     asycImageView.usedInList = YES;
     [self.contentView addSubview:asycImageView];
     [asycImageView getImage];
+    
+    if (usedIniPad) {
+        
+        [[asycImageView layer] setShadowOffset:CGSizeMake(2, 1)];
+        [[asycImageView layer] setShadowColor:[[UIColor darkGrayColor] CGColor]];
+        [[asycImageView layer] setShadowRadius:2.5];
+        [[asycImageView layer] setShadowOpacity:0.9];
+        
+        asycImageView.layer.borderWidth = 1.0;
+        asycImageView.layer.borderColor = [UIColor whiteColor].CGColor;
+        
+        CGSize size = asycImageView.bounds.size;
+        CGFloat curlFactor = 8.0f;
+        CGFloat shadowDepth = 5.0f;
+        UIBezierPath *path = [UIBezierPath bezierPath];
+        [path moveToPoint:CGPointMake(0.0f, 0.0f)];
+        [path addLineToPoint:CGPointMake(size.width, 0.0f)];
+        [path addLineToPoint:CGPointMake(size.width, size.height + shadowDepth)];
+        [path addCurveToPoint:CGPointMake(0.0f, size.height + shadowDepth)
+                controlPoint1:CGPointMake(size.width - curlFactor, size.height + shadowDepth - curlFactor)
+                controlPoint2:CGPointMake(curlFactor, size.height + shadowDepth - curlFactor)];
+        [asycImageView.layer setShadowPath:path.CGPath];
+        
+    }
     
     item.title = [[item.title stringByReplacingOccurrencesOfString:@"<span class=H>" withString:@""] stringByReplacingOccurrencesOfString:@"</span>" withString:@""];
 

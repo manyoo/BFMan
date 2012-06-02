@@ -145,7 +145,7 @@
     
     [smallImageViewController setSelectedPicture:page];
     
-    [self setup];
+    //[self setup];
 }
 
 - (void)viewDidUnload
@@ -161,6 +161,16 @@
     // e.g. self.myOutlet = nil;
     self.subScrollViews = nil;
     self.noteLabel = nil;
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    for (UIView *v in subScrollViews) {
+        [v removeFromSuperview];
+    }
+    [noteLabel removeFromSuperview];
+    [self setup];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -216,12 +226,9 @@
     if (auc == nil) {
         return;
     }
-    if (itemsDisplayedOnPage >= 0) {
-        if (itemsDisplayedOnPage == page) {
-            return;
-        }
-        [itemsViewController.view removeFromSuperview];
-    }
+
+    [itemsViewController.view removeFromSuperview];
+    
     self.itemsViewController = [[ItemsListViewController alloc] initWithNibName:@"ItemsListViewController" bundle:nil];
     itemsViewController.delegate = self;
     itemsViewController.huabaoAuctions = auc;
@@ -229,7 +236,22 @@
     itemsViewController.usedInIpad = YES;
     
     CGRect f = itemsInfoView.frame;
-    itemsViewController.view.frame = CGRectMake(0, 0, f.size.width, 200 * auc.count);
+    int c = auc.count;
+    float height;
+    if (UIInterfaceOrientationIsPortrait(self.interfaceOrientation)) {
+        if (c <= 3) {
+            height = 200 * c;
+        } else {
+            height = 600;
+        }
+    } else if (UIInterfaceOrientationIsLandscape(self.interfaceOrientation)) {
+        if (c <= 2) {
+            height = 200 * c;
+        } else {
+            height = 400;
+        }
+    }
+    itemsViewController.view.frame = CGRectMake(0, 0, f.size.width, height);
     [itemsInfoView addSubview:itemsViewController.view];
 }
 

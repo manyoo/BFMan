@@ -130,7 +130,7 @@ UIImage *globalImage = nil;
         
         imageView.frame = CGRectMake((self.frame.size.width - newSize.width) / 2, (self.frame.size.height - newSize.height) / 2, newSize.width, newSize.height);
         imageView.image = image;
-        imageView.contentMode = UIViewContentModeCenter;
+        imageView.contentMode = UIViewContentModeScaleAspectFill;
         imageView.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);    
         imageView.clipsToBounds = YES;
         
