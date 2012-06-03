@@ -236,6 +236,12 @@
 
     [itemsViewController.view removeFromSuperview];
     
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, itemsInfoView.frame.size.width, 20)];
+    label.text = @"图片中的宝贝:";
+    label.textColor = [UIColor colorWithRed:1.0 green:0.17 blue:0.5 alpha:1.0];
+    label.font = [UIFont fontWithName:@"Helvetica-Bold" size:15];
+    [itemsInfoView addSubview:label];
+    
     self.itemsViewController = [[ItemsListViewController alloc] initWithNibName:@"ItemsListViewController" bundle:nil];
     itemsViewController.delegate = self;
     itemsViewController.huabaoAuctions = auc;
@@ -258,7 +264,7 @@
             height = 400;
         }
     }
-    itemsViewController.tableView.frame = CGRectMake(0, 0, f.size.width, height);
+    itemsViewController.tableView.frame = CGRectMake(0, 40, f.size.width, height);
     [itemsInfoView addSubview:itemsViewController.tableView];
 }
 

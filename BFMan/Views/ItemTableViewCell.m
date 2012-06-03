@@ -35,15 +35,16 @@
         // title label
         CGRect f;
         if (usedIniPad) {
-            f = CGRectMake(0, IMAGE_WIDTH, self.frame.size.width, self.frame.size.height - IMAGE_WIDTH - 35);
+            f = CGRectMake(0, IMAGE_WIDTH, self.frame.size.width, self.frame.size.height - IMAGE_WIDTH - 55);
         } else {
             f = CGRectMake(IMAGE_WIDTH + 10, 0, self.frame.size.width - IMAGE_WIDTH - 20, IMAGE_WIDTH / 2);
         }
         self.titleLabel = [[UILabel alloc] initWithFrame:f];
-        titleLabel.font = [UIFont systemFontOfSize:17];
         if (usedIniPad) {
+            titleLabel.font = [UIFont systemFontOfSize:14];
             titleLabel.textColor = [UIColor darkTextColor];
         } else {
+            titleLabel.font = [UIFont systemFontOfSize:17];
             titleLabel.textColor = [UIColor whiteColor];            
         }
         titleLabel.backgroundColor = [UIColor clearColor];
@@ -63,11 +64,12 @@
         priceLabel.backgroundColor = [UIColor clearColor];
         priceLabel.textAlignment = UITextAlignmentLeft;
         if (usedIniPad) {
-            priceLabel.textColor = [UIColor darkTextColor];
+            priceLabel.textColor = [UIColor colorWithRed:1.0 green:0.17 blue:0.5 alpha:1.0];
+            priceLabel.font = [UIFont systemFontOfSize:16];
         } else {
             priceLabel.textColor = [UIColor whiteColor];
+            priceLabel.font = [UIFont systemFontOfSize:12];
         }
-        priceLabel.font = [UIFont systemFontOfSize:12];
         [self.contentView addSubview:priceLabel];
     }
     return self;
@@ -129,7 +131,7 @@
 
     titleLabel.text = item.title;
     
-    NSString *price = [NSString stringWithFormat:@"价格: %@元", item.price];
+    NSString *price = [NSString stringWithFormat:@"¥: %@", item.price];
     priceLabel.text = price;
 }
 
@@ -151,7 +153,7 @@
     
     titleLabel.text = [[title stringByReplacingOccurrencesOfString:@"<span class=H>" withString:@""] stringByReplacingOccurrencesOfString:@"</span>" withString:@""];
     
-    priceLabel.text = [NSString stringWithFormat:@"价格: %@元", price];
+    priceLabel.text = [NSString stringWithFormat:@"¥: %@", price];
 }
 
 @end
