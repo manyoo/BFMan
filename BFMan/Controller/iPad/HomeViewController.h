@@ -60,6 +60,7 @@ typedef enum {
 @property (nonatomic, strong) ChannelSelectioniPadViewController *channelSelectionViewController;
 @property (nonatomic, strong) UIPopoverController *popoverController;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *channelButton;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *segmentControl;
 
 @property (nonatomic, strong) NSString *searchKeyword;
 

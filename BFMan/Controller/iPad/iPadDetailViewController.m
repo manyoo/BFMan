@@ -108,8 +108,9 @@
     noteLabel.lineBreakMode = UILineBreakModeWordWrap;
     noteLabel.textColor = [UIColor darkTextColor];
     noteLabel.font = [UIFont systemFontOfSize:16];
-    noteLabel.backgroundColor = [UIColor clearColor];
+    noteLabel.backgroundColor = [UIColor whiteColor];
     noteLabel.numberOfLines = 0;
+    noteLabel.alpha = 0.8;
     
     [bigImageView addSubview:noteLabel];
     
@@ -217,7 +218,13 @@
     CGSize noteSize = [note sizeWithFont:[UIFont systemFontOfSize:16] constrainedToSize:CGSizeMake(curSize.width, MAXFLOAT) lineBreakMode:UILineBreakModeWordWrap];
     noteLabel.text = note;
     
-    noteLabel.frame = CGRectMake(0, curSize.height - noteSize.height, curSize.width, noteSize.height);
+    CGFloat y;
+    if (UIInterfaceOrientationIsPortrait(self.interfaceOrientation)) {
+        y = curSize.height - noteSize.height;
+    } else {
+        y = curSize.height - noteSize.height - 10;
+    }
+    noteLabel.frame = CGRectMake(0, y, curSize.width, noteSize.height);
 }
 
 - (void)displayCurrentAuctions {

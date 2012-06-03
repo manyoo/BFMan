@@ -22,6 +22,7 @@
 
 @implementation HomeViewController
 @synthesize channelButton;
+@synthesize segmentControl;
 @synthesize tableView, server, apiType, listType, posters, hotPosters, allPosters, currentChannelId, loadingCell, lastpageLoaded, reloading, allItemsReloading, multipageEnabled, needToScroll, indexOpened, channelSelectionViewController, huabaoPictures, selectedHuaBao, refreshHeaderView, refreshEnabled, hasMoreData, popoverController, searchKeyword;
 
 - (void)initialize {
@@ -115,8 +116,10 @@
     
     if (listType == HOT_POSTERS) {
         self.posters = hotPosters;
+        segmentControl.selectedSegmentIndex = 0;
     } else if (listType == ALL_POSTERS) {
         self.posters = allPosters;
+        segmentControl.selectedSegmentIndex = 1;
     }
     
     self.channelSelectionViewController = [[ChannelSelectioniPadViewController alloc] initWithNibName:@"ChannelSelectioniPadViewController" bundle:nil];
@@ -136,15 +139,32 @@
 - (void)viewDidUnload
 {
     [self setChannelButton:nil];
+    [self setSegmentControl:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
     self.refreshHeaderView = nil;
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    if (needToScroll) {
+        unsigned int a[2];
+        a[0] = 0;
+        if (UIInterfaceOrientationIsPortrait(self.interfaceOrientation)) {
+            a[1] = indexOpened / 3;
+        } else {
+            a[1] = indexOpened / 4;
+        }
+        NSIndexPath *ip = [NSIndexPath indexPathWithIndexes:a length:2];
+        [tableView scrollToRowAtIndexPath:ip atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+    }
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     [[ImageMemCache sharedImageMemCache] clearCache];
+    self.needToScroll = YES;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
