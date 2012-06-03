@@ -13,13 +13,42 @@
 #import <QuartzCore/QuartzCore.h>
 
 @implementation HuabaoCoverView
-@synthesize huabao, delegate, titleLabel, clicksLabel, tagView;
+@synthesize huabao, delegate, titleLabel, clicksLabel, tagView, asyncImageView;
 
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
+        CGRect imgFrame = CGRectMake(10, 5, 140, 140);
+        self.asyncImageView = [[AsyncImageView alloc] initWithFrame:imgFrame];
+        asyncImageView.usedInList = YES;
+        
+        [asyncImageView enableTouch];
+        
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(imageTapped:)];
+        tap.numberOfTapsRequired = 1;
+        [asyncImageView addGestureRecognizer:tap];
+        
+        [[asyncImageView layer] setShadowOffset:CGSizeMake(2, 1)];
+        [[asyncImageView layer] setShadowColor:[[UIColor darkGrayColor] CGColor]];
+        [[asyncImageView layer] setShadowRadius:2.5];
+        [[asyncImageView layer] setShadowOpacity:0.9];
+        
+        CGSize size = asyncImageView.bounds.size;
+        CGFloat curlFactor = 10.0f;
+        CGFloat shadowDepth = 5.0f;
+        UIBezierPath *path = [UIBezierPath bezierPath];
+        [path moveToPoint:CGPointMake(0.0f, 0.0f)];
+        [path addLineToPoint:CGPointMake(size.width, 0.0f)];
+        [path addLineToPoint:CGPointMake(size.width, size.height + shadowDepth)];
+        [path addCurveToPoint:CGPointMake(0.0f, size.height + shadowDepth)
+                controlPoint1:CGPointMake(size.width - curlFactor, size.height + shadowDepth - curlFactor)
+                controlPoint2:CGPointMake(curlFactor, size.height + shadowDepth - curlFactor)];
+        [asyncImageView.layer setShadowPath:path.CGPath];
+        
+        [self addSubview:asyncImageView];
+        
         // title label
         self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(5, 148, 145, 30)];
         titleLabel.font = [UIFont systemFontOfSize:12];
@@ -59,9 +88,6 @@
     if (huabao == nil)
         return;
     
-    UIView *v = [self viewWithTag:99];
-    [v removeFromSuperview];
-    
     ItemImg *img = huabao.itemImg;
     if (img == nil) {
         img = [[ItemImg alloc] init];
@@ -69,36 +95,8 @@
         huabao.itemImg = img;
     }
     
-    CGRect imgFrame = CGRectMake(10, 5, 140, 140);
-    AsyncImageView *asycImageView = [[AsyncImageView alloc] initWithItemImg:img size:IMG_MIDDEL andFrame:imgFrame];
-    asycImageView.tag = 99;
-    asycImageView.usedInList = YES;
-    
-    [asycImageView enableTouch];
-    
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(imageTapped:)];
-    tap.numberOfTapsRequired = 1;
-    [asycImageView addGestureRecognizer:tap];
-    
-    [[asycImageView layer] setShadowOffset:CGSizeMake(2, 1)];
-    [[asycImageView layer] setShadowColor:[[UIColor darkGrayColor] CGColor]];
-    [[asycImageView layer] setShadowRadius:2.5];
-    [[asycImageView layer] setShadowOpacity:0.9];
-    
-    CGSize size = asycImageView.bounds.size;
-    CGFloat curlFactor = 10.0f;
-    CGFloat shadowDepth = 5.0f;
-    UIBezierPath *path = [UIBezierPath bezierPath];
-    [path moveToPoint:CGPointMake(0.0f, 0.0f)];
-    [path addLineToPoint:CGPointMake(size.width, 0.0f)];
-    [path addLineToPoint:CGPointMake(size.width, size.height + shadowDepth)];
-    [path addCurveToPoint:CGPointMake(0.0f, size.height + shadowDepth)
-            controlPoint1:CGPointMake(size.width - curlFactor, size.height + shadowDepth - curlFactor)
-            controlPoint2:CGPointMake(curlFactor, size.height + shadowDepth - curlFactor)];
-    [asycImageView.layer setShadowPath:path.CGPath];
-    
-    [self insertSubview:asycImageView atIndex:0];
-    [asycImageView getImage];
+    [asyncImageView setNewImage:img size:IMG_MIDDEL];
+    [asyncImageView getImage];
     
     huabao.title = [[huabao.title stringByReplacingOccurrencesOfString:@"<span class=H>" withString:@""] stringByReplacingOccurrencesOfString:@"</span>" withString:@""];
     

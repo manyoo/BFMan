@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @class HuaBao;
+@class AsyncImageView;
+
 @interface HuabaoCoverView : UIView
 
 @property (nonatomic, strong) HuaBao *huabao;
@@ -16,6 +18,7 @@
 @property (nonatomic, strong) UILabel *titleLabel;
 @property (nonatomic, strong) UILabel *clicksLabel;
 @property (nonatomic, strong) UIImageView *tagView;
+@property (nonatomic, strong) AsyncImageView *asyncImageView;
 
 - (void)setupView;
 

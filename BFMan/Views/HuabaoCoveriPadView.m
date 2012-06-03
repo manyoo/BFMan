@@ -13,13 +13,46 @@
 #import <QuartzCore/QuartzCore.h>
 
 @implementation HuabaoCoveriPadView
-@synthesize huabao, delegate, titleLabel, clicksLabel, tagView;
+@synthesize huabao, delegate, titleLabel, clicksLabel, tagView, asyncImageView;
 
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
+        CGRect f = self.frame;
+        CGRect imgFrame = CGRectMake(10, 5, f.size.width - 20, f.size.width - 20);
+        
+        self.asyncImageView = [[AsyncImageView alloc] initWithFrame:imgFrame];
+        asyncImageView.usedInList = YES;
+        [asyncImageView enableTouch];
+        
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(imageTapped:)];
+        tap.numberOfTapsRequired = 1;
+        [asyncImageView addGestureRecognizer:tap];
+        
+        [[asyncImageView layer] setShadowOffset:CGSizeMake(2, 1)];
+        [[asyncImageView layer] setShadowColor:[[UIColor darkGrayColor] CGColor]];
+        [[asyncImageView layer] setShadowRadius:2.5];
+        [[asyncImageView layer] setShadowOpacity:0.9];
+        
+        asyncImageView.layer.borderWidth = 3.5;
+        asyncImageView.layer.borderColor = [UIColor whiteColor].CGColor;
+        
+        CGSize size = asyncImageView.bounds.size;
+        CGFloat curlFactor = 15.0f;
+        CGFloat shadowDepth = 10.0f;
+        UIBezierPath *path = [UIBezierPath bezierPath];
+        [path moveToPoint:CGPointMake(0.0f, 0.0f)];
+        [path addLineToPoint:CGPointMake(size.width, 0.0f)];
+        [path addLineToPoint:CGPointMake(size.width, size.height + shadowDepth)];
+        [path addCurveToPoint:CGPointMake(0.0f, size.height + shadowDepth)
+                controlPoint1:CGPointMake(size.width - curlFactor, size.height + shadowDepth - curlFactor)
+                controlPoint2:CGPointMake(curlFactor, size.height + shadowDepth - curlFactor)];
+        [asyncImageView.layer setShadowPath:path.CGPath];
+        
+        [self addSubview:asyncImageView];
+        
         // title label
         self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(5, frame.size.width - 5, frame.size.width - 15, 50)];
         titleLabel.font = [UIFont systemFontOfSize:15];
@@ -59,57 +92,22 @@
     if (huabao == nil)
         return;
     
-    UIView *v = [self viewWithTag:99];
-    [v removeFromSuperview];
-    
     ItemImg *img = huabao.itemImg;
     if (img == nil) {
         img = [[ItemImg alloc] init];
         img.url = huabao.coverPicUrl;
         huabao.itemImg = img;
     }
-    
-    CGRect f = self.frame;
-    CGRect imgFrame = CGRectMake(10, 5, f.size.width - 20, f.size.width - 20);
-    AsyncImageView *asycImageView = [[AsyncImageView alloc] initWithItemImg:img size:IMG_MIDDEL andFrame:imgFrame];
-    asycImageView.tag = 99;
-    asycImageView.usedInList = YES;
-    
-    [asycImageView enableTouch];
-    
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(imageTapped:)];
-    tap.numberOfTapsRequired = 1;
-    [asycImageView addGestureRecognizer:tap];
-    
-    [[asycImageView layer] setShadowOffset:CGSizeMake(2, 1)];
-    [[asycImageView layer] setShadowColor:[[UIColor darkGrayColor] CGColor]];
-    [[asycImageView layer] setShadowRadius:2.5];
-    [[asycImageView layer] setShadowOpacity:0.9];
-    
-    asycImageView.layer.borderWidth = 3.5;
-    asycImageView.layer.borderColor = [UIColor whiteColor].CGColor;
-    
-    CGSize size = asycImageView.bounds.size;
-    CGFloat curlFactor = 15.0f;
-    CGFloat shadowDepth = 10.0f;
-    UIBezierPath *path = [UIBezierPath bezierPath];
-    [path moveToPoint:CGPointMake(0.0f, 0.0f)];
-    [path addLineToPoint:CGPointMake(size.width, 0.0f)];
-    [path addLineToPoint:CGPointMake(size.width, size.height + shadowDepth)];
-    [path addCurveToPoint:CGPointMake(0.0f, size.height + shadowDepth)
-            controlPoint1:CGPointMake(size.width - curlFactor, size.height + shadowDepth - curlFactor)
-            controlPoint2:CGPointMake(curlFactor, size.height + shadowDepth - curlFactor)];
-    [asycImageView.layer setShadowPath:path.CGPath];
-    
-    [self insertSubview:asycImageView atIndex:0];
-    [asycImageView getImage];
+    [asyncImageView setNewImage:img size:IMG_MIDDEL];
+    [asyncImageView getImage];
     
     huabao.title = [[huabao.title stringByReplacingOccurrencesOfString:@"<span class=H>" withString:@""] stringByReplacingOccurrencesOfString:@"</span>" withString:@""];
     
     titleLabel.text = huabao.title;
     
     clicksLabel.text = [NSString stringWithFormat:@"人气: %@", huabao.hits];
-    
+
+    CGRect f = self.frame;
     CGSize ns = [clicksLabel.text sizeWithFont:[UIFont systemFontOfSize:11] constrainedToSize:CGSizeMake(MAXFLOAT, 15)];
     CGRect oldFrame = tagView.frame;
     tagView.frame = CGRectMake(f.size.width - ns.width - 15, oldFrame.origin.y, ns.width + 10, oldFrame.size.height);

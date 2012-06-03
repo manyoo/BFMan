@@ -9,12 +9,14 @@
 #import <UIKit/UIKit.h>
 
 @class TaobaokeItem;
+@class AsyncImageView;
 
 @interface ItemTableViewCell : UITableViewCell
 
 @property (nonatomic, strong) TaobaokeItem *item;
 @property (nonatomic, strong) UILabel *titleLabel;
 @property (nonatomic, strong) UILabel *priceLabel;
+@property (nonatomic, strong) AsyncImageView *asyncImageView;
 @property (nonatomic) BOOL usedIniPad;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier inIpad:(BOOL)inIpad frame:(CGRect)f;

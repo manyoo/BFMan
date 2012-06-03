@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @class HuaBao;
+@class AsyncImageView;
 
 @interface HuabaoCoveriPadView : UIView
 
@@ -17,6 +18,7 @@
 @property (nonatomic, strong) UILabel *titleLabel;
 @property (nonatomic, strong) UILabel *clicksLabel;
 @property (nonatomic, strong) UIImageView *tagView;
+@property (nonatomic, strong) AsyncImageView *asyncImageView;
 
 - (void)setupView;
 

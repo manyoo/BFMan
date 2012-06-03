@@ -16,7 +16,7 @@
 #define IMAGE_WIDTH 90
 
 @implementation ItemTableViewCell
-@synthesize item, titleLabel, priceLabel, usedIniPad;
+@synthesize item, titleLabel, priceLabel, usedIniPad, asyncImageView;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier inIpad:(BOOL)inIpad frame:(CGRect)f
 {
@@ -28,6 +28,35 @@
             self.backgroundView = [[UIView alloc] initWithFrame:self.frame];
             self.backgroundView.backgroundColor = [UIColor blackColor];
             self.backgroundView.alpha = 0.7;
+        }
+        
+        CGRect imgFrame = CGRectMake(2, 2, IMAGE_WIDTH - 4, 76);
+        self.asyncImageView = [[AsyncImageView alloc] initWithFrame:imgFrame];
+        asyncImageView.usedInList = YES;
+        [self.contentView addSubview:asyncImageView];
+        
+        if (usedIniPad) {
+            
+            [[asyncImageView layer] setShadowOffset:CGSizeMake(2, 1)];
+            [[asyncImageView layer] setShadowColor:[[UIColor darkGrayColor] CGColor]];
+            [[asyncImageView layer] setShadowRadius:2.5];
+            [[asyncImageView layer] setShadowOpacity:0.9];
+            
+            asyncImageView.layer.borderWidth = 2.0;
+            asyncImageView.layer.borderColor = [UIColor whiteColor].CGColor;
+            
+            CGSize size = asyncImageView.bounds.size;
+            CGFloat curlFactor = 8.0f;
+            CGFloat shadowDepth = 5.0f;
+            UIBezierPath *path = [UIBezierPath bezierPath];
+            [path moveToPoint:CGPointMake(0.0f, 0.0f)];
+            [path addLineToPoint:CGPointMake(size.width, 0.0f)];
+            [path addLineToPoint:CGPointMake(size.width, size.height + shadowDepth)];
+            [path addCurveToPoint:CGPointMake(0.0f, size.height + shadowDepth)
+                    controlPoint1:CGPointMake(size.width - curlFactor, size.height + shadowDepth - curlFactor)
+                    controlPoint2:CGPointMake(curlFactor, size.height + shadowDepth - curlFactor)];
+            [asyncImageView.layer setShadowPath:path.CGPath];
+            
         }
         
         self.frame = f;
@@ -95,37 +124,8 @@
         img.url = item.picUrl;
         item.itemImage = img;
     }
-    
-    CGRect imgFrame = CGRectMake(2, 2, IMAGE_WIDTH - 4, 76);
-    AsyncImageView *asycImageView = [[AsyncImageView alloc] initWithItemImg:img size:IMG_MIDDEL andFrame:imgFrame];
-    asycImageView.tag = 99;
-    asycImageView.usedInList = YES;
-    [self.contentView addSubview:asycImageView];
-    [asycImageView getImage];
-    
-    if (usedIniPad) {
-        
-        [[asycImageView layer] setShadowOffset:CGSizeMake(2, 1)];
-        [[asycImageView layer] setShadowColor:[[UIColor darkGrayColor] CGColor]];
-        [[asycImageView layer] setShadowRadius:2.5];
-        [[asycImageView layer] setShadowOpacity:0.9];
-        
-        asycImageView.layer.borderWidth = 2.0;
-        asycImageView.layer.borderColor = [UIColor whiteColor].CGColor;
-        
-        CGSize size = asycImageView.bounds.size;
-        CGFloat curlFactor = 8.0f;
-        CGFloat shadowDepth = 5.0f;
-        UIBezierPath *path = [UIBezierPath bezierPath];
-        [path moveToPoint:CGPointMake(0.0f, 0.0f)];
-        [path addLineToPoint:CGPointMake(size.width, 0.0f)];
-        [path addLineToPoint:CGPointMake(size.width, size.height + shadowDepth)];
-        [path addCurveToPoint:CGPointMake(0.0f, size.height + shadowDepth)
-                controlPoint1:CGPointMake(size.width - curlFactor, size.height + shadowDepth - curlFactor)
-                controlPoint2:CGPointMake(curlFactor, size.height + shadowDepth - curlFactor)];
-        [asycImageView.layer setShadowPath:path.CGPath];
-        
-    }
+    [asyncImageView setNewImage:img size:IMG_MIDDEL];
+    [asyncImageView getImage];
     
     item.title = [[item.title stringByReplacingOccurrencesOfString:@"<span class=H>" withString:@""] stringByReplacingOccurrencesOfString:@"</span>" withString:@""];
 
@@ -144,12 +144,9 @@
     item.itemImage = img;
     
     
-    CGRect imgFrame = CGRectMake(2, 2, IMAGE_WIDTH - 4, 76);
-    AsyncImageView *asycImageView = [[AsyncImageView alloc] initWithItemImg:img size:IMG_MIDDEL andFrame:imgFrame];
-    asycImageView.tag = 99;
-    asycImageView.usedInList = YES;
-    [self.contentView addSubview:asycImageView];
-    [asycImageView getImage];
+    asyncImageView.frame = CGRectMake(2, 2, IMAGE_WIDTH - 4, 76);
+    [asyncImageView setNewImage:img size:IMG_SMALL];
+    [asyncImageView getImage];
     
     titleLabel.text = [[title stringByReplacingOccurrencesOfString:@"<span class=H>" withString:@""] stringByReplacingOccurrencesOfString:@"</span>" withString:@""];
     
