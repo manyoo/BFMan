@@ -110,7 +110,7 @@
         [[asycImageView layer] setShadowRadius:2.5];
         [[asycImageView layer] setShadowOpacity:0.9];
         
-        asycImageView.layer.borderWidth = 1.0;
+        asycImageView.layer.borderWidth = 2.0;
         asycImageView.layer.borderColor = [UIColor whiteColor].CGColor;
         
         CGSize size = asycImageView.bounds.size;
