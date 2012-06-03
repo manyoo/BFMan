@@ -321,8 +321,10 @@
 }
 
 - (IBAction)channelButtonClicked:(id)sender {
-    self.popoverController = [[UIPopoverController alloc] initWithContentViewController:channelSelectionViewController];
-    popoverController.popoverContentSize = CGSizeMake(100, 300);
+    if (popoverController == nil) {
+        self.popoverController = [[UIPopoverController alloc] initWithContentViewController:channelSelectionViewController];
+        popoverController.popoverContentSize = CGSizeMake(100, 300);   
+    }
     [popoverController presentPopoverFromBarButtonItem:channelButton permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
 }
 
