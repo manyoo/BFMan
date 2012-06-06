@@ -10,7 +10,7 @@
 
 @protocol ChannelSelectioniPadViewControllerDelegate <NSObject>
 
-- (void)channelSelected:(NSNumber *)channelId;
+- (void)channelSelected:(NSNumber *)channelId name:(NSString *)name;
 
 @end
 

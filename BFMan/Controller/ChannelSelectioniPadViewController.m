@@ -138,7 +138,8 @@
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
     NSNumber *channelId = [channelIds objectAtIndex:indexPath.row];
-    [delegate channelSelected:channelId];
+    NSString *name = [channelNames objectAtIndex:indexPath.row];
+    [delegate channelSelected:channelId name:name];
 }
 
 @end

@@ -25,12 +25,13 @@
 @synthesize channelButton;
 @synthesize segmentControl;
 @synthesize settingsButton;
-@synthesize tableView, server, apiType, listType, posters, hotPosters, allPosters, currentChannelId, loadingCell, lastpageLoaded, reloading, allItemsReloading, multipageEnabled, needToScroll, indexOpened, channelSelectionViewController, huabaoPictures, selectedHuaBao, refreshHeaderView, refreshEnabled, hasMoreData, popoverController, searchKeyword, moreInfoViewController, settingsPopoverController;
+@synthesize tableView, server, apiType, listType, posters, hotPosters, allPosters, currentChannelId, currentChannelName, loadingCell, lastpageLoaded, reloading, allItemsReloading, multipageEnabled, needToScroll, indexOpened, channelSelectionViewController, huabaoPictures, selectedHuaBao, refreshHeaderView, refreshEnabled, hasMoreData, popoverController, searchKeyword, moreInfoViewController, settingsPopoverController;
 
 - (void)initialize {
     self.server = [[TBServer alloc] initWithDelegate:self];
     self.listType = HOT_POSTERS;
     self.currentChannelId = [NSNumber numberWithInt:2];
+    self.currentChannelName = @"服饰";
     self.hasMoreData = NO;
     self.lastpageLoaded = 0;
 }
@@ -102,6 +103,8 @@
     // Do any additional setup after loading the view from its nib.
     tableView.allowsSelection = NO;
     tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    
+    [channelButton setTitle:currentChannelName];
     
     self.refreshHeaderView = [[EGORefreshTableHeaderView alloc] initWithFrame:CGRectMake(0.0f,
                                                                                          0.0f - self.tableView.bounds.size.height, 
@@ -500,9 +503,11 @@
     return YES;
 }
 
-- (void)channelSelected:(NSNumber *)channelId {
+- (void)channelSelected:(NSNumber *)channelId name:(NSString *)name {
     [popoverController dismissPopoverAnimated:YES];
     self.currentChannelId = channelId;
+    self.currentChannelName = name;
+    [channelButton setTitle:name];
     if (listType == HOT_POSTERS) {
         [self requestHot];
     } else {

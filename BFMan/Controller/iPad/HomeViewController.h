@@ -43,6 +43,7 @@ typedef enum {
 @property (nonatomic, strong) NSMutableArray *hotPosters;
 @property (nonatomic, strong) NSMutableArray *allPosters;
 @property (nonatomic, strong) NSNumber *currentChannelId;
+@property (nonatomic, strong) NSString *currentChannelName;
 
 @property (nonatomic) BOOL hasMoreData;
 
