@@ -312,6 +312,14 @@
 - (IBAction)changeType:(UISegmentedControl *)seg {
     self.hasMoreData = NO;
     self.listType = seg.selectedSegmentIndex;
+    
+    // scroll to top
+    unsigned int idx[2];
+    idx[0] = 0;
+    idx[1] = 0;
+    NSIndexPath *idp = [[NSIndexPath alloc] initWithIndexes:idx length:2];
+    [tableView scrollToRowAtIndexPath:idp atScrollPosition:UITableViewScrollPositionTop animated:NO];
+    
     if (listType == HOT_POSTERS) {
         self.posters = hotPosters;
         self.refreshEnabled = NO;
