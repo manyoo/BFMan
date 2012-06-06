@@ -15,6 +15,7 @@
 #import "ItemBigiPadCell2.h"
 #import "LoadingTableViewCell.h"
 #import "ImageMemCache.h"
+#import "MoreInfoViewController.h"
 
 @interface HomeViewController ()
 
@@ -23,7 +24,8 @@
 @implementation HomeViewController
 @synthesize channelButton;
 @synthesize segmentControl;
-@synthesize tableView, server, apiType, listType, posters, hotPosters, allPosters, currentChannelId, loadingCell, lastpageLoaded, reloading, allItemsReloading, multipageEnabled, needToScroll, indexOpened, channelSelectionViewController, huabaoPictures, selectedHuaBao, refreshHeaderView, refreshEnabled, hasMoreData, popoverController, searchKeyword;
+@synthesize settingsButton;
+@synthesize tableView, server, apiType, listType, posters, hotPosters, allPosters, currentChannelId, loadingCell, lastpageLoaded, reloading, allItemsReloading, multipageEnabled, needToScroll, indexOpened, channelSelectionViewController, huabaoPictures, selectedHuaBao, refreshHeaderView, refreshEnabled, hasMoreData, popoverController, searchKeyword, moreInfoViewController, settingsPopoverController;
 
 - (void)initialize {
     self.server = [[TBServer alloc] initWithDelegate:self];
@@ -142,6 +144,7 @@
 {
     [self setChannelButton:nil];
     [self setSegmentControl:nil];
+    [self setSettingsButton:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -330,6 +333,16 @@
         popoverController.popoverContentSize = CGSizeMake(100, 300);   
     }
     [popoverController presentPopoverFromBarButtonItem:channelButton permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+}
+
+- (IBAction)settings:(id)sender {
+    if (settingsPopoverController == nil) {
+        self.moreInfoViewController = [[MoreInfoViewController alloc] initWithNibName:@"MoreInfoViewController" bundle:nil];
+        moreInfoViewController.contentSizeForViewInPopover = CGSizeMake(320, 320);
+        self.settingsPopoverController = [[UIPopoverController alloc] initWithContentViewController:moreInfoViewController];
+        settingsPopoverController.popoverContentSize = CGSizeMake(320, 320);
+    }
+    [settingsPopoverController presentPopoverFromBarButtonItem:settingsButton permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
 }
 
 - (void)reloadTableViewDataSource {

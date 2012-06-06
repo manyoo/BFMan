@@ -293,6 +293,8 @@
 		09C239FA1574F83E005006E8 /* ChannelSelectioniPadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09C239F81574F83E005006E8 /* ChannelSelectioniPadViewController.xib */; };
 		09C695DA157B872D0037AD67 /* iPadIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C695D9157B872D0037AD67 /* iPadIcon.png */; };
 		09C695DC157B87310037AD67 /* iPadIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C695DB157B87310037AD67 /* iPadIcon@2x.png */; };
+		09F5685E157F938000898531 /* setting.png in Resources */ = {isa = PBXBuildFile; fileRef = 09F5685C157F938000898531 /* setting.png */; };
+		09F5685F157F938000898531 /* setting@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 09F5685D157F938000898531 /* setting@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -614,6 +616,8 @@
 		09C239F81574F83E005006E8 /* ChannelSelectioniPadViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ChannelSelectioniPadViewController.xib; path = Controller/ChannelSelectioniPadViewController.xib; sourceTree = "<group>"; };
 		09C695D9157B872D0037AD67 /* iPadIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = iPadIcon.png; path = ../../iPadIcon.png; sourceTree = "<group>"; };
 		09C695DB157B87310037AD67 /* iPadIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iPadIcon@2x.png"; path = "../../iPadIcon@2x.png"; sourceTree = "<group>"; };
+		09F5685C157F938000898531 /* setting.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = setting.png; sourceTree = "<group>"; };
+		09F5685D157F938000898531 /* setting@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "setting@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -881,6 +885,8 @@
 		0774A76C14B9CF1D00D795AE /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				09F5685C157F938000898531 /* setting.png */,
+				09F5685D157F938000898531 /* setting@2x.png */,
 				09C695DB157B87310037AD67 /* iPadIcon@2x.png */,
 				09C695D9157B872D0037AD67 /* iPadIcon.png */,
 				07F75FBA154C23EE005320CC /* iPhoneIcon@2x.png */,
@@ -1285,6 +1291,8 @@
 				091DED4F1577628C00E42095 /* iPadBrowserViewController.xib in Resources */,
 				09C695DA157B872D0037AD67 /* iPadIcon.png in Resources */,
 				09C695DC157B87310037AD67 /* iPadIcon@2x.png in Resources */,
+				09F5685E157F938000898531 /* setting.png in Resources */,
+				09F5685F157F938000898531 /* setting@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

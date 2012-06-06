@@ -28,6 +28,7 @@ typedef enum {
 
 @class LoadingTableViewCell;
 @class HuaBao;
+@class MoreInfoViewController;
 
 @interface HomeViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, TBServerDelegate, ChannelSelectioniPadViewControllerDelegate, EGORefreshTableHeaderDelegate, UIPopoverControllerDelegate>
 
@@ -61,10 +62,15 @@ typedef enum {
 @property (nonatomic, strong) UIPopoverController *popoverController;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *channelButton;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentControl;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *settingsButton;
+
+@property (nonatomic, strong) UIPopoverController *settingsPopoverController;
+@property (nonatomic, strong) MoreInfoViewController *moreInfoViewController;
 
 @property (nonatomic, strong) NSString *searchKeyword;
 
 - (IBAction)changeType:(id)sender;
 - (IBAction)channelButtonClicked:(id)sender;
+- (IBAction)settings:(id)sender;
 
 @end
