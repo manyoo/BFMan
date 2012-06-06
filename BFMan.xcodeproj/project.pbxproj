@@ -291,6 +291,8 @@
 		09BDE904156E30C4006EA769 /* ImageMemCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 09BDE901156E2FDE006EA769 /* ImageMemCache.m */; };
 		09C239F91574F83E005006E8 /* ChannelSelectioniPadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C239F71574F83E005006E8 /* ChannelSelectioniPadViewController.m */; };
 		09C239FA1574F83E005006E8 /* ChannelSelectioniPadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09C239F81574F83E005006E8 /* ChannelSelectioniPadViewController.xib */; };
+		09C695DA157B872D0037AD67 /* iPadIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C695D9157B872D0037AD67 /* iPadIcon.png */; };
+		09C695DC157B87310037AD67 /* iPadIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C695DB157B87310037AD67 /* iPadIcon@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -610,6 +612,8 @@
 		09C239F61574F83E005006E8 /* ChannelSelectioniPadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChannelSelectioniPadViewController.h; path = Controller/ChannelSelectioniPadViewController.h; sourceTree = "<group>"; };
 		09C239F71574F83E005006E8 /* ChannelSelectioniPadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChannelSelectioniPadViewController.m; path = Controller/ChannelSelectioniPadViewController.m; sourceTree = "<group>"; };
 		09C239F81574F83E005006E8 /* ChannelSelectioniPadViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ChannelSelectioniPadViewController.xib; path = Controller/ChannelSelectioniPadViewController.xib; sourceTree = "<group>"; };
+		09C695D9157B872D0037AD67 /* iPadIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = iPadIcon.png; path = ../../iPadIcon.png; sourceTree = "<group>"; };
+		09C695DB157B87310037AD67 /* iPadIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iPadIcon@2x.png"; path = "../../iPadIcon@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -877,6 +881,8 @@
 		0774A76C14B9CF1D00D795AE /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				09C695DB157B87310037AD67 /* iPadIcon@2x.png */,
+				09C695D9157B872D0037AD67 /* iPadIcon.png */,
 				07F75FBA154C23EE005320CC /* iPhoneIcon@2x.png */,
 				07F75FB7154C23EA005320CC /* iPhoneIcon.png */,
 				077B02C9154BB80300059E6D /* is_favorite@2x.png */,
@@ -1277,6 +1283,8 @@
 				09C239FA1574F83E005006E8 /* ChannelSelectioniPadViewController.xib in Resources */,
 				099632071575FB460047198E /* iPadDetailViewController.xib in Resources */,
 				091DED4F1577628C00E42095 /* iPadBrowserViewController.xib in Resources */,
+				09C695DA157B872D0037AD67 /* iPadIcon.png in Resources */,
+				09C695DC157B87310037AD67 /* iPadIcon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

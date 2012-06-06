@@ -117,9 +117,11 @@
     if (listType == HOT_POSTERS) {
         self.posters = hotPosters;
         segmentControl.selectedSegmentIndex = 0;
+        self.refreshEnabled = NO;
     } else if (listType == ALL_POSTERS) {
         self.posters = allPosters;
         segmentControl.selectedSegmentIndex = 1;
+        self.refreshEnabled = YES;
     }
     
     self.channelSelectionViewController = [[ChannelSelectioniPadViewController alloc] initWithNibName:@"ChannelSelectioniPadViewController" bundle:nil];
@@ -306,8 +308,10 @@
     self.listType = seg.selectedSegmentIndex;
     if (listType == HOT_POSTERS) {
         self.posters = hotPosters;
+        self.refreshEnabled = NO;
     } else if (listType == ALL_POSTERS) {
         self.posters = allPosters;
+        self.refreshEnabled = YES;
     }
     if (posters.count == 0) {
         if (listType == HOT_POSTERS) {
@@ -331,6 +335,10 @@
 - (void)reloadTableViewDataSource {
     self.reloading = YES;
     // call the model to reload data in subclass.
+    
+    self.allItemsReloading = YES;
+    self.lastpageLoaded = 0;
+    [self requestAllPostersOnPage:lastpageLoaded+1];
 }
 
 - (void)doneLoadingTableViewData {
@@ -450,6 +458,7 @@
         self.posters = allPosters;
         
         [self.tableView reloadData];
+        [self doneLoadingTableViewData];
     }
 }
 

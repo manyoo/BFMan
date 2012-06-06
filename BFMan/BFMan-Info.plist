@@ -16,6 +16,8 @@
 		<string>Default@2x.png</string>
 		<string>Default@2x.png</string>
 		<string>Default.png</string>
+		<string>iPadIcon.png</string>
+		<string>iPadIcon@2x.png</string>
 	</array>
 	<key>CFBundleIcons</key>
 	<dict>
@@ -29,6 +31,8 @@
 				<string>Default@2x.png</string>
 				<string>Default@2x.png</string>
 				<string>Default.png</string>
+				<string>iPadIcon.png</string>
+				<string>iPadIcon@2x.png</string>
 			</array>
 			<key>UIPrerenderedIcon</key>
 			<true/>
@@ -62,6 +66,13 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
+	</array>
+	<key>UISupportedInterfaceOrientations~ipad</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationPortraitUpsideDown</string>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 </dict>
 </plist>
