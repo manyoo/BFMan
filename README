@@ -1,0 +1,7 @@
+This is an iOS app letting users browse beautiful albums and pictures. If they like the clothes, bags, shoes, etc, in the pictures, they can go to the shopping site to buy them easily.
+
+Note: This app runs well, but it's not working now because the image sharing service has been suspended by taobao.com. And I have already removed this app from AppStore.
+
+1. Some of the code is ported from one of my other projects and there's lot of code useless.
+2. It has basic iPad support now, but this feature never went into production.
+3. There's lot of valuable features and code here. But I don't yet have much time to clean up and make them more modular. Be brave to search the code. :)
